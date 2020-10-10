@@ -1,0 +1,1809 @@
+/* framework.css - v3.0.27 - 2020/10/07 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) */
+
+/* begin table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 
+  - default declaration of variables
+
+B ------------------------
+  - basic selectors and classes
+  - boxes
+  - buttons
+  
+C ------------------------
+  - clearfix
+    
+F ------------------------
+  - flex-containers
+  - forms: basic elements
+  - forms: progressbar
+  - forms: range-slider
+
+G ------------------------
+  - grid-containers
+  
+H ------------------------
+  - headlines
+  - hyperlinks
+  
+I ------------------------
+  - icons
+
+L ------------------------
+  - lists
+  
+N ------------------------
+  - navigation
+  
+S ------------------------
+  - system messages
+  
+T ------------------------
+  - tables
+  - transforms
+*/
+/* end table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin default declaration of variables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+html {
+	/* css-grid */
+	--grid-columns: 12; /* grid-columns */
+	--grid-layout-columns: 4; /* layout/optical columns */
+	--grid-small-span: 3; /* default column span smaller part */
+	--grid-large-span: 9; /* default column span larger part */
+	--grid-gap: 2rem; /* grid-gap for grid-items */
+	
+	/* typography (default for all elements except headlines) */
+	--font-family: arial, sans-serif; /* font-family */
+	--font-size: 1.4rem; /* font-size */
+	--line-height: 140%; /* line-height */
+	
+	/* layout-colors */
+	--pure-white-rgb-values: 255, 255, 255; /* blank color rgb-values */
+	--pure-white: rgb(var(--pure-white-rgb-values)); /* blank color */
+	--pure-white-reduced-opacity:  rgba(var(--pure-white-rgb-values), var(--reduced-opacity)); /* white-color with reduced opacity */
+	--medium-gray: rgb(127, 127, 127);
+	--pure-black-rgb-values: 0, 0, 0;
+	--pure-black: rgb(var(--pure-black-rgb-values));
+	--pure-black-reduced-opacity:  rgba(var(--pure-black-rgb-values), var(--reduced-opacity)); /* black-color with reduced opacity */
+	--error-color: rgb(184, 25, 0); /* for labels, input-borders, error-messages */
+	--success-color: rgb(0, 119, 0); /* for labels, input-borders, success-messages */
+	--primary-color-rgb-values: 0, 0, 0; /* primary color rgb-values */
+	--primary-color: rgb(var(--primary-color-rgb-values)); /* primary layout color */
+	--primary-color-reduced-opacity: rgba(var(--primary-color-rgb-values), var(--reduced-opacity)); /* primary-color with reduced opacity */
+	--secondary-color-rgb-values: 102, 102, 102; /* secondary color rgb-values */
+	--secondary-color: rgb(var(--secondary-color-rgb-values)); /* secondary layout color */
+	--secondary-color-reduced-opacity: rgba(var(--secondary-color), var(--reduced-opacity)); /* secondary-color with reduced opacity */
+	
+	/* text- and hyperlink-colors */
+	--text-color: rgb(85, 85, 85); /* default text-color for complete site except a-tags (hyperlinks) */
+	--hyperlink-color: var(--primary-color); /* color for hyperlinks */
+	--hyperlink-color-highlighted: var(--secondary-color); /* color for highlighted (:hover, :active, :focus) hyperlinks */
+	--hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
+	--hyperlink-text-decoration-highlighted: none; /* text-decoration for highlighted (:hover, :active, :focus) hyperlinks */
+	--headline-font-weight: bold; /* font-weight for headlines */
+	--disabled-color-rgb-values: 136, 136, 136; /* color for disabled elements (rgb-value is required to set rgba in other variables) */
+	--disabled-color: rgb(var(--disabled-color-rgb-values)); /* color (in rgb) for disabled elements */
+	
+	/* boxes and borders */
+	--reduced-opacity: .3; /* reduced opacity */	
+	--default-background-color-rgb-values: 245, 245, 245; /* default background-color (rgb-value is required to set rgba in other variables) */
+	--default-background-color: rgb(var(--default-background-color-rgb-values)); /* default background-color (in rgb) */
+	--default-background-color-reduced-opacity: rgba(var(--default-background-color-rgb-values), .8); /* background-color (i.e. for boxes fieldsets) */
+	--error-background: linear-gradient(rgb(255, 243, 243) 5%, rgb(238, 225, 225) 100%); /* error background-color (in rgb) */
+	--disabled-background-color-rgb-values: 221, 221, 221; /* disabled background-color in (rgb-value is required to set rgba in other variables) */
+	--disabled-background-color: rgb(var(--disabled-background-color-rgb-values)); /* disabled background-color (in rgb) */
+	--border-radius: 0; /* border-radius */
+	--full-circle: 50%; /* border-radius for full cicles */
+	--border-color-rgb-values: 200, 200, 200; /* border-color-rgb-values */
+	--border-color: rgb(var(--border-color-rgb-values)); /* border-color */
+	--border-width: .1rem; /* border-width */
+	--border-style: solid; /* border-style */
+	--default-border: var(--border-width) var(--border-style) var(--border-color); /* default-border */
+	--default-border-reduced-opacity: var(--border-width) var(--border-style) rgba(var(--border-color-rgb-values), var(--reduced-opacity)); /* default-border */
+	--error-border: var(--border-width) var(--border-style) var(--error-color); /* error-border */
+	--primary-border: var(--border-width) var(--border-style) var(--primary-color); /* border width primary color (i.e. for :focus-status) */
+	--secondary-border: var(--border-width) var(--border-style) var(--secondary-color); /* border width secondary color */
+	--blank-border: var(--border-width) var(--border-style) var(--pure-white); /* border width blank color */
+	--disabled-border: var(--border-width) var(--border-style) var(--disabled-color); /* border width disabled color */
+	
+	/* text- and box-shadows */
+	--box-shadow-color: var(--text-color); /* box-shadow-color */
+	--box-shadow: .2rem .2rem .2rem var(--box-shadow-color); /* box-shadow */
+	--text-shadow-color: var(--text-color); /* text-shadow-color */
+	--text-shadow: .1rem .1rem .1rem var(--text-shadow-color); /* text-shadow-color */
+	
+	/* paddings and margins */
+	--default-padding: 1rem; /* default paddings */
+	--default-margin: 1rem; /* default margins */
+	
+	/* transitions */
+	--default-transition: all .5s; /* default transition */
+}
+/* end default of variables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+html {
+	font-size: 62.5%; /* default size is 16px, 62.5% of that is 10px = 1rem */
+}
+
+html, textarea {
+	font-family: var(--font-family);
+}
+
+html, body {
+	height: 100%; /* maximises visible area. do not set to "min-height" (important to fix footer at bottom!) */
+}
+
+body  {
+	color: var(--text-color);
+	word-wrap: break-word; /* breaks word at the end of the line */
+	font-size: var(--font-size); /* sets the default font-size for every element */
+	line-height: var(--line-height); /* improves reading on the screen. default is 120% */
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.hide-for-small-up, .hide-for-medium-up {
+	display: none !important;
+}
+
+time {
+	display: inline;
+}
+
+object, svg, img, video, canvas, .responsive-wrapper {
+	max-width: 100%;
+	height: auto;
+}
+
+.responsive-container, .responsive-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 videos only */
+    padding-top: 3.5rem;
+    height: 0;
+    overflow: hidden;
+}
+
+.responsive-container iframe, .responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.center-item-wrapper {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+
+.full-width, .full-height {
+	display: block; /* sets element to a block-element */
+	float: none;    /* element should not float */
+	width: 100% !important;
+}
+
+.full-height {
+	width: auto;
+	height: 100%;
+}
+
+.sticky {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.border {
+	border: var(--default-border);
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, dl, table, fieldset, .fieldset, address {
+	margin-bottom: var(--default-margin); /* margin-bottom for almost every element */
+}
+
+strong { 
+	font-weight: bold; 
+}
+
+em, cite, .italic  { 
+	font-style: italic; 
+}
+
+small, small > a, small > span {
+	font-size: 1.3rem;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+hr {
+	border: 0;
+	height: .1rem;
+	margin: calc(var(--default-margin) * 2);
+	clear: both;
+	background: var(--text-color);
+}
+
+figure {
+	margin: 0;
+}
+
+a img, a figcaption {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+/* end basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.box {
+	background: var(--default-background-color);
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+	padding: var(--default-padding);
+}
+
+.box > p:last-child {
+	margin-bottom: 0;
+}
+
+.box.center-content p:last-child {
+	margin: 0;
+}
+
+.box.center-content > div {
+	border: var(--default-border);
+	margin: 0 auto;
+	top: 50%;
+	transform: translateY(-50%);
+	display: table;
+	padding: var(--default-padding);
+}
+
+.box.center-content.flex-container,
+.box.center-content.grid-container {
+	align-content: center;
+	justify-content: center;
+}
+
+.box.center-content.flex-container {
+	align-items: center; /* required to center flex items vertical correctly */
+}
+
+.box.center-content.flex-container > div,
+.box.center-content.grid-container > div {
+	top: auto;
+	transform: none;
+}
+
+.box.center-content.flex-container > div {
+	flex: none; /* make item as wide as its content */
+}
+/* end boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+button, .button, input[type="submit"] {
+	background: var(--primary-color);
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+    color: var(--pure-white);
+	display: block;
+	font-weight: bold;
+	margin: 0;
+    padding: var(--default-padding);
+	text-align: center;
+	text-decoration: none;
+	width: auto;
+	min-width: 4rem;
+}
+
+button, .button,
+button span, .button span,
+button span[class*="icon-"], button span[class*="icon-"] {
+	text-shadow: var(--text-shadow);
+}
+
+button.center, .button.center, input[type="submit"].center {
+	display: table;
+	float: none;
+	margin: 0 auto;
+}
+
+button:last-child .button:last-child, input[type="submit"]:last-child {
+	margin: 0;
+}
+
+button:hover, button:active, button:focus, 
+.button:hover, .button:active, .button:focus,
+input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
+	color: var(--primary-color);
+	background: var(--pure-white);
+	cursor: pointer;
+	border: var(--primary-border);
+	text-shadow: none;
+}
+
+button:hover span, button:active span, button:focus span,
+.button:hover span, .button:active span, .button:focus span,
+button[class*="icon-"]:hover, button[class*="icon-"]:active, button[class*="icon-"]:focus,
+.button[class*="icon-"]:hover, .button[class*="icon-"]:active, .button[class*="icon-"]:focus,
+button:hover span[class*="icon-"], button:active span[class*="icon-"], button:focus span[class*="icon-"],
+.button:hover span[class*="icon-"], .button:active span[class*="icon-"], .button:focus span[class*="icon-"] {
+	color: var(--primary-color);
+	text-shadow: none;
+}
+
+button[class*="icon-"], button span[class*="icon-"], 
+[class*="icon-"].button, .button span[class*="icon-"] {
+    color: var(--pure-white);
+    font-weight: normal;
+	line-height: 90%;
+}
+
+a[readonly], a[disabled="disabled"], a.disabled {
+	color: var(--disabled-color) !important;
+}
+
+[readonly]:hover, [readonly]:active, [readonly]:focus,
+[disabled="disabled"]:hover, [disabled="disabled"]:active, [disabled="disabled"]:focus,
+.disabled:hover, .disabled:active, .disabled:focus {
+	cursor: not-allowed;
+}
+
+.button.disabled, .button.disabled:hover, .button.disabled:active, .button.disabled:focus,
+.button.disabled span, .button.disabled:hover span, .button.disabled:active span, .button.disabled:focus span,
+.button.disabled span[class*="icon-"], .button.disabled:hover span[class*="icon-"], .button.disabled:active span[class*="icon-"], .button.disabled:focus span[class*="icon-"],
+input[disabled="disabled"], input[disabled="disabled"]:hover, input[disabled="disabled"]:active, input[disabled="disabled"]:focus,
+button[disabled="disabled"], button[disabled="disabled"]:hover, button[disabled="disabled"]:active, button[disabled="disabled"]:focus,
+button[disabled="disabled"] span, button[disabled="disabled"]:hover span, button[disabled="disabled"]:active span, button[disabled="disabled"]:focus span,
+button[disabled="disabled"] span[class*="icon-"], button[disabled="disabled"]:hover span[class*="icon-"], button[disabled="disabled"]:active span[class*="icon-"], button[disabled="disabled"]:focus span[class*="icon-"],
+button[class*="icon-"][disabled="disabled"] span, button[class*="icon-"][disabled="disabled"]:hover span, button[class*="icon-"][disabled="disabled"]:active span, button[class*="icon-"][disabled="disabled"]:focus span,
+input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="submit"]:disabled:active, input[type="submit"]:disabled:focus,
+[class*="toggle-switch"].disabled {
+	cursor: not-allowed;
+	background: var(--disabled-background-color) !important;
+	color: var(--disabled-color) !important;
+	border-color: var(--disabled-color) !important;
+	text-shadow: inherit;
+}
+
+.button.disabled span, .button.disabled:hover span, .button.disabled:active span, .button.disabled:focus span,
+.button.disabled span[class*="icon-"], .button.disabled:hover span[class*="icon-"], .button.disabled:active span[class*="icon-"], .button.disabled:focus span[class*="icon-"],
+button[disabled="disabled"] span, button[disabled="disabled"]:hover span, button[disabled="disabled"]:active span, button[disabled="disabled"]:focus span,
+button[class*="icon-"][disabled="disabled"] span, button[class*="icon-"][disabled="disabled"]:hover span, button[class*="icon-"][disabled="disabled"]:active span, button[class*="icon-"][disabled="disabled"]:focus span {
+	background: none;
+}
+/* end buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin clearfix  --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* clearfix is for clearing the boxes in ie and ff correctly (= the height of the outer div-container will be displayed correctly) */
+.clearfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block; 
+	clear: both; 
+	height: 0;
+}
+
+.clearfix {
+	display: block;
+}
+
+.clear, .clear-both {
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	line-height: 0;
+}
+/* end clearfix --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* end flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+[class*="flex-container"], [class*="button-wrapper"] {
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	flex-wrap: wrap; /* breaks children to new line if they are wider than their parent */
+}
+
+[class*="button-wrapper"], [class*="button-wrapper"].align-right {
+	flex-direction: row-reverse;
+}
+
+[class*="button-wrapper"].align-left {
+	flex-direction: row;
+}
+
+[class*="button-wrapper"] > small {
+	position: absolute;
+	left: 0;
+}
+
+[data-type="multistep"] [class*="button-wrapper"] {
+	flex-direction: row;
+}
+
+[data-type="multistep"] [class*="button-wrapper"] > [name="prev"] {
+	margin-left: 0;
+}
+
+[data-type="multistep"] [class*="button-wrapper"] > [name="next"] {
+	margin-left: auto;
+}
+
+[class*="flex-container"] > *, [class*="button-wrapper"] > * {
+	align-items: stretch; /* stretch items to same height (elements must/should not have a set height) */
+	display: block; /* necessary to spread items horizontally equal */
+	float: none !important; /* flex-items should not be floated */
+	width: auto;
+	flex: 1; /* item should have same width */
+}
+
+.button-wrapper-with-gap > .button,
+.button-wrapper-with-gap > button,
+.button-wrapper-with-gap > input[submit] {
+	margin-left: var(--default-margin);
+}
+
+.button-wrapper-with-gap.align-left > .button,
+.button-wrapper-with-gap.align-left > button,
+.button-wrapper-with-gap.align-left > input[submit] {
+	margin-left: 0;
+	margin-right: var(--default-margin);
+}
+
+.flex-container-with-gap > * {
+	gap: var(--grid-gap); /* not supported in chrome yet */
+	margin-left: var(--grid-gap);
+}
+
+[class*="flex-container"] > *:first-child,
+[class*="button-wrapper"] > *:last-child {
+	margin-left: 0;
+}
+
+.flex-container-no-stretch > *, [class*="button-wrapper"] > * {
+	flex: none; /* don't stretch items (items should have default width) */
+}
+
+ul.flex-list, ol.flex-list {
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	padding: var(--default-padding);
+	border: var(--default-border);
+	background: var(--pure-white);
+}
+
+ul.flex-list > li, ol.flex-list > li {
+	list-style-type: none;
+	margin: 0;
+	flex: 1;
+}
+
+.center-content-horizontally, .center-content-vertically, .center-content {
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.center-content-vertically {
+	align-content: center;
+	flex-direction: column;
+}
+
+.center-content {
+	align-content: center;
+	justify-content: center;
+}
+
+.word-break-keep-all {
+	word-break: keep-all;
+}
+/* end flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin forms: basic elements --------------------------------------------------------------------------------------------------------------------------------------------------- */
+form [class*="grid-container"] {
+	grid-auto-rows: min-content;
+	grid-template-rows: min-content;	
+}
+
+fieldset, .fieldset {
+	background: var(--default-background-color);
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+	grid-template-columns: min-content; /* items should be minimum as wide as content */
+	padding: calc(var(--default-padding) * 2);
+}
+
+fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns,
+fieldset .grid-container-create-columns, .fieldset .grid-container-create-columns {
+	grid-row-gap: .5rem;
+}
+
+label {
+	display: block;
+	margin-top: calc(var(--default-margin) * 1.5);
+}
+
+label.inline {
+	display: flex;
+}
+
+label.inline > * {
+	align-self: center;
+}
+
+label.inline > :first-child {
+	margin: 0 var(--default-margin) 0 0 !important;
+}
+
+.grid-container-create-columns > label {
+	grid-column: 1 / span var(--grid-columns);
+}
+
+fieldset.grid-container-create-columns > *:first-child, .fieldset.grid-container-create-columns > *:first-child,
+fieldset.grid-container-create-columns > div:first-child > label, .fieldset.grid-container-create-columns > div:first-child > label {
+	margin-top: 0;
+}
+
+label:not(.switch-label) > span:first-child {
+	display: block;
+	margin-bottom: calc(var(--default-margin) / 2);
+}
+
+label:not(.switch-label) > input:not(:first-child),
+label:not(.switch-label) > select:not(:first-child),
+label:not(.switch-label) > textarea:not(:first-child) {
+	display: block;
+	width: 100%;
+}
+
+.fieldset > *,
+.fieldset .grid-container-create-columns {
+	grid-column: span var(--grid-columns);
+}
+
+label.textarea, .align-self-start {
+	align-self: start !important; /* element must be flex- or grid-item */
+}
+
+label > span {
+	line-height: 100%;
+	white-space: normal;
+}
+
+label > span > sup {
+	font-size: inherit; /* overwrite normalize.css */
+	top: -.5rem /* overwrite normalize.css */
+}
+
+legend {
+	font-weight: bold;/* font-weight of legends */
+	padding: 0 .3rem .3rem .3rem; /* padding of legends */
+}
+
+input, select, textarea, .input-wrapper  {
+	min-width: 2rem;
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+	align-self: start; /* required to let items as high as their content */
+}
+
+input[type="search"] {
+	align-self: stretch;
+}
+
+.onoffswitch {
+	align-self: center;
+}
+
+.input-wrapper {
+	border: 0;
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.input-wrapper > * {
+	align-self: stretch;
+}
+
+.input-wrapper > label {
+	width: auto;
+	margin-right: calc(var(--default-margin) * 2);
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	align-items: center;
+}
+
+label > .input-wrapper > label {
+	margin-top: calc(var(--default-margin) / 2);
+}
+
+label.inline > .input-wrapper > label {
+	margin-top: 0;
+}
+
+.input-wrapper > input {
+	flex: auto;
+}
+
+.input-wrapper > :first-child {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-wrapper > input:not(:only-of-type) {
+	flex: 1;
+}
+
+.input-wrapper > input + input {
+	border-left: 0 !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+input:hover, input:active, input:focus,
+select:hover, select:active, select:focus,
+textarea:hover, textarea:active, textarea:focus {
+	border-color: var(--secondary-color);
+}
+
+input.error, select.error, textarea.error {
+	background: var(--error-background);
+	border: var(--error-border);
+}
+
+label.disabled span {
+	color: var(--disabled-color);
+}
+
+input.error::placeholder, select.error::placeholder, textarea.error::placeholder {
+	color: var(--error-color);
+}
+
+fieldset.error, label.error, label.error span {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+label.error sup {
+	color: var(--error-color);
+}
+
+select {
+	word-wrap: normal; /* break words only at allowed break points */
+}
+
+input:not([type="hidden"]) + input, select:not([type="hidden"]) + input, input:not([type="hidden"]) + select, select + select {
+	border-left: 0;
+}
+
+td label, td input, td select, td textarea {
+	width: 100%;
+	margin: 0;
+}
+
+td label {
+	width: auto;
+	padding: 0;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin-bottom: 0;
+}
+
+input, select {
+    padding: 1rem .1rem .9rem .5rem;
+}
+
+input[type="file"] {
+	padding-top: .8rem;
+	padding-bottom: .7rem;
+}
+
+input[type="color"] {
+	padding: 0;
+}
+
+label > input {
+	margin-top: 0;
+	margin-left: 0; 
+}
+
+textarea {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	min-height: 16.5rem;
+	padding: calc(var(--default-padding) / 2);
+}
+
+input[type="image"] {
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 0 .3rem;
+	border: 0;
+}
+
+input[type="checkbox"], input[type="radio"], input[type="image"] {
+	background: none;
+	width: auto;
+}
+
+input[type="date"], input[type="number"] {
+	grid-column: span 2;
+	max-width: 7rem;
+}
+
+.grid-container-two-fractions input[type="date"] {
+	grid-column: span 3;
+}
+
+.grid-container-three-fractions input[type="date"] {
+	grid-column: span 4;
+}
+
+input[type="date"] {
+	max-width: 12rem;
+}
+
+input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus  {
+	cursor: pointer;
+}
+/* end forms: basic elements --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin forms: replace-input-type (radio/checkbox) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+input.replace-input-type {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 2rem;
+	height: 2rem;
+	padding: .1rem;
+	border: var(--default-border);
+	border-color: var(--text-color);
+	border-radius: var(--full-circle);
+	background: var(--pure-white);
+	box-shadow: none;
+	transform: scale(0.65, 0.65);
+	display: flex;
+}
+
+input.replace-input-type.error,
+input.replace-input-type.error:checked {
+	border-color: var(--error-color);
+	background: var(--error-background);
+}
+
+input.replace-input-type.error:checked::after {
+	background: var(--error-color);
+}
+
+input.replace-input-type:checked {
+	border-color: var(--primary-color);
+}
+
+input.replace-input-type:checked::after {
+	content: "";
+	border-radius: var(--full-circle);
+	background: var(--primary-color);
+	width: 1.2rem;
+	height: 1.2rem;
+	align-self: center;
+	margin: 0 auto;
+	display: block;
+}
+
+input.replace-input-type.disabled:checked::after {
+	background: var(--disabled-color);
+}
+
+input[type="checkbox"].replace-input-type {
+	border-radius: 0;
+}
+
+/* the check */
+input[type="checkbox"].replace-input-type:checked::after {
+	content: "";
+	width: 2.6rem;
+	height: 1.3rem;
+	border-radius: 0;
+	border: .4rem solid var(--primary-color);
+	border-top: 0;
+	border-right: 0;
+	background: none;
+	transform: rotate(-45deg) skewX(-10deg);
+	position: absolute;
+	bottom: 1rem;
+}
+
+input[type="checkbox"][disabled="disabled"].replace-input-type:checked::after {
+	border-color: var(--disabled-color);
+}
+
+input[type="checkbox"].error.replace-input-type:checked::after {
+	border-color: var(--error-color);
+}
+
+input.replace-input-type:checked + .label {
+	color: var(--primary-color);
+}
+
+input.replace-input-type.error:checked + .label {
+	color: var(--error-color);
+}
+
+input[disabled="disabled"].replace-input-type:checked + .label {
+	color: var(--disabled-color);
+}
+
+input.replace-input-type-checkbox.error:not(:checked) {
+	border-color: var(--error-color);
+}
+/* end  forms: replace-input-type (radio/checkbox)  --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin forms: progressbar --------------------------------------------------------------------------------------------------------------------------------------------------- */
+progress {
+	-webkit-appearance: progress-bar;
+	-webkit-writing-mode: horizontal-tb;
+}
+
+progress[value] {
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 25rem;
+	height: 2rem;
+	border-radius: var(--border-radius);
+}
+
+progress[value] {
+	border: var(--primary-border);
+	background: var(--pure-white); /* background-color for entire bar - does not work on -webkit-browsers */
+	box-shadow: none;
+  	color: var(--primary-color); /* background-color for progress-bar in ie10+ */
+}
+
+/* required for webkit (only way to style progress-bar/overwrite default behavior) */
+progress[value]::-webkit-progress-bar {
+	background: var(--pure-white); /* background-color for entire bar in webkit */
+}
+
+progress[value]::-webkit-progress-value {
+	background-image: -webkit-repeating-linear-gradient(-45deg, var(--primary-color) , var(--primary-color)  .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
+}
+
+progress[value]::-moz-progress-bar { 
+	background-image: repeating-linear-gradient(-45deg, var(--primary-color) , var(--primary-color)  .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
+}
+/* end forms: progressbar --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin forms: range-slider --------------------------------------------------------------------------------------------------------------------------------------------------- */
+input[type="range"] {
+    -webkit-appearance: none;
+	background: unset;
+	border: 0;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: .4rem;
+    border: none;
+    border-radius: .2rem;
+}
+
+input[type="range"]::-moz-range-track {
+    height: .4rem;
+    border: none;
+    border-radius: .2rem;
+}
+
+/* the thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    margin-top: -.7rem;
+	background: var(--pure-white);
+	border: var(--primary-border);
+}
+
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    margin-top: -.5rem;
+	background: var(--pure-white);
+	border: var(--primary-border);
+}
+
+/* the track */
+input[type="range"]::-webkit-slider-runnable-track {
+	background: var(--pure-white);
+	border: var(--primary-border);
+}
+
+input[type="range"]::-moz-range-track {
+	background: var(--pure-white);
+	border: var(--primary-border);
+}
+
+/* focus the track */
+/* do not set :focus for IE - styles are controlled by -ms-fill-lower/-ms-fill-upper */
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: var(--primary-color);
+}
+
+input[type="range"]:focus::-moz-range-track {
+    background: var(--primary-color);
+}
+
+/* disabled styles */
+input[type="range"][disabled="disabled"],
+input[type="range"][disabled="disabled"]:hover,
+input[type="range"][disabled="disabled"]:focus,
+input[type="range"][disabled="disabled"]:active,
+input[type="range"].disabled,
+input[type="range"].disabled:hover,
+input[type="range"].disabled:focus,
+input[type="range"].disabled:active {
+	background: none !important;
+}
+
+input[type="range"][disabled="disabled"]::-moz-range-thumb,
+input[type="range"].disabled::-moz-range-thumb {
+	background: var(--disabled-background-color);
+	border-color: var(--disabled-color);
+}
+
+input[type="range"][disabled="disabled"]::-webkit-slider-thumb,
+input[type="range"].disabled::-webkit-slider-thumb {
+	background: var(--disabled-background-color);
+	border-color: var(--disabled-color);
+}
+
+input[type="range"][disabled="disabled"]::-moz-range-track,
+input[type="range"].disabled::-moz-range-track {
+	background: var(--disabled-background-color);
+	border-color: var(--disabled-color);
+}
+
+input[type="range"][disabled="disabled"]::-webkit-slider-runnable-track,
+input[type="range"].disabled::-webkit-slider-runnable-track{
+	background: var(--disabled-background-color);
+	border-color: var(--disabled-color);
+}
+/* end forms: range-slider --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.switch-button {
+	width: auto;
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+	flex-direction: column;
+}
+
+.switch-button.inline {
+	flex-direction: row;
+}
+
+.switch-button [class*="toggle-switch"] {
+	border: var(--default-border);
+	background: var(--pure-white);
+	border-radius: 1.2rem;
+	overflow: hidden;
+	height: 2.4rem;
+	padding: .2rem var(--default-padding);
+	align-self: flex-start;
+	margin-top: calc(var(--default-margin) / 2);
+}
+
+.switch-button [class*="toggle-switch"] {
+	margin-top: 0
+}
+
+.switch-button [class*="toggle-switch"] input {
+	border: 0;
+	background: none;
+	display: none;
+}
+
+.switch-button [class*="toggle-switch"] input ~ .label {
+	white-space: nowrap;
+	transition: left .3s linear;
+	left: 0;
+	line-height: 130%;
+}
+
+.switch-button [class*="toggle-switch"] input + .label {
+	padding-left: var(--default-padding);
+	display: block;
+}
+
+.switch-button [class*="toggle-switch"] input:not(:checked) + .label {
+	position: absolute;
+	left: calc(100% - .9rem);
+}
+
+.switch-button [class*="toggle-switch"] input + .label + .label {
+	padding-right: var(--default-padding);
+	text-align: right;
+}
+
+.switch-button [class*="toggle-switch"] input:checked + .label + .label {
+	left: -100%;
+	position: absolute;
+}
+
+.switch-button [class*="toggle-switch"] ~ label {
+	margin-left: var(--default-margin);
+}
+
+.switch-button [class*="toggle-switch"] input + .label::before {
+	content: "";
+	border-radius: var(--full-circle);
+	background: var(--text-color);
+	width: 1.4rem;
+	height: 1.4rem;
+	display: block;
+	justify-self: flex-start;
+	position: absolute;
+	transition: var(--default-transition);
+	left: -.7rem;
+	top: .2rem;
+}
+/* end toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin multiple-switch */
+.multiple-switch input {
+	display: none;
+}
+
+.multiple-switch label {
+	padding: var(--default-padding);
+	margin: 0;
+	background: var(--pure-white);
+	border: var(--default-border);
+	border-left: 0;
+	flex-direction: column;
+}
+
+.multiple-switch label:first-child {
+	border-left: var(--default-border);
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
+}
+
+.multiple-switch label:last-child {
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+.multiple-switch label:hover, .multiple-switch label:focus, .multiple-switch label:active {
+	cursor: pointer;
+}
+
+.multiple-switch label:hover input ~ span, .multiple-switch label:focus input ~ span, .multiple-switch label:active input ~ span,
+.multiple-switch label input:checked ~ span {
+	color: var(--primary-color);
+}
+
+.multiple-switch label span {
+	display: block;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+}
+
+.multiple-switch label [class*="icon"] {
+	font-size: 3rem;
+	margin-bottom: calc(var(--default-margin) / 2);
+}
+
+.multiple-switch label.active {
+	background: var(--primary-color);
+}
+
+.multiple-switch label.active input:checked ~ span {
+	color: var(--pure-white);
+}
+/* end multiple-switch */
+
+/* begin toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+[class*="toggle-switch"] input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 4rem;
+	height: 2rem;
+	border-radius: 1rem;
+	padding: .2rem;
+	border: var(--default-border);
+	background: var(--pure-white);
+	box-shadow: none;
+	display: flex;
+	transition: var(--default-transition);
+}
+
+[class*="toggle-switch"] input::after {
+	content: "";
+	border-radius: var(--full-circle);
+	background: var(--text-color);
+	width: 1.4rem;
+	height: 1.4rem;
+	display: block;
+	justify-self: flex-end;
+	margin-left: auto;
+}
+
+[class*="toggle-switch"] input:checked {
+	border-color: var(--primary-color);
+}
+
+[class*="toggle-switch"] input:checked::after {
+	justify-self: flex-start;
+	margin-left: 0;
+	background: var(--primary-color);
+}
+
+[class*="toggle-switch"] .label {
+	align-self: center;
+}
+
+.toggle-switch-checkbox.error .label {
+	color: var(--error-color);
+}
+
+.toggle-switch-checkbox.error input:not(:checked) {
+	border-color: var(--error-color);
+}
+
+.toggle-switch-checkbox.error input:not(:checked)::after {
+	border-color: var(--error-color);
+	background: var(--error-color);
+}
+/* end toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin place-inside (place icon inside/over inputfield) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.place-inside[class*="icon-"] {
+	position: absolute;
+	top: auto;
+	bottom: 1rem;
+	left: .5rem;
+	z-index: 10;
+	color: var(--text-color);
+}
+
+.place-inside.focus[class*="icon-"] {
+	color: var(--primary-color);
+}
+
+.place-inside.error[class*="icon-"] {
+	color: var(--error-color);
+}
+
+.place-inside[class*="icon-"] + input {
+	padding-left: calc(var(--default-padding) * 3);
+}
+
+.place-inside[class*="icon-"] + input:focus {
+	border-color: var(--primary-color);
+}
+/* end place-inside (place icon inside/over inputfield) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin grid-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+[class*="grid-container"] {
+	display: grid;
+	grid-gap: var(--grid-gap);
+}
+
+[class*="grid-container"] > [class*="grid-item"] {
+	grid-column: span var(--grid-small-span);
+}
+
+[class*="grid-container"].stretch-items {
+	grid-auto-rows: auto;
+}
+
+.grid-container-create-columns {
+	grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr)); /* creates grid-container with predefined number of columns */
+}    
+
+.grid-container-auto-columns {
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.grid-container-create-columns > .grid-item-full-width {
+	grid-column: span var(--grid-columns);
+}
+
+.grid-container-create-columns > .grid-item-half-width {
+	grid-column: span 6;
+}
+
+.grid-container-create-columns > .grid-small-item {
+	grid-column: span var(--grid-small-span);
+}
+
+.grid-container-create-columns > .grid-large-item {
+	grid-column: span var(--grid-large-span);
+}
+
+.grid-container-two-fractions {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-container-three-fractions {
+	grid-template-columns: repeat(3, 1fr);
+}
+/* end grid-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin headlines --------------------------------------------------------------------------------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: var(--headline-font-weight);
+	margin-top: calc(var(--default-margin) * 2);
+	color: var(--primary-color);
+}
+
+h1, h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+	margin-top: 0;
+}
+
+[class*="grid-container"]:not(.fieldset) > h1,
+[class*="grid-container"]:not(.fieldset) > h2,
+[class*="grid-container"]:not(.fieldset) > h3,
+[class*="grid-container"]:not(.fieldset) > h4,
+[class*="grid-container"]:not(.fieldset) > h5,
+[class*="grid-container"]:not(.fieldset) > h6 {
+	margin: 0;
+}
+
+form h1, form h2, form h3, form h4, form h5, form h6, form .grid-container-create-columns > .grid-container, form hr, form table {
+	grid-column: 1 / span var(--grid-columns);
+	margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+	line-height: 130%;
+}
+
+h1, h1 > a, h1 > span, h1 > span[class*="icon-"] {
+	font-size: 2.6rem; /* font-size for h1 */
+}
+
+h2, h2 > a, h2 > span, h2 > span[class*="icon-"] {
+	font-size: 2.2rem; /* font-size for h2 */
+}
+
+h3, h3 > a, h3 > span, h3 > span[class*="icon-"] {
+	font-size: 2rem; /* font-size for h3 */
+}
+
+h4, h4 > a, h4 > span, h4 > span[class*="icon-"] {
+	font-size: 1.8rem; /* font-size for h4 */
+}
+
+h5, h5 > a, h5 > span, h5 > span[class*="icon-"] {
+	font-size: 1.7rem; /* font-size for h5 */
+}
+
+h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
+	font-size: 1.6rem; /* font-size for h6 */
+}
+/* end headlines --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin hyperlinks --------------------------------------------------------------------------------------------------------------------------------------------------- */
+a {
+	color: var(--hyperlink-color);
+}
+
+a:hover, a:active, a:focus {
+	color: var(--hyperlink-color-highlighted);
+}
+
+a[class*="icon-"]:not(.button) {
+	color: var(--text-color);
+}
+
+a[class*="icon-"]:not(.button):hover, a[class*="icon-"]:not(.button):active, a[class*="icon-"]:not(.button):focus, a[class*="icon-"]:not(.button).active, .highlighted {
+	color: var(--primary-color);
+}
+/* end hyperlinks --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin icons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+[class*="icon-"] {
+    font-size: 1.8rem;
+	font-weight: normal;
+	text-decoration: none !important;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+[class*="icon-"] > * {
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+}
+
+[class*="icon-"].button, button[class*="icon-"] {
+	line-height: 100%;
+}
+
+a.link-icon {
+	text-decoration: none !important; /* for links, that contain icons */
+}
+
+a.link-icon.disabled span {
+	color: var(--text-color);
+	opacity: var(--reduced-opacity);
+	text-decoration: none !important; /* for links, that contain icons */
+}
+
+a.link-icon.disabled:hover span,
+a.link-icon.disabled:active span,
+a.link-icon.disabled:focus span {
+	cursor: not-allowed;
+}
+
+a.link-icon.disabled [class*="icon-"] + span {
+	font-style: italic;
+}
+
+[class*="icon-"] + span,
+span + [class*="icon-"] {
+	margin-left: calc(var(--default-margin) / 2);
+}
+
+h1 [class*="icon-"] + span,
+h2 [class*="icon-"] + span {
+	margin-left: var(--default-margin);
+}
+/* end icons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin lists --------------------------------------------------------------------------------------------------------------------------------------------------- */
+ul ul, ul ol, ol ul, ol ol {
+	margin: 0 0 0 var(--default-margin);
+}
+
+/* text-indent for second-line */
+ul li, ol li {
+	list-style-type: disc;
+	list-style-position: outside;
+	margin-left: 1.7rem;
+}
+
+ol li {
+	list-style-type: decimal;
+}
+
+dl {
+	display: grid;
+    grid-gap: .2rem 1rem; /* row, column */
+	grid-auto-rows: min-content;
+	grid-template-columns: min-content max-content;
+}
+
+dt {
+	white-space: nowrap;
+}
+
+dd {
+	grid-column: 2;
+}
+
+dl.wrap {
+	grid-auto-columns: auto;
+	grid-template-columns: auto;
+}
+
+dl.wrap dd {	
+	white-space: normal;
+}
+/* end lists --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin navigation --------------------------------------------------------------------------------------------------------------------------------------------------- */
+nav ul, .navigation ul {
+	margin: 0;
+	display: -webkit-flex; /* Safari 6-8 */
+	display: flex;
+}
+
+nav ul li, .navigation ul li {
+	list-style-type: none;
+	margin: 0;
+}
+
+nav ul li a, .navigation ul li a {
+	display: block;
+	padding: var(--default-padding);
+	text-decoration: none;
+	color: var(--text-color);
+}
+/* end navigation --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin system messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.system-message {
+	background-image: repeating-linear-gradient(-45deg, transparent, transparent .7rem, rgba(255,255,255,.15) .7rem, rgba(255,255,255,.15) 1.4rem);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	display: table;
+	font-weight: bold;
+	padding: var(--default-padding) calc(var(--default-padding) * 3);
+	text-align: center;
+	text-shadow: var(--text-shadow);
+	border: var(--primary-border);
+}
+
+.system-message, .system-message a, .system-message [class*="icon-"] {
+	color: var(--pure-white);
+}
+
+.system-message.error {
+	background-color: var(--error-color);
+	border-color: #e21e00;
+}
+
+.system-message.warning {
+	background-color: #a8a816;
+	border-color: rgb(227, 227, 25);
+}
+
+.system-message.success {
+	background-color: var(--success-color);
+	border-color: #090;
+}
+
+.system-message.information {
+	background-color: #448cff;
+	border-color: #00b1ed;
+}
+
+.grid-container-create-columns .system-message {
+	grid-column: span var(--grid-columns);
+}
+/* end system messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin tables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+table {
+	border: var(--primary-border);
+	border-radius: var(--border-radius);
+}
+
+table.full-width {
+	display: table; /* tables must have display: table; */
+}
+
+[class*="grid-container"] table {
+	align-self: start;
+}
+
+caption {
+	text-align: right;
+	font-style: italic;
+}
+
+tr {
+	background: var(--default-background-color-reduced-opacity);
+}
+
+tr:nth-child(even) {
+	background: var(--default-background-color);
+}
+
+th, td {
+	padding: var(--default-padding);
+	border: var(--default-border);
+	border-top: 0;
+	border-left: 0;
+}
+
+th {
+	background: var(--primary-color);
+	border-right: var(--blank-border);
+	color: var(--pure-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+	white-space: nowrap;
+}
+
+thead, th:first-child, th:last-child {
+    border-radius: var(--border-radius);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+th:first-child {
+	border-top-right-radius: 0;
+}
+
+th:last-child, td:last-child {
+	border-right: 0;
+}
+
+th:last-child {
+	border-top-left-radius: 0;
+}
+
+td {
+	vertical-align: middle;
+}
+
+tr:hover td, tr:focus td, tr:active td {
+	background: var(--pure-white);
+}
+
+td[colspan] {
+	text-align: center;
+}
+
+tr:last-of-type td {
+	border-bottom: 0;
+}
+
+tr:last-of-type td:first-child, tr:last-of-type td:first-child, tr:last-of-type td:first-child {
+	border-bottom-left-radius: var(--border-radius);
+}
+
+tr:last-of-type td:last-child, tr:last-of-type td:last-child, tr:last-of-type td:last-child {
+	border-bottom-right-radius: var(--border-radius);
+}
+
+/* begin highlighted table column */
+th.highlighted {
+	color: var(--pure-white);
+}
+
+tr.highlighted, td.highlighted {
+	background: var(--primary-color-reduced-opacity);
+	color: var(--pure-white);
+	font-weight: bold;
+}
+
+tr.highlighted td {
+	font-weight: bold;
+}
+/* end highlighted table column */
+
+table a {
+	display: block;
+}
+
+table.center-content td, td.center-content {
+	text-align: center;
+}
+
+td.center-content .button, td.center-content button {
+	float: none;
+	display: table;
+	margin: 0 auto;
+}
+
+table.centercontent td input {
+	float: none;
+	text-align: center;
+}
+
+thead.word-wrap-normal th {
+	word-wrap: normal; /* break words only at allowed break points */
+}
+
+td form {
+	margin-bottom: 0; /* margin-bottoms of forms in table-cells */
+}
+/* end tables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin transforms --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.rotate-90deg {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.rotate-180deg {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.rotate-270deg {
+	-webkit-transform: rotate(270deg);
+	transform: rotate(270deg);
+}
+
+.mirror-x, .flip-x {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+.mirror-y, .flip-y {
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+}
+/* end transforms --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ---------------------------------------------- BEGIN MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+	input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"],
+	input[type="range"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"] {
+		-webkit-appearance: none; /* avoid default rounded border on safari */
+	}
+
+}
+
+@media only screen and (max-width: 1023px) {
+	
+	html {
+		--grid-columns: 6; /* grid-columns */
+		--grid-small-span: 3; /* default column span smaller part */
+		--grid-large-span: 3; /* default column span larger part */
+		--line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
+	}
+
+	.grid-container-two-fractions {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	
+	.grid-container-create-columns > .grid-item-half-width {
+		grid-column: span var(--grid-columns);
+	}
+		
+	.hide-for-medium, .hide-for-small-up, .hide-for-large-down {
+		display: none !important;
+	}
+	
+	.hide-for-medium-up {
+		display: block !important;
+	}
+	
+} /* end max-width 1023px */
+
+@media only screen and (max-width: 600px) {
+	
+	html {
+		--grid-columns: 4; /* grid-columns */
+		--grid-small-span: 4; /* default column span smaller part */
+		--grid-large-span: 4; /* default column span larger part */
+		font-size: 56.25%; /* default size is 16px, 56.25% of that is 9px = 0.9rem */
+	}
+
+	html, body {
+		min-height: 100%;
+	}
+
+	button, .button, input[type="submit"] {	
+		margin: 0 0 var(--default-margin) 0;
+		text-align: center;
+	}
+		
+	.button-wrapper > button, .button-wrapper > .button {
+		margin-left: var(--default-margin);
+	}
+
+	[class*="button-wrapper"].align-right {
+		flex-direction: column-reverse;
+	}
+
+	button:not([class*="icon-"]), .button:not([class*="icon-"]), input[type="submit"]:not([class*="icon-"]) {
+		width: 100%;
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	button[class*="icon-"], .button[class*="icon-"], input[type="submit"][class*="icon-"] {
+		display: table;
+	}
+
+	fieldset, .fieldset {
+		padding: var(--default-padding);
+	}
+	
+	fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns {
+		grid-gap: calc(var(--grid-gap) / 2);
+	}    
+	
+	fieldset > label:first-child, .fieldset > label:first-child {
+		margin-top: 0;
+	}
+
+	.fieldset [class*="grid-container"],
+	fieldset [class*="grid-container"] {
+		--grid-gap: 1rem;
+	}
+
+	[class*="flex-container"] {
+		flex-direction: column; /* arrange flex-items vertically */
+	}
+
+	[class*="flex-container"] > * {
+		align-items: start; /* flex item should not stretched to equal height on small devices */
+	}
+
+	.button-wrapper-with-gap > *, .flex-container-with-gap > * {
+		margin-left: 0;
+	}
+
+	[class*="grid-container"]:not(.fieldset) > h1, 
+	[class*="grid-container"]:not(.fieldset) > h2, 
+	[class*="grid-container"]:not(.fieldset) > h3, 
+	[class*="grid-container"]:not(.fieldset) > h4, 
+	[class*="grid-container"]:not(.fieldset) > h5, 
+	[class*="grid-container"]:not(.fieldset) > h6 {
+		margin-top: var(--default-margin);
+	}
+	
+	.hide-for-small, .hide-for-medium-down, .hide-for-large-down {
+		display: none !important;	
+		float: none;
+	}
+	
+	.hide-for-small-up {
+		display: block !important;
+	}
+	
+	hr {
+		margin: var(--default-margin);
+	}
+	
+	.input-wrapper {
+		grid-column: span var(--grid-columns);
+	}
+	
+	label:not(:first-of-type) {
+		margin-top: calc(var(--default-margin) * 2);
+	}
+	
+	main {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	div.onoffswitch {
+		float: left;
+	}
+	
+} /* end max-width 600px */
+
+/* >>> BEGIN CSS for print only */
+@media only print {
+
+	* {
+		color: #000;
+	}
+	
+	a[href]:after {
+		 content: " <"attr(href)">";
+		 font-style: italic;
+	}
+	
+	*[cite]:after {
+		content: close-quote" (Source: "attr(cite)")";
+	}
+	
+	img[alt]:after {
+		content:"\A ("attr(alt)")";
+	}
+
+}
+/* <<< END CSS for print only */
+/* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */

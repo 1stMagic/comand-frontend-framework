@@ -1,24 +1,11 @@
 # frontend-framework
 
-## Project setup
+## Project description
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+Pure HTML5/CSS3-Frontend-Framework based on CSS-Grid. Iconfont-already included.
+Can be used for any webproject. No server-technology required.
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
