@@ -1,6 +1,6 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.0.27",
+  "version": "3.0.91",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,16 +13,16 @@
   "files": [
     "dist/*.css",
     "src",
-    "public/demopage-only.css"
+    "public/*"
   ],
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.3",
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",

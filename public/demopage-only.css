@@ -97,10 +97,14 @@ form a {
 	border-top: .1rem dotted var(--primary-color);
 }
 
-.section-wrapper section {
+[class*="width-limitation-wrapper"] > * {
 	max-width: 128rem;
-	padding: 10rem 1rem;
 	margin: 0 auto;
+	padding: 1rem;
+}
+
+[class*="width-limitation-wrapper"] > section {
+	padding: 10rem 1rem;
 }
 
 .section-wrapper:nth-child(2n) {
@@ -288,12 +292,6 @@ h2.headline-demopage {
 	margin-bottom: 2rem;
 }
 
-[class*="grid_"] div, [id*="grid-"] div  {
-	border: .1rem solid #999;
-	padding: 1rem;
-	text-align: center;
-}
-
 #grid-complex {
 	grid-template-columns: 1fr 2fr 1fr;
 }
@@ -323,7 +321,6 @@ h2.headline-demopage {
 .list-icons [class*="icon-"] {
 	font-size: 1.8rem;
 	margin-right: .5rem;
-
 }
 
 article ul li {
@@ -356,10 +353,6 @@ code {
 	margin-left: .5rem;
 }
 
-form h2:first-of-type {
-	margin-top: 0;
-}
-
 table {
 	background: #fff;
 }
@@ -378,16 +371,6 @@ td .icon-save {
 
 #gallery a, #gallery img {
 	display: block;
-}
-
-#equal_height_demo .equal_height_descendant {
-	float: left;
-	width: 32%;
-	margin-right: 2%;
-}
-
-#equal_height_demo .equal_height_descendant:last-child {
-	margin-right: 0;
 }
 
 .form_filters .select {
@@ -442,8 +425,10 @@ small sup {
 	top: 0;
 }
 
-.grid_regular > div {
-	padding: 1rem;
+#grid-section [class*="grid-"] > div {
+	border: var(--default-border);
+	text-align: center;
+	padding: var(--default-padding);
 }
 
 #filter .select {
@@ -496,6 +481,14 @@ small sup {
 	background: black;
 }
 
+.select .custom-fake-select-content > li {
+  padding: calc(var(--default-padding) / 2);
+}
+
+.select .custom-fake-select-content > li img {
+	display: block;
+}
+
 .select.gradients .color.white {
 	background: linear-gradient(135deg, #999999 0%, #ffffff 100%);
 }
@@ -530,7 +523,6 @@ small sup {
 }
 /* end onscreen/offscreen animation --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-
 /* wappen */
 .wappen {
 	display: inline-block;
@@ -539,71 +531,7 @@ small sup {
 	vertical-align: middle;
 	margin-right: .5rem;
 }
-/*
-.wappen.bw {
-	background-image: url("../ui-kit/images/replace_select/bundesland_bw.png"); 
-}
 
-.wappen.by {
-	background-image: url("../ui-kit/images/replace_select/bundesland_by.png"); 
-}
-
-.wappen.be {
-	background-image: url("../ui-kit/images/replace_select/bundesland_be.png"); 
-}
-
-.wappen.bb {
-	background-image: url("../ui-kit/images/replace_select/bundesland_bb.png"); 
-}
-
-.wappen.hb {
-	background-image: url("../ui-kit/images/replace_select/bundesland_hb.png"); 
-}
-
-.wappen.he {
-	background-image: url("../ui-kit/images/replace_select/bundesland_he.png"); 
-}
-
-.wappen.hh {
-	background-image: url("../ui-kit/images/replace_select/bundesland_hh.png"); 
-}
-
-.wappen.mv {
-	background-image: url("../ui-kit/images/replace_select/bundesland_mv.png"); 
-}
-
-.wappen.ni {
-	background-image: url("../ui-kit/images/replace_select/bundesland_ni.png"); 
-}
-
-.wappen.nw {
-	background-image: url("../ui-kit/images/replace_select/bundesland_nw.png"); 
-}
-
-.wappen.rp {
-	background-image: url("../ui-kit/images/replace_select/bundesland_rp.png"); 
-}
-
-.wappen.sh {
-	background-image: url("../ui-kit/images/replace_select/bundesland_sh.png"); 
-}
-
-.wappen.sl {
-	background-image: url("../ui-kit/images/replace_select/bundesland_sl.png"); 
-}
-
-.wappen.sn {
-	background-image: url("../ui-kit/images/replace_select/bundesland_sn.png"); 
-}
-
-.wappen.st {
-	background-image: url("../ui-kit/images/replace_select/bundesland_st.png"); 
-}
-
-.wappen.th {
-	background-image: url("../ui-kit/images/replace_select/bundesland_th.png"); 
-}
-*/
 #demopage-boxes .box {
 	height: 20rem;
 }
@@ -648,17 +576,18 @@ small sup {
 	}
 }
 
-@media only screen and (max-width: 480px) {
-	
-	.button_wrapper {
-		float: none;
-	}
-	
+@media only screen and (max-width: 600px) {
 	.list-icons {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	
 	#toggle_viewport_visibility {
 		display: none;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	#grid-section [class*="grid-"] > div {
+		border-color: var(--pure-white);
 	}
 }

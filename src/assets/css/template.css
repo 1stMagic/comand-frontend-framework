@@ -1,0 +1,4 @@
+/* add overwrites and your custom styles in here */
+html {
+    --primary-color-rgb-values: 2, 129, 195; /* primary color rgb-values */
+}

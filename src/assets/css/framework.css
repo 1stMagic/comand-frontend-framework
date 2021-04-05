@@ -1,9 +1,11 @@
-/* framework.css - v3.0.27 - 2020/10/07 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) */
+@charset "utf-8";
+/* framework.css - v3.0.91 - 2021/04/05 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) */
 
 /* begin table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* 
-  - default declaration of variables
+- VARIABLES ------------------------
 
+- MAIN STYLES ------------------------
 B ------------------------
   - basic selectors and classes
   - boxes
@@ -40,10 +42,16 @@ S ------------------------
 T ------------------------
   - tables
   - transforms
+
+- MEDIA QUERIES ------------------------
+- styles for medium screens
+- styles for small screens
+- styles for print only
 */
+
 /* end table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* begin default declaration of variables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- BEGIN VARIABLES -------------------------------------------------- */
 html {
 	/* css-grid */
 	--grid-columns: 12; /* grid-columns */
@@ -60,7 +68,7 @@ html {
 	/* layout-colors */
 	--pure-white-rgb-values: 255, 255, 255; /* blank color rgb-values */
 	--pure-white: rgb(var(--pure-white-rgb-values)); /* blank color */
-	--pure-white-reduced-opacity:  rgba(var(--pure-white-rgb-values), var(--reduced-opacity)); /* white-color with reduced opacity */
+	--pure-white-reduced-opacity: rgba(var(--pure-white-rgb-values), var(--reduced-opacity)); /* white-color with reduced opacity */
 	--medium-gray: rgb(127, 127, 127);
 	--pure-black-rgb-values: 0, 0, 0;
 	--pure-black: rgb(var(--pure-black-rgb-values));
@@ -73,6 +81,7 @@ html {
 	--secondary-color-rgb-values: 102, 102, 102; /* secondary color rgb-values */
 	--secondary-color: rgb(var(--secondary-color-rgb-values)); /* secondary layout color */
 	--secondary-color-reduced-opacity: rgba(var(--secondary-color), var(--reduced-opacity)); /* secondary-color with reduced opacity */
+	--dark-mode-background-color: rgb(51, 51, 51);
 	
 	/* text- and hyperlink-colors */
 	--text-color: rgb(85, 85, 85); /* default text-color for complete site except a-tags (hyperlinks) */
@@ -84,13 +93,13 @@ html {
 	--disabled-color-rgb-values: 136, 136, 136; /* color for disabled elements (rgb-value is required to set rgba in other variables) */
 	--disabled-color: rgb(var(--disabled-color-rgb-values)); /* color (in rgb) for disabled elements */
 	
-	/* boxes and borders */
+	/* backgrounds and borders */
 	--reduced-opacity: .3; /* reduced opacity */	
 	--default-background-color-rgb-values: 245, 245, 245; /* default background-color (rgb-value is required to set rgba in other variables) */
 	--default-background-color: rgb(var(--default-background-color-rgb-values)); /* default background-color (in rgb) */
 	--default-background-color-reduced-opacity: rgba(var(--default-background-color-rgb-values), .8); /* background-color (i.e. for boxes fieldsets) */
-	--error-background: linear-gradient(rgb(255, 243, 243) 5%, rgb(238, 225, 225) 100%); /* error background-color (in rgb) */
-	--disabled-background-color-rgb-values: 221, 221, 221; /* disabled background-color in (rgb-value is required to set rgba in other variables) */
+	--error-background: rgb(255, 243, 243); /* error background-color (in rgb) */
+	--disabled-background-color-rgb-values: 204, 204, 204; /* disabled background-color in (rgb-value is required to set rgba in other variables) */
 	--disabled-background-color: rgb(var(--disabled-background-color-rgb-values)); /* disabled background-color (in rgb) */
 	--border-radius: 0; /* border-radius */
 	--full-circle: 50%; /* border-radius for full cicles */
@@ -119,8 +128,9 @@ html {
 	/* transitions */
 	--default-transition: all .5s; /* default transition */
 }
-/* end default of variables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- END VARIABLES -------------------------------------------------- */
 
+/* ---------------------------------------------- BEGIN MAIN STYLES -------------------------------------------------- */
 /* begin basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
 html {
 	font-size: 62.5%; /* default size is 16px, 62.5% of that is 10px = 1rem */
@@ -132,6 +142,7 @@ html, textarea {
 
 html, body {
 	height: 100%; /* maximises visible area. do not set to "min-height" (important to fix footer at bottom!) */
+	background: var(--pure-white); /* necessary for accessibility to set default value */
 }
 
 body  {
@@ -143,6 +154,18 @@ body  {
 
 .no-padding {
 	padding: 0 !important;
+}
+
+.default-padding {
+	padding: var(--default-padding);
+}
+
+.default-padding > *:last-child {
+	margin-bottom: 0;
+}
+
+.default-margin {
+	margin: var(--default-margin);
 }
 
 .hide-for-small-up, .hide-for-medium-up {
@@ -199,10 +222,6 @@ object, svg, img, video, canvas, .responsive-wrapper {
     z-index: 100;
 }
 
-.border {
-	border: var(--default-border);
-}
-
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl, table, fieldset, .fieldset, address {
 	margin-bottom: var(--default-margin); /* margin-bottom for almost every element */
@@ -225,11 +244,12 @@ blockquote, q {
 }
 
 hr {
-	border: 0;
+	border-width: .1rem;
 	height: .1rem;
 	margin: calc(var(--default-margin) * 2);
 	clear: both;
 	background: var(--text-color);
+	color: var(--text-color);
 }
 
 figure {
@@ -241,6 +261,10 @@ a img, a figcaption {
 	text-align: center;
 	margin: 0 auto;
 }
+
+.hidden {
+	display: none !important
+}
 /* end basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -249,6 +273,10 @@ a img, a figcaption {
 	border: var(--default-border);
 	border-radius: var(--border-radius);
 	padding: var(--default-padding);
+}
+
+.box > div:first-child {
+	margin-top: 0;
 }
 
 .box > p:last-child {
@@ -287,28 +315,49 @@ a img, a figcaption {
 .box.center-content.flex-container > div {
 	flex: none; /* make item as wide as its content */
 }
+
+/* begin box effects */
+.border-radius {
+	border-radius: var(--border-radius); /* border-radius to create round corners for any element with this class  */
+}
+
+.box-shadow {
+	box-shadow: var(--box-shadow); /* box-shadow (color, left/right, top/bottom, blur) for any element with this class */
+}
+
+.border {
+	border: var(--default-border); /* border (width, style, color) for any element with this class */
+}
+/* end box effects */
 /* end boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
 button, .button, input[type="submit"] {
-	background: var(--primary-color);
+	background: var(--pure-black);
 	border: var(--default-border);
 	border-radius: var(--border-radius);
     color: var(--pure-white);
-	display: block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	font-weight: bold;
 	margin: 0;
     padding: var(--default-padding);
 	text-align: center;
 	text-decoration: none;
-	width: auto;
+	line-height: 100%;
 	min-width: 4rem;
+	min-height: 4rem;
 }
 
 button, .button,
-button span, .button span,
-button span[class*="icon-"], button span[class*="icon-"] {
-	text-shadow: var(--text-shadow);
+button > span, .button > span,
+button > span[class*="icon-"], button > span[class*="icon-"] {
+	align-self: center; /* necessary to keep text and icon centered if button has different alignment. */
+}
+
+button.primary, .button.primary, input[type="submit"].primary {
+	background: var(--primary-color);
 }
 
 button.center, .button.center, input[type="submit"].center {
@@ -324,28 +373,39 @@ button:last-child .button:last-child, input[type="submit"]:last-child {
 button:hover, button:active, button:focus, 
 .button:hover, .button:active, .button:focus,
 input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
-	color: var(--primary-color);
+	color: var(--pure-black);
 	background: var(--pure-white);
 	cursor: pointer;
-	border: var(--primary-border);
+	border-color: var(--pure-black);
 	text-shadow: none;
 }
 
-button:hover span, button:active span, button:focus span,
-.button:hover span, .button:active span, .button:focus span,
-button[class*="icon-"]:hover, button[class*="icon-"]:active, button[class*="icon-"]:focus,
-.button[class*="icon-"]:hover, .button[class*="icon-"]:active, .button[class*="icon-"]:focus,
-button:hover span[class*="icon-"], button:active span[class*="icon-"], button:focus span[class*="icon-"],
-.button:hover span[class*="icon-"], .button:active span[class*="icon-"], .button:focus span[class*="icon-"] {
+button.primary:hover, button.primary:active, button.primary:focus,
+.button.primary:hover, .button.primary:active, .button.primary:focus,
+input[type="submit"].primary:hover, input[type="submit"].primary:active, input[type="submit"].primary:focus {
 	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+button:hover > span, button:active > span, button:focus > span,
+.button:hover > span, .button:active > span, .button:focus > span,
+button:hover > span[class*="icon-"], button:active > span[class*="icon-"], button:focus > span[class*="icon-"],
+.button:hover > span[class*="icon-"], .button:active > span[class*="icon-"], .button:focus > span[class*="icon-"] {
+	color: var(--pure-black);
 	text-shadow: none;
 }
 
-button[class*="icon-"], button span[class*="icon-"], 
-[class*="icon-"].button, .button span[class*="icon-"] {
+button.primary:hover > span, button.primary:active > span, button.primary:focus > span,
+.button.primary:hover > span, .button.primary:active > span, .button.primary:focus > span,
+button.primary:hover > span[class*="icon-"], button.primary:active > span[class*="icon-"], button.primary:focus > span[class*="icon-"],
+.button.primary:hover > span[class*="icon-"], .button.primary:active > span[class*="icon-"], .button.primary:focus > span[class*="icon-"] {
+	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+button > span[class*="icon-"], .button > span[class*="icon-"] {
     color: var(--pure-white);
     font-weight: normal;
-	line-height: 90%;
 }
 
 a[readonly], a[disabled="disabled"], a.disabled {
@@ -358,16 +418,14 @@ a[readonly], a[disabled="disabled"], a.disabled {
 	cursor: not-allowed;
 }
 
-.button.disabled, .button.disabled:hover, .button.disabled:active, .button.disabled:focus,
-.button.disabled span, .button.disabled:hover span, .button.disabled:active span, .button.disabled:focus span,
-.button.disabled span[class*="icon-"], .button.disabled:hover span[class*="icon-"], .button.disabled:active span[class*="icon-"], .button.disabled:focus span[class*="icon-"],
-input[disabled="disabled"], input[disabled="disabled"]:hover, input[disabled="disabled"]:active, input[disabled="disabled"]:focus,
-button[disabled="disabled"], button[disabled="disabled"]:hover, button[disabled="disabled"]:active, button[disabled="disabled"]:focus,
-button[disabled="disabled"] span, button[disabled="disabled"]:hover span, button[disabled="disabled"]:active span, button[disabled="disabled"]:focus span,
-button[disabled="disabled"] span[class*="icon-"], button[disabled="disabled"]:hover span[class*="icon-"], button[disabled="disabled"]:active span[class*="icon-"], button[disabled="disabled"]:focus span[class*="icon-"],
-button[class*="icon-"][disabled="disabled"] span, button[class*="icon-"][disabled="disabled"]:hover span, button[class*="icon-"][disabled="disabled"]:active span, button[class*="icon-"][disabled="disabled"]:focus span,
-input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="submit"]:disabled:active, input[type="submit"]:disabled:focus,
-[class*="toggle-switch"].disabled {
+.disabled, .disabled:hover, .disabled:active, .disabled:focus,
+.disabled span, .disabled:hover span, .disabled:active span, .disabled:focus span,
+.disabled span[class*="icon-"], .disabled:hover span[class*="icon-"], .disabled:active span[class*="icon-"], .disabled:focus span[class*="icon-"],
+[disabled="disabled"], [disabled="disabled"]:hover, [disabled="disabled"]:active, [disabled="disabled"]:focus,
+[disabled="disabled"] span, [disabled="disabled"]:hover span, [disabled="disabled"]:active span, [disabled="disabled"]:focus span,
+[disabled="disabled"] span[class*="icon-"], [disabled="disabled"]:hover span[class*="icon-"], [disabled="disabled"]:active span[class*="icon-"], [disabled="disabled"]:focus span[class*="icon-"],
+[class*="icon-"][disabled="disabled"] span, [class*="icon-"][disabled="disabled"]:hover span, [class*="icon-"][disabled="disabled"]:active span, [class*="icon-"][disabled="disabled"]:focus span,
+input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="submit"]:disabled:active, input[type="submit"]:disabled:focus {
 	cursor: not-allowed;
 	background: var(--disabled-background-color) !important;
 	color: var(--disabled-color) !important;
@@ -375,15 +433,16 @@ input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="
 	text-shadow: inherit;
 }
 
-.button.disabled span, .button.disabled:hover span, .button.disabled:active span, .button.disabled:focus span,
-.button.disabled span[class*="icon-"], .button.disabled:hover span[class*="icon-"], .button.disabled:active span[class*="icon-"], .button.disabled:focus span[class*="icon-"],
-button[disabled="disabled"] span, button[disabled="disabled"]:hover span, button[disabled="disabled"]:active span, button[disabled="disabled"]:focus span,
-button[class*="icon-"][disabled="disabled"] span, button[class*="icon-"][disabled="disabled"]:hover span, button[class*="icon-"][disabled="disabled"]:active span, button[class*="icon-"][disabled="disabled"]:focus span {
-	background: none;
+label.disabled, .label.disabled,
+.disabled span, .disabled:hover span, .disabled:active span, .disabled:focus span,
+.disabled span[class*="icon-"], .disabled:hover span[class*="icon-"], .disabled:active span[class*="icon-"], .disabled:focus span[class*="icon-"],
+[disabled="disabled"] span, [disabled="disabled"]:hover span, [disabled="disabled"]:active span, [disabled="disabled"]:focus span,
+[class*="icon-"][disabled="disabled"] span, [class*="icon-"][disabled="disabled"]:hover span, [class*="icon-"][disabled="disabled"]:active span, [class*="icon-"][disabled="disabled"]:focus span {
+	background: none !important;
 }
 /* end buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* begin clearfix  --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin clearfix --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* clearfix is for clearing the boxes in ie and ff correctly (= the height of the outer div-container will be displayed correctly) */
 .clearfix:after {
 	content: ".";
@@ -405,71 +464,71 @@ button[class*="icon-"][disabled="disabled"] span, button[class*="icon-"][disable
 }
 /* end clearfix --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* end flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
-[class*="flex-container"], [class*="button-wrapper"] {
+/* begin flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.flex-container, .button-wrapper {
 	display: -webkit-flex; /* Safari 6-8 */
 	display: flex;
 	flex-wrap: wrap; /* breaks children to new line if they are wider than their parent */
+	gap: var(--grid-gap); /* not supported in chrome yet */
 }
 
-[class*="button-wrapper"], [class*="button-wrapper"].align-right {
-	flex-direction: row-reverse;
+.flex-container > *, .button-wrapper > * {
+	float: none !important; /* flex-items should not be floated */
 }
 
-[class*="button-wrapper"].align-left {
+.flex-container > *:not(.button) {
+	flex: 1; /* item should have same width */
+	align-items: stretch; /* stretch items to same height (elements must/should not have a set height) */
+}
+
+.label > .flex-container > label,
+.label > .flex-container > .label,
+label > .flex-container > .label {
+	display: flex;
+	align-items: center;
+}
+
+.no-gap {
+	gap: 0;
+}
+
+.no-flex, .no-flex > * {
+	flex: none  !important; /* don't stretch items (item(s) should have default width) */
+}
+
+[data-type="multistep"] .button-wrapper {
 	flex-direction: row;
 }
 
-[class*="button-wrapper"] > small {
-	position: absolute;
-	left: 0;
-}
-
-[data-type="multistep"] [class*="button-wrapper"] {
-	flex-direction: row;
-}
-
-[data-type="multistep"] [class*="button-wrapper"] > [name="prev"] {
+[data-type="multistep"] .button-wrapper > [name="prev"] {
 	margin-left: 0;
 }
 
-[data-type="multistep"] [class*="button-wrapper"] > [name="next"] {
+[data-type="multistep"] .button-wrapper > [name="next"] {
 	margin-left: auto;
 }
 
-[class*="flex-container"] > *, [class*="button-wrapper"] > * {
-	align-items: stretch; /* stretch items to same height (elements must/should not have a set height) */
-	display: block; /* necessary to spread items horizontally equal */
-	float: none !important; /* flex-items should not be floated */
-	width: auto;
-	flex: 1; /* item should have same width */
+.button-wrapper, .button-wrapper.align-right {
+	flex-direction: row-reverse;
 }
 
-.button-wrapper-with-gap > .button,
-.button-wrapper-with-gap > button,
-.button-wrapper-with-gap > input[submit] {
-	margin-left: var(--default-margin);
+.button-wrapper.align-left {
+	flex-direction: row;
 }
 
-.button-wrapper-with-gap.align-left > .button,
-.button-wrapper-with-gap.align-left > button,
-.button-wrapper-with-gap.align-left > input[submit] {
-	margin-left: 0;
-	margin-right: var(--default-margin);
+.button-wrapper.align-center {
+	flex-direction: row;
+	justify-content: center;
 }
 
-.flex-container-with-gap > * {
-	gap: var(--grid-gap); /* not supported in chrome yet */
-	margin-left: var(--grid-gap);
+.button-wrapper.space-between {
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-[class*="flex-container"] > *:first-child,
-[class*="button-wrapper"] > *:last-child {
-	margin-left: 0;
-}
-
-.flex-container-no-stretch > *, [class*="button-wrapper"] > * {
-	flex: none; /* don't stretch items (items should have default width) */
+.button-wrapper > small {
+	position: absolute;
+	left: 0;
 }
 
 ul.flex-list, ol.flex-list {
@@ -518,43 +577,66 @@ fieldset, .fieldset {
 	background: var(--default-background-color);
 	border: var(--default-border);
 	border-radius: var(--border-radius);
-	grid-template-columns: min-content; /* items should be minimum as wide as content */
 	padding: calc(var(--default-padding) * 2);
 }
 
-fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns,
-fieldset .grid-container-create-columns, .fieldset .grid-container-create-columns {
-	grid-row-gap: .5rem;
+fieldset.flex-container, .fieldset.flex-container {
+	display: flex;
+	gap: var(--grid-gap);
+	flex-direction: column;
 }
 
-label {
+fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns {
+	grid-template-columns: min-content; /* items should be minimum as wide as content */
+}
+
+fieldset.grid-container-create-columns > *,
+fieldset.grid-container-create-columns .grid-container-create-columns,
+.fieldset.grid-container-create-columns > *,
+.fieldset.grid-container-create-columns .grid-container-create-columns{
+	grid-column: span var(--grid-columns);
+}
+
+label, .label {
 	display: block;
-	margin-top: calc(var(--default-margin) * 1.5);
 }
 
-label.inline {
+.grid-container-create-columns label.inline, .grid-container-create-columns .label.inline {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+}
+
+label.inline, .label.inline {
 	display: flex;
 }
 
-label.inline > * {
+label.inline > *, .label.inline > *  {
 	align-self: center;
+	white-space: nowrap;
 }
 
-label.inline > :first-child {
-	margin: 0 var(--default-margin) 0 0 !important;
+label.inline > span, .label.inline > span  {
+	grid-column: span var(--grid-small-span);
+	white-space: normal;
+	margin: 0 var(--default-margin) 0 0;
 }
 
-.grid-container-create-columns > label {
+label.inline > span + *, .label.inline > span + * {
+	grid-column: span var(--grid-large-span);
+}
+
+.grid-container-create-columns > label,
+.grid-container-create-columns > .label {
 	grid-column: 1 / span var(--grid-columns);
 }
 
-fieldset.grid-container-create-columns > *:first-child, .fieldset.grid-container-create-columns > *:first-child,
-fieldset.grid-container-create-columns > div:first-child > label, .fieldset.grid-container-create-columns > div:first-child > label {
+fieldset > *:first-child, .fieldset > *:first-child,
+fieldset legend + *, .fieldset legend + * {
 	margin-top: 0;
 }
 
-label:not(.switch-label) > span:first-child {
-	display: block;
+label:not(.inline) > span:first-child:not(.hidden), .label:not(.inline) > span:first-child:not(.hidden) {
+	display: flex;
 	margin-bottom: calc(var(--default-margin) / 2);
 }
 
@@ -565,21 +647,16 @@ label:not(.switch-label) > textarea:not(:first-child) {
 	width: 100%;
 }
 
-.fieldset > *,
-.fieldset .grid-container-create-columns {
-	grid-column: span var(--grid-columns);
-}
-
 label.textarea, .align-self-start {
 	align-self: start !important; /* element must be flex- or grid-item */
 }
 
-label > span {
+label > span, .label > span {
 	line-height: 100%;
 	white-space: normal;
 }
 
-label > span > sup {
+label > span > sup, .label > span > sup {
 	font-size: inherit; /* overwrite normalize.css */
 	top: -.5rem /* overwrite normalize.css */
 }
@@ -589,7 +666,7 @@ legend {
 	padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
 
-input, select, textarea, .input-wrapper  {
+input, select, textarea {
 	min-width: 2rem;
 	border: var(--default-border);
 	border-radius: var(--border-radius);
@@ -600,52 +677,7 @@ input[type="search"] {
 	align-self: stretch;
 }
 
-.onoffswitch {
-	align-self: center;
-}
-
-.input-wrapper {
-	border: 0;
-	display: -webkit-flex; /* Safari 6-8 */
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.input-wrapper > * {
-	align-self: stretch;
-}
-
-.input-wrapper > label {
-	width: auto;
-	margin-right: calc(var(--default-margin) * 2);
-	display: -webkit-flex; /* Safari 6-8 */
-	display: flex;
-	align-items: center;
-}
-
-label > .input-wrapper > label {
-	margin-top: calc(var(--default-margin) / 2);
-}
-
-label.inline > .input-wrapper > label {
-	margin-top: 0;
-}
-
-.input-wrapper > input {
-	flex: auto;
-}
-
-.input-wrapper > :first-child {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-.input-wrapper > input:not(:only-of-type) {
-	flex: 1;
-}
-
-.input-wrapper > input + input {
-	border-left: 0 !important;
+input[type="search"] + button {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -653,7 +685,12 @@ label.inline > .input-wrapper > label {
 input:hover, input:active, input:focus,
 select:hover, select:active, select:focus,
 textarea:hover, textarea:active, textarea:focus {
-	border-color: var(--secondary-color);
+	border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:focus + span,
+input[type="radio"]:focus + span {
+	color: var(--primary-color);
 }
 
 input.error, select.error, textarea.error {
@@ -661,7 +698,7 @@ input.error, select.error, textarea.error {
 	border: var(--error-border);
 }
 
-label.disabled span {
+label.disabled span, .label.disabled span {
 	color: var(--disabled-color);
 }
 
@@ -674,7 +711,7 @@ fieldset.error, label.error, label.error span {
     color: var(--error-color);
 }
 
-label.error sup {
+label.error sup, .label.error sup {
 	color: var(--error-color);
 }
 
@@ -686,22 +723,28 @@ input:not([type="hidden"]) + input, select:not([type="hidden"]) + input, input:n
 	border-left: 0;
 }
 
-td label, td input, td select, td textarea {
+td label, td .label, td input, td select, td textarea {
 	width: 100%;
 	margin: 0;
 }
 
-td label {
+td label, td .label {
 	width: auto;
 	padding: 0;
 }
 
 input[type="radio"], input[type="checkbox"] {
 	margin-bottom: 0;
+	min-width: auto;
 }
 
 input, select {
     padding: 1rem .1rem .9rem .5rem;
+}
+
+select {
+	padding-top: .9rem;
+	padding-bottom: .92rem;
 }
 
 input[type="file"] {
@@ -713,7 +756,7 @@ input[type="color"] {
 	padding: 0;
 }
 
-label > input {
+label > input, .label > input {
 	margin-top: 0;
 	margin-left: 0; 
 }
@@ -738,8 +781,11 @@ input[type="checkbox"], input[type="radio"], input[type="image"] {
 	width: auto;
 }
 
-input[type="date"], input[type="number"] {
-	grid-column: span 2;
+input[type="date"], input[type="number"], input[type="color"] {
+	grid-column: span 2
+}
+
+.limit-input-width {
 	max-width: 7rem;
 }
 
@@ -752,7 +798,7 @@ input[type="date"], input[type="number"] {
 }
 
 input[type="date"] {
-	max-width: 12rem;
+	max-width: 14rem;
 }
 
 input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus  {
@@ -765,15 +811,14 @@ input.replace-input-type {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	width: 2rem;
-	height: 2rem;
+	width: 1.28rem;
+	height: 1.28rem;
 	padding: .1rem;
 	border: var(--default-border);
 	border-color: var(--text-color);
 	border-radius: var(--full-circle);
 	background: var(--pure-white);
 	box-shadow: none;
-	transform: scale(0.65, 0.65);
 	display: flex;
 }
 
@@ -795,8 +840,8 @@ input.replace-input-type:checked::after {
 	content: "";
 	border-radius: var(--full-circle);
 	background: var(--primary-color);
-	width: 1.2rem;
-	height: 1.2rem;
+	width: 0.8rem;
+	height: 0.8rem;
 	align-self: center;
 	margin: 0 auto;
 	display: block;
@@ -813,16 +858,16 @@ input[type="checkbox"].replace-input-type {
 /* the check */
 input[type="checkbox"].replace-input-type:checked::after {
 	content: "";
-	width: 2.6rem;
-	height: 1.3rem;
+	width: 0.9rem;
+	height: 0.5rem;
 	border-radius: 0;
-	border: .4rem solid var(--primary-color);
+	border: .2rem solid var(--primary-color);
 	border-top: 0;
 	border-right: 0;
 	background: none;
 	transform: rotate(-45deg) skewX(-10deg);
 	position: absolute;
-	bottom: 1rem;
+	bottom: 0.45rem;
 }
 
 input[type="checkbox"][disabled="disabled"].replace-input-type:checked::after {
@@ -848,7 +893,7 @@ input[disabled="disabled"].replace-input-type:checked + .label {
 input.replace-input-type-checkbox.error:not(:checked) {
 	border-color: var(--error-color);
 }
-/* end  forms: replace-input-type (radio/checkbox)  --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end forms: replace-input-type (radio/checkbox) --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin forms: progressbar --------------------------------------------------------------------------------------------------------------------------------------------------- */
 progress {
@@ -862,15 +907,10 @@ progress[value] {
 	-moz-appearance: none;
 	appearance: none;
 	width: 25rem;
-	height: 2rem;
 	border-radius: var(--border-radius);
-}
-
-progress[value] {
 	border: var(--primary-border);
 	background: var(--pure-white); /* background-color for entire bar - does not work on -webkit-browsers */
 	box-shadow: none;
-  	color: var(--primary-color); /* background-color for progress-bar in ie10+ */
 }
 
 /* required for webkit (only way to style progress-bar/overwrite default behavior) */
@@ -990,19 +1030,72 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 }
 /* end forms: range-slider --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* begin toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
-.switch-button {
-	width: auto;
-	display: -webkit-flex; /* Safari 6-8 */
+/* begin toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.toggle-switch {
+	flex: none;
+}
+
+.toggle-switch input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 4rem;
+	height: 2rem;
+	border-radius: 1rem;
+	padding: .2rem;
+	border: var(--default-border);
+	background: var(--pure-white);
+	box-shadow: none;
 	display: flex;
-	flex-direction: column;
+	transition: var(--default-transition);
 }
 
-.switch-button.inline {
-	flex-direction: row;
+.toggle-switch input::after {
+	content: "";
+	border-radius: var(--full-circle);
+	background: var(--text-color);
+	width: 1.4rem;
+	height: 1.4rem;
+	display: block;
+	justify-self: flex-end;
+	margin-right: auto;
 }
 
-.switch-button [class*="toggle-switch"] {
+.toggle-switch input:checked {
+	border-color: var(--primary-color);
+}
+
+.toggle-switch input:checked::after {
+	background: var(--primary-color);
+	margin-right: 0;
+	margin-left: auto
+}
+
+.toggle-switch .label {
+	align-self: center;
+	margin-top: 0;
+}
+
+.toggle-switch input:checked + .label {
+	color: var(--primary-color)
+}
+
+.toggle-switch.error .label {
+	color: var(--error-color);
+}
+
+.toggle-switch.error input:not(:checked) {
+	border-color: var(--error-color);
+}
+
+.toggle-switch.error input:not(:checked)::after {
+	border-color: var(--error-color);
+	background: var(--error-color);
+}
+/* end toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.toggle-switch.switch-label {
 	border: var(--default-border);
 	background: var(--pure-white);
 	border-radius: 1.2rem;
@@ -1013,57 +1106,59 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	margin-top: calc(var(--default-margin) / 2);
 }
 
-.switch-button [class*="toggle-switch"] {
+.toggle-switch.switch-label {
 	margin-top: 0
 }
 
-.switch-button [class*="toggle-switch"] input {
+.toggle-switch.switch-label input {
 	border: 0;
 	background: none;
 	display: none;
 }
 
-.switch-button [class*="toggle-switch"] input ~ .label {
+.toggle-switch.switch-label input ~ .label {
 	white-space: nowrap;
 	transition: left .3s linear;
 	left: 0;
 	line-height: 130%;
 }
 
-.switch-button [class*="toggle-switch"] input + .label {
-	padding-left: var(--default-padding);
+.toggle-switch.switch-label input + .label {
+	padding-right: var(--default-padding);
 	display: block;
 }
 
-.switch-button [class*="toggle-switch"] input:not(:checked) + .label {
+.toggle-switch.switch-label input:not(:checked) + .label:not(:only-child) {
 	position: absolute;
-	left: calc(100% - .9rem);
+	left: 100%;
 }
 
-.switch-button [class*="toggle-switch"] input + .label + .label {
-	padding-right: var(--default-padding);
+.toggle-switch.switch-label input + .label + .label {
+	padding-left: var(--default-padding);
 	text-align: right;
 }
 
-.switch-button [class*="toggle-switch"] input:checked + .label + .label {
+.toggle-switch.switch-label input:checked + .label + .label {
 	left: -100%;
 	position: absolute;
 }
 
-.switch-button [class*="toggle-switch"] ~ label {
-	margin-left: var(--default-margin);
-}
-
-.switch-button [class*="toggle-switch"] input + .label::before {
+.toggle-switch.switch-label input ~ .label::before {
 	content: "";
 	border-radius: var(--full-circle);
-	background: var(--text-color);
+	background: var(--primary-color);
 	width: 1.4rem;
 	height: 1.4rem;
 	display: block;
 	justify-self: flex-start;
 	position: absolute;
 	transition: var(--default-transition);
+	right: -.7rem;
+	top: .2rem;
+}
+
+.toggle-switch.switch-label input + .label  + .label::before {
+	background: var(--text-color);
 	left: -.7rem;
 	top: .2rem;
 }
@@ -1123,61 +1218,6 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	color: var(--pure-white);
 }
 /* end multiple-switch */
-
-/* begin toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
-[class*="toggle-switch"] input {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	width: 4rem;
-	height: 2rem;
-	border-radius: 1rem;
-	padding: .2rem;
-	border: var(--default-border);
-	background: var(--pure-white);
-	box-shadow: none;
-	display: flex;
-	transition: var(--default-transition);
-}
-
-[class*="toggle-switch"] input::after {
-	content: "";
-	border-radius: var(--full-circle);
-	background: var(--text-color);
-	width: 1.4rem;
-	height: 1.4rem;
-	display: block;
-	justify-self: flex-end;
-	margin-left: auto;
-}
-
-[class*="toggle-switch"] input:checked {
-	border-color: var(--primary-color);
-}
-
-[class*="toggle-switch"] input:checked::after {
-	justify-self: flex-start;
-	margin-left: 0;
-	background: var(--primary-color);
-}
-
-[class*="toggle-switch"] .label {
-	align-self: center;
-}
-
-.toggle-switch-checkbox.error .label {
-	color: var(--error-color);
-}
-
-.toggle-switch-checkbox.error input:not(:checked) {
-	border-color: var(--error-color);
-}
-
-.toggle-switch-checkbox.error input:not(:checked)::after {
-	border-color: var(--error-color);
-	background: var(--error-color);
-}
-/* end toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin place-inside (place icon inside/over inputfield) --------------------------------------------------------------------------------------------------------------------------------------------------- */
 .place-inside[class*="icon-"] {
@@ -1251,6 +1291,10 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .grid-container-three-fractions {
 	grid-template-columns: repeat(3, 1fr);
 }
+
+.grid-container-four-fractions {
+	grid-template-columns: repeat(4, 1fr);
+}
 /* end grid-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin headlines --------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1278,9 +1322,17 @@ h6:first-child {
 	margin: 0;
 }
 
-form h1, form h2, form h3, form h4, form h5, form h6, form .grid-container-create-columns > .grid-container, form hr, form table {
+fieldset > *, .fieldset > * {
 	grid-column: 1 / span var(--grid-columns);
 	margin-bottom: 0;
+}
+
+fieldset hr, .fieldset hr {
+	margin: calc(var(--default-margin) * 2);
+}
+
+fieldset hr + *, .fieldset hr + * {
+	margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -1334,9 +1386,7 @@ a[class*="icon-"]:not(.button):hover, a[class*="icon-"]:not(.button):active, a[c
 /* begin icons --------------------------------------------------------------------------------------------------------------------------------------------------- */
 [class*="icon-"] {
     font-size: 1.8rem;
-	font-weight: normal;
 	text-decoration: none !important;
-	vertical-align: middle;
 	display: inline-block;
 }
 
@@ -1412,12 +1462,12 @@ dd {
 }
 
 dl.wrap {
-	grid-auto-columns: auto;
-	grid-template-columns: auto;
+	grid-template-columns: min-content auto;
 }
 
 dl.wrap dd {	
 	white-space: normal;
+	word-break: break-all; /* break long strings */
 }
 /* end lists --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -1443,18 +1493,23 @@ nav ul li a, .navigation ul li a {
 
 /* begin system messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
 .system-message {
-	background-image: repeating-linear-gradient(-45deg, transparent, transparent .7rem, rgba(255,255,255,.15) .7rem, rgba(255,255,255,.15) 1.4rem);
 	border-radius: var(--border-radius);
-	box-shadow: var(--box-shadow);
 	display: table;
 	font-weight: bold;
 	padding: var(--default-padding) calc(var(--default-padding) * 3);
 	text-align: center;
-	text-shadow: var(--text-shadow);
 	border: var(--primary-border);
+	margin-bottom: var(--default-margin);
 }
 
-.system-message, .system-message a, .system-message [class*="icon-"] {
+.system-message > h4 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+.system-message > * {
 	color: var(--pure-white);
 }
 
@@ -1638,20 +1693,27 @@ td form {
 	transform: scaleY(-1);
 }
 /* end transforms --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- END MAIN STYLES -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
-
+/* begin styles webkit-browsers only --------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
 	input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"],
 	input[type="range"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"] {
 		-webkit-appearance: none; /* avoid default rounded border on safari */
 	}
-
 }
 
+@-moz-document url-prefix() {
+	select {
+		padding-bottom: .8rem;
+	}
+}
+/* end styles webkit-browsers only --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin styles medium for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media only screen and (max-width: 1023px) {
-	
 	html {
 		--grid-columns: 6; /* grid-columns */
 		--grid-small-span: 3; /* default column span smaller part */
@@ -1659,8 +1721,12 @@ td form {
 		--line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
 	}
 
-	.grid-container-two-fractions {
-		grid-template-columns: repeat(1, 1fr);
+	.grid-container-three-fractions {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.grid-container-four-fractions {
+		grid-template-columns: repeat(2, 1fr);
 	}
 	
 	.grid-container-create-columns > .grid-item-half-width {
@@ -1674,11 +1740,17 @@ td form {
 	.hide-for-medium-up {
 		display: block !important;
 	}
-	
-} /* end max-width 1023px */
 
+	input.replace-input-type[type="radio"],
+	input.replace-input-type[type="checkbox"] {
+		transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
+		margin: 0 var(--default-margin) 0 0;
+	}
+}
+/* end styles medium for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* begin styles small for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media only screen and (max-width: 600px) {
-	
 	html {
 		--grid-columns: 4; /* grid-columns */
 		--grid-small-span: 4; /* default column span smaller part */
@@ -1690,37 +1762,43 @@ td form {
 		min-height: 100%;
 	}
 
-	button, .button, input[type="submit"] {	
-		margin: 0 0 var(--default-margin) 0;
-		text-align: center;
-	}
-		
-	.button-wrapper > button, .button-wrapper > .button {
-		margin-left: var(--default-margin);
+	label.inline, .label.inline {
+		flex-direction: column;
 	}
 
-	[class*="button-wrapper"].align-right {
+	label.inline > span, .label.inline > span {
+		align-self: flex-start;
+	}
+
+	label.inline > span:first-child, .label.inline > span:first-child {
+		margin-bottom: calc(var(--default-margin) / 2);
+	}
+
+	[class*="grid-container"][class$="fractions"] {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	button, .button, input[type="submit"] {
+		text-align: center;
+	}
+
+	.button-wrapper.no-flex > button,
+	.button-wrapper.no-flex > .button {
+		width: auto;
+	}
+
+	.button-wrapper.align-right {
 		flex-direction: column-reverse;
 	}
 
-	button:not([class*="icon-"]), .button:not([class*="icon-"]), input[type="submit"]:not([class*="icon-"]) {
+	button, .button, input[type="submit"] {
 		width: 100%;
 		float: none;
-		margin-left: 0;
-		margin-right: 0;
-	}
-	
-	button[class*="icon-"], .button[class*="icon-"], input[type="submit"][class*="icon-"] {
-		display: table;
 	}
 
 	fieldset, .fieldset {
 		padding: var(--default-padding);
 	}
-	
-	fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns {
-		grid-gap: calc(var(--grid-gap) / 2);
-	}    
 	
 	fieldset > label:first-child, .fieldset > label:first-child {
 		margin-top: 0;
@@ -1731,16 +1809,12 @@ td form {
 		--grid-gap: 1rem;
 	}
 
-	[class*="flex-container"] {
+	label.inline > span, .label.inline > span {
+		margin: 0 0 calc(var(--default-margin) / 2) 0;
+	}
+
+	.flex-container {
 		flex-direction: column; /* arrange flex-items vertically */
-	}
-
-	[class*="flex-container"] > * {
-		align-items: start; /* flex item should not stretched to equal height on small devices */
-	}
-
-	.button-wrapper-with-gap > *, .flex-container-with-gap > * {
-		margin-left: 0;
 	}
 
 	[class*="grid-container"]:not(.fieldset) > h1, 
@@ -1756,7 +1830,7 @@ td form {
 		display: none !important;	
 		float: none;
 	}
-	
+
 	.hide-for-small-up {
 		display: block !important;
 	}
@@ -1765,28 +1839,33 @@ td form {
 		margin: var(--default-margin);
 	}
 	
-	.input-wrapper {
-		grid-column: span var(--grid-columns);
-	}
-	
-	label:not(:first-of-type) {
-		margin-top: calc(var(--default-margin) * 2);
-	}
-	
 	main {
 		padding-left: 0;
 		padding-right: 0;
 	}
-	
-	div.onoffswitch {
-		float: left;
+
+	.multiple-switch .flex-container {
+		flex-direction: row;
 	}
-	
-} /* end max-width 600px */
 
-/* >>> BEGIN CSS for print only */
+	.flex-container input[type="text"], .flex-container input[type="password"], .flex-container select, .flex-container textarea {
+		width: 100%;
+	}
+
+	.label .flex-container, label .flex-container {
+		flex-direction: row;
+	}
+
+	.label .flex-container button, .label .flex-container .button,
+	label .flex-container button, label .flex-container .button {
+		width: auto;
+	}
+}
+/* end styles for small screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
+
+/* begin styles for print only --------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media only print {
-
 	* {
 		color: #000;
 	}
@@ -1803,7 +1882,6 @@ td form {
 	img[alt]:after {
 		content:"\A ("attr(alt)")";
 	}
-
 }
-/* <<< END CSS for print only */
+/* end styles for print only --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */

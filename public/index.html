@@ -8,11 +8,15 @@
             @import url("../src/assets/css/normalize.css") all;
             @import url("../src/assets/css/framework.css") all;
             @import url("../src/assets/css/framework-iconfont.css") all;
+            @import url("../src/assets/css/template.css") all;
+            @import url("<%= BASE_URL %>demopage-only.css") all;
             @import url("demopage-only.css") all;
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body class="nojs">
-        <div class="sticky" id="header_wrapper">
+    <div id="app">
+        <!--div class="sticky" id="header_wrapper">
             <header>
                 <h1>CoManD-Frontend <span>A Responsive Development Frontend-Framework</span></h1>
                 <div class="grid-container-create-columns" id="header_options">
@@ -54,9 +58,9 @@
                 </div>
                 <a href="" class="link-icon" id="toggle_header_options"><span class="icon-arrow_close"></span><span>Toggle header section visibility</span></a>
             </header>
-        </div>
+        </div-->
         <main>
-            <div class="section-wrapper" id="introduction">
+            <!--div class="width-limitation-wrapper" id="introduction">
                 <section>
                     <h2 class="headline-demopage">Introduction</h2>
                     <p>
@@ -176,7 +180,7 @@
                                         <td><span class="icon-check"></span></td>
                                     </tr>
                                     <tr>
-                                        <td>Icon-font separated <br />(and exchangable)</td>
+                                        <td>Icon-font separated <br />(and exchangeable)</td>
                                         <td><span class="icon-cancel"></span></td>
                                         <td><span class="icon-check"></span></td>
                                     </tr>
@@ -210,9 +214,9 @@
                         </div>
                     </div>
                 </section>
-            </div>
+            </div-->
 
-            <div class="section-wrapper" id="table_of_contents">
+            <!--div class="width-limitation-wrapper" id="table_of_contents">
                 <section>
                     <h2 class="headline-demopage">Table of contents</h2>
                     <h3 class="headline-demopage"><a href="#anchor-typography">Typography</a></h3>
@@ -238,53 +242,37 @@
                         <li><a class="link-icon" href="#anchor-iconfont"><span class="icon-iconfont"></span><span>Iconfont</span></a></li>
                     </ul>
                 </section>
-            </div>
+            </div-->
 
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
-                    <a class="toggle_entire_html" href="#">Toggle entire HTML on page</a>
                     <a id="anchor-typography"></a>
                     <h2 class="headline-demopage">Typography</h2>
 
                     <a id="anchor-headlines"></a>
                     <h3 class="headline-demopage">Headlines</h3>
                     <h1>Headline 1</h1>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <h2>Headline 2</h2>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <h3>Headline 3</h3>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <h4>Headline 4</h4>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <h5>Headline 5</h5>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <h6>Headline 6</h6>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
                     <a id="anchor-paragraphs"></a>
                     <h3 class="headline-demopage">Paragraphs (continuous text)</h3>
                     <p>This is a short paragpaph</p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
+
 
                     <p>This is continous text within a paragraph with text-align left (which is default). Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
+
 
                     <p class="text-align_justify">This is continous text within a paragraph with text-align justify. Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
+
 
                     <a id="anchor-lists"></a>
                     <h3 class="headline-demopage">Lists</h3>
@@ -302,9 +290,6 @@
                         </li>
                         <li>List item</li>
                     </ul>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <h4>Ordered List</h4>
                     <ol>
                         <li>List item</li>
@@ -316,108 +301,98 @@
                         </li>
                         <li>List item</li>
                     </ol>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <h4>Definition List</h4>
                     <dl>
                         <dt>Definition term:</dt><dd>Definition data</dd>
                         <dt>Definition term:</dt><dd>Definition data</dd>
                         <dt>Definition term:</dt><dd>Definition data</dd>
                     </dl>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <hr />
-
                     <a id="anchor-miscellaneous"></a>
                     <h3 class="headline-demopage">Miscellaneous Typo</h3>
                     <h4>Emphasized</h4>
                     <p><em>Emphasized text</em></p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <h4>Strong</h4>
                     <p><strong>Strong text</strong></p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <h4>Superior/Subscript</h4>
                     <p>text<sup>superior</sup></p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <p>text<sub>subscript</sub></p>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
-
                     <h4>Horizontal row</h4>
                     <hr />
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
                 </section>
             </div>
 
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-tables"></a>
                     <h2 class="headline-demopage">Tables</h2>
-                    <p>
+                    <!--p>
                         <a href="#" id="toggle_stretch_table" title="(add/remove class 'full-width')">Toggle stretched table</a>
-                    </p>
-                    <table class="full-width">
-                        <caption>Tablecaption</caption>
-                        <thead>
-                        <tr>
-                            <th>Table head</th>
-                            <th>Table head</th>
-                            <th>Table head</th>
-                            <th>Table head</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Table data (default-align)</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                        </tr>
-                        <tr>
-                            <td>Table data (default-align)</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                        </tr>
-                        <tr>
-                            <td>Table data (default-align)</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                            <td>Table data</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <a class="toggle_html" href="#"></a>
+                    </p-->
+                    <div class="table-wrapper">
+                        <table class="full-width">
+                            <caption>Tablecaption</caption>
+                            <thead>
+                            <tr>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Table data (default-align)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                            </tr>
+                            <tr>
+                                <td>Table data (default-align)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                            </tr>
+                            <tr>
+                                <td>Table data (default-align)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <pre><code class="html"></code></pre>
                 </section>
             </div>
 
-
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-boxes"></a>
                     <h2 class="headline-demopage">Boxes</h2>
-                    <h4>Simple Box</h4>
+                    <h3>Simple Box</h3>
                     <!-- simple box -->
                     <div class="box">
                         <p>
                             A simple box is just a &lt;div&gt; with class="box" that sets default padding-, background- and border-style. The box can contain anything. Though the box is a block-element the default width of the box is 100% of its parent.
                         </p>
                     </div>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
-                    <h4>Stretched boxes with different content</h4>
-                    <div class="flex-container-with-gap">
+
+                    <h3>Stretched boxes with different content</h3>
+                    <div class="flex-container">
                         <div class="box">
                             <p>This box (and its siblings) are grid-items, because their parent is defined as a grid-container by using "display: grid."</p>
                         </div>
@@ -433,11 +408,24 @@
                                 <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the grid!
                             </p>
                         </div>
+                        <div class="box">
+                            <div>
+                              <h4>Box with headline</h4>
+                            </div>
+                            <div class="box-body">
+                                <p>
+                                    The default width of all grid-items would be different relating to their individual content. By defining the width of each item as 1 fraction and defining auto-fit (by using (grid-template-columns: repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched equaly.<br />
+                                    Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not have to set margins for the space between the boxes, because you can define a specific gap (i.e.: 2rem), which is used horizontally and vertically.
+                                </p>
+                                <p>
+                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the grid!
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
 
-                    <h4>Boxes with centered content</h4>
+
+                    <h3>Boxes with centered content</h3>
                     <div class="grid-container-auto-columns" id="demopage-boxes">
                         <div class="box center-content">
                             <div>
@@ -455,77 +443,124 @@
                             </div>
                         </div>
                     </div>
-                    <a class="toggle_html" href="#"></a>
-                    <pre><code class="html"></code></pre>
+
                 </section>
             </div>
 
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-richmedia"></a>
                     <h2 class="headline-demopage">RichMedia</h2>
                     <h3 class="headline-demopage">Images</h3>
-                    <p>
-                        <a id="toggle_image_border" href="#">Toggle border (by class)</a>
-                    </p>
-                    <p>
-                        <a id="toggle_image_figcaption" href="#">Toggle figcaption</a>
-                    </p>
                     <div class="grid-container-two-fractions" id="richmedia-wrapper">
                         <figure>
-                            <img src="../src/assets/images/logo_comand.jpg" alt="Logo CoManD" title="Logo CoManD">
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" />
                             <figcaption>Caption below image</figcaption>
                         </figure>
                         <figure>
                             <figcaption>Caption above image</figcaption>
-                            <img src="../src/assets/images/logo_comand.jpg" alt="Logo CoManD" title="Logo CoManD">
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" />
                         </figure>
                     </div>
                 </section>
             </div>
 
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-userinterface"></a>
                     <h2 class="headline-demopage">User Interface</h2>
                     <a id="anchor-messages"></a>
                     <h3 class="headline-demopage">System messages</h3>
-                    <p>
-                        <a href="#" id="toggle_stretch_messages" title="(add/remove class 'full-width')">Toggle stretched messages</a>
-                    </p>
-                    <p class="system-message error full-width"><span class="icon-cancel"></span><span>Error message</span></p>
-                    <p class="system-message warning full-width"><span class="icon-warning"></span><span>Warning message</span></p>
-                    <p class="system-message success full-width"><span class="icon-check"></span><span>Success message</span></p>
-                    <p class="system-message information full-width"><span class="icon-info"></span><span>Info message</span></p>
+<!--                    <p>-->
+<!--                        <a href="#" id="toggle-stretch-messages" title="(add/remove class 'full-width')">Toggle stretched messages</a>-->
+<!--                    </p>-->
+                    <div class="system-message error full-width">
+                        <h4><span class="icon-cancel"></span><span>Error message</span></h4>
+                    </div>
+                    <div class="system-message warning full-width">
+                        <h4><span class="icon-warning"></span><span>Warning message</span></h4>
+                    </div>
+                    <div class="system-message success full-width">
+                        <h4><span class="icon-check"></span><span>Success message</span></h4>
+                    </div>
+                    <div class="system-message information full-width">
+                        <h4><span class="icon-info"></span><span>Info message</span></h4>
+                    </div>
 
                     <a id="anchor-buttons"></a>
                     <h3 class="headline-demopage">Buttons</h3>
+                    <h4>Button types</h4>
+                    <div class="button-wrapper">
+                        <a href="#" class="button"><span>Default button using a-tag</span></a>
+                        <button class="button"><span>Default button using button-tag</span></button>
+                        <a href="#" class="button primary"><span>Primary button using a-tag</span></a>
+                        <button class="button primary"><span>Primary button using button-tag</span></button>
+                    </div>
                     <h4>&lt;a&gt;-tags as buttons (using class="button") aligned left</h4>
-                    <div class="button-wrapper-with-gap align-left">
-                        <a class="button icon-register" href="#"></a>
-                        <a class="button" href="#">Button with label-text only</a>
+                    <div class="button-wrapper align-left">
+                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
+                        <a class="button" href="#"><span>Button with label-text only</span></a>
                         <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                     </div>
 
                     <h4>&lt;button&gt;-tags (for forms) aligned right</h4>
-                    <div class="button-wrapper-with-gap align-right">
-                        <button class="icon-register"></button>
+                    <div class="button-wrapper align-right">
+                        <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span></button>
                         <button>Button with label-text only</button>
                         <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></button>
+                    </div>
+
+                    <h4>Buttons with no gap (centered)</h4>
+                    <div class="button-wrapper align-center">
+                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
+                        <a class="button" href="#">Button with label-text only</a>
+                        <a class="button" href="#"><span>Button with icon and label-text within a-tag</span><span class="icon-check"></span></a>
+                    </div>
+
+                    <h4>Buttons (space-between)</h4>
+                    <div class="button-wrapper space-between">
+                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
+                        <a class="button" href="#">Button with label-text only</a>
+                        <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+                    </div>
+
+                    <h4>Primary buttons (space-between)</h4>
+                    <div class="button-wrapper space-between">
+                        <a class="button primary" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
+                        <a class="button primary" href="#">Button with label-text only</a>
+                        <a class="button primary" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                     </div>
                 </section>
             </div>
 
-            <div class="section-wrapper">
+            <div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-forms"></a>
                     <h2 class="headline-demopage">Forms</h2>
-                    <h3>Native form elements</h3>
+                    <h3>Native form elements (fieldset with grid-container)</h3>
                     <form method="post" novalidate="novalidate">
-                        <div class="fieldset grid-container-create-columns">
-                            <label>
+                        <fieldset class="grid-container-create-columns">
+                            <legend>Legend</legend>
+                            <div class="label">
+                                <span>Enter dates:</span>
+                                <span class="flex-container no-flex">
+                                    <label class="inline" for="startdate">
+                                        <span>Start date:<sup>*</sup></span>
+                                        <input type="date" id="startdate" />
+                                    </label>
+                                    <label class="inline" for="enddate">
+                                        <span>End date:</span>
+                                        <input type="date" id="enddate" />
+                                    </label>
+                                </span>
+                            </div>
+                            <label for="radiobutton0">
+                                <input name="radiobutton" id="radiobutton0" value="1" checked="checked" type="checkbox" />
+                                <span>Label for single checkbox</span>
+                            </label>
+                            <div class="label">
                                 <span>Label for radiobuttons:</span>
-                                <span class="input-wrapper">
+                                <span class="flex-container no-flex">
                                     <label for="radiobutton1">
                                         <input name="radiobutton" id="radiobutton1" value="1" checked="checked" type="radio" />
                                         <span>Radiobutton 1</span>
@@ -535,10 +570,10 @@
                                         <span>Radiobutton 2</span>
                                     </label>
                                 </span>
-                            </label>
-                            <label>
+                            </div>
+                            <div class="label">
                                 <span>Label for checkboxes:</span>
-                                <span class="input-wrapper">
+                                <span class="flex-container no-flex">
                                     <label for="checkbox1">
                                         <input name="checkbox" id="checkbox1" value="1" checked="checked" type="checkbox" />
                                         <span>Checkbox 1</span>
@@ -548,49 +583,60 @@
                                         <span>Checkbox 2</span>
                                     </label>
                                 </span>
-                            </label>
-                            <div class="flex-container-with-gap">
+                            </div>
+                            <div class="flex-container">
                                 <label for="textfield1">
                                     <span>Label for textfield 1:</span>
                                     <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text" />
-                                </label>
-                                <label for="textfield2">
-                                    <span>Label for (required) textfield 2:<sup>*</sup></span>
-                                    <input name="textfield2" id="textfield2" placeholder="Placeholdertext for textfield 2" type="text" required="required" />
                                 </label>
                                 <label for="textfield_disabled">
                                     <span>Label for (disabled) textfield:</span>
                                     <input name="textfield" id="textfield_disabled" placeholder="Placeholdertext for (disabled) textfield" type="text" disabled="disabled" title="tooltip" />
                                 </label>
+                                <label for="searchfield">
+                                    <span>Label for searchfield:</span>
+                                    <span class="flex-container no-gap">
+                                        <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search" />
+                                        <a class="button no-flex"><span class="icon-search"></span></a>
+                                    </span>
+                                </label>
                             </div>
                             <label class="inline" for="numberfield"><span>Label for numberfield (inline):</span>
                                 <input name="numberfield" id="numberfield" placeholder="12345" type="number" />
+                            </label>
+                            <label class="inline" for="colorfield"><span>Label for colorfield (inline):</span>
+                                <input name="colorfield" id="colorfield" type="color" />
                             </label>
                             <label class="inline" for="datefield">
                                 <span>Label for (required) datefield (inline)<sup>*</sup>:</span>
                                 <input name="numberfield" id="datefield" type="date" required="required" />
                             </label>
-                            <div class="flex-container-with-gap">
-                                <label for="zip">
+                            <div class="flex-container">
+                                <div class="label">
                                     <span>Label for Zip/City:</span>
-                                    <span class="input-wrapper">
-                                        <input name="zip" id="zip" placeholder="Zip" type="number" />
-                                        <input name="city" id="city" placeholder="Placeholdertext for City" type="text" />
+                                    <span class="flex-container no-gap">
+                                        <label class="no-flex" for="zip">
+                                            <span class="hidden">Zip</span>
+                                            <input name="zip" id="zip" placeholder="12345" type="number" />
+                                        </label>
+                                        <label for="city">
+                                            <span class="hidden">City</span>
+                                            <input name="city" id="city" placeholder="Cityname" type="text" />
+                                        </label>
                                     </span>
-                                </label>
+                                </div>
                                 <label for="selectbox">
                                     <span>Label for selectbox:</span>
                                     <select name="selectbox" id="selectbox">
+                                        <option>Bitte wählen</option>
                                         <option value="option1">Option 1</option>
                                         <option value="option2">Option 2</option>
                                         <option value="option3">Option 3</option>
                                     </select>
                                 </label>
-                                <label for="optionlist">
+                                <label for="datalist">
                                     <span>Label for datalist:</span>
-                                    <input type="text" list="options" name="optionlist" id="optionlist" placeholder="Placeholder text for datalist-input" onmouseover="focus();"
-                                           onmousedown = "value = '';"
-                                           onmouseup="value = old;"/>
+                                    <input type="text" list="options" name="datalist" id="datalist" autocomplete="off" placeholder="Placeholder text for datalist-input" />
                                     <datalist id="options">
                                         <option value="Option 1"></option>
                                         <option value="Option 2"></option>
@@ -602,19 +648,24 @@
                                 <span>Label for textarea:</span>
                                 <textarea id="textarea" placeholder="Placeholdertext for textarea"></textarea>
                             </label>
-                        </div>
+                        </fieldset>
                         <div class="button-wrapper align-right">
                             <input name="submit" id="submit" value="Submitbutton" type="submit" />
                         </div>
                     </form>
-                    <h3>Advanced form elements</h3>
+                    <h3>Advanced form elements (fieldset with flex-container)</h3>
                     <form>
-                        <div class="fieldset">
+                        <fieldset class="flex-container">
+                            <legend>Legend</legend>
+                            <label for="textfield01">
+                                <span>Label with some Text</span>
+                                <input id="textfield01" type="text" />
+                            </label>
                             <!-- begin replace input-type-radio -->
                             <h4>Replaced Input-Type-Radio</h4>
-                            <label class="inline">
+                            <div class="label inline">
                                 <span>Label for Replaced Input-Type-Radio:</span>
-                                <span class="input-wrapper">
+                                <span class="flex-container no-flex">
                                     <label for="replaced-radio1">
                                         <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1" checked="checked" />
                                         <span class="label">Label 1</span>
@@ -628,13 +679,13 @@
                                         <span class="label">Label 3</span>
                                     </label>
                                 </span>
-                            </label>
+                            </div>
                             <!-- end replace input-type-radio -->
 
-                            <!-- begin replace_input-type-checkbox -->
+                            <!-- begin replace-input-type-checkbox -->
                             <h4>Replaced Input-Type-Checkboxes</h4>
-                            <label class="inline"><span>Label for Replaced Input-Type-Checkboxes:</span>
-                                <span class="input-wrapper">
+                            <div class="label inline"><span>Label for Replaced Input-Type-Checkboxes:</span>
+                                <span class="flex-container no-flex">
                                     <label for="replaced-checkbox1">
                                         <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup" value="1" checked="checked" />
                                         <span class="label">Label 1</span>
@@ -648,82 +699,91 @@
                                         <span class="label">Label 3</span>
                                     </label>
                                 </span>
-                            </label>
-                            <!-- end replace_input-type-checkbox -->
-
-                            <hr />
-
-                            <label class="inline switch-button">
-                                <span>Label for Toggle-Switch-Checkbox with Switch-Button:</span>
-                                <label for="toogle-switch-checkbox1" class="toggle-switch-checkbox">
-                                    <input type="checkbox" id="toogle-switch-checkbox1" name="toogle-switch-checkbox1" value="toogle-switch-checkbox1" disabled="disabled">
-                                    <span class="label">Label on</span>
-                                    <span class="label">Label off</span>
-                                </label>
-                                <label for="toogle-switch-checkbox2" class="toggle-switch-checkbox">
-                                    <input type="checkbox" id="toogle-switch-checkbox2" name="toogle-switch-checkbox2" value="toogle-switch-checkbox2" disabled="disabled">
-                                    <span class="label">Label on</span>
-                                    <span class="label">Label off</span>
-                                </label>
-                            </label>
+                            </div>
+                            <!-- end replace-input-type-checkbox -->
 
                             <hr />
 
                             <!-- begin toggle-switch-radio -->
-                            <h2>Toggle-Switch-Radio</h2>
-                            <label class="inline">
+                            <h4>Toggle-Switch-Radio</h4>
+                            <div class="label inline">
                                 <span>Label for Toggle-Switch-Radio:</span>
-                                <span class="input-wrapper">
-                                    <label class="toggle-switch-radio" for="radio4">
-                                        <input type="radio" id="radio4" name="radiogroup2" value="1" checked="checked" /><span class="label">Label 1</span>
+                                <span class="flex-container no-flex">
+                                    <label class="toggle-switch" for="radio4">
+                                        <input type="radio" id="radio4" name="radiogroup2" value="1" checked="checked" />
+                                        <span class="label">Label 1</span>
                                     </label>
-                                    <label class="toggle-switch-radio" for="radio5">
-                                        <input type="radio" id="radio5" name="radiogroup2" value="2" /><span class="label">Label 2</span>
+                                    <label class="toggle-switch" for="radio5">
+                                        <input type="radio" id="radio5" name="radiogroup2" value="2" />
+                                        <span class="label">Label 2</span>
                                     </label>
-                                    <label class="toggle-switch-radio" for="radio6">
-                                        <input type="radio" id="radio6" name="radiogroup2" value="3" /><span class="label">Label 3</span>
+                                    <label class="toggle-switch" for="radio6">
+                                        <input type="radio" id="radio6" name="radiogroup2" value="3" />
+                                        <span class="label">Label 3</span>
                                     </label>
                                 </span>
-                            </label>
+                            </div>
                             <!-- end toggle-switch-radio -->
 
                             <!-- begin toggle-switch-checkbox -->
-                            <h2>Toggle-Switch-Checkbox</h2>
-                            <label class="inline">
+                            <h4>Toggle-Switch-Checkbox</h4>
+                            <div class="label inline">
                                 <span>Label for Toggle-Switch-Checkbox:</span>
-                                <span class="input-wrapper">
-                                    <label class="toggle-switch-checkbox" for="checkbox4">
-                                        <input type="checkbox" id="checkbox4" name="chechboxgroup2" value="1" checked="checked" /><span class="label">Label 1</span>
+                                <span class="flex-container no-flex">
+                                    <label class="toggle-switch" for="checkbox4">
+                                        <input type="checkbox" id="checkbox4" name="chechboxgroup2" value="1" checked="checked" />
+                                        <span class="label">Label 1</span>
                                     </label>
-                                    <label class="toggle-switch-checkbox" for="checkbox5">
-                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="2" /><span class="label">Label 2</span>
+                                    <label class="toggle-switch" for="checkbox5">
+                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="2" />
+                                        <span class="label">Label 2</span>
                                     </label>
-                                    <label class="toggle-switch-checkbox" for="checkbox6">
-                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="3" /><span class="label">Label 3</span>
+                                    <label class="toggle-switch" for="checkbox6">
+                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="3" />
+                                        <span class="label">Label 3</span>
                                     </label>
                                 </span>
-                            </label>
+                            </div>
                             <!-- end toggle-switch-checkbox -->
 
+                            <!-- begin toggle-switch-radio with switch-label -->
+                            <h4>Toggle-Switch-Radio with Switch-Label</h4>
+                            <div class="label inline">
+                                <span>Label for Toggle-Switch-Radio with Switch-Label:</span>
+                                <span class="flex-container no-flex">
+                                    <label class="toggle-switch switch-label" for="radio7">
+                                        <input type="radio" id="radio7" name="radiogroup3" value="1" checked="checked" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label" for="radio8">
+                                        <input type="radio" id="radio8" name="radiogroup3" value="2" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                </span>
+                            </div>
+                            <!-- end toggle-switch-radio with switch-label -->
+
                             <!-- begin toggle-switch-checkbox with switch-label -->
-                            <h2>Toggle-Switch-Checkbox with Switch-Label</h2>
-                            <label class="inline switch-label">
+                            <h4>Toggle-Switch-Checkbox with Switch-Label</h4>
+                            <div class="label inline">
                                 <span>Label for Toggle-Switch-Checkbox with Switch-Label:</span>
-                                <label class="toggle-switch-checkbox" for="checkbox7">
-                                    <input type="checkbox" id="checkbox7" name="chechboxgroup3" value="1" checked="checked" />
-                                    <span class="label">Label on</span><span class="label">Label off</span>
-                                </label>
-                                <label class="toggle-switch-checkbox" for="checkbox8">
-                                    <input type="checkbox" id="checkbox8" name="chechboxgroup3" value="1" />
-                                    <span class="label">Label on</span><span class="label">Label off</span>
-                                </label>
-                            </label>
+                                <span class="flex-container no-flex">
+                                    <label class="toggle-switch switch-label" for="checkbox7">
+                                        <input type="checkbox" id="checkbox7" name="chechboxgroup3" value="1" checked="checked" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label" for="checkbox8">
+                                        <input type="checkbox" id="checkbox8" name="chechboxgroup3" value="2" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                </span>
+                            </div>
                             <!-- end toggle-switch-checkbox with switch-label -->
 
                             <!-- begin multiple-switch (radio) -->
-                            <label class="multiple-switch">
+                            <div class="label multiple-switch">
                                 <span>Label for Multiple-Switch (Radio):</span>
-                                <span class="input-wrapper">
+                                <span class="flex-container no-flex no-gap">
                                     <label for="radio11">
                                         <input type="radio" id="radio11" name="radiogroup5" value="1" checked="checked" />
                                         <span class="icon-globe"></span>
@@ -740,13 +800,13 @@
                                         <span>Label 3</span>
                                     </label>
                                 </span>
-                            </label>
+                            </div>
                             <!-- end multiple-switch (radio) -->
 
                             <!-- begin multiple-switch (checkbox) -->
-                            <label class="multiple-switch">
+                            <div class="label multiple-switch">
                                 <span>Label for Multiple-Switch (Checkbox):</span>
-                                <span class="input-wrapper">
+                                <span class="flex-container no-flex no-gap">
                                     <label for="checkbox11">
                                         <input type="checkbox" id="checkbox11" name="checkboxgroup5" value="1" checked="checked" />
                                         <span class="icon-globe"></span>
@@ -763,45 +823,38 @@
                                         <span>Label 3</span>
                                     </label>
                                 </span>
-                            </label>
+                            </div>
                             <!-- end multiple-switch (checkbox) -->
 
                             <!-- begin inputfields with icon -->
                             <h4>Inputfields with Icon</h4>
-                            <div class="flex-container-with-gap">
+                            <div class="flex-container">
                                 <label for="username">
                                     <span>Username:</span>
-                                    <span class="input-wrapper">
-                                        <span class="place-inside icon-user_profile"></span>
+                                    <span class="flex-container">
+                                        <span class="place-inside icon-user-profile"></span>
                                         <input type="text" name="username" id="username" maxlength="20" placeholder="Username" title="Please type in username" />
                                     </span>
                                 </label>
                                 <label for="password">
                                     <span>Password:</span>
-                                    <span class="input-wrapper">
-                                        <span class="place-inside icon-not_visible toggle_input_type"></span>
+                                    <span class="flex-container">
+                                        <span class="place-inside icon-security-settings toggle-input-type"></span>
                                         <input type="password" name="password" id="password" minlength="6" maxlength="20" placeholder="Password" title="Please type in password" />
                                     </span>
                                 </label>
                             </div>
                             <!-- end inputfields with icon-->
-                        </div><!-- end .fieldset -->
+                        </fieldset><!-- end fieldset -->
                     </form>
                 </section>
             </div>
 
-            <div class="section-wrapper">
-                <section>
+            <div class="width-limitation-wrapper">
+                <section id="grid-section">
                     <a id="anchor-grids"></a>
                     <h2 class="headline-demopage">Grid</h2>
-                    <h3 class="headline-demopage">CSS-Grid</h3>
-                    <p>
-                        CSS-Grid is the best technique to handle you web site structure. With CSS-Grid you will no longer need you framework to handle the structure and responsiv behavior of your site.
-                        It is even more flexible than Flexbox, because it is aranged like a matrix, so it can handle two axis instead of just one. No floats and clears are needed anymore. No width in Pixels,
-                        Rem, Percent or whatever are needed anymore. No fixed classed to handle the width of containers are needed anymore. With CSS-Grid you can do way more than the following examples are showing.
-                        Even gutters or empty space can be handled easily. And of course you can also change aspects like alignment, order, orientation, stretching a.m.m..
-                    </p>
-                    <h3 class="headline-demopage">Simple Grid</h3>
+                    <!--h3 class="headline-demopage">Simple Grid</h3>
                     <form novalidate="novalidate">
                         <div class="fieldset grid-container-create-columns">
                             <div class="grid-container-create-columns"  data-columns-large="4">
@@ -823,9 +876,10 @@
                                 </label>
                             </div>
                         </div>
-                    </form>
+                    </form-->
 
-                    <div class="grid-container" id="grid-simple">
+                    <h3>Regular Grid</h3>
+                    <div class="grid-container-create-columns" id="grid-regular">
                         <div>1</div>
                         <div>2</div>
                         <div>3</div>
@@ -840,7 +894,34 @@
                         <div>12</div>
                     </div>
 
-                    <h2>Complex Grid</h2>
+                    <h3>Grid based on default classes</h3>
+                    <div class="grid-container-create-columns" id="grid-default">
+                        <div class="grid-small-item">Small item</div>
+                        <div class="grid-large-item">Large item</div>
+                    </div>
+
+                    <h3>Grid two fractions (with same width)</h3>
+                    <div class="grid-container-two-fractions">
+                        <div>grid item</div>
+                        <div>grid item</div>
+                    </div>
+
+                    <h3>Grid three fractions (with same width)</h3>
+                    <div class="grid-container-three-fractions">
+                        <div>grid item</div>
+                        <div>grid item</div>
+                        <div>grid item</div>
+                    </div>
+
+                    <h3>Grid four fractions (with same width)</h3>
+                    <div class="grid-container-four-fractions">
+                        <div>grid item</div>
+                        <div>grid item</div>
+                        <div>grid item</div>
+                        <div>grid item</div>
+                    </div>
+
+                    <h3>Complex Grid</h3>
                     <div class="grid-container" id="grid-complex">
                         <div>1</div>
                         <div>2</div>
@@ -858,7 +939,7 @@
                 </section>
             </div>
 
-            <div class="section-wrapper">
+            <!--div class="width-limitation-wrapper">
                 <section>
                     <a id="anchor-iconfont"></a>
                     <h2 class="headline-demopage">Iconfont</h2>
@@ -870,7 +951,30 @@
                     <h2>Custom Iconfont</h2>
                     <div class="grid-container-create-columns list-icons" data-url="css/custom-iconfont.css"></div>
                 </section>
-            </div>
+            </div-->
         </main>
+    </div>
+    <script>
+        new Vue ({
+            "el": '#app',
+            methods: {
+                /*
+                toggleHTML(event) {
+                    let clickedLink = event.target
+                    if(open === false) {
+                        let prevSibling = clickedLink.previousElementSibling;
+                        clickedLink.nextElementSibling.querySelector("code").innerText = prevSibling.outerHTML;
+                        clickedLink.nextElementSibling.style.display = 'block';
+
+                    } else {
+                        clickedLink.nextElementSibling.style.display = 'none';
+                    }
+                }
+
+                 */
+            }
+
+        })
+    </script>
     </body>
 </html>
