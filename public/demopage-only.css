@@ -1,6 +1,14 @@
+/* demopage-only.css - STYLES FOR DEMOPAGE ONLY - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
+
 html, body {
 	height: auto;
 	min-height: 100%;
+}
+
+#component-library {
+	overflow-y: auto;
+	scroll-padding-top: 1.2rem;
+	scroll-snap-type: y mandatory;
 }
 
 #header_options .grid-small-item {
@@ -97,8 +105,8 @@ form a {
 	border-top: .1rem dotted var(--primary-color);
 }
 
-[class*="width-limitation-wrapper"] > * {
-	max-width: 128rem;
+.frontend-framework [class*="width-limitation-wrapper"] > * {
+	max-width: var(--max-width);
 	margin: 0 auto;
 	padding: 1rem;
 }
@@ -169,21 +177,6 @@ h3.headline-demopage {
 #toggle_header_options {
 	display: table;
 	margin: 0 auto;
-	text-align: center;
-}
-
-header h1:first-of-type {
-	font-size: 4rem;
-	font-weight: normal;
-	text-align: center;
-	margin: 0 0 1rem 0;
-	font-family: "Century Gothic", Arial, sans-serif;
-	color: #fff;
-	padding: .5rem;
-	background: var(--primary-color);
-}
-
-header h2 {
 	text-align: center;
 }
 
@@ -425,6 +418,7 @@ small sup {
 	top: 0;
 }
 
+#flex-section .flex-container > *,
 #grid-section [class*="grid-"] > div {
 	border: var(--default-border);
 	text-align: center;
@@ -583,11 +577,5 @@ small sup {
 	
 	#toggle_viewport_visibility {
 		display: none;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	#grid-section [class*="grid-"] > div {
-		border-color: var(--pure-white);
 	}
 }

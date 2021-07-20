@@ -1,4 +1,7 @@
-/* add overwrites and your custom styles in here */
+/* template.css - ADD OVERWRITES AND YOUR CUSTOM STYLES IN THIS FILE */
+
+/* begin example */
 html {
     --primary-color-rgb-values: 2, 129, 195; /* primary color rgb-values */
 }
+/* end example */

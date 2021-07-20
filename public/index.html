@@ -14,7 +14,7 @@
         </style>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
-    <body class="nojs">
+    <body class="nojs frontend-framework">
     <div id="app">
         <!--div class="sticky" id="header_wrapper">
             <header>
@@ -59,7 +59,7 @@
                 <a href="" class="link-icon" id="toggle_header_options"><span class="icon-arrow_close"></span><span>Toggle header section visibility</span></a>
             </header>
         </div-->
-        <main>
+        <main id="content">
             <!--div class="width-limitation-wrapper" id="introduction">
                 <section>
                     <h2 class="headline-demopage">Introduction</h2>
@@ -266,13 +266,8 @@
                     <a id="anchor-paragraphs"></a>
                     <h3 class="headline-demopage">Paragraphs (continuous text)</h3>
                     <p>This is a short paragpaph</p>
-
-
                     <p>This is continous text within a paragraph with text-align left (which is default). Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-
-
                     <p class="text-align_justify">This is continous text within a paragraph with text-align justify. Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-
 
                     <a id="anchor-lists"></a>
                     <h3 class="headline-demopage">Lists</h3>
@@ -341,6 +336,15 @@
                                 <th>Table head</th>
                                 <th>Table head</th>
                                 <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
+                                <th>Table head</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -352,6 +356,33 @@
                                 <td>Table data</td>
                                 <td>Table data</td>
                                 <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                            </tr>
+                            <tr class="highlighted">
+                                <td>Table data (default-align)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
                             </tr>
                             <tr>
                                 <td>Table data (default-align)</td>
@@ -361,9 +392,45 @@
                                 <td>Table data</td>
                                 <td>Table data</td>
                                 <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                            </tr>
+                            <tr>
+                                <td class="nowrap">Table data (nowrap)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td class="highlighted">cell (highlighted)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
                             </tr>
                             <tr>
                                 <td>Table data (default-align)</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
+                                <td>Table data</td>
                                 <td>Table data</td>
                                 <td>Table data</td>
                                 <td>Table data</td>
@@ -389,7 +456,6 @@
                             A simple box is just a &lt;div&gt; with class="box" that sets default padding-, background- and border-style. The box can contain anything. Though the box is a block-element the default width of the box is 100% of its parent.
                         </p>
                     </div>
-
 
                     <h3>Stretched boxes with different content</h3>
                     <div class="flex-container">
@@ -424,7 +490,6 @@
                         </div>
                     </div>
 
-
                     <h3>Boxes with centered content</h3>
                     <div class="grid-container-auto-columns" id="demopage-boxes">
                         <div class="box center-content">
@@ -443,7 +508,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
             </div>
 
@@ -483,7 +547,7 @@
                     <div class="system-message success full-width">
                         <h4><span class="icon-check"></span><span>Success message</span></h4>
                     </div>
-                    <div class="system-message information full-width">
+                    <div class="system-message info full-width">
                         <h4><span class="icon-info"></span><span>Info message</span></h4>
                     </div>
 
@@ -597,7 +661,7 @@
                                     <span>Label for searchfield:</span>
                                     <span class="flex-container no-gap">
                                         <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search" />
-                                        <a class="button no-flex"><span class="icon-search"></span></a>
+                                        <a href="#" class="button no-flex"><span class="icon-search"></span></a>
                                     </span>
                                 </label>
                             </div>
@@ -621,7 +685,7 @@
                                         </label>
                                         <label for="city">
                                             <span class="hidden">City</span>
-                                            <input name="city" id="city" placeholder="Cityname" type="text" />
+                                            <input name="city" id="city" placeholder="City" type="text" />
                                         </label>
                                     </span>
                                 </div>
@@ -849,11 +913,78 @@
                     </form>
                 </section>
             </div>
+            <div class="width-limitation-wrapper">
+                <section>
+                    <div id="main-navigation">
+                        <nav>
+                            <ul>
+                                <li><a href="#">Entry 1</a></li>
+                                <li>
+                                    <a href="#">
+                                        <span>Entry 2</span>
+                                        <span class="icon-single-arrow-down"></span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <span>Entry 2.1</span>
+                                                <span class="icon-single-arrow-right"></span>
+                                            </a>
+                                            <ul>
+                                                <li><a href="#">Entry 2.1</a></li>
+                                                <li><a href="#">Entry 2.2</a></li>
+                                                <li><a href="#">Entry 2.3</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Entry 2.2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.comand-cms.com" target="_blank">CoManD-CMS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+            <div class="width-limitation-wrapper">
+                <section id="flex-section">
+                    <h2 class="headline-demopage">Flex-Containers</h2>
+                    <h3>Default</h3>
+                    <div class="flex-container">
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                    </div>
+                    <h3>No-gap</h3>
+                    <div class="flex-container no-gap">
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                    </div>
+                    <h3>No-flex (for all items)</h3>
+                    <div class="flex-container no-flex">
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                    </div>
+                    <h3>No-flex (for single item)</h3>
+                    <div class="flex-container ">
+                        <div>flex-item</div>
+                        <div class="no-flex">flex-item (no-flex)</div>
+                        <div>flex-item</div>
+                    </div>
+                    <h3>Vertical</h3>
+                    <div class="flex-container vertical">
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                        <div>flex-item</div>
+                    </div>
+                </section>
+            </div>
 
             <div class="width-limitation-wrapper">
                 <section id="grid-section">
                     <a id="anchor-grids"></a>
-                    <h2 class="headline-demopage">Grid</h2>
+                    <h2 class="headline-demopage">Grid-Containers</h2>
                     <!--h3 class="headline-demopage">Simple Grid</h3>
                     <form novalidate="novalidate">
                         <div class="fieldset grid-container-create-columns">
@@ -902,23 +1033,23 @@
 
                     <h3>Grid two fractions (with same width)</h3>
                     <div class="grid-container-two-fractions">
-                        <div>grid item</div>
-                        <div>grid item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
                     </div>
 
                     <h3>Grid three fractions (with same width)</h3>
                     <div class="grid-container-three-fractions">
-                        <div>grid item</div>
-                        <div>grid item</div>
-                        <div>grid item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
                     </div>
 
                     <h3>Grid four fractions (with same width)</h3>
                     <div class="grid-container-four-fractions">
-                        <div>grid item</div>
-                        <div>grid item</div>
-                        <div>grid item</div>
-                        <div>grid item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
+                        <div>grid-item</div>
                     </div>
 
                     <h3>Complex Grid</h3>

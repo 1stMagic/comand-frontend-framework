@@ -1,6 +1,8 @@
+/* framework-iconfont.css - last update: 2021/04/25 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN iconfont-css-file */
+
 @font-face {
 	font-family: 'icomoon';
-	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?6exhfd') format('woff');
+	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?kp35nf') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -21,6 +23,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-config-download:before {
+  content: "\a198";
+}
+.icon-file-content-download:before {
+  content: "\a199";
+}
+.icon-file-excel:before {
+  content: "\a19a";
+}
+.icon-file-excel-download:before {
+  content: "\a19b";
+}
+.icon-loop-full-circle:before {
+  content: "\a19c";
+}
 .icon-dependencies:before {
   content: "\a100";
 }
@@ -186,9 +203,6 @@
 .icon-file-download:before {
   content: "\a136";
 }
-.icon-file-excel:before {
-  content: "\a137";
-}
 .icon-file-image:before {
   content: "\a138";
 }
@@ -281,9 +295,6 @@
 }
 .icon-logout:before {
   content: "\a156";
-}
-.icon-loop-full-circle:before {
-  content: "\a157";
 }
 .icon-loop-left:before {
   content: "\a158";
