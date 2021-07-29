@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* framework.css - last update: 2021/07/20 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
+/* framework.css - last update: 2021/07/29 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
 
 /* begin table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /*
@@ -688,7 +688,7 @@ label.inline, .label.inline {
 	display: flex;
 }
 
-label.inline > *, .label.inline > *  {
+label.inline:not(.textarea) > *, .label.inline:not(.textarea) > *  {
 	align-self: center;
 	white-space: nowrap;
 }
@@ -732,11 +732,17 @@ label:not(.inline) > span:first-child:not(.hidden), .label:not(.inline) > span:f
 	margin-bottom: calc(var(--default-margin) / 2);
 }
 
-label:not(.switch-label) > input:not(:first-child),
-label:not(.switch-label) > select:not(:first-child),
-label:not(.switch-label) > textarea:not(:first-child) {
+label > input:not(:first-child),
+label > select:not(:first-child),
+label > textarea:not(:first-child) {
 	display: block;
 	width: 100%;
+}
+
+label > input[type="checkbox"],
+label > input[type="radio"] {
+	display: inline-block;
+	width: auto;
 }
 
 label.error input:not([type="range"]), label.error select, label.error textarea,
@@ -748,10 +754,6 @@ input.error, select.error, textarea.error {
 
 label.disabled span, .label.disabled span {
 	color: var(--disabled-color);
-}
-
-label.textarea, .align-self-start {
-	align-self: start !important; /* element must be flex- or grid-item */
 }
 
 label.error sup, label.error > span {
@@ -766,7 +768,7 @@ fieldset.error, label.error, label.error span, .label.error, .label.error span {
 
 /* begin input-elements */
 input, select, textarea {
-	min-width: 2rem;
+	min-width: 5rem;
 	border: var(--default-border);
 	border-radius: var(--border-radius);
 	align-self: start; /* required to let items as high as their content */
@@ -887,12 +889,13 @@ td label, td .label {
 	display: flex;
 	gap: 0;
 	align-items: flex-end;
+	flex-wrap: nowrap;
 }
 /* end .input-wrapper */
 /* end forms: basic elements --------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* begin forms: replace-input-type (radio/checkbox) --------------------------------------------------------------------------------------------------------------------------------------------------- */
-input.replace-input-type {
+label input.replace-input-type { /* label required for specificity */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1119,7 +1122,8 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	flex: none;
 }
 
-.toggle-switch input {
+.toggle-switch input[type="checkbox"],
+.toggle-switch input[type="radio"] { /* type required for specificity */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1255,7 +1259,7 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 
 /* begin multiple-switch */
 .multiple-switch input {
-	display: none;
+	display: none !important;
 }
 
 .multiple-switch label {
@@ -1551,13 +1555,14 @@ dl.wrap dd {
 
 /* begin navigation --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* should be replaced by a wrapper */
-#main-navigation {
+.main-navigation-wrapper {
 	background: var(--default-background-color);
 	border-top: var(--default-border);
 	border-bottom: var(--default-border);
 }
 
 nav {
+	width: 100%;
 	padding-left: var(--default-padding);
 	padding-right: var(--default-padding);
 }
