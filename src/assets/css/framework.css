@@ -1,7 +1,10 @@
 @charset "utf-8";
-/* framework.css - last update: 2021/07/29 by Raphael Biock - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
+/*
+framework.css - last update: 2021/08/02 by Raphael Biock
+IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
+*/
 
-/* begin table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin table of contents ------------------------------------------------------------------------------------------ */
 /*
 - VARIABLES ------------------------
 
@@ -51,7 +54,7 @@ T ------------------------
 - styles for small screens
 - styles for print only
 */
-/* end table of contents --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end table of contents ------------------------------------------------------------------------------------------ */
 
 /* ---------------------------------------------- BEGIN VARIABLES -------------------------------------------------- */
 html {
@@ -161,7 +164,7 @@ html {
 /* ---------------------------------------------- END VARIABLES -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MAIN STYLES -------------------------------------------------- */
-/* begin basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin basic selectors and classes ------------------------------------------------------------------------------------------ */
 html {
 	font-size: 62.5%; /* default size is 16px, 62.5% of that is 10px = 1rem */
 	scroll-behavior: smooth; /* let pages scroll smoothly to anchors */
@@ -322,9 +325,9 @@ a:hover img, a:active img, a:focus img {
 .hidden {
 	display: none !important
 }
-/* end basic selectors and classes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end basic selectors and classes ------------------------------------------------------------------------------------------ */
 
-/* begin boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin boxes ------------------------------------------------------------------------------------------ */
 .box {
 	background: var(--default-background-color);
 	border: var(--default-border);
@@ -386,9 +389,9 @@ a:hover img, a:active img, a:focus img {
 	border: var(--default-border); /* border (width, style, color) for any element with this class */
 }
 /* end box effects */
-/* end boxes --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end boxes ------------------------------------------------------------------------------------------ */
 
-/* begin buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin buttons ------------------------------------------------------------------------------------------ */
 button, .button, input[type="submit"] {
 	background: var(--pure-black);
 	border: var(--default-border);
@@ -466,9 +469,9 @@ button > span[class*="icon-"], .button > span[class*="icon-"] {
     color: var(--pure-white);
     font-weight: normal;
 }
-/* end buttons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end buttons ------------------------------------------------------------------------------------------ */
 
-/* begin clearfix --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin clearfix ------------------------------------------------------------------------------------------ */
 /* clearfix is for clearing the boxes in ie and ff correctly (= the height of the outer container will be displayed correctly) */
 .clearfix:after {
 	content: ".";
@@ -488,15 +491,15 @@ button > span[class*="icon-"], .button > span[class*="icon-"] {
 	height: 0;
 	line-height: 0;
 }
-/* end clearfix --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end clearfix ------------------------------------------------------------------------------------------ */
 
-/* begin disabled --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin disabled ------------------------------------------------------------------------------------------ */
 [readonly],
 .disabled,
 .disabled span,
 .disabled input, .disabled select, .disabled textarea,
-[disabled="disabled"],
-[disabled="disabled"] span,
+[disabled],
+[disabled] span,
 input[type="submit"]:disabled {
 	background: var(--disabled-background-color) !important;
 	color: var(--disabled-color) !important;
@@ -504,13 +507,15 @@ input[type="submit"]:disabled {
 	text-shadow: inherit;
 }
 
-[disabled="disabled"]:hover, [disabled="disabled"]:active, [disabled="disabled"]:focus {
+[readonly]:hover, [readonly]:active, [readonly]:focus,
+.disabled:hover, .disabled:active, .disabled:focus,
+[disabled]:hover, [disabled]:active, [disabled]:focus {
 	cursor: not-allowed;
 }
 
 label.disabled, .label.disabled,
 .disabled span,
-[disabled="disabled"] span {
+[disabled] span {
 	background: none !important;
 }
 
@@ -527,9 +532,9 @@ label.disabled, .label.disabled,
 .toggle-switch.disabled .label::before {
 	border-color: var(--disabled-color) !important;
 }
-/* end disabled --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end disabled ------------------------------------------------------------------------------------------ */
 
-/* begin flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin flex-containers ------------------------------------------------------------------------------------------ */
 .flex-container, .button-wrapper {
 	display: -webkit-flex; /* Safari 6-8 */
 	display: flex;
@@ -549,7 +554,7 @@ label.disabled, .label.disabled,
 	align-self: stretch; /* stretch items to same height (elements must/should not have a set height) */
 }
 
-.flex-container.align-bottom > *
+.flex-container.align-bottom > *,
 fieldset > .flex-container {
 	align-self: flex-end;
 }
@@ -631,9 +636,9 @@ ul.flex-list > li, ol.flex-list > li {
 .word-break-keep-all {
 	word-break: keep-all;
 }
-/* end flex-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end flex-containers ------------------------------------------------------------------------------------------ */
 
-/* begin forms: basic elements --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin forms: basic elements ------------------------------------------------------------------------------------------ */
 form [class*="grid-container"] {
 	grid-auto-rows: min-content;
 	grid-template-rows: min-content;
@@ -724,7 +729,12 @@ label > span, .label > span {
 
 label > span > sup, .label > span > sup {
 	font-size: inherit; /* overwrite normalize.css */
-	top: -.5rem /* overwrite normalize.css */
+	top: .5rem; /* overwrite normalize.css */
+	color: var(--primary-color);
+}
+
+label.inline > span > sup, .label.inline > span > sup {
+	top: -.5rem;
 }
 
 label:not(.inline) > span:first-child:not(.hidden), .label:not(.inline) > span:first-child:not(.hidden) {
@@ -810,7 +820,11 @@ input[type="radio"]:focus + span {
 	color: var(--primary-color);
 }
 
-input.error::placeholder, select.error::placeholder, textarea.error::placeholder {
+::placeholder {
+	font-style: italic;
+}
+
+input.error::placeholder, textarea.error::placeholder {
 	color: var(--error-color);
 }
 
@@ -892,9 +906,9 @@ td label, td .label {
 	flex-wrap: nowrap;
 }
 /* end .input-wrapper */
-/* end forms: basic elements --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end forms: basic elements ------------------------------------------------------------------------------------------ */
 
-/* begin forms: replace-input-type (radio/checkbox) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin forms: replace-input-type (radio/checkbox) ------------------------------------------------------------------------------------------ */
 label input.replace-input-type { /* label required for specificity */
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -957,7 +971,7 @@ input[type="checkbox"].replace-input-type:checked::after {
 	bottom: 0.45rem;
 }
 
-input[type="checkbox"][disabled="disabled"].replace-input-type:checked::after {
+input[type="checkbox"][disabled].replace-input-type:checked::after {
 	border-color: var(--disabled-color);
 }
 
@@ -973,16 +987,16 @@ input.replace-input-type.error:checked + .label {
 	color: var(--error-color);
 }
 
-input[disabled="disabled"].replace-input-type:checked + .label {
+input[disabled].replace-input-type:checked + .label {
 	color: var(--disabled-color);
 }
 
 input.replace-input-type-checkbox.error:not(:checked) {
 	border-color: var(--error-color);
 }
-/* end forms: replace-input-type (radio/checkbox) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end forms: replace-input-type (radio/checkbox) ------------------------------------------------------------------------------------------ */
 
-/* begin forms: progressbar --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin forms: progressbar ------------------------------------------------------------------------------------------ */
 progress {
 	-webkit-appearance: progress-bar;
 	-webkit-writing-mode: horizontal-tb;
@@ -1012,9 +1026,9 @@ progress[value]::-webkit-progress-value {
 progress[value]::-moz-progress-bar {
 	background-image: repeating-linear-gradient(-45deg, var(--primary-color) , var(--primary-color)  .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
 }
-/* end forms: progressbar --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end forms: progressbar ------------------------------------------------------------------------------------------ */
 
-/* begin forms: range-slider --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin forms: range-slider ------------------------------------------------------------------------------------------ */
 input[type="range"] {
     -webkit-appearance: none;
 	background: unset;
@@ -1081,10 +1095,10 @@ input[type="range"]:focus::-moz-range-track {
 }
 
 /* disabled styles */
-input[type="range"][disabled="disabled"],
-input[type="range"][disabled="disabled"]:hover,
-input[type="range"][disabled="disabled"]:focus,
-input[type="range"][disabled="disabled"]:active,
+input[type="range"][disabled],
+input[type="range"][disabled]:hover,
+input[type="range"][disabled]:focus,
+input[type="range"][disabled]:active,
 input[type="range"].disabled,
 input[type="range"].disabled:hover,
 input[type="range"].disabled:focus,
@@ -1092,32 +1106,32 @@ input[type="range"].disabled:active {
 	background: none !important;
 }
 
-input[type="range"][disabled="disabled"]::-moz-range-thumb,
+input[type="range"][disabled]::-moz-range-thumb,
 input[type="range"].disabled::-moz-range-thumb {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled="disabled"]::-webkit-slider-thumb,
+input[type="range"][disabled]::-webkit-slider-thumb,
 input[type="range"].disabled::-webkit-slider-thumb {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled="disabled"]::-moz-range-track,
+input[type="range"][disabled]::-moz-range-track,
 input[type="range"].disabled::-moz-range-track {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled="disabled"]::-webkit-slider-runnable-track,
+input[type="range"][disabled]::-webkit-slider-runnable-track,
 input[type="range"].disabled::-webkit-slider-runnable-track{
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
-/* end forms: range-slider --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end forms: range-slider ------------------------------------------------------------------------------------------ */
 
-/* begin toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
 .toggle-switch {
 	flex: none;
 }
@@ -1181,9 +1195,9 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	border-color: var(--error-color);
 	background: var(--error-color);
 }
-/* end toggle-switch-checkbox and -radio --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
 
-/* begin toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin toggle switches with switch-label ------------------------------------------------------------------------------------------ */
 .toggle-switch.switch-label {
 	border: var(--default-border);
 	background: var(--pure-white);
@@ -1255,9 +1269,9 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .toggle-switch.switch-label.disabled input ~ .label::before {
 	background: var(--disabled-color) !important;
 }
-/* end toggle switches with switch-button --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end toggle switches with switch-label ------------------------------------------------------------------------------------------ */
 
-/* begin multiple-switch */
+/* begin multiple-switch  ------------------------------------------------------------------------------------------ */
 .multiple-switch input {
 	display: none !important;
 }
@@ -1310,9 +1324,13 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .multiple-switch label.active input:checked ~ span {
 	color: var(--pure-white);
 }
-/* end multiple-switch */
 
-/* begin place-inside (place icon inside/over inputfield) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+.multiple-switch label.disabled {
+	background: var(--disabled-background-color);
+}
+/* end multiple-switch ------------------------------------------------------------------------------------------ */
+
+/* begin place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
 .place-inside[class*="icon-"] {
 	position: absolute;
 	top: auto;
@@ -1337,9 +1355,9 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .place-inside[class*="icon-"] + input:focus {
 	border-color: var(--primary-color);
 }
-/* end place-inside (place icon inside/over inputfield) --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
 
-/* begin grid-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin grid-containers ------------------------------------------------------------------------------------------ */
 [class*="grid-container"] {
 	display: grid;
 	grid-gap: var(--grid-gap);
@@ -1376,9 +1394,9 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .grid-container-create-columns > .grid-large-item {
 	grid-column: span var(--grid-large-span);
 }
-/* end grid-containers --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end grid-containers ------------------------------------------------------------------------------------------ */
 
-/* begin headlines --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin headlines ------------------------------------------------------------------------------------------ */
 h1, h2, h3, h4, h5, h6 {
 	font-weight: var(--headline-font-weight);
 	margin-top: calc(var(--default-margin) * 2);
@@ -1444,9 +1462,9 @@ h5, h5 > a, h5 > span, h5 > span[class*="icon-"] {
 h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
 	font-size: 1.6rem; /* font-size for h6 */
 }
-/* end headlines --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end headlines ------------------------------------------------------------------------------------------ */
 
-/* begin hyperlinks --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin hyperlinks ------------------------------------------------------------------------------------------ */
 a {
 	color: var(--hyperlink-color);
 }
@@ -1463,9 +1481,9 @@ a[class*="icon-"]:not(.button) {
 a[class*="icon-"]:not(.button):hover, a[class*="icon-"]:not(.button):active, a[class*="icon-"]:not(.button):focus, a[class*="icon-"]:not(.button).active, .highlighted {
 	color: var(--primary-color);
 }
-/* end hyperlinks --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end hyperlinks ------------------------------------------------------------------------------------------ */
 
-/* begin icons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin icons ------------------------------------------------------------------------------------------ */
 [class*="icon-"] {
     font-size: 1.8rem;
 	text-decoration: none !important;
@@ -1510,9 +1528,9 @@ h1 [class*="icon-"] + span,
 h2 [class*="icon-"] + span {
 	margin-left: var(--default-margin);
 }
-/* end icons --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end icons ------------------------------------------------------------------------------------------ */
 
-/* begin lists --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin lists ------------------------------------------------------------------------------------------ */
 ul ul, ul ol, ol ul, ol ol {
 	margin: 0 0 0 var(--default-margin);
 }
@@ -1551,10 +1569,9 @@ dl.wrap dd {
 	white-space: normal;
 	word-break: break-all; /* break long strings */
 }
-/* end lists --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end lists ------------------------------------------------------------------------------------------ */
 
-/* begin navigation --------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* should be replaced by a wrapper */
+/* begin navigation ------------------------------------------------------------------------------------------ */
 .main-navigation-wrapper {
 	background: var(--default-background-color);
 	border-top: var(--default-border);
@@ -1640,9 +1657,9 @@ nav li:hover > ul, nav li:active > ul, nav li:focus > ul, nav li.active > ul,
 .nav li:hover > ul, .nav li:active > ul, .nav li:focus > ul, .nav li.active > ul {
 	display: block;
 }
-/* end navigation --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end navigation ------------------------------------------------------------------------------------------ */
 
-/* begin system messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin system messages ------------------------------------------------------------------------------------------ */
 .system-message {
 	border-radius: var(--border-radius);
 	display: table;
@@ -1691,9 +1708,9 @@ nav li:hover > ul, nav li:active > ul, nav li:focus > ul, nav li.active > ul,
 .grid-container-create-columns .system-message {
 	grid-column: span var(--grid-columns);
 }
-/* end system messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end system messages ------------------------------------------------------------------------------------------ */
 
-/* begin tables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin tables ------------------------------------------------------------------------------------------ */
 .table-wrapper {
 	overflow-x: auto;
 }
@@ -1825,9 +1842,9 @@ thead.word-wrap-normal th {
 td form {
 	margin-bottom: 0; /* margin-bottoms of forms in table-cells */
 }
-/* end tables --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end tables ------------------------------------------------------------------------------------------ */
 
-/* begin transforms --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin transforms ------------------------------------------------------------------------------------------ */
 .rotate-90deg {
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
@@ -1852,11 +1869,11 @@ td form {
 	-webkit-transform: scaleY(-1);
 	transform: scaleY(-1);
 }
-/* end transforms --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end transforms ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END MAIN STYLES -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
-/* begin styles webkit-browsers only --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin styles webkit-browsers only ------------------------------------------------------------------------------------------ */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
 	input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"],
@@ -1864,9 +1881,9 @@ td form {
 		-webkit-appearance: none; /* avoid default rounded border on safari */
 	}
 }
-/* end styles webkit-browsers only --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end styles webkit-browsers only ------------------------------------------------------------------------------------------ */
 
-/* begin styles medium for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin styles medium for screens ------------------------------------------------------------------------------------------ */
 @media only screen and (max-width: 1023px) {
 	html {
 		--grid-columns: 6; /* grid-columns */
@@ -1901,9 +1918,9 @@ td form {
 		margin: 0 var(--default-margin) 0 0;
 	}
 }
-/* end styles medium for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end styles medium for screens ------------------------------------------------------------------------------------------ */
 
-/* begin styles small for screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin styles small for screens ------------------------------------------------------------------------------------------ */
 @media only screen and (max-width: 600px) {
 	html {
 		--grid-columns: 4; /* grid-columns */
@@ -2019,10 +2036,10 @@ td form {
 		width: auto;
 	}
 }
-/* end styles for small screens --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end styles for small screens ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
 
-/* begin styles for print only --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* begin styles for print only ------------------------------------------------------------------------------------------ */
 @media only print {
 	* {
 		color: #000;
@@ -2041,4 +2058,4 @@ td form {
 		content:"\A ("attr(alt)")";
 	}
 }
-/* end styles for print only --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* end styles for print only ------------------------------------------------------------------------------------------ */

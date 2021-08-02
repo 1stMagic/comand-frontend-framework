@@ -665,19 +665,25 @@
                                     </span>
                                 </label>
                             </div>
-                            <label class="inline" for="numberfield"><span>Label for numberfield (inline):</span>
-                                <input name="numberfield" id="numberfield" placeholder="12345" type="number" />
+                            <label class="inline" for="numberfield">
+                                <span>Label for numberfield (inline):</span>
+                                <input name="numberfield" id="numberfield" placeholder="1" type="number" />
                             </label>
-                            <label class="inline" for="colorfield"><span>Label for colorfield (inline):</span>
+                            <label class="inline" for="numberfield2">
+                                <span>Label for numberfield with decimal (inline):</span>
+                                <input name="numberfield" id="numberfield2" placeholder="0.0" type="number" step="0.1" />
+                            </label>
+                            <label class="inline" for="colorfield">
+                                <span>Label for colorfield (inline):</span>
                                 <input name="colorfield" id="colorfield" type="color" />
                             </label>
                             <label class="inline" for="datefield">
-                                <span>Label for (required) datefield (inline)<sup>*</sup>:</span>
+                                <span>Label for (required) datefield (inline):<sup>*</sup></span>
                                 <input name="numberfield" id="datefield" type="date" required="required" />
                             </label>
                             <div class="flex-container">
                                 <div class="label">
-                                    <span>Label for Zip/City:</span>
+                                    <span>Label for Zip/City (with hidden labels):</span>
                                     <span class="flex-container no-gap">
                                         <label class="no-flex" for="zip">
                                             <span class="hidden">Zip</span>
@@ -690,8 +696,8 @@
                                     </span>
                                 </div>
                                 <label for="selectbox">
-                                    <span>Label for selectbox:</span>
-                                    <select name="selectbox" id="selectbox">
+                                    <span>Label for selectbox (required):<sup>*</sup></span>
+                                    <select name="selectbox" id="selectbox" required="required">
                                         <option>Bitte wählen</option>
                                         <option value="option1">Option 1</option>
                                         <option value="option2">Option 2</option>
@@ -723,7 +729,7 @@
                             <legend>Legend</legend>
                             <label for="textfield01">
                                 <span>Label with some Text</span>
-                                <input id="textfield01" type="text" />
+                                <input id="textfield01" placeholder="Placeholder text" type="text" />
                             </label>
                             <!-- begin replace input-type-radio -->
                             <h4>Replaced Input-Type-Radio</h4>
@@ -894,14 +900,14 @@
                             <h4>Inputfields with Icon</h4>
                             <div class="flex-container">
                                 <label for="username">
-                                    <span>Username:</span>
+                                    <span>Username:<sup>*</sup></span>
                                     <span class="flex-container">
                                         <span class="place-inside icon-user-profile"></span>
                                         <input type="text" name="username" id="username" maxlength="20" placeholder="Username" title="Please type in username" />
                                     </span>
                                 </label>
                                 <label for="password">
-                                    <span>Password:</span>
+                                    <span>Password:<sup>*</sup></span>
                                     <span class="flex-container">
                                         <span class="place-inside icon-security-settings toggle-input-type"></span>
                                         <input type="password" name="password" id="password" minlength="6" maxlength="20" placeholder="Password" title="Please type in password" />
