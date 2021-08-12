@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css - last update: 2021/08/02 by Raphael Biock
+framework.css - last update: 2021/08/11 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -62,7 +62,7 @@ html {
 	--max-width: 144rem;
 
 	/* backgrounds */
-	--default-background-color-rgb-values: 245, 245, 245; /* default background-color (rgb-value is required to set rgba in other variables) */
+	--default-background-color-rgb-values: 247, 247, 247; /* default background-color (rgb-value is required to set rgba in other variables) */
 	--default-background-color: rgb(var(--default-background-color-rgb-values)); /* default background-color (in rgb) */
 	--default-background-color-reduced-opacity: rgba(var(--default-background-color-rgb-values), var(--reduced-opacity)); /* background-color (i.e. for boxes fieldsets) */
 	--disabled-background-color-rgb-values: 200, 200, 200; /* disabled background-color in (rgb-value is required to set rgba in other variables) */
@@ -120,7 +120,7 @@ html {
 	--secondary-color-reduced-opacity: rgba(var(--secondary-color), var(--reduced-opacity)); /* secondary-color with reduced opacity */
 
 	/* text- and hyperlink-colors */
-	--text-color: rgb(50, 50, 50); /* default text-color for complete site except a-tags (hyperlinks) */
+	--text-color: rgb(40, 40, 40); /* default text-color for complete site except a-tags (hyperlinks) */
 	--hyperlink-color: var(--primary-color); /* color for hyperlinks */
 	--hyperlink-color-highlighted: var(--secondary-color); /* color for highlighted (:hover, :active, :focus) hyperlinks */
 	--hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
@@ -165,6 +165,10 @@ html {
 
 /* ---------------------------------------------- BEGIN MAIN STYLES -------------------------------------------------- */
 /* begin basic selectors and classes ------------------------------------------------------------------------------------------ */
+* {
+	content-visibility: auto; /* renders content if its inside the viewport */
+}
+
 html {
 	font-size: 62.5%; /* default size is 16px, 62.5% of that is 10px = 1rem */
 	scroll-behavior: smooth; /* let pages scroll smoothly to anchors */
@@ -210,7 +214,7 @@ time {
 	display: inline;
 }
 
-object, svg, img, video, canvas, .responsive-wrapper {
+object, svg, img, video, canvas, .responsive-wrapper, .responsive-container {
 	max-width: 100%;
 	height: auto;
 }
@@ -223,7 +227,7 @@ object, svg, img, video, canvas, .responsive-wrapper {
     overflow: hidden;
 }
 
-.responsive-container iframe, .responsive-wrapper iframe {
+:is(.responsive-container, .responsive-wrapper) iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -273,7 +277,7 @@ object, svg, img, video, canvas, .responsive-wrapper {
 }
 
 h1, h2, h3, h4, h5, h6,
-p, ul, ol, dl, table, fieldset, .fieldset, address {
+p, ul, ol, dl, table, fieldset, address {
 	margin-bottom: var(--default-margin); /* margin-bottom for most every element */
 }
 
@@ -286,7 +290,7 @@ em, cite, .italic  {
 }
 
 small, small > a, small > span {
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 }
 
 blockquote, q {
@@ -308,7 +312,7 @@ figure {
 	margin: 0;
 }
 
-a img, a figcaption {
+a :is(img, figcaption) {
 	display: block;
 	text-align: center;
 	margin: 0 auto;
@@ -318,7 +322,7 @@ a img {
 	border: var(--default-border);
 }
 
-a:hover img, a:active img, a:focus img {
+a:is(:hover, :active, :focus) img {
 	border-color: var(--primary-color);
 }
 
@@ -356,8 +360,7 @@ a:hover img, a:active img, a:focus img {
 	padding: var(--default-padding);
 }
 
-.box.center-content.flex-container,
-.box.center-content.grid-container {
+.box.center-content:is(.grid-container, .flex-container) {
 	align-content: center;
 	justify-content: center;
 }
@@ -366,13 +369,9 @@ a:hover img, a:active img, a:focus img {
 	align-items: center; /* required to center flex items vertical correctly */
 }
 
-.box.center-content.flex-container > div,
-.box.center-content.grid-container > div {
+.box.center-content:is(.grid-container, .flex-container) > div {
 	top: auto;
 	transform: none;
-}
-
-.box.center-content.flex-container > div {
 	flex: none; /* make item as wide as its content */
 }
 
@@ -412,29 +411,27 @@ button, .button, input[type="submit"] {
 }
 
 button, .button,
-button > span, .button > span,
-button > span[class*="icon-"], button > span[class*="icon-"] {
+:is(button, .button) > span,
+:is(button, .button) > span[class*="icon-"] {
 	align-self: center; /* necessary to keep text and icon centered if button has different alignment. */
 }
 
-button.primary, .button.primary, input[type="submit"].primary {
+:is(button, .button, input[type="submit"]).primary {
 	background: var(--primary-color);
 	border-color: var(--primary-color);
 }
 
-button.center, .button.center, input[type="submit"].center {
+:is(button, .button, input[type="submit"]).center {
 	display: table;
 	float: none;
 	margin: 0 auto;
 }
 
-button:last-child .button:last-child, input[type="submit"]:last-child {
+:is(button, .button, input[type="submit"]):last-child {
 	margin: 0;
 }
 
-button:hover, button:active, button:focus,
-.button:hover, .button:active, .button:focus,
-input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
+:is(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
 	color: var(--pure-black);
 	background: var(--pure-white);
 	cursor: pointer;
@@ -442,32 +439,21 @@ input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:fo
 	text-shadow: none;
 }
 
-button.primary:hover, button.primary:active, button.primary:focus,
-.button.primary:hover, .button.primary:active, .button.primary:focus,
-input[type="submit"].primary:hover, input[type="submit"].primary:active, input[type="submit"].primary:focus {
+:is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
 	color: var(--primary-color);
 	border-color: var(--primary-color);
 }
 
-button:hover > span, button:active > span, button:focus > span,
-.button:hover > span, .button:active > span, .button:focus > span,
-button:hover > span[class*="icon-"], button:active > span[class*="icon-"], button:focus > span[class*="icon-"],
-.button:hover > span[class*="icon-"], .button:active > span[class*="icon-"], .button:focus > span[class*="icon-"] {
+:is(button, .button):is(:hover, :active, :focus) > span,
+:is(button, .button):is(:hover, :active, :focus) > span[class*="icon-"] {
 	color: var(--pure-black);
 	text-shadow: none;
 }
 
-button.primary:hover > span, button.primary:active > span, button.primary:focus > span,
-.button.primary:hover > span, .button.primary:active > span, .button.primary:focus > span,
-button.primary:hover > span[class*="icon-"], button.primary:active > span[class*="icon-"], button.primary:focus > span[class*="icon-"],
-.button.primary:hover > span[class*="icon-"], .button.primary:active > span[class*="icon-"], .button.primary:focus > span[class*="icon-"] {
+:is(button, .button).primary:is(:hover, :active, :focus) > span,
+:is(button, .button).primary:is(:hover, :active, :focus) > span[class*="icon-"] {
 	color: var(--primary-color);
 	border-color: var(--primary-color);
-}
-
-button > span[class*="icon-"], .button > span[class*="icon-"] {
-    color: var(--pure-white);
-    font-weight: normal;
 }
 /* end buttons ------------------------------------------------------------------------------------------ */
 
@@ -496,8 +482,7 @@ button > span[class*="icon-"], .button > span[class*="icon-"] {
 /* begin disabled ------------------------------------------------------------------------------------------ */
 [readonly],
 .disabled,
-.disabled span,
-.disabled input, .disabled select, .disabled textarea,
+.disabled :is(span, input, select, textarea),
 [disabled],
 [disabled] span,
 input[type="submit"]:disabled {
@@ -507,26 +492,32 @@ input[type="submit"]:disabled {
 	text-shadow: inherit;
 }
 
-[readonly]:hover, [readonly]:active, [readonly]:focus,
-.disabled:hover, .disabled:active, .disabled:focus,
-[disabled]:hover, [disabled]:active, [disabled]:focus {
-	cursor: not-allowed;
+:is(input[type="checkbox"], input[type="radio"]):disabled + span,
+.toggle-switch.switch-label input:disabled ~ .label {
+	color: var(--disabled-color) !important;
 }
 
-label.disabled, .label.disabled,
-.disabled span,
-[disabled] span {
+:is([readonly], .disabled, [disabled]):is(:hover, :active. :focus) {
+	cursor: not-allowed !important;
+}
+
+:is(label, .label).disabled,
+:is(.disabled, [disabled]) span {
 	background: none !important;
+}
+
+:is(.disabled .replace-input-type, .toggle-switch input:checked:disabled)::after,
+.toggle-switch.switch-label input:checked:disabled ~ .label::before {
+	background: var(--disabled-color) !important;
+	border-color: var(--disabled-color) !important;
 }
 
 .toggle-switch.switch-label.disabled {
 	background: var(--disabled-background-color) !important;
 }
 
-.toggle-switch.disabled input::after,
-.disabled .replace-input-type::after {
-	background: var(--disabled-color) !important;
-	border-color: var(--disabled-color) !important;
+.toggle-switch.switch-label input:disabled ~ .label {
+	color: var(--disabled-color) !important;
 }
 
 .toggle-switch.disabled .label::before {
@@ -536,13 +527,12 @@ label.disabled, .label.disabled,
 
 /* begin flex-containers ------------------------------------------------------------------------------------------ */
 .flex-container, .button-wrapper {
-	display: -webkit-flex; /* Safari 6-8 */
 	display: flex;
 	flex-wrap: wrap; /* breaks children to new line if they are wider than their parent */
 	gap: var(--default-gap);
 }
 
-.flex-container > *, .button-wrapper > * {
+:is(.flex-container, .button-wrapper ) > * {
 	float: none !important; /* flex-items should not be floated */
 }
 
@@ -554,8 +544,7 @@ label.disabled, .label.disabled,
 	align-self: stretch; /* stretch items to same height (elements must/should not have a set height) */
 }
 
-.flex-container.align-bottom > *,
-fieldset > .flex-container {
+fieldset > .flex-container > * {
 	align-self: flex-end;
 }
 
@@ -569,15 +558,17 @@ fieldset > .flex-container {
 	margin-bottom: 0;
 }
 
-.label > .flex-container > label,
-.label > .flex-container > .label,
-label > .flex-container > .label {
+:is(label, .label) > .flex-container > :is(label, .label) {
 	display: flex;
 	align-items: center;
 }
 
 .no-gap {
 	gap: 0;
+}
+
+.no-wrap {
+	flex-wrap: nowrap;
 }
 
 .no-flex, .no-flex > * {
@@ -619,15 +610,14 @@ label > .flex-container > .label {
 	left: 0;
 }
 
-ul.flex-list, ol.flex-list {
-	display: -webkit-flex; /* Safari 6-8 */
+:is(ul, ol).flex-list {
 	display: flex;
 	padding: var(--default-padding);
 	border: var(--default-border);
 	background: var(--pure-white);
 }
 
-ul.flex-list > li, ol.flex-list > li {
+:is(ul, ol).flex-list > li {
 	list-style-type: none;
 	margin: 0;
 	flex: 1;
@@ -645,27 +635,25 @@ form [class*="grid-container"] {
 }
 
 /* begin fieldsets */
-fieldset, .fieldset {
+fieldset {
 	background: var(--default-background-color);
 	border: var(--default-border);
 	border-radius: var(--border-radius);
 	padding: calc(var(--default-padding) * 2);
 }
 
-fieldset.flex-container, .fieldset.flex-container {
+fieldset.flex-container {
 	display: flex;
 	gap: var(--default-gap);
 	flex-direction: column;
 }
 
-fieldset.grid-container-create-columns, .fieldset.grid-container-create-columns {
+fieldset.grid-container-create-columns {
 	grid-template-columns: min-content; /* items should be minimum as wide as content */
 }
 
 fieldset.grid-container-create-columns > *,
-fieldset.grid-container-create-columns .grid-container-create-columns,
-.fieldset.grid-container-create-columns > *,
-.fieldset.grid-container-create-columns .grid-container-create-columns{
+fieldset.grid-container-create-columns .grid-container-create-columns {
 	grid-column: span var(--grid-columns);
 }
 
@@ -684,85 +672,73 @@ label, .label {
 	display: block;
 }
 
-label button, label .button,
-.label button, .label .button {
+:is(label, .label) :is(button, .button) button {
 	align-self: stretch;
 }
 
-label.inline, .label.inline {
+:is(label, .label).inline {
 	display: flex;
 }
 
-label.inline:not(.textarea) > *, .label.inline:not(.textarea) > *  {
+:is(label, .label).inline:not(.textarea) > * {
 	align-self: center;
 	white-space: nowrap;
 }
 
-label.inline > span, .label.inline > span  {
+:is(label, .label) > span {
+	line-height: 100%;
+	white-space: normal;
+}
+
+:is(label, .label).inline > span  {
 	grid-column: span var(--grid-small-span);
 	white-space: normal;
 	margin: 0 var(--default-margin) 0 0;
 }
 
-label.inline > span + *, .label.inline > span + * {
+:is(label, .label).inline > span + * {
 	grid-column: span var(--grid-large-span);
 }
 
-label:focus input + span, .label:focus input + span {
-	color: var(--primary-color);
-}
-
-.grid-container-create-columns > label,
-.grid-container-create-columns > .label {
-	grid-column: 1 / span var(--grid-columns);
-}
-
-fieldset > *:first-child, .fieldset > *:first-child,
-fieldset legend + *, .fieldset legend + * {
-	margin-top: 0;
-}
-
-label > span, .label > span {
-	line-height: 100%;
-	white-space: normal;
-}
-
-label > span > sup, .label > span > sup {
+:is(label, .label) > span > sup {
 	font-size: inherit; /* overwrite normalize.css */
 	top: .5rem; /* overwrite normalize.css */
 	color: var(--primary-color);
 }
 
-label.inline > span > sup, .label.inline > span > sup {
+:is(label, .label):focus input + span {
+	color: var(--primary-color);
+}
+
+.grid-container-create-columns > :is(label, .label) {
+	grid-column: 1 / span var(--grid-columns);
+}
+
+:is(label, .label).inline > span > sup {
 	top: -.5rem;
 }
 
-label:not(.inline) > span:first-child:not(.hidden), .label:not(.inline) > span:first-child:not(.hidden) {
+:is(label, .label):not(.inline) > span:first-child:not(.hidden) {
 	display: flex;
 	margin-bottom: calc(var(--default-margin) / 2);
 }
 
-label > input:not(:first-child),
-label > select:not(:first-child),
-label > textarea:not(:first-child) {
+label > :is(input, select, textarea):not(:first-child) {
 	display: block;
 	width: 100%;
 }
 
-label > input[type="checkbox"],
-label > input[type="radio"] {
+label > :is(input[type="checkbox"], input[type="radio"]) {
 	display: inline-block;
 	width: auto;
 }
 
-label.error input:not([type="range"]), label.error select, label.error textarea,
-.label.error input:not([type="range"]), .label.error select, .label.error textarea,
-label.error .replace-input-type,
-input.error, select.error, textarea.error {
+:is(label, .label).error :is(input:not([type="range"]), select, textarea, .replace-input-type),
+:is(input, select, textarea).error {
 	border: var(--error-border);
 }
 
-label.disabled span, .label.disabled span {
+:is(label, .label).disabled span {
 	color: var(--disabled-color);
 }
 
@@ -770,9 +746,14 @@ label.error sup, label.error > span {
 	color: var(--error-color);
 }
 
-fieldset.error, label.error, label.error span, .label.error, .label.error span {
+:is(label, .label, fieldset).error, :is(label, .label).error span {
 	border-color: var(--error-color);
 	color: var(--error-color);
+}
+
+fieldset > *:first-child,
+fieldset legend + * {
+	margin-top: 0;
 }
 /* end labels */
 
@@ -785,10 +766,12 @@ input, select, textarea {
 	background: var(--pure-white);
 }
 
-input:hover, input:active, input:focus,
-select:hover, select:active, select:focus,
-textarea:hover, textarea:active, textarea:focus {
+:is(input, select, textarea):is(:hover, :active, :focus) {
 	border-color: var(--primary-color);
+}
+
+input:checked + span {
+	color: var(--primary-color);
 }
 
 input, select {
@@ -815,8 +798,7 @@ input[type="search"] + button {
 	border-bottom-left-radius: 0;
 }
 
-input[type="checkbox"]:focus + span,
-input[type="radio"]:focus + span {
+input:is([type="checkbox"], [type="radio"]):focus + span {
 	color: var(--primary-color);
 }
 
@@ -824,7 +806,7 @@ input[type="radio"]:focus + span {
 	font-style: italic;
 }
 
-input.error::placeholder, textarea.error::placeholder {
+:is(input, textarea).error::placeholder {
 	color: var(--error-color);
 }
 
@@ -832,7 +814,7 @@ select {
 	word-wrap: normal; /* break words only at allowed break points */
 }
 
-input[type="radio"], input[type="checkbox"] {
+input:is([type="radio"], [type="checkbox"]) {
 	margin-bottom: 0;
 	min-width: auto;
 	height: auto;
@@ -847,7 +829,7 @@ input[type="color"] {
 	padding: 0;
 }
 
-label > input, .label > input {
+:is(label, .label) > input {
 	margin-top: 0;
 	margin-left: 0;
 }
@@ -867,32 +849,31 @@ input[type="image"] {
 	border: 0;
 }
 
-input[type="checkbox"], input[type="radio"], input[type="image"] {
+input:is([type="checkbox"], [type="radio"], [type="image"]) {
 	background: none;
 	width: auto;
 }
 
-input[type="date"], input[type="number"], input[type="color"] {
-	grid-column: span 2;
+.inline input:is([type="date"], [type="number"], [type="color"]) {
 	max-width: 14rem;
 }
 
-input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus  {
+input[type="submit"]input:is(:hover, :active, :focus) {
 	cursor: pointer;
 }
 
-input:not([type="hidden"]) + input, select:not([type="hidden"]) + input, input:not([type="hidden"]) + select, select + select {
+:is(input, select):not([type="hidden"]) + input, :is(input:not([type="hidden"]), select) + select {
 	border-left: 0;
 }
 /* end input-elements */
 
 /* begin form-elements in table */
-td label, td .label, td input, td select, td textarea {
+td :is(label, .label, select, textarea) {
 	width: 100%;
 	margin: 0;
 }
 
-td label, td .label {
+td :is(label, .label) {
 	width: auto;
 	padding: 0;
 }
@@ -904,6 +885,10 @@ td label, td .label {
 	gap: 0;
 	align-items: flex-end;
 	flex-wrap: nowrap;
+}
+
+.input-wrapper > * {
+	flex: auto;
 }
 /* end .input-wrapper */
 /* end forms: basic elements ------------------------------------------------------------------------------------------ */
@@ -948,7 +933,7 @@ input.replace-input-type:checked::after {
 	display: block;
 }
 
-input.replace-input-type.disabled:checked::after {
+input.replace-input-type:disabled:checked::after {
 	background: var(--disabled-color);
 }
 
@@ -1095,37 +1080,27 @@ input[type="range"]:focus::-moz-range-track {
 }
 
 /* disabled styles */
-input[type="range"][disabled],
-input[type="range"][disabled]:hover,
-input[type="range"][disabled]:focus,
-input[type="range"][disabled]:active,
-input[type="range"].disabled,
-input[type="range"].disabled:hover,
-input[type="range"].disabled:focus,
-input[type="range"].disabled:active {
+input[type="range"]:is([disabled], .disabled),
+input[type="range"]:is([disabled], .disabled):is(:hover, :active, :focus) {
 	background: none !important;
 }
 
-input[type="range"][disabled]::-moz-range-thumb,
-input[type="range"].disabled::-moz-range-thumb {
+input[type="range"]:is([disabled], .disabled)::-moz-range-thumb {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled]::-webkit-slider-thumb,
-input[type="range"].disabled::-webkit-slider-thumb {
+input[type="range"]:is([disabled], .disabled)::-webkit-slider-thumb {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled]::-moz-range-track,
-input[type="range"].disabled::-moz-range-track {
+input[type="range"]:is([disabled], .disabled)::-moz-range-track {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
 
-input[type="range"][disabled]::-webkit-slider-runnable-track,
-input[type="range"].disabled::-webkit-slider-runnable-track{
+input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 	background: var(--disabled-background-color);
 	border-color: var(--disabled-color);
 }
@@ -1136,8 +1111,7 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	flex: none;
 }
 
-.toggle-switch input[type="checkbox"],
-.toggle-switch input[type="radio"] { /* type required for specificity */
+.toggle-switch input:is([type="checkbox"], [type="radio"]) { /* type required for specificity */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1155,7 +1129,9 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .toggle-switch input::after {
 	content: "";
 	border-radius: var(--full-circle);
-	background: var(--text-color);
+	border: var(--default-border);
+	border-color: var(--text-color);
+	background: var(--pure-white);
 	width: 1.4rem;
 	height: 1.4rem;
 	display: block;
@@ -1168,6 +1144,7 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 }
 
 .toggle-switch input:checked::after {
+	border-color: var(--primary-color);
 	background: var(--primary-color);
 	margin-right: 0;
 	margin-left: auto
@@ -1178,8 +1155,7 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	margin-top: 0;
 }
 
-.toggle-switch input:focus ~ .label,
-.toggle-switch input:checked ~ .label {
+.toggle-switch input:is(:focus, :checked) ~ .label {
 	color: var(--primary-color)
 }
 
@@ -1249,6 +1225,7 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 .toggle-switch.switch-label input ~ .label::before {
 	content: "";
 	border-radius: var(--full-circle);
+	border: var(--primary-border);
 	background: var(--primary-color);
 	width: 1.4rem;
 	height: 1.4rem;
@@ -1261,13 +1238,10 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 }
 
 .toggle-switch.switch-label input + .label  + .label::before {
-	background: var(--text-color);
+	border-color: var(--text-color);
+	background: var(--pure-white);
 	left: -.7rem;
 	top: .2rem;
-}
-
-.toggle-switch.switch-label.disabled input ~ .label::before {
-	background: var(--disabled-color) !important;
 }
 /* end toggle switches with switch-label ------------------------------------------------------------------------------------------ */
 
@@ -1285,6 +1259,10 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	flex-direction: column;
 }
 
+.multiple-switch label.disabled {
+	background: var(--disabled-background-color) !important;
+}
+
 .multiple-switch label:first-child {
 	border-left: var(--default-border);
 	border-top-left-radius: var(--border-radius);
@@ -1296,11 +1274,11 @@ input[type="range"].disabled::-webkit-slider-runnable-track{
 	border-bottom-right-radius: var(--border-radius);
 }
 
-.multiple-switch label:hover, .multiple-switch label:focus, .multiple-switch label:active {
+.multiple-switch label:is(:hover, :active, :focus) {
 	cursor: pointer;
 }
 
-.multiple-switch label:hover input ~ span, .multiple-switch label:focus input ~ span, .multiple-switch label:active input ~ span,
+.multiple-switch label:is(:hover, :active, :focus) input ~ span,
 .multiple-switch label input:checked ~ span {
 	color: var(--primary-color);
 }
@@ -1404,59 +1382,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
-h2:first-child,
-h3:first-child,
-h4:first-child,
-h5:first-child,
-h6:first-child {
+:is(h2, h3, h4, h5, h6):first-child {
 	margin-top: 0;
 }
 
-[class*="grid-container"]:not(.fieldset) > h1,
-[class*="grid-container"]:not(.fieldset) > h2,
-[class*="grid-container"]:not(.fieldset) > h3,
-[class*="grid-container"]:not(.fieldset) > h4,
-[class*="grid-container"]:not(.fieldset) > h5,
-[class*="grid-container"]:not(.fieldset) > h6 {
-	margin: 0;
+[class*="grid-container"] > :is(h1, h2, h3, h4, h5, h6) {
+	margin-bottom: 0;
 }
 
-fieldset > *, .fieldset > * {
+fieldset > * {
 	grid-column: 1 / span var(--grid-columns);
 	margin-bottom: 0;
 }
 
-fieldset hr, .fieldset hr {
-	margin: calc(var(--default-margin) * 2);
+fieldset hr {
+	margin: var(--default-margin);
 }
 
-fieldset hr + *, .fieldset hr + * {
+fieldset hr + * {
 	margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
-h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+:is(h1, h2, h3, h4, h5, h6) > a {
 	line-height: 130%;
 }
 
 h1, h1 > a, h1 > span, h1 > span[class*="icon-"] {
-	font-size: 2.6rem; /* font-size for h1 */
+	font-size: 2.8rem; /* font-size for h1 */
 }
 
 h2, h2 > a, h2 > span, h2 > span[class*="icon-"] {
-	font-size: 2.2rem; /* font-size for h2 */
+	font-size: 2.4rem; /* font-size for h2 */
 }
 
 h3, h3 > a, h3 > span, h3 > span[class*="icon-"] {
-	font-size: 2rem; /* font-size for h3 */
+	font-size: 2.2rem; /* font-size for h3 */
 }
 
 h4, h4 > a, h4 > span, h4 > span[class*="icon-"] {
-	font-size: 1.8rem; /* font-size for h4 */
+	font-size: 2rem; /* font-size for h4 */
 }
 
 h5, h5 > a, h5 > span, h5 > span[class*="icon-"] {
-	font-size: 1.7rem; /* font-size for h5 */
+	font-size: 1.8rem; /* font-size for h5 */
 }
 
 h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
@@ -1469,8 +1438,8 @@ a {
 	color: var(--hyperlink-color);
 }
 
-a:hover, a:active, a:focus,
-a:hover > *, a:active > *, a:focus > * {
+a:is(:hover, :active, :focus),
+a:is(:hover, :active, :focus) > * {
 	color: var(--hyperlink-color-highlighted);
 }
 
@@ -1478,7 +1447,8 @@ a[class*="icon-"]:not(.button) {
 	color: var(--text-color);
 }
 
-a[class*="icon-"]:not(.button):hover, a[class*="icon-"]:not(.button):active, a[class*="icon-"]:not(.button):focus, a[class*="icon-"]:not(.button).active, .highlighted {
+a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
+.highlighted {
 	color: var(--primary-color);
 }
 /* end hyperlinks ------------------------------------------------------------------------------------------ */
@@ -1509,9 +1479,7 @@ a.link-icon.disabled span {
 	text-decoration: none !important; /* for links, that contain icons */
 }
 
-a.link-icon.disabled:hover span,
-a.link-icon.disabled:active span,
-a.link-icon.disabled:focus span {
+a.link-icon.disabled:is(:hover, :active, :focus) span {
 	cursor: not-allowed;
 }
 
@@ -1524,19 +1492,18 @@ span + [class*="icon-"] {
 	margin-left: calc(var(--default-margin) / 2);
 }
 
-h1 [class*="icon-"] + span,
-h2 [class*="icon-"] + span {
+:is(h1, h2, h3, h4, h5, h6) [class*="icon-"] + span {
 	margin-left: var(--default-margin);
 }
 /* end icons ------------------------------------------------------------------------------------------ */
 
 /* begin lists ------------------------------------------------------------------------------------------ */
-ul ul, ul ol, ol ul, ol ol {
+:is(ul, ol) :is(ul, ol) {
 	margin: 0 0 0 var(--default-margin);
 }
 
 /* text-indent for second-line */
-ul li, ol li {
+:is(ul, ol) li {
 	list-style-type: disc;
 	list-style-position: outside;
 	margin-left: 1.7rem;
@@ -1584,7 +1551,7 @@ nav {
 	padding-right: var(--default-padding);
 }
 
-nav ul, .nav ul {
+:is(nav, .nav) ul {
 	margin: 0;
 	display: flex;
 	border-left: var(--default-border);
@@ -1592,35 +1559,35 @@ nav ul, .nav ul {
 	background: var(--default-background-color);
 }
 
-nav > ul > li, .nav > ul > li {
+:is(nav, .nav) > ul > li {
 	border-right: var(--default-border);
 }
 
-nav ul.stretch-items > li, .nav ul.stretch-items > li {
+:is(nav, .nav) ul.stretch-items > li {
 	flex: 1
 }
 
-nav ul li, .nav ul li {
+:is(nav, .nav) ul li {
 	list-style-type: none;
 	margin: 0;
 	white-space: nowrap;
 }
 
-nav ul li a, .nav ul li a {
+:is(nav, .nav) ul li a {
 	display: block;
 	padding: var(--default-padding);
 	text-decoration: none;
 	color: var(--text-color);
 }
 
-nav ul li a:hover, nav ul li a:active, nav ul li a:focus, nav ul li.active a,
-.nav ul li a:hover, .nav ul li a:active, .nav ul li a:focus, .nav ul li.active a {
+:is(nav, .nav) ul li a:is(:hover, :active, :focus),
+:is(nav, .nav) ul li.active a {
 	background: var(--primary-color);
 	color: var(--pure-white);
 }
 
-nav ul li a:hover span, nav ul li a:active span, nav ul li a:focus span, nav ul li.active a span,
-.nav ul li a:hover span, .nav ul li a:active span, .nav ul li a:focus span, .nav ul li.active a span {
+:is(nav, .nav) ul li a:is(:hover, :active, :focus) span,
+:is(nav, .nav) ul li.active a span {
 	background: none;
 	color: var(--pure-white);
 }
@@ -1629,7 +1596,7 @@ nav ul li a span[class*='icon-'] {
 	font-size: 1rem;
 }
 
-nav ul ul, .nav ul ul {
+:is(nav, .nav) ul ul {
 	display: none;
 	position: absolute; /* brings sub-navigation to own layer */
 	left: 0; 			/* left-position of layer (as left as top-level-entries) */
@@ -1638,23 +1605,23 @@ nav ul ul, .nav ul ul {
 	border-bottom: var(--default-border);
 }
 
-nav ul ul li, .nav ul ul li {
+:is(nav, .nav) ul ul li {
 	border-top: var(--default-border);
 }
 
-nav ul ul li:last-child, .nav ul ul li:last-child {
+:is(nav, .nav) ul ul li:last-child {
 	border-bottom: 0;
 	border-bottom-left-radius: var(--border-radius);
 	border-bottom-right-radius: var(--border-radius);
 }
 
-nav ul ul ul, .nav ul ul ul {
+:is(nav, .nav) ul ul ul {
 	top: 0;
 	left: 100%;
 }
 
-nav li:hover > ul, nav li:active > ul, nav li:focus > ul, nav li.active > ul,
-.nav li:hover > ul, .nav li:active > ul, .nav li:focus > ul, .nav li.active > ul {
+:is(nav, .nav) li:is(:hover, :active, :focus) > ul
+:is(nav, .nav) li.active > ul {
 	display: block;
 }
 /* end navigation ------------------------------------------------------------------------------------------ */
@@ -1767,7 +1734,7 @@ th:first-child {
 	border-top-right-radius: 0;
 }
 
-th:last-child, td:last-child {
+:is(th, td):last-child {
 	border-right: 0;
 }
 
@@ -1779,7 +1746,7 @@ td {
 	vertical-align: middle;
 }
 
-tr:hover td, tr:focus td, tr:active td {
+tr:is(:hover, :active, :focus) td {
 	background: var(--pure-white);
 }
 
@@ -1791,11 +1758,11 @@ tr:last-of-type td {
 	border-bottom: 0;
 }
 
-tr:last-of-type td:first-child, tr:last-of-type td:first-child, tr:last-of-type td:first-child {
+tr:last-of-type td:first-child {
 	border-bottom-left-radius: var(--border-radius);
 }
 
-tr:last-of-type td:last-child, tr:last-of-type td:last-child, tr:last-of-type td:last-child {
+tr:last-of-type td:last-child {
 	border-bottom-right-radius: var(--border-radius);
 }
 
@@ -1804,14 +1771,14 @@ th.highlighted {
 	color: var(--pure-white);
 }
 
-tr.highlighted, td.highlighted {
+:is(tr, td).highlighted {
 	background: var(--primary-color-reduced-opacity);
 	color: var(--pure-white);
 }
 
-tr.highlighted:hover td, tr.highlighted:focus td, tr.highlighted:active td,
-td.highlighted:hover, td.highlighted:focus, td.highlighted:active,
-tr:hover td.highlighted, tr:focus td.highlighted, tr:active td.highlighted{
+tr.highlighted:is(:hover, :active, :focus) td,
+td.highlighted:is(:hover, :active, :focus),
+tr:is(:hover, :active, :focus) td.highlighted {
 	background: var(--primary-color);
 }
 /* end highlighted table rows/cells */
@@ -1820,11 +1787,11 @@ table a {
 	display: block;
 }
 
-table.center-content td, td.center-content {
+:is(table, td).center-content td {
 	text-align: center;
 }
 
-td.center-content .button, td.center-content button {
+td.center-content :is(button, .button) {
 	float: none;
 	display: table;
 	margin: 0 auto;
@@ -1875,9 +1842,8 @@ td form {
 /* ---------------------------------------------- BEGIN MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
 /* begin styles webkit-browsers only ------------------------------------------------------------------------------------------ */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-
-	input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"],
-	input[type="range"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"] {
+	:is([type="color"], [type="date"], [type="datetime-local"], [type="email"], [type="month"], [type="number"],
+	[type="range"], [type="search"], [type="tel"], [type="time"], [type="url"], [type="week"]) {
 		-webkit-appearance: none; /* avoid default rounded border on safari */
 	}
 }
@@ -1912,8 +1878,23 @@ td form {
 		display: block !important;
 	}
 
-	input.replace-input-type[type="radio"],
-	input.replace-input-type[type="checkbox"] {
+	:is(label, .label).inline {
+		flex-direction: column;
+	}
+
+	:is(label, .label).inline > span {
+		align-self: flex-start;
+	}
+
+	:is(label, .label).inline > span:first-child {
+		margin-bottom: calc(var(--default-margin) / 2);
+	}
+
+	:is(label, .label).inline:not(.textarea) > * {
+		align-self: flex-start;
+	}
+
+	input.replace-input-type:is([type="checkbox"], [type="radio"]) {
 		transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
 		margin: 0 var(--default-margin) 0 0;
 	}
@@ -1933,28 +1914,17 @@ td form {
 		min-height: 100%;
 	}
 
-	label.inline, .label.inline {
-		flex-direction: column;
-	}
-
-	label.inline > span, .label.inline > span {
-		align-self: flex-start;
-	}
-
-	label.inline > span:first-child, .label.inline > span:first-child {
-		margin-bottom: calc(var(--default-margin) / 2);
-	}
-
 	[class*="grid-container"][class$="fractions"] {
 		grid-template-columns: repeat(1, 1fr);
 	}
 
 	button, .button, input[type="submit"] {
+		width: 100%;
+		float: none;
 		text-align: center;
 	}
 
-	.button-wrapper.no-flex > button,
-	.button-wrapper.no-flex > .button {
+	.button-wrapper.no-flex > :is(button, .button) {
 		width: auto;
 	}
 
@@ -1962,26 +1932,30 @@ td form {
 		flex-direction: column-reverse;
 	}
 
-	button, .button, input[type="submit"] {
-		width: 100%;
-		float: none;
-	}
-
-	fieldset, .fieldset {
+	fieldset {
 		padding: var(--default-padding);
 	}
 
-	fieldset > label:first-child, .fieldset > label:first-child {
+	.flex-container.align-bottom > *,
+	fieldset > .flex-container > * {
+		align-self: flex-start;
+		width: 100%;
+	}
+
+	fieldset > label:first-child {
 		margin-top: 0;
 	}
 
-	.fieldset [class*="grid-container"],
 	fieldset [class*="grid-container"] {
 		--grid-gap: calc(var(--grid-gap) / 2);
 	}
 
-	label.inline > span, .label.inline > span {
+	:is(label, .label).inline > span {
 		margin: 0 0 calc(var(--default-margin) / 2) 0;
+	}
+
+	.inline input:is([type="date"], [type="number"], [type="color"]) {
+		max-width: none;
 	}
 
 	.flex-container {
@@ -1992,12 +1966,19 @@ td form {
 		flex-direction: row; /* avoid flex-items to be arranged vertically */
 	}
 
-	[class*="grid-container"]:not(.fieldset) > h1,
-	[class*="grid-container"]:not(.fieldset) > h2,
-	[class*="grid-container"]:not(.fieldset) > h3,
-	[class*="grid-container"]:not(.fieldset) > h4,
-	[class*="grid-container"]:not(.fieldset) > h5,
-	[class*="grid-container"]:not(.fieldset) > h6 {
+	.input-wrapper input[type="search"] {
+		flex: 1;
+	}
+
+	.input-wrapper :is(button, .button) {
+		width: auto;
+	}
+
+	.place-inside + :is(input, select, textarea) {
+		align-self: auto;
+	}
+
+	[class*="grid-container"] > :is(h1, h2, h3, h4, h5, h6) {
 		margin-top: var(--default-margin);
 	}
 
@@ -2023,16 +2004,15 @@ td form {
 		flex-direction: row;
 	}
 
-	.flex-container input[type="text"], .flex-container input[type="password"], .flex-container select, .flex-container textarea {
+	.flex-container input:is(:not([type="checkbox"], :not([type="radio"]), select, textarea) {
 		width: 100%;
 	}
 
-	.label .flex-container, label .flex-container {
+	:is(label, .label) .flex-container {
 		flex-direction: row;
 	}
 
-	.label .flex-container button, .label .flex-container .button,
-	label .flex-container button, label .flex-container .button {
+	:is(label, .label) .flex-container :is(button, .button), .label .flex-container .button {
 		width: auto;
 	}
 }

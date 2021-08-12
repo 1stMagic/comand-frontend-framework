@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
         <title>CoManD-Frontend (v3.x): A Responsive Development Frontend-Framework</title>
         <style>
             @import url("../src/assets/css/normalize.css") all;
@@ -312,6 +312,8 @@
                     <h4>Superior/Subscript</h4>
                     <p>text<sup>superior</sup></p>
                     <p>text<sub>subscript</sub></p>
+                    <h4>Small text</h4>
+                    <small>Small text</small>
                     <h4>Horizontal row</h4>
                     <hr />
                 </section>
@@ -516,14 +518,20 @@
                     <a id="anchor-richmedia"></a>
                     <h2 class="headline-demopage">RichMedia</h2>
                     <h3 class="headline-demopage">Images</h3>
-                    <div class="grid-container-two-fractions" id="richmedia-wrapper">
+                    <div class="flex-container" id="richmedia-wrapper">
                         <figure>
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" />
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Simple image" />
+                        </figure>
+                        <a href="#">
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with surrounding link" />
+                        </a>
+                        <figure>
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption below" />
                             <figcaption>Caption below image</figcaption>
                         </figure>
                         <figure>
                             <figcaption>Caption above image</figcaption>
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" />
+                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption above" />
                         </figure>
                     </div>
                 </section>
@@ -588,11 +596,20 @@
                         <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                     </div>
 
-                    <h4>Primary buttons (space-between)</h4>
-                    <div class="button-wrapper space-between">
-                        <a class="button primary" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
-                        <a class="button primary" href="#">Button with label-text only</a>
-                        <a class="button primary" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+                    <h4>Disabled buttons</h4>
+                    <div class="button-wrapper">
+                        <a class="button disabled" href="#">
+                            <span class="icon-register"></span>
+                            <span>A-tag with class "disabled"</span>
+                        </a>
+                        <button class="button disabled">
+                            <span class="icon-register"></span>
+                            <span>Button with class "disabled"</span>
+                        </button>
+                        <button class="button" disabled="disabled">
+                            <span class="icon-register"></span>
+                            <span>Button with attribute "disabled"</span>
+                        </button>
                     </div>
                 </section>
             </div>
@@ -625,13 +642,21 @@
                             <div class="label">
                                 <span>Label for radiobuttons:</span>
                                 <span class="flex-container no-flex">
-                                    <label for="radiobutton1">
-                                        <input name="radiobutton" id="radiobutton1" value="1" checked="checked" type="radio" />
-                                        <span>Radiobutton 1</span>
+                                    <label for="radio1">
+                                        <input name="radiogroup" id="radio1" value="1" type="radio" />
+                                        <span>Radiobutton 1 (default)</span>
                                     </label>
-                                    <label for="radiobutton2">
-                                        <input name="radiobutton" id="radiobutton2" value="2" type="radio" />
-                                        <span>Radiobutton 2</span>
+                                    <label for="radio2">
+                                        <input name="radiogroup" id="radio2" value="2" type="radio" checked="checked" />
+                                        <span>Radiobutton 2 (checked (by default))</span>
+                                    </label>
+                                    <label for="radio3">
+                                        <input name="radiogroup" id="radio3" value="3" type="radio" disabled="disabled" />
+                                        <span>Radiobutton 3 (disabled)</span>
+                                    </label>
+                                    <label for="radio4">
+                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio" disabled="disabled" checked="checked" />
+                                        <span>Radiobutton 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
@@ -639,18 +664,26 @@
                                 <span>Label for checkboxes:</span>
                                 <span class="flex-container no-flex">
                                     <label for="checkbox1">
-                                        <input name="checkbox" id="checkbox1" value="1" checked="checked" type="checkbox" />
-                                        <span>Checkbox 1</span>
+                                        <input name="checkbox" id="checkbox1" value="1" type="checkbox" />
+                                        <span>Checkbox 1 (default)</span>
                                     </label>
                                     <label for="checkbox2">
-                                        <input name="checkbox" id="checkbox2" value="2" type="checkbox" />
-                                        <span>Checkbox 2</span>
+                                        <input name="checkbox" id="checkbox2" value="2" type="checkbox" checked="checked"  />
+                                        <span>Checkbox 2 (checked (by default))</span>
+                                    </label>
+                                    <label for="checkbox3">
+                                        <input name="checkbox" id="checkbox3" value="3" type="checkbox" disabled="disabled" />
+                                        <span>Checkbox 3 (disabled)</span>
+                                    </label>
+                                    <label for="checkbox4">
+                                        <input name="checkbox" id="checkbox4" value="4" type="checkbox" disabled="disabled" checked="checked" />
+                                        <span>Checkbox 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
                             <div class="flex-container">
                                 <label for="textfield1">
-                                    <span>Label for textfield 1:</span>
+                                    <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
                                     <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text" />
                                 </label>
                                 <label for="textfield_disabled">
@@ -659,7 +692,7 @@
                                 </label>
                                 <label for="searchfield">
                                     <span>Label for searchfield:</span>
-                                    <span class="flex-container no-gap">
+                                    <span class="input-wrapper">
                                         <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search" />
                                         <a href="#" class="button no-flex"><span class="icon-search"></span></a>
                                     </span>
@@ -679,13 +712,21 @@
                             </label>
                             <label class="inline" for="datefield">
                                 <span>Label for (required) datefield (inline):<sup>*</sup></span>
-                                <input name="numberfield" id="datefield" type="date" required="required" />
+                                <input name="datefield" id="datefield" type="date" required="required" />
+                            </label>
+                            <label class="inline" for="rangeslider">
+                                <span>Label for (required) rangeslider (inline):<sup>*</sup></span>
+                                <input name="rangeslider" id="rangeslider" type="range" required="required" />
+                            </label>
+                            <label class="inline" for="rangeslider">
+                                <span>Label for (required and disabled) rangeslider (inline):<sup>*</sup></span>
+                                <input name="rangeslider" id="rangeslider2" type="range" required="required" disabled="disabled" />
                             </label>
                             <div class="flex-container">
                                 <div class="label">
                                     <span>Label for Zip/City (with hidden labels):</span>
-                                    <span class="flex-container no-gap">
-                                        <label class="no-flex" for="zip">
+                                    <span class="input-wrapper">
+                                        <label for="zip">
                                             <span class="hidden">Zip</span>
                                             <input name="zip" id="zip" placeholder="12345" type="number" />
                                         </label>
@@ -737,16 +778,20 @@
                                 <span>Label for Replaced Input-Type-Radio:</span>
                                 <span class="flex-container no-flex">
                                     <label for="replaced-radio1">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1" checked="checked" />
-                                        <span class="label">Label 1</span>
+                                        <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1" />
+                                        <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label for="replaced-radio2">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio2" name="radiogroup" value="2" />
-                                        <span class="label">Label 2</span>
+                                        <input type="radio" class="replace-input-type" id="replaced-radio2" name="radiogroup" value="2" checked="checked" />
+                                        <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label for="replaced-radio3">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio3" name="radiogroup" value="3" />
-                                        <span class="label">Label 3</span>
+                                        <input type="radio" class="replace-input-type" id="replaced-radio3" name="radiogroup" value="3" disabled="disabled" />
+                                        <span class="label">Label 3 (disabled)</span>
+                                    </label>
+                                    <label for="replaced-radio4">
+                                        <input type="radio" class="replace-input-type" id="replaced-radio4" name="radiogroup-disabled" value="4" disabled="disabled" checked="checked" />
+                                        <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
@@ -757,16 +802,20 @@
                             <div class="label inline"><span>Label for Replaced Input-Type-Checkboxes:</span>
                                 <span class="flex-container no-flex">
                                     <label for="replaced-checkbox1">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup" value="1" checked="checked" />
-                                        <span class="label">Label 1</span>
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup" value="1" />
+                                        <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label for="replaced-checkbox2">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox2" name="checkboxgroup" value="2" />
-                                        <span class="label">Label 2</span>
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox2" name="checkboxgroup" value="2" checked="checked" />
+                                        <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label for="replaced-checkbox3">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox3" name="checkboxgroup" value="3" />
-                                        <span class="label">Label 3</span>
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox3" name="checkboxgroup" value="3" disabled="disabled" />
+                                        <span class="label">Label 3 (disabled)</span>
+                                    </label>
+                                    <label for="replaced-checkbox4">
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox4" name="checkboxgroup" value="4" disabled="disabled" checked="checked" />
+                                        <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
@@ -779,17 +828,21 @@
                             <div class="label inline">
                                 <span>Label for Toggle-Switch-Radio:</span>
                                 <span class="flex-container no-flex">
-                                    <label class="toggle-switch" for="radio4">
-                                        <input type="radio" id="radio4" name="radiogroup2" value="1" checked="checked" />
-                                        <span class="label">Label 1</span>
-                                    </label>
                                     <label class="toggle-switch" for="radio5">
-                                        <input type="radio" id="radio5" name="radiogroup2" value="2" />
-                                        <span class="label">Label 2</span>
+                                        <input type="radio" id="radio5" name="radiogroup2" value="1" />
+                                        <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label class="toggle-switch" for="radio6">
-                                        <input type="radio" id="radio6" name="radiogroup2" value="3" />
-                                        <span class="label">Label 3</span>
+                                        <input type="radio" id="radio6" name="radiogroup2" value="2" checked="checked" />
+                                        <span class="label">Label 2 (checked (by default))</span>
+                                    </label>
+                                    <label class="toggle-switch" for="radio7">
+                                        <input type="radio" id="radio7" name="radiogroup2" value="3" disabled="disabled" />
+                                        <span class="label">Label 3 (disabled)</span>
+                                    </label>
+                                    <label class="toggle-switch" for="radio8">
+                                        <input type="radio" id="radio8" name="radiogroup2-disabled" value="3" disabled="disabled" checked="checked" />
+                                        <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
@@ -800,17 +853,21 @@
                             <div class="label inline">
                                 <span>Label for Toggle-Switch-Checkbox:</span>
                                 <span class="flex-container no-flex">
-                                    <label class="toggle-switch" for="checkbox4">
-                                        <input type="checkbox" id="checkbox4" name="chechboxgroup2" value="1" checked="checked" />
-                                        <span class="label">Label 1</span>
-                                    </label>
                                     <label class="toggle-switch" for="checkbox5">
-                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="2" />
-                                        <span class="label">Label 2</span>
+                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="1" />
+                                        <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label class="toggle-switch" for="checkbox6">
-                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="3" />
-                                        <span class="label">Label 3</span>
+                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="2" checked="checked" />
+                                        <span class="label">Label 2 (checked (by default))</span>
+                                    </label>
+                                    <label class="toggle-switch" for="checkbox7">
+                                        <input type="checkbox" id="checkbox7" name="chechboxgroup2" value="3" disabled="disabled" />
+                                        <span class="label">Label 3 (disabled)</span>
+                                    </label>
+                                    <label class="toggle-switch" for="checkbox8">
+                                        <input type="checkbox" id="checkbox8" name="chechboxgroup2" value="3" disabled="disabled" checked="checked" />
+                                        <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
                             </div>
@@ -821,12 +878,20 @@
                             <div class="label inline">
                                 <span>Label for Toggle-Switch-Radio with Switch-Label:</span>
                                 <span class="flex-container no-flex">
-                                    <label class="toggle-switch switch-label" for="radio7">
-                                        <input type="radio" id="radio7" name="radiogroup3" value="1" checked="checked" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-radio1" title="default">
+                                        <input type="radio" id="toggle-switch-radio1" name="radiogroup3" value="1" />
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label" for="radio8">
-                                        <input type="radio" id="radio8" name="radiogroup3" value="2" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-radio2" title="checked (by default)">
+                                        <input type="radio" id="toggle-switch-radio2" name="radiogroup3" value="2"  checked="checked" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio3" title="disabled">
+                                        <input type="radio" id="toggle-switch-radio3" name="radiogroup3" value="3" disabled="disabled" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio4" title="checked and disabled">
+                                        <input type="radio" id="toggle-switch-radio4" name="radiogroup4" value="4" disabled="disabled" checked="checked" />
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
                                 </span>
@@ -838,12 +903,20 @@
                             <div class="label inline">
                                 <span>Label for Toggle-Switch-Checkbox with Switch-Label:</span>
                                 <span class="flex-container no-flex">
-                                    <label class="toggle-switch switch-label" for="checkbox7">
-                                        <input type="checkbox" id="checkbox7" name="chechboxgroup3" value="1" checked="checked" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox1" title="default">
+                                        <input type="checkbox" id="toggle-switch-checkbox1" name="chechboxgroup3" value="1" />
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label" for="checkbox8">
-                                        <input type="checkbox" id="checkbox8" name="chechboxgroup3" value="2" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox2" title="checked (by default)">
+                                        <input type="checkbox" id="toggle-switch-checkbox2" name="chechboxgroup3" value="2" checked="checked" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox3" title="disabled">
+                                        <input type="checkbox" id="toggle-switch-checkbox3" name="chechboxgroup3" value="3" disabled="disabled" />
+                                        <span class="label">Label on</span><span class="label">Label off</span>
+                                    </label>
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox4" title="checked and disabled">
+                                        <input type="checkbox" id="toggle-switch-checkbox4" name="chechboxgroup3" value="4" disabled="disabled" checked="checked" />
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
                                 </span>
@@ -854,20 +927,25 @@
                             <div class="label multiple-switch">
                                 <span>Label for Multiple-Switch (Radio):</span>
                                 <span class="flex-container no-flex no-gap">
-                                    <label for="radio11">
-                                        <input type="radio" id="radio11" name="radiogroup5" value="1" checked="checked" />
+                                    <label for="multiple-switch1" title="default">
+                                        <input type="radio" id="multiple-switch1" name="radiogroup5" value="web" />
                                         <span class="icon-globe"></span>
-                                        <span>Label 1</span>
+                                        <span>Web</span>
                                     </label>
-                                    <label for="radio12">
-                                        <input type="radio" id="radio12" name="radiogroup5" value="1" />
+                                    <label for="multiple-switch2" title="checked (by default)">
+                                        <input type="radio" id="multiple-switch2" name="radiogroup5" value="email" checked="checked" />
                                         <span class="icon-mail"></span>
-                                        <span>Label 2</span>
+                                        <span>Email</span>
                                     </label>
-                                    <label for="radio13">
-                                        <input type="radio" id="radio13" name="radiogroup5" value="1" />
+                                    <label for="multiple-switch3" class="disabled" title="disabled">
+                                        <input type="radio" id="multiple-switch3" name="radiogroup5" value="phone" />
                                         <span class="icon-phone"></span>
-                                        <span>Label 3</span>
+                                        <span>Phone</span>
+                                    </label>
+                                    <label for="multiple-switch4" class="disabled" title="checked and disabled">
+                                        <input type="radio" id="multiple-switch4" name="radiogroup-disabled5" value="fax" checked="checked" />
+                                        <span class="icon-fax"></span>
+                                        <span>Fax</span>
                                     </label>
                                 </span>
                             </div>
@@ -877,20 +955,25 @@
                             <div class="label multiple-switch">
                                 <span>Label for Multiple-Switch (Checkbox):</span>
                                 <span class="flex-container no-flex no-gap">
-                                    <label for="checkbox11">
-                                        <input type="checkbox" id="checkbox11" name="checkboxgroup5" value="1" checked="checked" />
+                                    <label for="multiple-switch5" title="default">
+                                        <input type="checkbox" id="multiple-switch5" name="checkboxgroup5" value="Web" />
                                         <span class="icon-globe"></span>
                                         <span>Label 1</span>
                                     </label>
-                                    <label for="checkbox12">
-                                        <input type="checkbox" id="checkbox12" name="checkboxgroup5" value="1" />
+                                    <label for="multiple-switch6" title="checked (by default)">
+                                        <input type="checkbox" id="multiple-switch6" name="checkboxgroup5" value="email" checked="checked" />
                                         <span class="icon-mail"></span>
-                                        <span>Label 2</span>
+                                        <span>Email</span>
                                     </label>
-                                    <label for="checkbox13">
-                                        <input type="checkbox" id="checkbox13" name="checkboxgroup5" value="1" />
+                                    <label for="multiple-switch7" class="disabled" title="disabled">
+                                        <input type="checkbox" id="multiple-switch7" name="checkboxgroup5" value="phone" />
                                         <span class="icon-phone"></span>
-                                        <span>Label 3</span>
+                                        <span>Phone</span>
+                                    </label>
+                                    <label for="multiple-switch8" class="disabled" title="checked and disabled">
+                                        <input type="checkbox" id="multiple-switch8" name="checkboxgroup5" value="fax" checked="checked" />
+                                        <span class="icon-fax"></span>
+                                        <span>Fax</span>
                                     </label>
                                 </span>
                             </div>
@@ -900,17 +983,31 @@
                             <h4>Inputfields with Icon</h4>
                             <div class="flex-container">
                                 <label for="username">
-                                    <span>Username:<sup>*</sup></span>
+                                    <span>Username (default):</span>
                                     <span class="flex-container">
                                         <span class="place-inside icon-user-profile"></span>
-                                        <input type="text" name="username" id="username" maxlength="20" placeholder="Username" title="Please type in username" />
+                                        <input type="text" name="username" id="username" maxlength="50" placeholder="Username" title="Please type in username" />
                                     </span>
                                 </label>
                                 <label for="password">
-                                    <span>Password:<sup>*</sup></span>
+                                    <span>Password (required):<sup>*</sup></span>
                                     <span class="flex-container">
-                                        <span class="place-inside icon-security-settings toggle-input-type"></span>
-                                        <input type="password" name="password" id="password" minlength="6" maxlength="20" placeholder="Password" title="Please type in password" />
+                                        <span class="place-inside icon-security-settings"></span>
+                                        <input type="password" name="password" id="password" minlength="6" maxlength="50" placeholder="Password" required="required" title="Please type in password" />
+                                    </span>
+                                </label>
+                                <label for="phone" class="disabled">
+                                    <span>Phone (disabled):</span>
+                                    <span class="flex-container">
+                                        <span class="place-inside icon-phone"></span>
+                                        <input type="tel" name="phone" id="phone" minlength="6" maxlength="50" placeholder="Phone number" disabled="disabled" />
+                                    </span>
+                                </label>
+                                <label for="email" class="disabled">
+                                    <span>Email (required and disabled):<sup>*</sup></span>
+                                    <span class="flex-container">
+                                        <span class="place-inside icon-mail"></span>
+                                        <input type="email" name="email" id="email" minlength="6" maxlength="50" placeholder="Email address" required="required" disabled="disabled" />
                                     </span>
                                 </label>
                             </div>
