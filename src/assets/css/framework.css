@@ -2004,7 +2004,7 @@ td form {
 		flex-direction: row;
 	}
 
-	.flex-container input:is(:not([type="checkbox"], :not([type="radio"]), select, textarea) {
+	.flex-container :is(input, select, textarea) {
 		width: 100%;
 	}
 
