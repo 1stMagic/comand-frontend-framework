@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css - last update: 2021/08/11 by Raphael Biock
+framework.css - last update: 2021/08/12 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -411,27 +411,28 @@ button, .button, input[type="submit"] {
 }
 
 button, .button,
-:is(button, .button) > span,
-:is(button, .button) > span[class*="icon-"] {
+:where(button, .button) > span,
+:where(button, .button) > span[class*="icon-"] {
+	color: var(--pure-white);
 	align-self: center; /* necessary to keep text and icon centered if button has different alignment. */
 }
 
-:is(button, .button, input[type="submit"]).primary {
+:where(button, .button, input[type="submit"]).primary {
 	background: var(--primary-color);
 	border-color: var(--primary-color);
 }
 
-:is(button, .button, input[type="submit"]).center {
+:where(button, .button, input[type="submit"]).center {
 	display: table;
 	float: none;
 	margin: 0 auto;
 }
 
-:is(button, .button, input[type="submit"]):last-child {
+:where(button, .button, input[type="submit"]):last-child {
 	margin: 0;
 }
 
-:is(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
+:where(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
 	color: var(--pure-black);
 	background: var(--pure-white);
 	cursor: pointer;
@@ -439,19 +440,19 @@ button, .button,
 	text-shadow: none;
 }
 
-:is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
+:where(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
 	color: var(--primary-color);
 	border-color: var(--primary-color);
 }
 
-:is(button, .button):is(:hover, :active, :focus) > span,
-:is(button, .button):is(:hover, :active, :focus) > span[class*="icon-"] {
+:where(button, .button):is(:hover, :active, :focus) > span,
+:where(button, .button):is(:hover, :active, :focus) > span[class*="icon-"] {
 	color: var(--pure-black);
 	text-shadow: none;
 }
 
-:is(button, .button).primary:is(:hover, :active, :focus) > span,
-:is(button, .button).primary:is(:hover, :active, :focus) > span[class*="icon-"] {
+:where(button, .button).primary:is(:hover, :active, :focus) > span,
+:where(button, .button).primary:is(:hover, :active, :focus) > span[class*="icon-"] {
 	color: var(--primary-color);
 	border-color: var(--primary-color);
 }
@@ -542,10 +543,6 @@ input[type="submit"]:disabled {
 
 .flex-container.stretch > * {
 	align-self: stretch; /* stretch items to same height (elements must/should not have a set height) */
-}
-
-fieldset > .flex-container > * {
-	align-self: flex-end;
 }
 
 .flex-container.vertical {
