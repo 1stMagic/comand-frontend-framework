@@ -1,6 +1,6 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.2.5",
+  "version": "3.2.7",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,10 +15,6 @@
     "src",
     "public/*"
   ],
-  "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^2.6.11"
-  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-eslint": "^4.5.11",
