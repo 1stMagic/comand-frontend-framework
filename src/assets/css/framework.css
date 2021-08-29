@@ -944,7 +944,7 @@ td :where(label, .label) {
 .input-wrapper {
     display: flex;
     gap: 0;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-wrap: nowrap;
 }
 
@@ -1932,7 +1932,6 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-thumb {
     background-color: var(--primary-color-reduced-opacity);
-    opacity: .1;
     border-radius: var(--border-radius);
 }
 
@@ -1947,7 +1946,6 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not work anymore then) */
     background-color: var(--medium-gray);
 }
-
 /* end styles webkit-browsers only ------------------------------------------------------------------------------------------ */
 
 /* begin styles medium for screens ------------------------------------------------------------------------------------------ */
