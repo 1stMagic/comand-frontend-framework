@@ -1,1204 +1,1282 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
-        <title>CoManD-Frontend (v3.x): A Responsive Development Frontend-Framework</title>
-        <style>
-            @import url("../src/assets/css/normalize.css") all;
-            @import url("../src/assets/css/framework.css") all;
-            @import url("../src/assets/css/framework-iconfont.css") all;
-            @import url("../src/assets/css/template.css") all;
-            @import url("<%= BASE_URL %>demopage-only.css") all;
-            @import url("demopage-only.css") all;
-        </style>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    </head>
-    <body class="nojs frontend-framework">
-    <div id="app">
-        <!--div class="sticky" id="header_wrapper">
-            <header>
-                <h1>CoManD-Frontend <span>A Responsive Development Frontend-Framework</span></h1>
-                <div class="grid-container-create-columns" id="header_options">
-                    <div class="grid-small-item">
-                        <h2>CoManD-Framework</h2>
-                        <ul class="box" id="nav_demopage">
-                            <li class="active">
-                                <a class="link-icon" href="http://frontend.comand-cms.com" title="Switch to CoManD-Frontend">
-                                    <span class="icon-signet_fe"></span>
-                                    <span>CoManD-Frontend</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="link-icon" href="http://comand-ui.comand-cms.com" title="CoManD-UI activated">
-                                    <span class="icon-signet_ui"></span>
-                                    <span>Switch to CoManD-UI</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="grid-small-item">
-                        <h2>Viewport-/Window-Width</h2>
-                        <ul class="box" id="switch_viewport_size_wrapper">
-                            <li id="switch_viewport_size_small" data-viewport-size-min="0" data-viewport-size-max="599"><span class="icon-device_smartphone" title="Small"></span><span>0px-599px</span></li>
-                            <li id="switch_viewport_size_medium" data-viewport-size-min="600" data-viewport-size-max="1023"><span class="icon-device_tablet" title="Medium"></span><span>600px-1023px</span></li>
-                            <li id="switch_viewport_size_large" data-viewport-size-min="1024" data-viewport-size-max="1280"><span class="icon-device_laptop" title="Large"></span><span>1024px-1280px</span></li>
-                            <li id="switch_viewport_size_full" data-viewport-size-min="1281" data-viewport-size-max="4000"><span class="icon-device_desktop" title="Extra large"></span><span>larger than 1280px</span></li>
-                        </ul>
-                    </div>
-                    <div class="grid-small-item" id="download_wrapper">
-                        <h2>Download CoManD-Frontend* for free</h2>
-                        <div class="center">
-                            <div class="box download center">
-                                <a class="button" id="button_download" href="http://www.comand-cms.com/update/download/frontend/CMD_Frontend.zip"><span class="icon-download"></span><span>Download</span></a>
-                                <small><sup>*</sup>includes: this html-demopage, framework-css, demo images</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="" class="link-icon" id="toggle_header_options"><span class="icon-arrow_close"></span><span>Toggle header section visibility</span></a>
-            </header>
-        </div-->
-        <main id="content">
-            <!--div class="width-limitation-wrapper" id="introduction">
-                <section>
-                    <h2 class="headline-demopage">Introduction</h2>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
+  <title>CoManD-Frontend (v3.x): A Responsive Development Frontend-Framework</title>
+  <style>
+      @import url("../src/assets/css/normalize.css") all;
+      @import url("../src/assets/css/framework.css") all;
+      @import url("../src/assets/css/framework-iconfont.css") all;
+      @import url("../src/assets/css/template.css") all;
+      @import url("<%= BASE_URL %>demopage-only.css") all;
+      @import url("demopage-only.css") all;
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body class="nojs frontend-framework">
+<div id="app">
+  <!--div class="sticky" id="header_wrapper">
+      <header>
+          <h1>CoManD-Frontend <span>A Responsive Development Frontend-Framework</span></h1>
+          <div class="grid-container-create-columns" id="header_options">
+              <div class="grid-small-item">
+                  <h2>CoManD-Framework</h2>
+                  <ul class="box" id="nav_demopage">
+                      <li class="active">
+                          <a class="link-icon" href="http://frontend.comand-cms.com" title="Switch to CoManD-Frontend">
+                              <span class="icon-signet_fe"></span>
+                              <span>CoManD-Frontend</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a class="link-icon" href="http://comand-ui.comand-cms.com" title="CoManD-UI activated">
+                              <span class="icon-signet_ui"></span>
+                              <span>Switch to CoManD-UI</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="grid-small-item">
+                  <h2>Viewport-/Window-Width</h2>
+                  <ul class="box" id="switch_viewport_size_wrapper">
+                      <li id="switch_viewport_size_small" data-viewport-size-min="0" data-viewport-size-max="599"><span class="icon-device_smartphone" title="Small"></span><span>0px-599px</span></li>
+                      <li id="switch_viewport_size_medium" data-viewport-size-min="600" data-viewport-size-max="1023"><span class="icon-device_tablet" title="Medium"></span><span>600px-1023px</span></li>
+                      <li id="switch_viewport_size_large" data-viewport-size-min="1024" data-viewport-size-max="1280"><span class="icon-device_laptop" title="Large"></span><span>1024px-1280px</span></li>
+                      <li id="switch_viewport_size_full" data-viewport-size-min="1281" data-viewport-size-max="4000"><span class="icon-device_desktop" title="Extra large"></span><span>larger than 1280px</span></li>
+                  </ul>
+              </div>
+              <div class="grid-small-item" id="download_wrapper">
+                  <h2>Download CoManD-Frontend* for free</h2>
+                  <div class="center">
+                      <div class="box download center">
+                          <a class="button" id="button_download" href="http://www.comand-cms.com/update/download/frontend/CMD_Frontend.zip"><span class="icon-download"></span><span>Download</span></a>
+                          <small><sup>*</sup>includes: this html-demopage, framework-css, demo images</small>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <a href="" class="link-icon" id="toggle_header_options"><span class="icon-arrow_close"></span><span>Toggle header section visibility</span></a>
+      </header>
+  </div-->
+  <main id="content">
+    <!--div class="width-limitation-wrapper" id="introduction">
+        <section>
+            <h2 class="headline-demopage">Introduction</h2>
+            <p>
+                CoMand-Frontend is a clean frontend-framework which does not use/require JavaScript.
+                (Only this demo page does (i.e. to toggle visibility of elements).)
+                It uses semantic correct HTML and pure CSS, so it is compatible with any project you want to use it in.
+                The framework.css itself may not be edited to ensure compatibility with further updates. Add custom css-files to overwrite setting if required.
+                The frontend-framework can be installed by <em>"npm install comand-frontend-framework</em>
+                Beside default behaviours and styles for typography and rich media, the frontend-framework already
+                contains styled user-interface elements, a flexible and responsive grid and a free to use iconfont.
+                Nevertheless, it does not require a lot of CSS (compared to other frontend-frameworks)
+                to improve performance.
+            </p>
+            <div class="grid-container-auto-columns">
+                <div class="box">
+                    <h3 class="headline-demopage">Problem or "Why do we need another frontend framework?"</h3>
                     <p>
-                        CoMand-Frontend is a clean frontend-framework which does not use/require JavaScript.
-                        (Only this demo page does (i.e. to toggle visibility of elements).)
-                        It uses semantic correct HTML and pure CSS, so it is compatible with any project you want to use it in.
-                        The framework.css itself may not be edited to ensure compatibility with further updates. Add custom css-files to overwrite setting if required.
-                        The frontend-framework can be installed by <em>"npm install comand-frontend-framework</em>
-                        Beside default behaviours and styles for typography and rich media, the frontend-framework already
-                        contains styled user-interface elements, a flexible and responsive grid and a free to use iconfont.
-                        Nevertheless, it does not require a lot of CSS (compared to other frontend-frameworks)
-                        to improve performance.
+                        If you want to use a quick, evitable responsive frontend-framework and you do not care about qualitative,
+                        flexible and state of the art HTML- and CSS-Code, any framework can be used. <br />
+                        But if you think your code (and so your entire project) should be clean, real responsive, most flexible,
+                        valid, easy to edit and it should use non-redundant, accessible and search engine optimized source code,
+                        you need a more professional solution than a common framework.
                     </p>
-                    <div class="grid-container-auto-columns">
-                        <div class="box">
-                            <h3 class="headline-demopage">Problem or "Why do we need another frontend framework?"</h3>
-                            <p>
-                                If you want to use a quick, evitable responsive frontend-framework and you do not care about qualitative,
-                                flexible and state of the art HTML- and CSS-Code, any framework can be used. <br />
-                                But if you think your code (and so your entire project) should be clean, real responsive, most flexible,
-                                valid, easy to edit and it should use non-redundant, accessible and search engine optimized source code,
-                                you need a more professional solution than a common framework.
-                            </p>
-                            <p><strong>The disadvantages of common frameworks are:</strong></p>
-                            <ul>
-                                <li>No valid use of HTML</li>
-                                <li>No valid use of CSS</li>
-                                <li>No up-to-date HTML/CSS</li>
-                                <li>Bloated HTML-/CSS-sourcecode</li>
-                                <li>Being not semantic correct</li>
-                                <li>Being not accessible</li>
-                                <li>Not SEO friendly</li>
-                                <li>No support for Flexbox or CSS-Grid</li>
-                                <li>To many redundant declarations</li>
-                                <li>Unnecessary nesting of containers</li>
-                                <li>Usage of far to much classes and IDs</li>
-                                <li>No strict separation between structure and design</li>
-                                <li>Still using old units for measurements (i.e. px)</li>
-                                <li>No support for multiple iconfonts</li>
-                                <li>a.m.m.</li>
-                            </ul>
-                        </div>
-                        <div class="box">
-                            <h3 class="headline-demopage">Solution or "Reasons for a real responsive frontend-framework!"</h3>
-                            <p>There is only one solution to avoid the mentioned problems in each project again and again
-                                - start with a new clean framework, which follows (best possible) all rules mentioned before.
-                            </p>
-                            <p><strong>The advantages of CoManD-Frontend-Framework are:</strong></p>
-                            <ul>
-                                <li>Can be combined with any other frontend technology (SCSS, JS, jQuery, Vue a.m.m.)</li>
-                                <li>Valid HTML (even XHTML) and CSS-sourcecode</li>
-                                <li>The HTML-structure is reduced as far as possible without being unflexible</li>
-                                <li>Usage of recent, relative units for measurements (i.e. rem, vw, vh)</li>
-                                <li>No fixed width and heights</li>
-                                <li>normalize.css already included to fix cross-browser issues</li>
-                                <li>The grid is already responsive concerning screen-resolution</li>
-                                <li>HTML is semantic correct</li>
-                                <li>HTML is accessible</li>
-                                <li>HTML is SEO friendly</li>
-                                <li>CSS variables were used</li>
-                                <li>Support for Flexbox and CSS-Grid</li>
-                                <li>Strict separation between structure and design</li>
-                                <li>As less as possible classes and IDs were used without being unflexible</li>
-                                <li>Multiple iconfonts are supported</li>
-                                <li>a.m.m.</li>
-                            </ul>
-                        </div>
-                        <div class="box">
-                            <h2>Comparison</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Bootstrap (v3.3.6)</th>
-                                        <th>CoManD-Frontend (v3.x)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>HTML5 valid</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>CSS valid</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>XHTML (transitional) valid</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Usage of normalize.css</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Semantic correct HTML</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Usage of recent units <br />(i.e. rem, vh, vw)</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Can handle Flexbox</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Can handle CSS-Grid</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Icon-font separated <br />(and exchangeable)</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Still usage of obsolete vendor-prefixes</td>
-                                        <td><span class="icon-cancel"></span></td>
-                                        <td><span class="icon-check"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Font-size declarations</td>
-                                        <td>64</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Usage of !important-rules</td>
-                                        <td>66</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CSS code lines</td>
-                                        <td>6760<br /> (no blank lines)</td>
-                                        <td>1694<br /> (incl. blank lines)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CSS file size</td>
-                                        <td>143 KB</td>
-                                        <td>50 KB</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-            </div-->
-
-            <!--div class="width-limitation-wrapper" id="table_of_contents">
-                <section>
-                    <h2 class="headline-demopage">Table of contents</h2>
-                    <h3 class="headline-demopage"><a href="#anchor-typography">Typography</a></h3>
+                    <p><strong>The disadvantages of common frameworks are:</strong></p>
                     <ul>
-                        <li><a class="link-icon" href="#anchor-headlines"><span class="icon-headlines"></span><span>Headlines</span></a></li>
-                        <li><a class="link-icon" href="#anchor-paragraphs"><span class="icon-parapgraph"></span><span>Paragraphs</span></a></li>
-                        <li><a class="link-icon" href="#anchor-lists"><span class="icon-list"></span><span>Lists</span></a></li>
-                        <li><a class="link-icon" href="#anchor-miscellaneous"><span class="icon-text"></span><span>Miscellaneous Typo</span></a></li>
-                        <li><a class="link-icon" href="#anchor-boxes"><span class="icon-box"></span><span>Boxes</span></a></li>
-                        <li><a class="link-icon" href="#anchor-tables"><span class="icon-table"></span><span>Tables</span></a></li>
+                        <li>No valid use of HTML</li>
+                        <li>No valid use of CSS</li>
+                        <li>No up-to-date HTML/CSS</li>
+                        <li>Bloated HTML-/CSS-sourcecode</li>
+                        <li>Being not semantic correct</li>
+                        <li>Being not accessible</li>
+                        <li>Not SEO friendly</li>
+                        <li>No support for Flexbox or CSS-Grid</li>
+                        <li>To many redundant declarations</li>
+                        <li>Unnecessary nesting of containers</li>
+                        <li>Usage of far to much classes and IDs</li>
+                        <li>No strict separation between structure and design</li>
+                        <li>Still using old units for measurements (i.e. px)</li>
+                        <li>No support for multiple iconfonts</li>
+                        <li>a.m.m.</li>
                     </ul>
-
-                    <h3 class="headline-demopage"><a href="#anchor-userinterface">User Interface</a></h3>
+                </div>
+                <div class="box">
+                    <h3 class="headline-demopage">Solution or "Reasons for a real responsive frontend-framework!"</h3>
+                    <p>There is only one solution to avoid the mentioned problems in each project again and again
+                        - start with a new clean framework, which follows (best possible) all rules mentioned before.
+                    </p>
+                    <p><strong>The advantages of CoManD-Frontend-Framework are:</strong></p>
                     <ul>
-                        <li><a class="link-icon" href="#anchor-richmedia"><span class="icon-image"></span><span>RichMedia</span></a></li>
-                        <li><a class="link-icon" href="#anchor-messages"><span class="icon-warning"></span><span>Messages</span></a></li>
-                        <li><a class="link-icon" href="#anchor-buttons"><span class="icon-navigation_entry"></span><span>Buttons</span></a></li>
-                        <li><a class="link-icon" href="#anchor-forms"><span class="icon-form"></span><span>Forms</span></a></li>
+                        <li>Can be combined with any other frontend technology (SCSS, JS, jQuery, Vue a.m.m.)</li>
+                        <li>Valid HTML (even XHTML) and CSS-sourcecode</li>
+                        <li>The HTML-structure is reduced as far as possible without being unflexible</li>
+                        <li>Usage of recent, relative units for measurements (i.e. rem, vw, vh)</li>
+                        <li>No fixed width and heights</li>
+                        <li>normalize.css already included to fix cross-browser issues</li>
+                        <li>The grid is already responsive concerning screen-resolution</li>
+                        <li>HTML is semantic correct</li>
+                        <li>HTML is accessible</li>
+                        <li>HTML is SEO friendly</li>
+                        <li>CSS variables were used</li>
+                        <li>Support for Flexbox and CSS-Grid</li>
+                        <li>Strict separation between structure and design</li>
+                        <li>As less as possible classes and IDs were used without being unflexible</li>
+                        <li>Multiple iconfonts are supported</li>
+                        <li>a.m.m.</li>
                     </ul>
-                    <h3 class="headline-demopage"><a href="">Miscellaneous</a></h3>
-                    <ul>
-                        <li><a class="link-icon" href="#anchor-grids"><span class="icon-grid"></span><span>Grid</span></a></li>
-                        <li><a class="link-icon" href="#anchor-iconfont"><span class="icon-iconfont"></span><span>Iconfont</span></a></li>
-                    </ul>
-                </section>
-            </div-->
-
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-typography"></a>
-                    <h2 class="headline-demopage">Typography</h2>
-
-                    <a id="anchor-headlines"></a>
-                    <h3 class="headline-demopage">Headlines</h3>
-                    <h1>Headline 1</h1>
-
-                    <h2>Headline 2</h2>
-
-                    <h3>Headline 3</h3>
-
-                    <h4>Headline 4</h4>
-
-                    <h5>Headline 5</h5>
-
-                    <h6>Headline 6</h6>
-
-                    <a id="anchor-paragraphs"></a>
-                    <h3 class="headline-demopage">Paragraphs (continuous text)</h3>
-                    <p>This is a short paragpaph</p>
-                    <p>This is continous text within a paragraph with text-align left (which is default). Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-                    <p class="text-align_justify">This is continous text within a paragraph with text-align justify. Longer texts should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
-
-                    <a id="anchor-lists"></a>
-                    <h3 class="headline-demopage">Lists</h3>
-                    <h4>Unordered List</h4>
-                    <ul>
-                        <li>List item</li>
-                        <li>List item
-                            <ul>
-                                <li>
-                                    List item level 2<br />
-                                    with more than line
-                                </li>
-                                <li>List item level 2</li>
-                            </ul>
-                        </li>
-                        <li>List item</li>
-                    </ul>
-                    <h4>Ordered List</h4>
-                    <ol>
-                        <li>List item</li>
-                        <li>List item
-                            <ul>
-                                <li>List item level 2</li>
-                                <li>List item level 2</li>
-                            </ul>
-                        </li>
-                        <li>List item</li>
-                    </ol>
-                    <h4>Definition List</h4>
-                    <dl>
-                        <dt>Definition term:</dt><dd>Definition data</dd>
-                        <dt>Definition term:</dt><dd>Definition data</dd>
-                        <dt>Definition term:</dt><dd>Definition data</dd>
-                    </dl>
-                    <h4>Hyperlinks</h4>
-                    <a href="#">Hyperlink</a>
-                    <hr />
-                    <a id="anchor-miscellaneous"></a>
-                    <h3 class="headline-demopage">Miscellaneous Typo</h3>
-                    <h4>Emphasized</h4>
-                    <p><em>Emphasized text</em></p>
-                    <h4>Strong</h4>
-                    <p><strong>Strong text</strong></p>
-                    <h4>Superior/Subscript</h4>
-                    <p>text<sup>superior</sup></p>
-                    <p>text<sub>subscript</sub></p>
-                    <h4>Small text</h4>
-                    <small>Small text</small>
-                    <h4>Horizontal row</h4>
-                    <hr />
-                </section>
-            </div>
-
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-tables"></a>
-                    <h2 class="headline-demopage">Tables</h2>
-                    <!--p>
-                        <a href="#" id="toggle_stretch_table" title="(add/remove class 'full-width')">Toggle stretched table</a>
-                    </p-->
-                    <div class="table-wrapper">
-                        <table class="full-width">
-                            <caption>Tablecaption</caption>
-                            <thead>
+                </div>
+                <div class="box">
+                    <h2>Comparison</h2>
+                    <table>
+                        <thead>
                             <tr>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
-                                <th>Table head</th>
+                                <th>Category</th>
+                                <th>Bootstrap (v3.3.6)</th>
+                                <th>CoManD-Frontend (v3.x)</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             <tr>
-                                <td>Table data (default-align)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                            </tr>
-                            <tr class="highlighted">
-                                <td>Table data (default-align)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
+                                <td>HTML5 valid</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
                             </tr>
                             <tr>
-                                <td>Table data (default-align)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
+                                <td>CSS valid</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
                             </tr>
                             <tr>
-                                <td class="nowrap">Table data (nowrap)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td class="highlighted">cell (highlighted)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
+                                <td>XHTML (transitional) valid</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
                             </tr>
                             <tr>
-                                <td>Table data (default-align)</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
-                                <td>Table data</td>
+                                <td>Usage of normalize.css</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <pre><code class="html"></code></pre>
-                </section>
+                            <tr>
+                                <td>Semantic correct HTML</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Usage of recent units <br />(i.e. rem, vh, vw)</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Can handle Flexbox</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Can handle CSS-Grid</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Icon-font separated <br />(and exchangeable)</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Still usage of obsolete vendor-prefixes</td>
+                                <td><span class="icon-cancel"></span></td>
+                                <td><span class="icon-check"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Font-size declarations</td>
+                                <td>64</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>Usage of !important-rules</td>
+                                <td>66</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td>CSS code lines</td>
+                                <td>6760<br /> (no blank lines)</td>
+                                <td>1694<br /> (incl. blank lines)</td>
+                            </tr>
+                            <tr>
+                                <td>CSS file size</td>
+                                <td>143 KB</td>
+                                <td>50 KB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </section>
+    </div-->
 
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-boxes"></a>
-                    <h2 class="headline-demopage">Boxes</h2>
-                    <h3>Simple Box</h3>
-                    <!-- simple box -->
-                    <div class="box">
-                        <p>
-                            A simple box is just a &lt;div&gt; with class="box" that sets default padding-, background- and border-style. The box can contain anything. Though the box is a block-element the default width of the box is 100% of its parent.
-                        </p>
-                    </div>
+    <!--div class="width-limitation-wrapper" id="table_of_contents">
+        <section>
+            <h2 class="headline-demopage">Table of contents</h2>
+            <h3 class="headline-demopage"><a href="#anchor-typography">Typography</a></h3>
+            <ul>
+                <li><a class="link-icon" href="#anchor-headlines"><span class="icon-headlines"></span><span>Headlines</span></a></li>
+                <li><a class="link-icon" href="#anchor-paragraphs"><span class="icon-parapgraph"></span><span>Paragraphs</span></a></li>
+                <li><a class="link-icon" href="#anchor-lists"><span class="icon-list"></span><span>Lists</span></a></li>
+                <li><a class="link-icon" href="#anchor-miscellaneous"><span class="icon-text"></span><span>Miscellaneous Typo</span></a></li>
+                <li><a class="link-icon" href="#anchor-boxes"><span class="icon-box"></span><span>Boxes</span></a></li>
+                <li><a class="link-icon" href="#anchor-tables"><span class="icon-table"></span><span>Tables</span></a></li>
+            </ul>
 
-                    <h3>Stretched boxes with different content</h3>
-                    <div class="flex-container">
-                        <div class="box">
-                            <p>This box (and its siblings) are grid-items, because their parent is defined as a grid-container by using "display: grid."</p>
-                        </div>
-                        <div class="box">
-                            <p>All boxes/grid-items have the same height (height of the heighest sibling) by default. So no fixed height or JavaScript is necessary.</p>
-                        </div>
-                        <div class="box">
-                            <p>
-                                The default width of all grid-items would be different relating to their individual content. By defining the width of each item as 1 fraction and defining auto-fit (by using (grid-template-columns: repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched equaly.<br />
-                                Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not have to set margins for the space between the boxes, because you can define a specific gap (i.e.: 2rem), which is used horizontally and vertically.
-                            </p>
-                            <p>
-                                <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the grid!
-                            </p>
-                        </div>
-                        <div class="box">
-                            <div>
-                              <h4>Box with headline</h4>
-                            </div>
-                            <div class="box-body">
-                                <p>
-                                    The default width of all grid-items would be different relating to their individual content. By defining the width of each item as 1 fraction and defining auto-fit (by using (grid-template-columns: repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched equaly.<br />
-                                    Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not have to set margins for the space between the boxes, because you can define a specific gap (i.e.: 2rem), which is used horizontally and vertically.
-                                </p>
-                                <p>
-                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the grid!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <h3 class="headline-demopage"><a href="#anchor-userinterface">User Interface</a></h3>
+            <ul>
+                <li><a class="link-icon" href="#anchor-richmedia"><span class="icon-image"></span><span>RichMedia</span></a></li>
+                <li><a class="link-icon" href="#anchor-messages"><span class="icon-warning"></span><span>Messages</span></a></li>
+                <li><a class="link-icon" href="#anchor-buttons"><span class="icon-navigation_entry"></span><span>Buttons</span></a></li>
+                <li><a class="link-icon" href="#anchor-forms"><span class="icon-form"></span><span>Forms</span></a></li>
+            </ul>
+            <h3 class="headline-demopage"><a href="">Miscellaneous</a></h3>
+            <ul>
+                <li><a class="link-icon" href="#anchor-grids"><span class="icon-grid"></span><span>Grid</span></a></li>
+                <li><a class="link-icon" href="#anchor-iconfont"><span class="icon-iconfont"></span><span>Iconfont</span></a></li>
+            </ul>
+        </section>
+    </div-->
 
-                    <h3>Boxes with centered content</h3>
-                    <div class="grid-container-auto-columns" id="demopage-boxes">
-                        <div class="box center-content">
-                            <div>
-                                <p>Centered inside <strong>block-element</strong></p>
-                            </div>
-                        </div>
-                        <div class="box center-content flex-container">
-                            <div>
-                                <p>Centered inside <strong>flex-container</strong></p>
-                            </div>
-                        </div>
-                        <div class="box center-content grid-container">
-                            <div>
-                                <p>Centered inside <strong>grid-container</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-typography"></a>
+        <h2 class="headline-demopage">Typography</h2>
+
+        <a id="anchor-headlines"></a>
+        <h3 class="headline-demopage">Headlines</h3>
+        <h1>Headline 1</h1>
+
+        <h2>Headline 2</h2>
+
+        <h3>Headline 3</h3>
+
+        <h4>Headline 4</h4>
+
+        <h5>Headline 5</h5>
+
+        <h6>Headline 6</h6>
+
+        <a id="anchor-paragraphs"></a>
+        <h3 class="headline-demopage">Paragraphs (continuous text)</h3>
+        <p>This is a short paragpaph</p>
+        <p>This is continous text within a paragraph with text-align left (which is default). Longer texts should always
+          be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;, &lt;a&gt;, &lt;span&gt;,
+          &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding &lt;p&gt;-tag is not
+          allowed. It should be also avoided to place to &lt;br /&gt; after each other (use a &lt;p&gt; instead),
+          because another paragraph is required if you want to create a blank line (which is no real line, but a
+          margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
+        <p class="text-align_justify">This is continous text within a paragraph with text-align justify. Longer texts
+          should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;,
+          &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a
+          surrounding &lt;p&gt;-tag is not allowed. It should be also avoided to place to &lt;br /&gt; after each other
+          (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is
+          no real line, but a margin). Of course a paragprah may not contain tags for headlines, tables or forms.</p>
+
+        <a id="anchor-lists"></a>
+        <h3 class="headline-demopage">Lists</h3>
+        <h4>Unordered List</h4>
+        <ul>
+          <li>List item</li>
+          <li>List item
+            <ul>
+              <li>
+                List item level 2<br/>
+                with more than line
+              </li>
+              <li>List item level 2</li>
+            </ul>
+          </li>
+          <li>List item</li>
+        </ul>
+        <h4>Ordered List</h4>
+        <ol>
+          <li>List item</li>
+          <li>List item
+            <ul>
+              <li>List item level 2</li>
+              <li>List item level 2</li>
+            </ul>
+          </li>
+          <li>List item</li>
+        </ol>
+        <h4>Definition List</h4>
+        <dl>
+          <dt>Definition term:</dt>
+          <dd>Definition data</dd>
+          <dt>Definition term:</dt>
+          <dd>Definition data</dd>
+          <dt>Definition term:</dt>
+          <dd>Definition data</dd>
+        </dl>
+        <h4>Hyperlinks</h4>
+        <a href="#">Hyperlink</a>
+        <hr/>
+        <a id="anchor-miscellaneous"></a>
+        <h3 class="headline-demopage">Miscellaneous Typo</h3>
+        <h4>Emphasized</h4>
+        <p><em>Emphasized text</em></p>
+        <h4>Strong</h4>
+        <p><strong>Strong text</strong></p>
+        <h4>Superior/Subscript</h4>
+        <p>text<sup>superior</sup></p>
+        <p>text<sub>subscript</sub></p>
+        <h4>Small text</h4>
+        <small>Small text</small>
+        <h4>Horizontal row</h4>
+        <hr/>
+      </section>
+    </div>
+
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-tables"></a>
+        <h2 class="headline-demopage">Tables</h2>
+        <!--p>
+            <a href="#" id="toggle_stretch_table" title="(add/remove class 'full-width')">Toggle stretched table</a>
+        </p-->
+        <div class="table-wrapper">
+          <table class="full-width">
+            <caption>Tablecaption</caption>
+            <thead>
+            <tr>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+              <th>Table head</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Table data (default-align)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr class="highlighted">
+              <td>Table data (default-align)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data (default-align)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td class="nowrap">Table data (nowrap)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td class="highlighted">cell (highlighted)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            <tr>
+              <td>Table data (default-align)</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+              <td>Table data</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <pre><code class="html"></code></pre>
+      </section>
+    </div>
+
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-boxes"></a>
+        <h2 class="headline-demopage">Boxes</h2>
+        <h3>Simple Box</h3>
+        <!-- simple box -->
+        <div class="box">
+          <p>
+            A simple box is just a &lt;div&gt; with class="box" that sets default padding-, background- and
+            border-style. The box can contain anything. Though the box is a block-element the default width of the box
+            is 100% of its parent.
+          </p>
+        </div>
+
+        <h3>Stretched boxes with different content</h3>
+        <div class="flex-container">
+          <div class="box">
+            <p>This box (and its siblings) are grid-items, because their parent is defined as a grid-container by using
+              "display: grid."</p>
+          </div>
+          <div class="box">
+            <p>All boxes/grid-items have the same height (height of the heighest sibling) by default. So no fixed height
+              or JavaScript is necessary.</p>
+          </div>
+          <div class="box">
+            <p>
+              The default width of all grid-items would be different relating to their individual content. By defining
+              the width of each item as 1 fraction and defining auto-fit (by using (grid-template-columns:
+              repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched equaly.<br/>
+              Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not have to set margins for
+              the space between the boxes, because you can define a specific gap (i.e.: 2rem), which is used
+              horizontally and vertically.
+            </p>
+            <p>
+              <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the
+              grid!
+            </p>
+          </div>
+          <div class="box">
+            <div>
+              <h4>Box with headline</h4>
             </div>
-
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-richmedia"></a>
-                    <h2 class="headline-demopage">RichMedia</h2>
-                    <h3 class="headline-demopage">Images</h3>
-                    <div class="flex-container" id="richmedia-wrapper">
-                        <figure>
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Simple image" />
-                        </figure>
-                        <a href="#">
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with surrounding link" />
-                        </a>
-                        <figure>
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption below" />
-                            <figcaption>Caption below image</figcaption>
-                        </figure>
-                        <figure>
-                            <figcaption>Caption above image</figcaption>
-                            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption above" />
-                        </figure>
-                    </div>
-                </section>
+            <div class="box-body">
+              <p>
+                The default width of all grid-items would be different relating to their individual content. By defining
+                the width of each item as 1 fraction and defining auto-fit (by using (grid-template-columns:
+                repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched equaly.<br/>
+                Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not have to set margins for
+                the space between the boxes, because you can define a specific gap (i.e.: 2rem), which is used
+                horizontally and vertically.
+              </p>
+              <p>
+                <strong>Attention:</strong> Do not use fixed widths or heights, because it causes problems to handle the
+                grid!
+              </p>
             </div>
+          </div>
+        </div>
 
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-userinterface"></a>
-                    <h2 class="headline-demopage">User Interface</h2>
-                    <a id="anchor-messages"></a>
-                    <h3 class="headline-demopage">System messages</h3>
-<!--                    <p>-->
-<!--                        <a href="#" id="toggle-stretch-messages" title="(add/remove class 'full-width')">Toggle stretched messages</a>-->
-<!--                    </p>-->
-                    <div class="system-message error full-width">
-                        <h4><span class="icon-cancel"></span><span>Error message</span></h4>
-                    </div>
-                    <div class="system-message warning full-width">
-                        <h4><span class="icon-warning"></span><span>Warning message</span></h4>
-                    </div>
-                    <div class="system-message success full-width">
-                        <h4><span class="icon-check"></span><span>Success message</span></h4>
-                    </div>
-                    <div class="system-message info full-width">
-                        <h4><span class="icon-info"></span><span>Info message</span></h4>
-                    </div>
-
-                    <a id="anchor-buttons"></a>
-                    <h3 class="headline-demopage">Buttons</h3>
-                    <h4>Button types</h4>
-                    <div class="button-wrapper">
-                        <a href="#" class="button"><span>Default button using a-tag</span></a>
-                        <button class="button"><span>Default button using button-tag</span></button>
-                        <a href="#" class="button primary"><span>Primary button using a-tag</span></a>
-                        <button class="button primary"><span>Primary button using button-tag</span></button>
-                    </div>
-                    <h4>&lt;a&gt;-tags as buttons (using class="button") aligned left</h4>
-                    <div class="button-wrapper align-left">
-                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
-                        <a class="button" href="#"><span>Button with label-text only</span></a>
-                        <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
-                    </div>
-
-                    <h4>&lt;button&gt;-tags (for forms) aligned right</h4>
-                    <div class="button-wrapper align-right">
-                        <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span></button>
-                        <button>Button with label-text only</button>
-                        <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></button>
-                    </div>
-
-                    <h4>Buttons with no gap (centered)</h4>
-                    <div class="button-wrapper align-center">
-                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
-                        <a class="button" href="#">Button with label-text only</a>
-                        <a class="button" href="#"><span>Button with icon and label-text within a-tag</span><span class="icon-check"></span></a>
-                    </div>
-
-                    <h4>Buttons (space-between)</h4>
-                    <div class="button-wrapper space-between">
-                        <a class="button" href="#"><span class="icon-register"></span><span class="hidden">Hidden label-text</span></a>
-                        <a class="button" href="#">Button with label-text only</a>
-                        <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
-                    </div>
-
-                    <h4>Disabled buttons</h4>
-                    <div class="button-wrapper">
-                        <a class="button disabled" href="#">
-                            <span class="icon-register"></span>
-                            <span>A-tag with class "disabled"</span>
-                        </a>
-                        <button class="button disabled">
-                            <span class="icon-register"></span>
-                            <span>Button with class "disabled"</span>
-                        </button>
-                        <button class="button" disabled="disabled">
-                            <span class="icon-register"></span>
-                            <span>Button with attribute "disabled"</span>
-                        </button>
-                    </div>
-                </section>
+        <h3>Boxes with centered content</h3>
+        <div class="grid-container-auto-columns" id="demopage-boxes">
+          <div class="box center-content">
+            <div>
+              <p>Centered inside <strong>block-element</strong></p>
             </div>
+          </div>
+          <div class="box center-content flex-container">
+            <div>
+              <p>Centered inside <strong>flex-container</strong></p>
+            </div>
+          </div>
+          <div class="box center-content grid-container">
+            <div>
+              <p>Centered inside <strong>grid-container</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-forms"></a>
-                    <h2 class="headline-demopage">Forms</h2>
-                    <h3>Native form elements (fieldset with grid-container)</h3>
-                    <form method="post" novalidate="novalidate">
-                        <fieldset class="grid-container-create-column">
-                            <legend>Legend</legend>
-                            <div class="label">
-                                <span>Enter dates:</span>
-                                <span class="flex-container no-flex">
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-richmedia"></a>
+        <h2 class="headline-demopage">RichMedia</h2>
+        <h3 class="headline-demopage">Images</h3>
+        <div class="flex-container" id="richmedia-wrapper">
+          <figure>
+            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Simple image"/>
+          </figure>
+          <a href="#">
+            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with surrounding link"/>
+          </a>
+          <figure>
+            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption below"/>
+            <figcaption>Caption below image</figcaption>
+          </figure>
+          <figure>
+            <figcaption>Caption above image</figcaption>
+            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption above"/>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-userinterface"></a>
+        <h2 class="headline-demopage">User Interface</h2>
+        <a id="anchor-messages"></a>
+        <h3 class="headline-demopage">System messages</h3>
+        <!--                    <p>-->
+        <!--                        <a href="#" id="toggle-stretch-messages" title="(add/remove class 'full-width')">Toggle stretched messages</a>-->
+        <!--                    </p>-->
+        <div class="system-message error full-width">
+          <h4><span class="icon-cancel"></span><span>Error message</span></h4>
+        </div>
+        <div class="system-message warning full-width">
+          <h4><span class="icon-warning"></span><span>Warning message</span></h4>
+        </div>
+        <div class="system-message success full-width">
+          <h4><span class="icon-check"></span><span>Success message</span></h4>
+        </div>
+        <div class="system-message info full-width">
+          <h4><span class="icon-info"></span><span>Info message</span></h4>
+        </div>
+
+        <a id="anchor-buttons"></a>
+        <h3 class="headline-demopage">Buttons</h3>
+        <h4>Button types</h4>
+        <div class="button-wrapper">
+          <a href="#" class="button"><span>Default button using a-tag</span></a>
+          <button class="button"><span>Default button using button-tag</span></button>
+          <a href="#" class="button primary"><span>Primary button using a-tag</span></a>
+          <button class="button primary"><span>Primary button using button-tag</span></button>
+        </div>
+        <h4>&lt;a&gt;-tags as buttons (using class="button") aligned left</h4>
+        <div class="button-wrapper align-left">
+          <a class="button" href="#"><span class="icon-register"></span><span
+                  class="hidden">Hidden label-text</span></a>
+          <a class="button" href="#"><span>Button with label-text only</span></a>
+          <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+        </div>
+
+        <h4>&lt;button&gt;-tags (for forms) aligned right</h4>
+        <div class="button-wrapper align-right">
+          <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span></button>
+          <button>Button with label-text only</button>
+          <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></button>
+        </div>
+
+        <h4>Buttons with no gap (centered)</h4>
+        <div class="button-wrapper align-center">
+          <a class="button" href="#"><span class="icon-register"></span><span
+                  class="hidden">Hidden label-text</span></a>
+          <a class="button" href="#">Button with label-text only</a>
+          <a class="button" href="#"><span>Button with icon and label-text within a-tag</span><span
+                  class="icon-check"></span></a>
+        </div>
+
+        <h4>Buttons (space-between)</h4>
+        <div class="button-wrapper space-between">
+          <a class="button" href="#"><span class="icon-register"></span><span
+                  class="hidden">Hidden label-text</span></a>
+          <a class="button" href="#">Button with label-text only</a>
+          <a class="button" href="#"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+        </div>
+
+        <h4>Disabled buttons</h4>
+        <div class="button-wrapper">
+          <a class="button disabled" href="#">
+            <span class="icon-register"></span>
+            <span>A-tag with class "disabled"</span>
+          </a>
+          <button class="button disabled">
+            <span class="icon-register"></span>
+            <span>Button with class "disabled"</span>
+          </button>
+          <button class="button" disabled="disabled">
+            <span class="icon-register"></span>
+            <span>Button with attribute "disabled"</span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-forms"></a>
+        <h2 class="headline-demopage">Forms</h2>
+        <h3>Native form elements (fieldset with grid-container)</h3>
+        <form method="post" novalidate="novalidate">
+          <fieldset class="grid-container-create-column">
+            <legend>Legend</legend>
+            <div class="label">
+              <span>Enter dates:</span>
+              <span class="flex-container no-flex">
                                     <label class="inline" for="startdate">
                                         <span>Start date:<sup>*</sup></span>
-                                        <input type="date" id="startdate" />
+                                        <input type="date" id="startdate"/>
                                     </label>
                                     <label class="inline" for="enddate">
                                         <span>End date:</span>
-                                        <input type="date" id="enddate" />
+                                        <input type="date" id="enddate"/>
                                     </label>
                                 </span>
-                            </div>
-                            <label for="radiobutton0">
-                                <input name="radiobutton" id="radiobutton0" value="1" checked="checked" type="checkbox" />
-                                <span>Label for single checkbox</span>
-                            </label>
-                            <div class="label">
-                                <span>Label for radiobuttons:</span>
-                                <span class="flex-container no-flex">
+            </div>
+            <label for="radiobutton0">
+              <input name="radiobutton" id="radiobutton0" value="1" checked="checked" type="checkbox"/>
+              <span>Label for single checkbox</span>
+            </label>
+            <div class="label">
+              <span>Label for radiobuttons:</span>
+              <span class="flex-container no-flex">
                                     <label for="radio1">
-                                        <input name="radiogroup" id="radio1" value="1" type="radio" />
+                                        <input name="radiogroup" id="radio1" value="1" type="radio"/>
                                         <span>Radiobutton 1 (default)</span>
                                     </label>
                                     <label for="radio2">
-                                        <input name="radiogroup" id="radio2" value="2" type="radio" checked="checked" />
+                                        <input name="radiogroup" id="radio2" value="2" type="radio" checked="checked"/>
                                         <span>Radiobutton 2 (checked (by default))</span>
                                     </label>
                                     <label for="radio3">
-                                        <input name="radiogroup" id="radio3" value="3" type="radio" disabled="disabled" />
+                                        <input name="radiogroup" id="radio3" value="3" type="radio"
+                                               disabled="disabled"/>
                                         <span>Radiobutton 3 (disabled)</span>
                                     </label>
                                     <label for="radio4">
-                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio" disabled="disabled" checked="checked" />
+                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio"
+                                               disabled="disabled" checked="checked"/>
                                         <span>Radiobutton 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <div class="label">
-                                <span>Label for checkboxes:</span>
-                                <span class="flex-container no-flex">
+            </div>
+            <div class="label">
+              <span>Label for checkboxes:</span>
+              <span class="flex-container no-flex">
                                     <label for="checkbox1">
-                                        <input name="checkbox" id="checkbox1" value="1" type="checkbox" />
+                                        <input name="checkbox" id="checkbox1" value="1" type="checkbox"/>
                                         <span>Checkbox 1 (default)</span>
                                     </label>
                                     <label for="checkbox2">
-                                        <input name="checkbox" id="checkbox2" value="2" type="checkbox" checked="checked"  />
+                                        <input name="checkbox" id="checkbox2" value="2" type="checkbox"
+                                               checked="checked"/>
                                         <span>Checkbox 2 (checked (by default))</span>
                                     </label>
                                     <label for="checkbox3">
-                                        <input name="checkbox" id="checkbox3" value="3" type="checkbox" disabled="disabled" />
+                                        <input name="checkbox" id="checkbox3" value="3" type="checkbox"
+                                               disabled="disabled"/>
                                         <span>Checkbox 3 (disabled)</span>
                                     </label>
                                     <label for="checkbox4">
-                                        <input name="checkbox" id="checkbox4" value="4" type="checkbox" disabled="disabled" checked="checked" />
+                                        <input name="checkbox" id="checkbox4" value="4" type="checkbox"
+                                               disabled="disabled" checked="checked"/>
                                         <span>Checkbox 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <div class="flex-container">
-                                <label for="textfield1">
-                                    <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
-                                    <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text" />
-                                </label>
-                                <label for="textfield_disabled">
-                                    <span>Label for (disabled) textfield:</span>
-                                    <input name="textfield" id="textfield_disabled" placeholder="Placeholdertext for (disabled) textfield" type="text" disabled="disabled" title="tooltip" />
-                                </label>
-                                <label for="searchfield">
-                                    <span>Label for searchfield:</span>
-                                    <span class="input-wrapper">
-                                        <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search" />
+            </div>
+            <div class="flex-container">
+              <label for="textfield1">
+                <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
+                <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text"/>
+              </label>
+              <label for="textfield_disabled">
+                <span>Label for (disabled) textfield:</span>
+                <input name="textfield" id="textfield_disabled" placeholder="Placeholdertext for (disabled) textfield"
+                       type="text" disabled="disabled" title="tooltip"/>
+              </label>
+              <label for="searchfield">
+                <span>Label for searchfield:</span>
+                <span class="input-wrapper">
+                                        <input name="searchfield" id="searchfield" placeholder="Keyword(s)"
+                                               type="search"/>
                                         <a href="#" class="button no-flex"><span class="icon-search"></span></a>
                                     </span>
-                                </label>
-                            </div>
-                            <label class="inline" for="numberfield">
-                                <span>Label for numberfield (inline):</span>
-                                <input name="numberfield" id="numberfield" placeholder="1" type="number" />
-                            </label>
-                            <label class="inline" for="numberfield2">
-                                <span>Label for numberfield with decimal (inline):</span>
-                                <input name="numberfield" id="numberfield2" placeholder="0.0" type="number" step="0.1" />
-                            </label>
-                            <label class="inline" for="colorfield">
-                                <span>Label for colorfield (inline):</span>
-                                <input name="colorfield" id="colorfield" type="color" />
-                            </label>
-                            <label class="inline" for="datefield">
-                                <span>Label for (required) datefield (inline):<sup>*</sup></span>
-                                <input name="datefield" id="datefield" type="date" required="required" />
-                            </label>
-                            <label class="inline" for="rangeslider">
-                                <span>Label for (required) rangeslider (inline):<sup>*</sup></span>
-                                <input name="rangeslider" id="rangeslider" type="range" required="required" />
-                            </label>
-                            <label class="inline" for="rangeslider">
-                                <span>Label for (required and disabled) rangeslider (inline):<sup>*</sup></span>
-                                <input name="rangeslider" id="rangeslider2" type="range" required="required" disabled="disabled" />
-                            </label>
-                            <div class="flex-container">
-                                <div class="label">
-                                    <span>Label for Zip/City (with hidden labels):</span>
-                                    <span class="input-wrapper">
+              </label>
+            </div>
+            <label class="inline" for="numberfield">
+              <span>Label for numberfield (inline):</span>
+              <input name="numberfield" id="numberfield" placeholder="1" type="number"/>
+            </label>
+            <label class="inline" for="numberfield2">
+              <span>Label for numberfield with decimal (inline):</span>
+              <input name="numberfield" id="numberfield2" placeholder="0.0" type="number" step="0.1"/>
+            </label>
+            <label class="inline" for="colorfield">
+              <span>Label for colorfield (inline):</span>
+              <input name="colorfield" id="colorfield" type="color"/>
+            </label>
+            <label class="inline" for="datefield">
+              <span>Label for (required) datefield (inline):<sup>*</sup></span>
+              <input name="datefield" id="datefield" type="date" required="required"/>
+            </label>
+            <label class="inline" for="rangeslider">
+              <span>Label for (required) rangeslider (inline):<sup>*</sup></span>
+              <input name="rangeslider" id="rangeslider" type="range" required="required"/>
+            </label>
+            <label class="inline" for="rangeslider">
+              <span>Label for (required and disabled) rangeslider (inline):<sup>*</sup></span>
+              <input name="rangeslider" id="rangeslider2" type="range" required="required" disabled="disabled"/>
+            </label>
+            <div class="flex-container">
+              <div class="label">
+                <span>Label for Zip/City (with hidden labels):</span>
+                <span class="input-wrapper">
                                         <label for="zip">
                                             <span class="hidden">Zip</span>
-                                            <input name="zip" id="zip" placeholder="12345" type="number" />
+                                            <input name="zip" id="zip" placeholder="12345" type="number"/>
                                         </label>
                                         <label for="city">
                                             <span class="hidden">City</span>
-                                            <input name="city" id="city" placeholder="City" type="text" />
+                                            <input name="city" id="city" placeholder="City" type="text"/>
                                         </label>
                                     </span>
-                                </div>
-                                <label for="selectbox">
-                                    <span>Label for selectbox (required):<sup>*</sup></span>
-                                    <select name="selectbox" id="selectbox" required="required">
-                                        <option>Bitte wählen</option>
-                                        <option value="option1">Option 1</option>
-                                        <option value="option2">Option 2</option>
-                                        <option value="option3">Option 3</option>
-                                    </select>
-                                </label>
-                                <label for="datalist">
-                                    <span>Label for datalist:</span>
-                                    <input type="text" list="options" name="datalist" id="datalist" autocomplete="off" placeholder="Placeholder text for datalist-input" />
-                                    <datalist id="options">
-                                        <option value="Option 1"></option>
-                                        <option value="Option 2"></option>
-                                        <option value="Option 3"></option>
-                                    </datalist>
-                                </label>
-                            </div>
-                            <label class="textarea" for="textarea">
-                                <span>Label for textarea:</span>
-                                <textarea id="textarea" placeholder="Placeholdertext for textarea"></textarea>
-                            </label>
-                        </fieldset>
-                        <div class="button-wrapper align-right">
-                            <input name="submit" id="submit" value="Submitbutton" type="submit" />
-                        </div>
-                    </form>
-                    <h3>Advanced form elements (fieldset with flex-container)</h3>
-                    <form>
-                        <fieldset class="flex-container">
-                            <legend>Legend</legend>
-                            <label for="textfield01">
-                                <span>Label with some Text</span>
-                                <input id="textfield01" placeholder="Placeholder text" type="text" />
-                            </label>
-                            <!-- begin replace input-type-radio -->
-                            <h4>Replaced Input-Type-Radio</h4>
-                            <div class="label inline">
-                                <span>Label for Replaced Input-Type-Radio:</span>
-                                <span class="flex-container no-flex">
+              </div>
+              <label for="selectbox">
+                <span>Label for selectbox (required):<sup>*</sup></span>
+                <select name="selectbox" id="selectbox" required="required">
+                  <option>Bitte wählen</option>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </label>
+              <label for="datalist">
+                <span>Label for datalist:</span>
+                <input type="text" list="options" name="datalist" id="datalist" autocomplete="off"
+                       placeholder="Placeholder text for datalist-input"/>
+                <datalist id="options">
+                  <option value="Option 1"></option>
+                  <option value="Option 2"></option>
+                  <option value="Option 3"></option>
+                </datalist>
+              </label>
+            </div>
+            <label class="textarea" for="textarea">
+              <span>Label for textarea:</span>
+              <textarea id="textarea" placeholder="Placeholdertext for textarea"></textarea>
+            </label>
+          </fieldset>
+          <div class="button-wrapper align-right">
+            <input name="submit" id="submit" value="Submitbutton" type="submit"/>
+          </div>
+        </form>
+        <h3>Advanced form elements (fieldset with flex-container)</h3>
+        <form>
+          <fieldset class="flex-container">
+            <legend>Legend</legend>
+            <label for="textfield01">
+              <span>Label with some Text</span>
+              <input id="textfield01" placeholder="Placeholder text" type="text"/>
+            </label>
+            <!-- begin replace input-type-radio -->
+            <h4>Replaced Input-Type-Radio</h4>
+            <div class="label inline">
+              <span>Label for Replaced Input-Type-Radio:</span>
+              <span class="flex-container no-flex">
                                     <label for="replaced-radio1">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1" />
+                                        <input type="radio" class="replace-input-type" id="replaced-radio1"
+                                               name="radiogroup" value="1"/>
                                         <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label for="replaced-radio2">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio2" name="radiogroup" value="2" checked="checked" />
+                                        <input type="radio" class="replace-input-type" id="replaced-radio2"
+                                               name="radiogroup" value="2" checked="checked"/>
                                         <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label for="replaced-radio3">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio3" name="radiogroup" value="3" disabled="disabled" />
+                                        <input type="radio" class="replace-input-type" id="replaced-radio3"
+                                               name="radiogroup" value="3" disabled="disabled"/>
                                         <span class="label">Label 3 (disabled)</span>
                                     </label>
                                     <label for="replaced-radio4">
-                                        <input type="radio" class="replace-input-type" id="replaced-radio4" name="radiogroup-disabled" value="4" disabled="disabled" checked="checked" />
+                                        <input type="radio" class="replace-input-type" id="replaced-radio4"
+                                               name="radiogroup-disabled" value="4" disabled="disabled"
+                                               checked="checked"/>
                                         <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end replace input-type-radio -->
+            </div>
+            <!-- end replace input-type-radio -->
 
-                            <!-- begin replace-input-type-checkbox -->
-                            <h4>Replaced Input-Type-Checkboxes</h4>
-                            <div class="label inline"><span>Label for Replaced Input-Type-Checkboxes:</span>
-                                <span class="flex-container no-flex">
+            <!-- begin replace-input-type-checkbox -->
+            <h4>Replaced Input-Type-Checkboxes</h4>
+            <div class="label inline"><span>Label for Replaced Input-Type-Checkboxes:</span>
+              <span class="flex-container no-flex">
                                     <label for="replaced-checkbox1">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup" value="1" />
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox1"
+                                               name="checkboxgroup" value="1"/>
                                         <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label for="replaced-checkbox2">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox2" name="checkboxgroup" value="2" checked="checked" />
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox2"
+                                               name="checkboxgroup" value="2" checked="checked"/>
                                         <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label for="replaced-checkbox3">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox3" name="checkboxgroup" value="3" disabled="disabled" />
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox3"
+                                               name="checkboxgroup" value="3" disabled="disabled"/>
                                         <span class="label">Label 3 (disabled)</span>
                                     </label>
                                     <label for="replaced-checkbox4">
-                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox4" name="checkboxgroup" value="4" disabled="disabled" checked="checked" />
+                                        <input type="checkbox" class="replace-input-type" id="replaced-checkbox4"
+                                               name="checkboxgroup" value="4" disabled="disabled" checked="checked"/>
                                         <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end replace-input-type-checkbox -->
+            </div>
+            <!-- end replace-input-type-checkbox -->
 
-                            <hr />
+            <hr/>
 
-                            <!-- begin toggle-switch-radio -->
-                            <h4>Toggle-Switch-Radio</h4>
-                            <div class="label inline">
-                                <span>Label for Toggle-Switch-Radio:</span>
-                                <span class="flex-container no-flex">
+            <!-- begin toggle-switch-radio -->
+            <h4>Toggle-Switch-Radio</h4>
+            <div class="label inline">
+              <span>Label for Toggle-Switch-Radio:</span>
+              <span class="flex-container no-flex">
                                     <label class="toggle-switch" for="radio5">
-                                        <input type="radio" id="radio5" name="radiogroup2" value="1" />
+                                        <input type="radio" id="radio5" name="radiogroup2" value="1"/>
                                         <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label class="toggle-switch" for="radio6">
-                                        <input type="radio" id="radio6" name="radiogroup2" value="2" checked="checked" />
+                                        <input type="radio" id="radio6" name="radiogroup2" value="2" checked="checked"/>
                                         <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label class="toggle-switch" for="radio7">
-                                        <input type="radio" id="radio7" name="radiogroup2" value="3" disabled="disabled" />
+                                        <input type="radio" id="radio7" name="radiogroup2" value="3"
+                                               disabled="disabled"/>
                                         <span class="label">Label 3 (disabled)</span>
                                     </label>
                                     <label class="toggle-switch" for="radio8">
-                                        <input type="radio" id="radio8" name="radiogroup2-disabled" value="3" disabled="disabled" checked="checked" />
+                                        <input type="radio" id="radio8" name="radiogroup2-disabled" value="3"
+                                               disabled="disabled" checked="checked"/>
                                         <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end toggle-switch-radio -->
+            </div>
+            <!-- end toggle-switch-radio -->
 
-                            <!-- begin toggle-switch-checkbox -->
-                            <h4>Toggle-Switch-Checkbox</h4>
-                            <div class="label inline">
-                                <span>Label for Toggle-Switch-Checkbox:</span>
-                                <span class="flex-container no-flex">
+            <!-- begin toggle-switch-checkbox -->
+            <h4>Toggle-Switch-Checkbox</h4>
+            <div class="label inline">
+              <span>Label for Toggle-Switch-Checkbox:</span>
+              <span class="flex-container no-flex">
                                     <label class="toggle-switch" for="checkbox5">
-                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="1" />
+                                        <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="1"/>
                                         <span class="label">Label 1 (default)</span>
                                     </label>
                                     <label class="toggle-switch" for="checkbox6">
-                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="2" checked="checked" />
+                                        <input type="checkbox" id="checkbox6" name="chechboxgroup2" value="2"
+                                               checked="checked"/>
                                         <span class="label">Label 2 (checked (by default))</span>
                                     </label>
                                     <label class="toggle-switch" for="checkbox7">
-                                        <input type="checkbox" id="checkbox7" name="chechboxgroup2" value="3" disabled="disabled" />
+                                        <input type="checkbox" id="checkbox7" name="chechboxgroup2" value="3"
+                                               disabled="disabled"/>
                                         <span class="label">Label 3 (disabled)</span>
                                     </label>
                                     <label class="toggle-switch" for="checkbox8">
-                                        <input type="checkbox" id="checkbox8" name="chechboxgroup2" value="3" disabled="disabled" checked="checked" />
+                                        <input type="checkbox" id="checkbox8" name="chechboxgroup2" value="3"
+                                               disabled="disabled" checked="checked"/>
                                         <span class="label">Label 4 (checked and disabled)</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end toggle-switch-checkbox -->
+            </div>
+            <!-- end toggle-switch-checkbox -->
 
-                            <!-- begin toggle-switch-radio with switch-label -->
-                            <h4>Toggle-Switch-Radio with Switch-Label</h4>
-                            <div class="label inline">
-                                <span>Label for Toggle-Switch-Radio with Switch-Label:</span>
-                                <span class="flex-container no-flex">
-                                    <label class="toggle-switch switch-label" for="toggle-switch-radio1" title="default">
-                                        <input type="radio" id="toggle-switch-radio1" name="radiogroup3" value="1" />
+            <!-- begin toggle-switch-radio with switch-label -->
+            <h4>Toggle-Switch-Radio with Switch-Label</h4>
+            <div class="label inline">
+              <span>Label for Toggle-Switch-Radio with Switch-Label:</span>
+              <span class="flex-container no-flex">
+                                    <label class="toggle-switch switch-label" for="toggle-switch-radio1"
+                                           title="default">
+                                        <input type="radio" id="toggle-switch-radio1" name="radiogroup3" value="1"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label" for="toggle-switch-radio2" title="checked (by default)">
-                                        <input type="radio" id="toggle-switch-radio2" name="radiogroup3" value="2"  checked="checked" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-radio2"
+                                           title="checked (by default)">
+                                        <input type="radio" id="toggle-switch-radio2" name="radiogroup3" value="2"
+                                               checked="checked"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio3" title="disabled">
-                                        <input type="radio" id="toggle-switch-radio3" name="radiogroup3" value="3" disabled="disabled" />
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio3"
+                                           title="disabled">
+                                        <input type="radio" id="toggle-switch-radio3" name="radiogroup3" value="3"
+                                               disabled="disabled"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio4" title="checked and disabled">
-                                        <input type="radio" id="toggle-switch-radio4" name="radiogroup4" value="4" disabled="disabled" checked="checked" />
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-radio4"
+                                           title="checked and disabled">
+                                        <input type="radio" id="toggle-switch-radio4" name="radiogroup4" value="4"
+                                               disabled="disabled" checked="checked"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end toggle-switch-radio with switch-label -->
+            </div>
+            <!-- end toggle-switch-radio with switch-label -->
 
-                            <!-- begin toggle-switch-checkbox with switch-label -->
-                            <h4>Toggle-Switch-Checkbox with Switch-Label</h4>
-                            <div class="label inline">
-                                <span>Label for Toggle-Switch-Checkbox with Switch-Label:</span>
-                                <span class="flex-container no-flex">
-                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox1" title="default">
-                                        <input type="checkbox" id="toggle-switch-checkbox1" name="chechboxgroup3" value="1" />
+            <!-- begin toggle-switch-checkbox with switch-label -->
+            <h4>Toggle-Switch-Checkbox with Switch-Label</h4>
+            <div class="label inline">
+              <span>Label for Toggle-Switch-Checkbox with Switch-Label:</span>
+              <span class="flex-container no-flex">
+                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox1"
+                                           title="default">
+                                        <input type="checkbox" id="toggle-switch-checkbox1" name="chechboxgroup3"
+                                               value="1"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox2" title="checked (by default)">
-                                        <input type="checkbox" id="toggle-switch-checkbox2" name="chechboxgroup3" value="2" checked="checked" />
+                                    <label class="toggle-switch switch-label" for="toggle-switch-checkbox2"
+                                           title="checked (by default)">
+                                        <input type="checkbox" id="toggle-switch-checkbox2" name="chechboxgroup3"
+                                               value="2" checked="checked"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox3" title="disabled">
-                                        <input type="checkbox" id="toggle-switch-checkbox3" name="chechboxgroup3" value="3" disabled="disabled" />
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox3"
+                                           title="disabled">
+                                        <input type="checkbox" id="toggle-switch-checkbox3" name="chechboxgroup3"
+                                               value="3" disabled="disabled"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
-                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox4" title="checked and disabled">
-                                        <input type="checkbox" id="toggle-switch-checkbox4" name="chechboxgroup3" value="4" disabled="disabled" checked="checked" />
+                                    <label class="toggle-switch switch-label disabled" for="toggle-switch-checkbox4"
+                                           title="checked and disabled">
+                                        <input type="checkbox" id="toggle-switch-checkbox4" name="chechboxgroup3"
+                                               value="4" disabled="disabled" checked="checked"/>
                                         <span class="label">Label on</span><span class="label">Label off</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end toggle-switch-checkbox with switch-label -->
+            </div>
+            <!-- end toggle-switch-checkbox with switch-label -->
 
-                            <!-- begin multiple-switch (radio) -->
-                            <div class="label multiple-switch">
-                                <span>Label for Multiple-Switch (Radio):</span>
-                                <span class="flex-container no-flex no-gap">
+            <!-- begin multiple-switch (radio) -->
+            <div class="label multiple-switch">
+              <span>Label for Multiple-Switch (Radio):</span>
+              <span class="flex-container no-flex no-gap">
                                     <label for="multiple-switch1" title="default">
-                                        <input type="radio" id="multiple-switch1" name="radiogroup5" value="web" />
+                                        <input type="radio" id="multiple-switch1" name="radiogroup5" value="web"/>
                                         <span class="icon-globe"></span>
                                         <span>Web</span>
                                     </label>
                                     <label for="multiple-switch2" title="checked (by default)">
-                                        <input type="radio" id="multiple-switch2" name="radiogroup5" value="email" checked="checked" />
+                                        <input type="radio" id="multiple-switch2" name="radiogroup5" value="email"
+                                               checked="checked"/>
                                         <span class="icon-mail"></span>
                                         <span>Email</span>
                                     </label>
                                     <label for="multiple-switch3" class="disabled" title="disabled">
-                                        <input type="radio" id="multiple-switch3" name="radiogroup5" value="phone" />
+                                        <input type="radio" id="multiple-switch3" name="radiogroup5" value="phone"/>
                                         <span class="icon-phone"></span>
                                         <span>Phone</span>
                                     </label>
                                     <label for="multiple-switch4" class="disabled" title="checked and disabled">
-                                        <input type="radio" id="multiple-switch4" name="radiogroup-disabled5" value="fax" checked="checked" />
+                                        <input type="radio" id="multiple-switch4" name="radiogroup-disabled5"
+                                               value="fax" checked="checked"/>
                                         <span class="icon-fax"></span>
                                         <span>Fax</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end multiple-switch (radio) -->
+            </div>
+            <!-- end multiple-switch (radio) -->
 
-                            <!-- begin multiple-switch (checkbox) -->
-                            <div class="label multiple-switch">
-                                <span>Label for Multiple-Switch (Checkbox):</span>
-                                <span class="flex-container no-flex no-gap">
+            <!-- begin multiple-switch (checkbox) -->
+            <div class="label multiple-switch">
+              <span>Label for Multiple-Switch (Checkbox):</span>
+              <span class="flex-container no-flex no-gap">
                                     <label for="multiple-switch5" title="default">
-                                        <input type="checkbox" id="multiple-switch5" name="checkboxgroup5" value="Web" />
+                                        <input type="checkbox" id="multiple-switch5" name="checkboxgroup5" value="Web"/>
                                         <span class="icon-globe"></span>
                                         <span>Label 1</span>
                                     </label>
                                     <label for="multiple-switch6" title="checked (by default)">
-                                        <input type="checkbox" id="multiple-switch6" name="checkboxgroup5" value="email" checked="checked" />
+                                        <input type="checkbox" id="multiple-switch6" name="checkboxgroup5" value="email"
+                                               checked="checked"/>
                                         <span class="icon-mail"></span>
                                         <span>Email</span>
                                     </label>
                                     <label for="multiple-switch7" class="disabled" title="disabled">
-                                        <input type="checkbox" id="multiple-switch7" name="checkboxgroup5" value="phone" />
+                                        <input type="checkbox" id="multiple-switch7" name="checkboxgroup5"
+                                               value="phone"/>
                                         <span class="icon-phone"></span>
                                         <span>Phone</span>
                                     </label>
                                     <label for="multiple-switch8" class="disabled" title="checked and disabled">
-                                        <input type="checkbox" id="multiple-switch8" name="checkboxgroup5" value="fax" checked="checked" />
+                                        <input type="checkbox" id="multiple-switch8" name="checkboxgroup5" value="fax"
+                                               checked="checked"/>
                                         <span class="icon-fax"></span>
                                         <span>Fax</span>
                                     </label>
                                 </span>
-                            </div>
-                            <!-- end multiple-switch (checkbox) -->
+            </div>
+            <!-- end multiple-switch (checkbox) -->
 
-                            <!-- begin inputfields with icon -->
-                            <h4>Inputfields with Icon</h4>
-                            <div class="flex-container">
-                                <label for="username">
-                                    <span>Username (default):</span>
-                                    <span class="flex-container">
+            <!-- begin inputfields with icon -->
+            <h4>Inputfields with Icon</h4>
+            <div class="flex-container">
+              <label for="username">
+                <span>Username (default):</span>
+                <span class="flex-container">
                                         <span class="place-inside icon-user-profile"></span>
-                                        <input type="text" name="username" id="username" maxlength="50" placeholder="Username" title="Please type in username" />
+                                        <input type="text" name="username" id="username" maxlength="50"
+                                               placeholder="Username" title="Please type in username"/>
                                     </span>
-                                </label>
-                                <label for="password">
-                                    <span>Password (required):<sup>*</sup></span>
-                                    <span class="flex-container">
+              </label>
+              <label for="password">
+                <span>Password (required):<sup>*</sup></span>
+                <span class="flex-container">
                                         <span class="place-inside icon-security-settings"></span>
-                                        <input type="password" name="password" id="password" minlength="6" maxlength="50" placeholder="Password" required="required" title="Please type in password" />
+                                        <input type="password" name="password" id="password" minlength="6"
+                                               maxlength="50" placeholder="Password" required="required"
+                                               title="Please type in password"/>
                                     </span>
-                                </label>
-                                <label for="phone" class="disabled">
-                                    <span>Phone (disabled):</span>
-                                    <span class="flex-container">
+              </label>
+              <label for="phone" class="disabled">
+                <span>Phone (disabled):</span>
+                <span class="flex-container">
                                         <span class="place-inside icon-phone"></span>
-                                        <input type="tel" name="phone" id="phone" minlength="6" maxlength="50" placeholder="Phone number" disabled="disabled" />
+                                        <input type="tel" name="phone" id="phone" minlength="6" maxlength="50"
+                                               placeholder="Phone number" disabled="disabled"/>
                                     </span>
-                                </label>
-                                <label for="email" class="disabled">
-                                    <span>Email (required and disabled):<sup>*</sup></span>
-                                    <span class="flex-container">
+              </label>
+              <label for="email" class="disabled">
+                <span>Email (required and disabled):<sup>*</sup></span>
+                <span class="flex-container">
                                         <span class="place-inside icon-mail"></span>
-                                        <input type="email" name="email" id="email" minlength="6" maxlength="50" placeholder="Email address" required="required" disabled="disabled" />
+                                        <input type="email" name="email" id="email" minlength="6" maxlength="50"
+                                               placeholder="Email address" required="required" disabled="disabled"/>
                                     </span>
-                                </label>
-                            </div>
-                            <!-- end inputfields with icon-->
-                        </fieldset><!-- end fieldset -->
-                    </form>
-                </section>
+              </label>
             </div>
-            <div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-main-navigation"></a>
-                    <h2 class="headline-demopage">Main Navigation</h2>
-
-                    <div class="main-navigation-wrapper">
-                        <nav>
-                            <ul>
-                                <li><a href="#">Entry 1</a></li>
-                                <li>
-                                    <a href="#">
-                                        <span>Entry 2</span>
-                                        <span class="icon-single-arrow-down"></span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <span>Entry 2.1</span>
-                                                <span class="icon-single-arrow-right"></span>
-                                            </a>
-                                            <ul>
-                                                <li><a href="#">Entry 2.1</a></li>
-                                                <li><a href="#">Entry 2.2</a></li>
-                                                <li><a href="#">Entry 2.3</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Entry 2.2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="http://www.comand-cms.com" target="_blank">CoManD-CMS</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </section>
-            </div>
-            <div class="width-limitation-wrapper">
-                <section id="flex-section">
-                    <h2 class="headline-demopage">Flex-Containers</h2>
-                    <h3>Default</h3>
-                    <div class="flex-container">
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                    </div>
-                    <h3>No-gap</h3>
-                    <div class="flex-container no-gap">
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                    </div>
-                    <h3>No-flex (for all items)</h3>
-                    <div class="flex-container no-flex">
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                    </div>
-                    <h3>No-flex (for single item)</h3>
-                    <div class="flex-container ">
-                        <div>flex-item</div>
-                        <div class="no-flex">flex-item (no-flex)</div>
-                        <div>flex-item</div>
-                    </div>
-                    <h3>Vertical</h3>
-                    <div class="flex-container vertical">
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                        <div>flex-item</div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="width-limitation-wrapper">
-                <section id="grid-section">
-                    <a id="anchor-grids"></a>
-                    <h2 class="headline-demopage">Grid-Containers</h2>
-                    <!--h3 class="headline-demopage">Simple Grid</h3>
-                    <form novalidate="novalidate">
-                        <div class="fieldset grid-container-create-columns">
-                            <div class="grid-container-create-columns"  data-columns-large="4">
-                                <label for="grid-columns">
-                                    <span>Grid-Columns (Fractions):</span>
-                                    <input type="number" id="grid-columns" value="12" maxlength="2" />
-                                </label>
-                                <label for="grid-rows">
-                                    <span>Grid-Rows (Fractions):</span>
-                                    <input type="number" id="grid-rows" value="1" maxlength="2"  />
-                                </label>
-                                <label for="grid-gap">
-                                    <span>Grid-Gap (Pixels):</span>
-                                    <input type="number" id="grid-gap" value="10" maxlength="3" />
-                                </label>
-                                <label for="grid-reset">
-                                    <span>Reset grid values:</span>
-                                    <button id="grid-reset">Reset</button>
-                                </label>
-                            </div>
-                        </div>
-                    </form-->
-
-                    <h3>Regular Grid</h3>
-                    <div class="grid-container-create-columns" id="grid-regular">
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
-                        <div>5</div>
-                        <div>6</div>
-                        <div>7</div>
-                        <div>8</div>
-                        <div>9</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                    </div>
-
-                    <h3>Grid based on default classes</h3>
-                    <div class="grid-container-create-columns" id="grid-default">
-                        <div class="grid-small-item">Small item</div>
-                        <div class="grid-large-item">Large item</div>
-                    </div>
-
-                    <h3>Grid two fractions (with same width)</h3>
-                    <div class="grid-container-create-columns">
-                        <div class="grid-item-half-width">grid-item</div>
-                        <div class="grid-item-half-width">grid-item</div>
-                    </div>
-
-                    <h3>Complex Grid</h3>
-                    <div class="grid-container" id="grid-complex">
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
-                        <div>5</div>
-                        <div>6</div>
-                        <div>7</div>
-                        <div>8</div>
-                        <div>9</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                    </div>
-                </section>
-            </div>
-
-            <!--div class="width-limitation-wrapper">
-                <section>
-                    <a id="anchor-iconfont"></a>
-                    <h2 class="headline-demopage">Iconfont</h2>
-                    <p>
-                        The icons below are also already included within the frontend-framework/CMS. The font is based on a free to use icomoon-font, but a lot of custom styled icons were added. An icon can be used with <em>class="icon-NAME"</em>. To edit or expand the font, you can overwrite and add icons individaul for each template inside the <em>iconfont.css</em>-file (CMS only).
-                    </p>
-                    <div class="grid-container-create-columns list-icons" data-url="css/default-iconfont.css"></div>
-
-                    <h2>Custom Iconfont</h2>
-                    <div class="grid-container-create-columns list-icons" data-url="css/custom-iconfont.css"></div>
-                </section>
-            </div-->
-        </main>
+            <!-- end inputfields with icon-->
+          </fieldset><!-- end fieldset -->
+        </form>
+      </section>
     </div>
-    <script>
-        new Vue ({
-            "el": '#app',
-            methods: {
-                /*
-                toggleHTML(event) {
-                    let clickedLink = event.target
-                    if(open === false) {
-                        let prevSibling = clickedLink.previousElementSibling;
-                        clickedLink.nextElementSibling.querySelector("code").innerText = prevSibling.outerHTML;
-                        clickedLink.nextElementSibling.style.display = 'block';
+    <div class="width-limitation-wrapper">
+      <section>
+        <a id="anchor-main-navigation"></a>
+        <h2 class="headline-demopage">Main Navigation</h2>
 
-                    } else {
-                        clickedLink.nextElementSibling.style.display = 'none';
-                    }
+        <div class="main-navigation-wrapper">
+          <nav>
+            <ul>
+              <li><a href="#">Entry 1</a></li>
+              <li>
+                <a href="#">
+                  <span>Entry 2</span>
+                  <span class="icon-single-arrow-down"></span>
+                </a>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <span>Entry 2.1</span>
+                      <span class="icon-single-arrow-right"></span>
+                    </a>
+                    <ul>
+                      <li><a href="#">Entry 2.1</a></li>
+                      <li><a href="#">Entry 2.2</a></li>
+                      <li><a href="#">Entry 2.3</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Entry 2.2</a></li>
+                </ul>
+              </li>
+              <li><a href="http://www.comand-cms.com" target="_blank">CoManD-CMS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </div>
+    <div class="width-limitation-wrapper">
+      <section id="flex-section">
+        <h2 class="headline-demopage">Flex-Containers</h2>
+        <h3>Default</h3>
+        <div class="flex-container">
+          <div>flex-item</div>
+          <div>flex-item</div>
+          <div>flex-item</div>
+        </div>
+        <h3>No-gap</h3>
+        <div class="flex-container no-gap">
+          <div>flex-item</div>
+          <div>flex-item</div>
+          <div>flex-item</div>
+        </div>
+        <h3>No-flex (for all items)</h3>
+        <div class="flex-container no-flex">
+          <div>flex-item</div>
+          <div>flex-item</div>
+          <div>flex-item</div>
+        </div>
+        <h3>No-flex (for single item)</h3>
+        <div class="flex-container ">
+          <div>flex-item</div>
+          <div class="no-flex">flex-item (no-flex)</div>
+          <div>flex-item</div>
+        </div>
+        <h3>Vertical</h3>
+        <div class="flex-container vertical">
+          <div>flex-item</div>
+          <div>flex-item</div>
+          <div>flex-item</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="width-limitation-wrapper">
+      <section id="grid-section">
+        <a id="anchor-grids"></a>
+        <h2 class="headline-demopage">Grid-Containers</h2>
+        <!--h3 class="headline-demopage">Simple Grid</h3>
+        <form novalidate="novalidate">
+            <div class="fieldset grid-container-create-columns">
+                <div class="grid-container-create-columns"  data-columns-large="4">
+                    <label for="grid-columns">
+                        <span>Grid-Columns (Fractions):</span>
+                        <input type="number" id="grid-columns" value="12" maxlength="2" />
+                    </label>
+                    <label for="grid-rows">
+                        <span>Grid-Rows (Fractions):</span>
+                        <input type="number" id="grid-rows" value="1" maxlength="2"  />
+                    </label>
+                    <label for="grid-gap">
+                        <span>Grid-Gap (Pixels):</span>
+                        <input type="number" id="grid-gap" value="10" maxlength="3" />
+                    </label>
+                    <label for="grid-reset">
+                        <span>Reset grid values:</span>
+                        <button id="grid-reset">Reset</button>
+                    </label>
+                </div>
+            </div>
+        </form-->
+
+        <h3>Regular Grid</h3>
+        <div class="grid-container-create-columns" id="grid-regular">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+        </div>
+
+        <h3>Grid based on default classes</h3>
+        <div class="grid-container-create-columns" id="grid-default">
+          <div class="grid-small-item">Small item</div>
+          <div class="grid-large-item">Large item</div>
+        </div>
+
+        <h3>Grid two fractions (with same width)</h3>
+        <div class="grid-container-create-columns">
+          <div class="grid-item-half-width">grid-item</div>
+          <div class="grid-item-half-width">grid-item</div>
+        </div>
+
+        <h3>Complex Grid</h3>
+        <div class="grid-container" id="grid-complex">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+        </div>
+      </section>
+    </div>
+
+    <!--div class="width-limitation-wrapper">
+        <section>
+            <a id="anchor-iconfont"></a>
+            <h2 class="headline-demopage">Iconfont</h2>
+            <p>
+                The icons below are also already included within the frontend-framework/CMS. The font is based on a free to use icomoon-font, but a lot of custom styled icons were added. An icon can be used with <em>class="icon-NAME"</em>. To edit or expand the font, you can overwrite and add icons individaul for each template inside the <em>iconfont.css</em>-file (CMS only).
+            </p>
+            <div class="grid-container-create-columns list-icons" data-url="css/default-iconfont.css"></div>
+
+            <h2>Custom Iconfont</h2>
+            <div class="grid-container-create-columns list-icons" data-url="css/custom-iconfont.css"></div>
+        </section>
+    </div-->
+  </main>
+</div>
+<script>
+    new Vue({
+        "el": '#app',
+        methods: {
+            /*
+            toggleHTML(event) {
+                let clickedLink = event.target
+                if(open === false) {
+                    let prevSibling = clickedLink.previousElementSibling;
+                    clickedLink.nextElementSibling.querySelector("code").innerText = prevSibling.outerHTML;
+                    clickedLink.nextElementSibling.style.display = 'block';
+
+                } else {
+                    clickedLink.nextElementSibling.style.display = 'none';
                 }
-
-                 */
             }
 
-        })
-    </script>
-    </body>
+             */
+        }
+
+    })
+</script>
+</body>
 </html>
