@@ -2,6 +2,6 @@
 
 /* begin example */
 html {
-    --primary-color-rgb-values: 2, 129, 195; /* primary color rgb-values */
+    --primary-color-hsl-values: 201, 93%, 40%; /* primary-color hsl-values */
 }
 /* end example */

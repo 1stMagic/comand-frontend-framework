@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css - last update: 2021/08/21 by Raphael Biock
+framework.css version 3.2.19 - last update: 2021/09/29 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -149,8 +149,8 @@ html {
     --system-message-text-color: var(--pure-white); /* text-color for system-messages */
 
     /* primary-color (i.e. for highlights, primary-buttons) */
-    --primary-color-hue: 190; /* primary-color-hue */
-    --primary-color-saturation: 100%; /* primary-color-saturation */
+    --primary-color-hue: 201; /* primary-color-hue */
+    --primary-color-saturation: 93%; /* primary-color-saturation */
     --primary-color-lightness: 40%; /* primary-color-lightness */
     --primary-color-hsl-values: var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness); /* primary-color-hsl-values */
     --primary-color: hsl(var(--primary-color-hsl-values)); /* primary-color */
@@ -565,7 +565,7 @@ input[type="submit"]:disabled {
     background: none !important;
 }
 
-:where(.disabled .replace-input-type, .toggle-switch input:checked:disabled)::after,
+.toggle-switch input:checked:disabled::after,
 .toggle-switch.switch-label input:checked:disabled ~ .label::before {
     background: var(--disabled-color) !important;
     border-color: var(--disabled-color) !important;
@@ -579,10 +579,10 @@ input[type="submit"]:disabled {
     color: var(--disabled-color) !important;
 }
 
+.disabled .replace-input-type,
 .toggle-switch.disabled .label::before {
     border-color: var(--disabled-color) !important;
 }
-
 /* end disabled ------------------------------------------------------------------------------------------ */
 
 /* begin flex-containers ------------------------------------------------------------------------------------------ */
@@ -602,6 +602,10 @@ input[type="submit"]:disabled {
 
 .flex-container.stretch > * {
     align-self: stretch; /* stretch items to same height (elements must/should not have a set height) */
+}
+
+.flex-container.align-bottom > * {
+  align-self: flex-end;
 }
 
 .flex-container.vertical {
@@ -682,7 +686,6 @@ input[type="submit"]:disabled {
 .word-break-keep-all {
     word-break: keep-all;
 }
-
 /* end flex-containers ------------------------------------------------------------------------------------------ */
 
 /* begin forms: basic elements ------------------------------------------------------------------------------------------ */
@@ -772,6 +775,10 @@ label, .label {
     grid-column: 1 / span var(--grid-columns);
 }
 
+td .toggle-switch.switch-label{
+    display: inline-flex;
+}
+
 :where(label, .label).inline > span > sup {
     top: -.5rem;
 }
@@ -794,6 +801,11 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
 :where(label, .label).error :where(input:not([type="range"]), select, textarea, .replace-input-type),
 :where(input, select, textarea).error {
     border: var(--error-border);
+}
+
+:where(label, .label).success :where(input:not([type="range"]), select, textarea, .replace-input-type),
+:where(input, select, textarea).success {
+    border: var(--success-border);
 }
 
 :where(label, .label).disabled span {
@@ -940,19 +952,23 @@ td :where(label, .label) {
 
 /* end form-elements in table */
 
-/* begin .input-wrapper */
-.input-wrapper {
+/* begin .input-wrapper/.input-group */
+.input-wrapper, .input-group {
     display: flex;
     gap: 0;
-    align-items: flex-start;
+    align-items: flex-end;
     flex-wrap: nowrap;
 }
 
-.input-wrapper > * {
+.input-wrapper > *, .input-group > * {
     flex: auto;
 }
 
-/* end .input-wrapper */
+:where(.input-wrapper, .input-group) > :where(label, .label):first-child :where(input, select, .select) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+/* end .input-wrapper/.input-group */
 /* end forms: basic elements ------------------------------------------------------------------------------------------ */
 
 /* begin forms: replace-input-type (radio/checkbox) ------------------------------------------------------------------------------------------ */
@@ -968,7 +984,7 @@ label input.replace-input-type { /* label required for specificity */
     border-radius: var(--full-circle);
     background: var(--pure-white);
     box-shadow: none;
-    display: flex;
+    display: inline-flex; /* avoids label-text to wrap */
 }
 
 input.replace-input-type.error,
@@ -1775,11 +1791,11 @@ table.full-width {
 }
 
 tr {
-    background: var(--default-background-color-reduced-opacity);
+    background: hsl(var(--default-background-color-hue), var(--default-background-color-saturation), 95%);
 }
 
 tr:nth-child(even) {
-    background: var(--default-background-color);
+    background: hsl(var(--default-background-color-hue), var(--default-background-color-saturation), 90%);
 }
 
 th, td {
@@ -1846,17 +1862,16 @@ th.highlighted {
     color: var(--pure-white);
 }
 
-:where(tr, td).highlighted {
-    background: var(--primary-color-reduced-opacity);
+tr.highlighted td, td.highlighted {
+    background: hsl(var(--primary-color-hue), 70%, var(--primary-color-lightness));
     color: var(--pure-white);
 }
 
 tr.highlighted:is(:hover, :active, :focus) td,
 td.highlighted:is(:hover, :active, :focus),
-tr:where(:hover, :active, :focus) td.highlighted {
+tr:is(:hover, :active, :focus) td.highlighted {
     background: var(--primary-color);
 }
-
 /* end highlighted table rows/cells */
 
 table a {
