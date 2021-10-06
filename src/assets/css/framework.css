@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.19 - last update: 2021/09/29 by Raphael Biock
+framework.css version 3.2.21 - last update: 2021/09/30 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -466,7 +466,6 @@ button, .button, input[type="submit"] {
     min-height: 4rem;
 }
 
-button, .button,
 :where(button, .button) > span,
 :where(button, .button) > span[class*="icon-"] {
     color: var(--pure-white);
