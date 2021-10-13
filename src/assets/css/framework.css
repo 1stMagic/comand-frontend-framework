@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.21 - last update: 2021/09/30 by Raphael Biock
+framework.css version 3.2.23 - last update: 2021/10/13 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -380,8 +380,12 @@ a:where(:hover, :active, :focus) img {
     border-color: var(--primary-color);
 }
 
-.hidden {
+.hidden, .display-none {
     display: none !important
+}
+
+.visibility-hidden {
+    visibility: hidden !important;
 }
 
 /* end basic selectors and classes ------------------------------------------------------------------------------------------ */
@@ -782,7 +786,8 @@ td .toggle-switch.switch-label{
     top: -.5rem;
 }
 
-:where(label, .label):not(.inline) > span:first-child:not(.hidden) {
+/* use :where for child-selector to set specificity to 0 */
+:where(label, .label):not(.inline) > :where(span:first-child:not(.hidden)) {
     display: flex;
     margin-bottom: calc(var(--default-margin) / 2);
 }
@@ -963,7 +968,7 @@ td :where(label, .label) {
     flex: auto;
 }
 
-:where(.input-wrapper, .input-group) > :where(label, .label):first-child :where(input, select, .select) {
+:where(.input-wrapper, .input-group) > :where(label, .label):first-child :where(input, select) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -1398,6 +1403,7 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     left: .5rem;
     z-index: 10;
     color: var(--text-color);
+    margin: 0;
 }
 
 .place-inside.focus[class*="icon-"] {
