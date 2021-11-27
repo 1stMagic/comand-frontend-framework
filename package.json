@@ -1,6 +1,6 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.2.23",
+  "version": "3.2.27",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",

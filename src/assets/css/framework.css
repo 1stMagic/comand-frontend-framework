@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.23 - last update: 2021/10/13 by Raphael Biock
+framework.css version 3.2.27 - last update: 2021/11/26 by Raphael Biock
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY
 */
 
@@ -329,6 +329,13 @@ object, svg, img, video, canvas, .responsive-wrapper, .responsive-container {
 .nowrap {
     white-space: nowrap;
 }
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-right {
+    text-align: right;
+}
 
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl, table, fieldset, address {
@@ -343,7 +350,7 @@ em, cite, .italic {
     font-style: italic;
 }
 
-small, small > a, small > span {
+small, small > a, small > span, .small {
     font-size: 1.2rem;
 }
 
@@ -1092,6 +1099,8 @@ progress[value]::-webkit-progress-value {
 }
 
 progress[value]::-moz-progress-bar {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
     background-image: repeating-linear-gradient(-45deg, var(--primary-color), var(--primary-color) .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
 }
 
