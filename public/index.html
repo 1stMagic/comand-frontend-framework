@@ -739,28 +739,36 @@
             <div class="label">
               <span>Label for checkboxes:</span>
               <span class="flex-container no-flex">
-                                    <label for="checkbox1">
-                                        <input name="checkbox" id="checkbox1" value="1" type="checkbox"/>
-                                        <span>Checkbox 1 (default)</span>
-                                    </label>
-                                    <label for="checkbox2">
-                                        <input name="checkbox" id="checkbox2" value="2" type="checkbox"
-                                               checked="checked"/>
-                                        <span>Checkbox 2 (checked (by default))</span>
-                                    </label>
-                                    <label for="checkbox3">
-                                        <input name="checkbox" id="checkbox3" value="3" type="checkbox"
-                                               disabled="disabled"/>
-                                        <span>Checkbox 3 (disabled)</span>
-                                    </label>
-                                    <label for="checkbox4">
-                                        <input name="checkbox" id="checkbox4" value="4" type="checkbox"
-                                               disabled="disabled" checked="checked"/>
-                                        <span>Checkbox 4 (checked and disabled)</span>
-                                    </label>
-                                </span>
+                  <label for="checkbox1">
+                      <input name="checkbox" id="checkbox1" value="1" type="checkbox"/>
+                      <span>Checkbox 1 (default)</span>
+                  </label>
+                  <label for="checkbox2">
+                      <input name="checkbox" id="checkbox2" value="2" type="checkbox"
+                             checked="checked"/>
+                      <span>Checkbox 2 (checked (by default))</span>
+                  </label>
+                  <label for="checkbox3">
+                      <input name="checkbox" id="checkbox3" value="3" type="checkbox"
+                             disabled="disabled"/>
+                      <span>Checkbox 3 (disabled)</span>
+                  </label>
+                  <label for="checkbox4">
+                      <input name="checkbox" id="checkbox4" value="4" type="checkbox"
+                             disabled="disabled" checked="checked"/>
+                      <span>Checkbox 4 (checked and disabled)</span>
+                  </label>
+              </span>
             </div>
-            <div class="flex-container">
+            <label for="default-inputfield">
+              <span>
+                <span>Default inputfield:</span>
+                <sup>*</sup>
+                <a href="#" class="icon-questionmark-circle" title="Open help"></a>
+              </span>
+              <input name="default-inputfield" id="default-inputfield" placeholder="Placeholdertext for default inputfield" type="text" />
+            </label>
+            <div class="flex-container align-bottom">
               <label for="textfield1">
                 <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
                 <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text"/>
@@ -773,10 +781,9 @@
               <label for="searchfield">
                 <span>Label for searchfield:</span>
                 <span class="input-wrapper">
-                                        <input name="searchfield" id="searchfield" placeholder="Keyword(s)"
-                                               type="search"/>
-                                        <a href="#" class="button no-flex"><span class="icon-search"></span></a>
-                                    </span>
+                    <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search" />
+                    <a href="#" class="button no-flex"><span class="icon-search"></span></a>
+                </span>
               </label>
             </div>
             <label class="inline" for="numberfield">
@@ -807,15 +814,15 @@
               <div class="label">
                 <span>Label for Zip/City (with hidden labels):</span>
                 <span class="input-wrapper">
-                                        <label for="zip">
-                                            <span class="hidden">Zip</span>
-                                            <input name="zip" id="zip" placeholder="12345" type="number"/>
-                                        </label>
-                                        <label for="city">
-                                            <span class="hidden">City</span>
-                                            <input name="city" id="city" placeholder="City" type="text"/>
-                                        </label>
-                                    </span>
+                    <label for="zip">
+                        <span class="hidden">Zip</span>
+                        <input name="zip" id="zip" placeholder="12345" type="number"/>
+                    </label>
+                    <label for="city">
+                        <span class="hidden">City</span>
+                        <input name="city" id="city" placeholder="City" type="text"/>
+                    </label>
+                </span>
               </div>
               <label for="selectbox">
                 <span>Label for selectbox (required):<sup>*</sup></span>
@@ -838,14 +845,202 @@
               </label>
             </div>
             <label class="textarea" for="textarea">
-              <span>Label for textarea:</span>
-              <textarea id="textarea" placeholder="Placeholdertext for textarea"></textarea>
+              <span>Label for textarea:<sup>*</sup></span>
+              <textarea id="textarea" placeholder="Placeholdertext for textarea" required="required"></textarea>
             </label>
           </fieldset>
           <div class="button-wrapper align-right">
             <input name="submit" id="submit" value="Submitbutton" type="submit"/>
           </div>
         </form>
+
+        <h3>Form Validation</h3>
+        <h4>No validation</h4>
+        <dl>
+          <dt>Validation:</dt><dd>None</dd>
+          <dt>Messages:</dt><dd>None</dd>
+          <dt>Styling:</dt><dd>Native/Pseudo-classes</dd>
+        </dl>
+        <form novalidate="novalidate">
+          <fieldset class="flex-container">
+            <div class="flex-container">
+              <label for="inputfield-without-validation">
+                <span>
+                  <span>Inputfield without validation:</span>
+                  <sup>*</sup>
+                </span>
+                <input name="inputfield-without-validation" id="inputfield-without-validation" placeholder="Placeholdertext for inputfield with error" type="text" required="required" minlength="5" />
+              </label>
+              <label for="selectbox-without-validation">
+                <span>
+                  <span>Inputfield without validation:</span>
+                  <sup>*</sup>
+                </span>
+                <select name="selectbox-without-validation" id="selectbox-without-validation" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+
+        <h4>Native validation</h4>
+        <dl>
+          <dt>Validation:</dt><dd>Native/By browser</dd>
+          <dt>Messages:</dt><dd>Native/By browser</dd>
+          <dt>Styling:</dt><dd>Native/Pseudo-classes</dd>
+        </dl>
+        <form>
+          <fieldset class="flex-container">
+            <div class="flex-container">
+              <label for="inputfield-with-native-validation">
+                  <span>
+                    <span>Inputfield with native validation:</span>
+                    <sup>*</sup>
+                  </span>
+                <input name="inputfield-with-native-validation" id="inputfield-with-native-validation" placeholder="Placeholdertext for inputfield with native validation" type="text" required="required" minlength="5" />
+              </label>
+              <label for="selectbox-with-native-validation">
+                <span>
+                  <span>Selectbox with native validation:</span>
+                  <sup>*</sup>
+                </span>
+                <select name="selectbox-with-native-validation" id="selectbox-with-native-validation" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+
+        <h4>Custom validation</h4>
+        <dl>
+          <dt>Validation:</dt><dd>None</dd>
+          <dt>Messages:</dt><dd>Custom/Tooltips</dd>
+          <dt>Styling:</dt><dd>Custom/Classes</dd>
+        </dl>
+        <form data-use-validation="true" novalidate="novalidate">
+          <fieldset class="flex-container">
+            <h5>Inputfields</h5>
+            <div class="flex-container">
+              <label for="inputfield-default">
+                <span>
+                  <span>Inputfield (default with help-icon):</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
+                </span>
+                <input name="inputfield-default" id="inputfield-default" placeholder="Placeholdertext for inputfield (default with help-icon" type="text" />
+              </label>
+              <label class="error" for="inputfield-with-error">
+                <span>
+                  <span>Inputfield with error:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
+                </span>
+                <input name="inputfield-with-error" id="inputfield-with-error" placeholder="Placeholdertext for inputfield with error" type="text" />
+              </label>
+              <label class="warning" for="default-inputfield">
+                <span>
+                  <span>Inputfield with warning:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
+                </span>
+                <input name="inputfield-with-warning" id="inputfield-with-warning" placeholder="Placeholdertext for inputfield with warning" type="text" />
+              </label>
+              <label class="success" for="default-inputfield">
+                <span>
+                  <span>Inputfield with success:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
+                </span>
+                <input name="inputfield-with-success" id="inputfield-with-success" placeholder="Placeholdertext for inputfield with success" type="text" />
+              </label>
+              <label class="info" for="inputfield-with-info">
+                <span>
+                  <span>Inputfield with info:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-info-circle" title="Some information!"></a>
+                </span>
+                <input name="inputfield-with-info" id="inputfield-with-info" placeholder="Placeholdertext for inputfield with info" type="text" />
+              </label>
+            </div>
+            <h5>Selectboxes</h5>
+            <div class="flex-container">
+              <label for="selectbox-default">
+                <span>
+                  <span>Selectbox with (default with help-icon):</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
+                </span>
+                <select name="selectbox-default" id="selectbox-default" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+              <label class="error" for="selectbox-with-error">
+                <span>
+                  <span>Selectbox with error:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
+                </span>
+                <select name="selectbox-with-error" id="selectbox-with-error" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+              <label class="warning" for="selectbox-with-warning">
+                <span>
+                  <span>Selectbox with warning:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
+                </span>
+                <select name="selectbox-with-warning" id="selectbox-with-warning" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+              <label class="success" for="selectbox-with-success">
+                <span>
+                  <span>Selectbox with success:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
+                </span>
+                <select name="selectbox-with-success" id="selectbox-with-success" required="required">
+                  <option value="">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+              <label class="info" for="selectbox-with-info">
+                <span>
+                  <span>Selectbox with info:</span>
+                  <sup>*</sup>
+                  <a href="#" class="icon-info-circle" title="Some information!"></a>
+                </span>
+                <select name="selectbox-with-info" id="selectbox-with-info" required="required">
+                  <option value="0">Please select&hellip;</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+
         <h3>Advanced form elements (fieldset with flex-container)</h3>
         <form>
           <fieldset class="flex-container">
@@ -1092,18 +1287,18 @@
                     <input type="password" name="password" id="password" minlength="6" maxlength="50" placeholder="Password" required="required" title="Please type in password"/>
                 </span>
               </label>
+              <label for="email">
+                <span>Email (with pattern):</span>
+                <span class="flex-container">
+                    <span class="place-inside icon-mail"></span>
+                    <input type="email" name="email" id="email" minlength="6" maxlength="50" required="required" placeholder="Email address" />
+                </span>
+              </label>
               <label for="phone" class="disabled">
                 <span>Phone (disabled):</span>
                 <span class="flex-container">
                     <span class="place-inside icon-phone"></span>
                     <input type="tel" name="phone" id="phone" minlength="6" maxlength="50" placeholder="Phone number" disabled="disabled"/>
-                </span>
-              </label>
-              <label for="email" class="disabled">
-                <span>Email (required and disabled):<sup>*</sup></span>
-                <span class="flex-container">
-                    <span class="place-inside icon-mail"></span>
-                    <input type="email" name="email" id="email" minlength="6" maxlength="50" placeholder="Email address" required="required" disabled="disabled"/>
                 </span>
               </label>
             </div>

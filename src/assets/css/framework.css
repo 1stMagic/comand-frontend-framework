@@ -206,7 +206,7 @@ html {
     --grid-gap: var(--default-gap); /* grid-gap for grid-items */
 
     /* opacity */
-    --reduced-opacity: .6; /* reduced opacity */
+    --reduced-opacity: .75; /* reduced opacity (should be at least 0.75 for accessibility) */
 
     /* shadows */
     --box-shadow-color: var(--text-color); /* box-shadow-color */
@@ -217,7 +217,6 @@ html {
     /* transitions */
     --default-transition: all .5s; /* default transition */
 }
-
 /* ---------------------------------------------- END VARIABLES -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MAIN STYLES -------------------------------------------------- */
@@ -394,7 +393,6 @@ a:where(:hover, :active, :focus) img {
 .visibility-hidden {
     visibility: hidden !important;
 }
-
 /* end basic selectors and classes ------------------------------------------------------------------------------------------ */
 
 /* begin boxes ------------------------------------------------------------------------------------------ */
@@ -453,7 +451,6 @@ a:where(:hover, :active, :focus) img {
 .border {
     border: var(--default-border); /* border (width, style, color) for any element with this class */
 }
-
 /* end box effects */
 /* end boxes ------------------------------------------------------------------------------------------ */
 
@@ -522,7 +519,6 @@ button, .button, input[type="submit"] {
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
-
 /* end buttons ------------------------------------------------------------------------------------------ */
 
 /* begin clearfix ------------------------------------------------------------------------------------------ */
@@ -545,7 +541,6 @@ button, .button, input[type="submit"] {
     height: 0;
     line-height: 0;
 }
-
 /* end clearfix ------------------------------------------------------------------------------------------ */
 
 /* begin disabled ------------------------------------------------------------------------------------------ */
@@ -712,6 +707,10 @@ fieldset {
     padding: calc(var(--default-padding) * 2);
 }
 
+fieldset:focus-within {
+    border-color: var(--primary-color);
+}
+
 fieldset.flex-container {
     display: flex;
     gap: var(--default-gap);
@@ -735,7 +734,6 @@ fieldset legend {
     font-weight: bold; /* font-weight of legends */
     padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
-
 /* end fieldsets */
 
 /* begin labels */
@@ -809,34 +807,89 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
     width: auto;
 }
 
-:where(label, .label).error :where(input:not([type="range"]), select, textarea, .replace-input-type),
-:where(input, select, textarea).error {
+:where(label, .label).error :where(input:not([type="range"]), select, textarea, .replace-input-type) {
     border: var(--error-border);
 }
 
-:where(label, .label).success :where(input:not([type="range"]), select, textarea, .replace-input-type),
-:where(input, select, textarea).success {
-    border: var(--success-border);
+:where(label, .label).warning :where(input:not([type="range"]), select, textarea, .replace-input-type) {
+    border-color: var(--warning-color);
+}
+
+:where(label, .label).success :where(input:not([type="range"]), select, textarea, .replace-input-type) {
+    border-color: var(--success-color);
+}
+
+:where(label, .label).info :where(input:not([type="range"]), select, textarea, .replace-input-type) {
+    border-color: var(--info-color);
 }
 
 :where(label, .label).disabled span {
     color: var(--disabled-color);
 }
 
-label.error sup, label.error > span {
+:where(label, .label).error :is(sup, span, a[class*="icon"]:not(.button))  {
     color: var(--error-color);
 }
 
-:where(label, .label, fieldset).error, :where(label, .label).error span {
-    border-color: var(--error-color);
+:where(label, .label).warning :is(sup, span, a[class*="icon"]:not(.button)) {
+    color: var(--warning-color);
+}
+
+:where(label, .label).success :is(sup, span, a[class*="icon"]:not(.button)) {
+    color: var(--success-color);
+}
+
+:where(label, .label).info :is(sup, span, a[class*="icon"]:not(.button)) {
+    color: var(--info-color);
+}
+
+form:not([data-use-validation="true"]) label.error :where(::placeholder, select option:first-child),
+form:not([data-use-validation="true"]) :where(input, select, textarea):invalid:focus {
     color: var(--error-color);
+}
+
+form:not([data-use-validation="true"]) :where(input, select, textarea):valid:focus[required] {
+    color: var(--success-color);
+}
+
+form:not([data-use-validation="true"]) select:invalid:focus[required] option:not(:first-child) {
+    color: var(--success-color);
+}
+
+/* styles empty required fields without additional class
+[required]:placeholder-shown {
+    border-color: var(--error-color);
+}
+
+[required]:placeholder-shown::placeholder {
+    color: var(--error-color);
+}
+*/
+fieldset.error {
+    border-color: var(--error-color);
+}
+
+fieldset.warning {
+    border-color: var(--warning-color);
+}
+
+fieldset.success {
+    border-color: var(--success-color);
+}
+
+fieldset.info {
+    border-color: var(--info-color);
+}
+
+:where(label, .label) span > a[class*="icon"] {
+   font-size: var(--font-size);
+   margin-left: auto;
 }
 
 fieldset > *:first-child,
 fieldset legend + * {
     margin-top: 0;
 }
-
 /* end labels */
 
 /* begin input-elements */
@@ -844,7 +897,7 @@ input, select, textarea {
     min-width: 5rem;
     border: var(--default-border);
     border-radius: var(--border-radius);
-    align-self: start; /* required to let items as high as their content */
+    align-self: start; /* required to let items be as high as their content */
     background: var(--pure-white);
 }
 
@@ -947,7 +1000,6 @@ input[type="submit"] input:where(:hover, :active, :focus) {
 :where(input, select):not([type="hidden"]) + input, :where(input:not([type="hidden"]), select) + select {
     border-left: 0;
 }
-
 /* end input-elements */
 
 /* begin form-elements in table */
@@ -960,7 +1012,6 @@ td :where(label, .label) {
     width: auto;
     padding: 0;
 }
-
 /* end form-elements in table */
 
 /* begin .input-wrapper/.input-group */
@@ -1068,7 +1119,6 @@ input[disabled].replace-input-type:checked + .label {
 input.replace-input-type-checkbox.error:not(:checked) {
     border-color: var(--error-color);
 }
-
 /* end forms: replace-input-type (radio/checkbox) ------------------------------------------------------------------------------------------ */
 
 /* begin forms: progressbar ------------------------------------------------------------------------------------------ */
@@ -1103,7 +1153,6 @@ progress[value]::-moz-progress-bar {
     border-bottom-left-radius: var(--border-radius);
     background-image: repeating-linear-gradient(-45deg, var(--primary-color), var(--primary-color) .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
 }
-
 /* end forms: progressbar ------------------------------------------------------------------------------------------ */
 
 /* begin forms: range-slider ------------------------------------------------------------------------------------------ */
@@ -1197,7 +1246,6 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     background: var(--disabled-background-color);
     border-color: var(--disabled-color);
 }
-
 /* end forms: range-slider ------------------------------------------------------------------------------------------ */
 
 /* begin toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
@@ -1265,7 +1313,6 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     border-color: var(--error-color);
     background: var(--error-color);
 }
-
 /* end toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
 
 /* begin toggle switches with switch-label ------------------------------------------------------------------------------------------ */
@@ -1337,7 +1384,6 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     left: -.7rem;
     top: 0;
 }
-
 /* end toggle switches with switch-label ------------------------------------------------------------------------------------------ */
 
 /* begin multiple-switch  ------------------------------------------------------------------------------------------ */
@@ -1401,7 +1447,6 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
 .multiple-switch label.disabled {
     background: var(--disabled-background-color);
 }
-
 /* end multiple-switch ------------------------------------------------------------------------------------------ */
 
 /* begin place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
@@ -1415,6 +1460,10 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     margin: 0;
 }
 
+:where(label, .label).inline .place-inside {
+    display: none;
+}
+
 .place-inside.focus[class*="icon-"] {
     color: var(--primary-color);
 }
@@ -1423,14 +1472,25 @@ input[type="range"]:where([disabled], .disabled)::-webkit-slider-runnable-track 
     color: var(--error-color);
 }
 
-.place-inside[class*="icon-"] + input {
+.place-inside.warning[class*="icon-"] {
+    color: var(--warning-color);
+}
+
+.place-inside.success[class*="icon-"] {
+    color: var(--success-color);
+}
+
+.place-inside.info[class*="icon-"] {
+    color: var(--info-color);
+}
+
+.place-inside[class*="icon-"] + :where(input, select, textarea){
     padding-left: calc(var(--default-padding) * 3);
 }
 
 .place-inside[class*="icon-"] + input:focus {
     border-color: var(--primary-color);
 }
-
 /* end place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
 
 /* begin grid-containers ------------------------------------------------------------------------------------------ */
@@ -1530,7 +1590,6 @@ h5, h5 > a, h5 > span, h5 > span[class*="icon-"] {
 h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
     font-size: 1.6rem; /* font-size for h6 */
 }
-
 /* end headlines ------------------------------------------------------------------------------------------ */
 
 /* begin hyperlinks ------------------------------------------------------------------------------------------ */
@@ -1551,7 +1610,6 @@ a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
 .highlighted {
     color: var(--primary-color);
 }
-
 /* end hyperlinks ------------------------------------------------------------------------------------------ */
 
 /* begin icons ------------------------------------------------------------------------------------------ */
@@ -1596,7 +1654,6 @@ span + [class*="icon-"] {
 :where(h1, h2, h3, h4, h5, h6) [class*="icon-"] + span {
     margin-left: var(--default-margin);
 }
-
 /* end icons ------------------------------------------------------------------------------------------ */
 
 /* begin lists ------------------------------------------------------------------------------------------ */
@@ -1638,7 +1695,6 @@ dl.wrap dd {
     white-space: normal;
     word-break: break-all; /* break long strings */
 }
-
 /* end lists ------------------------------------------------------------------------------------------ */
 
 /* begin navigation ------------------------------------------------------------------------------------------ */
@@ -1727,7 +1783,6 @@ nav ul li a span[class*='icon-'] {
 :is(nav, .nav) li.active > ul {
     display: block;
 }
-
 /* end navigation ------------------------------------------------------------------------------------------ */
 
 /* begin system messages ------------------------------------------------------------------------------------------ */
@@ -1779,7 +1834,6 @@ nav ul li a span[class*='icon-'] {
 .grid-container-create-columns .system-message {
     grid-column: span var(--grid-columns);
 }
-
 /* end system messages ------------------------------------------------------------------------------------------ */
 
 /* begin tables ------------------------------------------------------------------------------------------ */
@@ -1914,36 +1968,7 @@ thead.word-wrap-normal th {
 td form {
     margin-bottom: 0; /* margin-bottoms of forms in table-cells */
 }
-
 /* end tables ------------------------------------------------------------------------------------------ */
-
-/* begin transforms ------------------------------------------------------------------------------------------ */
-.rotate-90deg {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.rotate-180deg {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.rotate-270deg {
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-.mirror-x, .flip-x {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.mirror-y, .flip-y {
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-}
-
-/* end transforms ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END MAIN STYLES -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
@@ -2019,7 +2044,6 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         margin: 0 var(--default-margin) 0 0;
     }
 }
-
 /* end styles medium for screens ------------------------------------------------------------------------------------------ */
 
 /* begin styles small for screens ------------------------------------------------------------------------------------------ */
@@ -2137,7 +2161,6 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         width: auto;
     }
 }
-
 /* end styles for small screens ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
 
