@@ -1,0 +1,161 @@
+/* begin styles medium for screens ------------------------------------------------------------------------------------------ */
+@media only screen and (max-width: 1023px) {
+    html {
+        --grid-columns: 6; /* grid-columns */
+        --grid-small-span: calc(var(--grid-columns) / 2); /* default column span smaller part */
+        --grid-large-span: var(--grid-small-span); /* default column span larger part */
+        --line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
+    }
+
+    .grid-container-create-columns > .grid-item-half-width {
+        grid-column: span var(--grid-columns);
+    }
+
+    .hide-for-medium, .hide-for-small-up, .hide-for-large-down {
+        display: none !important;
+    }
+
+    .hide-for-medium-up {
+        display: block !important;
+    }
+
+    :where(label, .label).inline {
+        flex-direction: column;
+    }
+
+    :where(label, .label).inline > span {
+        align-self: flex-start;
+    }
+
+    :where(label, .label).inline > span:first-child {
+        margin-bottom: calc(var(--default-margin) / 2);
+    }
+
+    :where(label, .label).inline:not(.textarea) > * {
+        align-self: flex-start;
+    }
+
+    input.replace-input-type:where([type="checkbox"], [type="radio"]) {
+        transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
+        margin: 0 var(--default-margin) 0 0;
+    }
+}
+/* end styles medium for screens ------------------------------------------------------------------------------------------ */
+
+/* begin styles small for screens ------------------------------------------------------------------------------------------ */
+@media only screen and (max-width: 600px) {
+    html {
+        --grid-columns: 4; /* grid-columns */
+        --grid-small-span: var(--grid-columns); /* default column span smaller part */
+        --grid-large-span: var(--grid-columns); /* default column span larger part */
+        font-size: 56.25%; /* default size is 16px, 56.25% of that is 9px = 0.9rem */
+    }
+
+    html, body {
+        min-height: 100%;
+    }
+
+    [class*="grid-container"][class$="fractions"] {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    button, .button, input[type="submit"] {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+
+    .button-wrapper.no-flex > :where(button, .button) {
+        width: auto;
+    }
+
+    .button-wrapper.align-right {
+        flex-direction: column-reverse;
+    }
+
+    fieldset {
+        padding: var(--default-padding);
+    }
+
+    .flex-container.align-bottom > *,
+    fieldset > .flex-container > * {
+        align-self: flex-start;
+        width: 100%;
+    }
+
+    fieldset > label:first-child {
+        margin-top: 0;
+    }
+
+    fieldset [class*="grid-container"] {
+        --grid-gap: calc(var(--grid-gap) / 2);
+    }
+
+    :where(label, .label).inline > span {
+        margin: 0 0 calc(var(--default-margin) / 2) 0;
+    }
+
+    .inline input:where([type="date"], [type="number"], [type="color"]) {
+        max-width: none;
+    }
+
+    .flex-container {
+        flex-direction: column; /* arrange flex-items vertically */
+    }
+
+    .input-wrapper {
+        flex-direction: row; /* avoid flex-items to be arranged vertically */
+    }
+
+    .input-wrapper input[type="search"] {
+        flex: 1;
+    }
+
+    .input-wrapper :where(button, .button) {
+        width: auto;
+    }
+
+    .place-inside + :where(input, select, textarea, .input) {
+        align-self: auto;
+    }
+
+    [class*="grid-container"] > :where(h1, h2, h3, h4, h5, h6) {
+        margin-top: var(--default-margin);
+    }
+
+    .hide-for-small, .hide-for-medium-down, .hide-for-large-down {
+        display: none !important;
+        float: none;
+    }
+
+    .hide-for-small-up {
+        display: block !important;
+    }
+
+    hr {
+        margin: var(--default-margin);
+    }
+
+    main {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .multiple-switch .flex-container {
+        flex-direction: row;
+    }
+
+    .flex-container :where(input, select, textarea, .input) {
+        width: 100%;
+    }
+
+    :where(label, .label) .flex-container {
+        flex-direction: row;
+    }
+
+    :where(label, .label) .flex-container :where(button, .button), .label .flex-container .button {
+        width: auto;
+    }
+}
+/* end styles for small screens ------------------------------------------------------------------------------------------ */
+/* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */

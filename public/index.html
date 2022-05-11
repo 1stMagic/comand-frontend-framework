@@ -7,6 +7,7 @@
   <style>
       @import url("../src/assets/css/normalize.css") all;
       @import url("../src/assets/css/framework.css") all;
+      @import url("../src/assets/css/breakpoints.css") all;
       @import url("../src/assets/css/framework-iconfont.css") all;
       @import url("../src/assets/css/template.css") all;
       @import url("<%= BASE_URL %>demopage-only.css") all;
@@ -633,10 +634,12 @@
         <h3 class="headline-demopage">Buttons</h3>
         <h4>Button types</h4>
         <div class="button-wrapper">
-          <a href="#" class="button"><span>Default button using a-tag</span></a>
-          <button class="button"><span>Default button using button-tag</span></button>
-          <a href="#" class="button primary"><span>Primary button using a-tag</span></a>
-          <button class="button primary"><span>Primary button using button-tag</span></button>
+          <a href="#" class="button tertiary"><span>Tertiary button with a-tag</span></a>
+          <button class="button tertiary"><span>Tertiary button with button-tag</span></button>
+          <a href="#" class="button"><span>Default/Secondary button with a-tag</span></a>
+          <button class="button"><span>Default/Secondary button with button-tag</span></button>
+          <a href="#" class="button primary"><span>Primary button with a-tag</span></a>
+          <button class="button primary"><span>Primary button with button-tag</span></button>
         </div>
         <h4>&lt;a&gt;-tags as buttons (using class="button") aligned left</h4>
         <div class="button-wrapper align-left">
@@ -775,7 +778,7 @@
               </label>
               <label for="textfield_disabled">
                 <span>Label for (disabled) textfield:</span>
-                <input name="textfield" id="textfield_disabled" placeholder="Placeholdertext for (disabled) textfield"
+                <input name="textfield" id="textfield_disabled" value="Some text for disabled textfield"
                        type="text" disabled="disabled" title="tooltip"/>
               </label>
               <label for="searchfield">
@@ -824,10 +827,18 @@
                     </label>
                 </span>
               </div>
-              <label for="selectbox">
+              <label for="selectbox-required">
                 <span>Label for selectbox (required):<sup>*</sup></span>
-                <select name="selectbox" id="selectbox" required="required">
+                <select name="selectbox-required" id="selectbox-required" required="required">
                   <option>Bitte wählen</option>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </label>
+              <label for="selectbox-disabled">
+                <span>Label for selectbox (disabled):</span>
+                <select name="selectbox-disabled" id="selectbox-disabled" disabled="disabled">
                   <option value="option1">Option 1</option>
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>
@@ -1291,7 +1302,7 @@
                 <span>Email (with pattern):</span>
                 <span class="flex-container">
                     <span class="place-inside icon-mail"></span>
-                    <input type="email" name="email" id="email" minlength="6" maxlength="50" required="required" placeholder="Email address" />
+                    <input type="email" name="email" id="email" minlength="7" maxlength="50" required="required" placeholder="Email address" />
                 </span>
               </label>
               <label for="phone" class="disabled">
