@@ -1,3 +1,6 @@
+/* breakpoints.css - last update: 2022/11/05
+IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN breakpoint-css
+*/
 /* begin styles medium for screens ------------------------------------------------------------------------------------------ */
 @media only screen and (max-width: 1023px) {
     html {
@@ -158,4 +161,4 @@
     }
 }
 /* end styles for small screens ------------------------------------------------------------------------------------------ */
-/* ---------------------------------------------- END MEDIA QUERIES AND BROWSER SPECIFIC STYLES -------------------------------------------------- */
+/* end breakpoints.css */
