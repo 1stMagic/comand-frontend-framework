@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.49 - last update: 2022/06/11
+framework.css version 3.2.50 - last update: 2022/06/11
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -764,10 +764,6 @@ fieldset {
     border: var(--default-border);
     border-radius: var(--border-radius);
     padding: calc(var(--default-padding) * 2);
-}
-
-fieldset:focus-within {
-    border-color: var(--primary-color);
 }
 
 fieldset.flex-container {
@@ -1636,7 +1632,7 @@ a:is(:hover, :active, :focus) > * {
 }
 
 a[class*="icon-"]:not(.button) {
-    color: var(--text-color);
+    color: var(--color-scheme-text-color);
 }
 
 a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
@@ -2060,6 +2056,7 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
 }
 /* end styles for print only ------------------------------------------------------------------------------------------ */
 
+/* begin styles for dark-mode only ------------------------------------------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
     html {
         --color-scheme-text-color: var(--dark-mode-text-color);
@@ -2069,3 +2066,4 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         --default-background-color-lightness: 20%;
     }
 }
+/* end styles for dark-mode only ------------------------------------------------------------------------------------------ */
