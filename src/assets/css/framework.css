@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.50 - last update: 2022/06/11
+framework.css version 3.2.51 - last update: 2022/06/14
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -615,7 +615,7 @@ input[type="submit"]:disabled {
 }
 
 :where(input[type="checkbox"], input[type="radio"]):disabled + span,
-.toggle-switch.switch-label input:disabled ~ .label {
+.toggle-switch .switch-label-wrapper input:disabled ~ .label {
     color: var(--disabled-color) !important;
 }
 
@@ -629,16 +629,16 @@ input[type="submit"]:disabled {
 }
 
 .toggle-switch input:checked:disabled::after,
-.toggle-switch.switch-label input:checked:disabled ~ .label::before {
+.toggle-switch .switch-label-wrapper input:checked:disabled ~ .label::before {
     background: var(--disabled-color) !important;
     border-color: var(--disabled-color) !important;
 }
 
-.toggle-switch.switch-label.disabled {
+.toggle-switch.disabled .switch-label-wrapper {
     background: var(--disabled-background-color) !important;
 }
 
-.toggle-switch.switch-label input:disabled ~ .label {
+.toggle-switch .switch-label-wrapper input:disabled ~ .label {
     color: var(--disabled-color) !important;
 }
 
@@ -1337,7 +1337,8 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 /* end toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
 
 /* begin toggle switches with switch-label ------------------------------------------------------------------------------------------ */
-.toggle-switch.switch-label {
+.toggle-switch .switch-label-wrapper {
+    display: flex;
     border: var(--default-border);
     background: var(--color-scheme-background-color);
     border-radius: 1.2rem;
@@ -1348,43 +1349,39 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     margin-top: calc(var(--default-margin) / 2);
 }
 
-.toggle-switch.switch-label {
-    margin-top: 0
-}
-
-.toggle-switch.switch-label input {
+.toggle-switch .switch-label-wrapper input {
     border: 0;
     background: none;
     display: none;
 }
 
-.toggle-switch.switch-label input ~ .label {
+.toggle-switch .switch-label-wrapper input ~ .label {
     white-space: nowrap;
     transition: left .3s linear;
     left: 0;
 }
 
-.toggle-switch.switch-label input + .label {
+.toggle-switch .switch-label-wrapper input + .label {
     padding-right: var(--default-padding);
     display: block;
 }
 
-.toggle-switch.switch-label input:not(:checked) + .label:not(:only-child) {
+.toggle-switch .switch-label-wrapper input:not(:checked) + .label:not(:only-child) {
     position: absolute;
     left: 100%;
 }
 
-.toggle-switch.switch-label input + .label + .label {
+.toggle-switch .switch-label-wrapper input + .label + .label {
     padding-left: var(--default-padding);
     text-align: right;
 }
 
-.toggle-switch.switch-label input:checked + .label + .label {
+.toggle-switch .switch-label-wrapper input:checked + .label + .label {
     left: -100%;
     position: absolute;
 }
 
-.toggle-switch.switch-label input ~ .label::before {
+.toggle-switch .switch-label-wrapper input ~ .label::before {
     content: "";
     border-radius: var(--full-circle);
     border: var(--primary-border);
@@ -1399,11 +1396,15 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     top: 0;
 }
 
-.toggle-switch.switch-label input + .label + .label::before {
+.toggle-switch .switch-label-wrapper input + .label + .label::before {
     border-color: var(--color-scheme-text-color);
     background: var(--color-scheme-background-color);
     left: -.7rem;
     top: 0;
+}
+
+.toggle-switch .switch-label-wrapper + span {
+    margin-left: calc(var(--default-margin) / 2);
 }
 /* end toggle switches with switch-label ------------------------------------------------------------------------------------------ */
 
@@ -1638,6 +1639,10 @@ a[class*="icon-"]:not(.button) {
 a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
 .highlighted {
     color: var(--primary-color);
+}
+
+a span[class*="icon"]:not(:only-child) {
+    font-size: var(--font-size); /* adjust icon on to size as text */
 }
 /* end hyperlinks ------------------------------------------------------------------------------------------ */
 
