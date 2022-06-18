@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.51 - last update: 2022/06/14
+framework.css version 3.2.53 - last update: 2022/06/18
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -867,6 +867,7 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
 }
 
 :is(label, .label) sup + [class*="icon"] {
+    align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
 }
@@ -1273,6 +1274,8 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 /* begin toggle-switch-checkbox and -radio ------------------------------------------------------------------------------------------ */
 .toggle-switch {
     flex: none;
+    display: flex;
+    align-items: center;
 }
 
 .toggle-switch input:where([type="checkbox"], [type="radio"]) { /* type required for specificity */
