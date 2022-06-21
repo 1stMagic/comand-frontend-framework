@@ -94,7 +94,7 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         --grid-gap: calc(var(--grid-gap) / 2);
     }
 
-    :where(label, .label).inline > span {
+    :where(label, .label).inline .label-text {
         margin: 0 0 calc(var(--default-margin) / 2) 0;
     }
 
@@ -114,7 +114,8 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         flex: 1;
     }
 
-    .input-wrapper :where(button, .button) {
+    .input-wrapper :where(button, .button), input:is([type="checkbox"], [type="radio"]),
+    :where(label, .label) .flex-container :where(button, .button) {
         width: auto;
     }
 
@@ -154,10 +155,6 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 
     :where(label, .label) .flex-container {
         flex-direction: row;
-    }
-
-    :where(label, .label) .flex-container :where(button, .button), .label .flex-container .button {
-        width: auto;
     }
 }
 /* end styles for small screens ------------------------------------------------------------------------------------------ */

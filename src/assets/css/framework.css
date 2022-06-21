@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.53 - last update: 2022/06/18
+framework.css version 3.2.57 - last update: 2022/06/21
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -629,7 +629,7 @@ input[type="submit"]:disabled {
 }
 
 .toggle-switch input:checked:disabled::after,
-.toggle-switch .switch-label-wrapper input:checked:disabled ~ .label::before {
+.toggle-switch .switch-label-wrapper input:checked:disabled ~ .label-text::before {
     background: var(--disabled-color) !important;
     border-color: var(--disabled-color) !important;
 }
@@ -638,12 +638,12 @@ input[type="submit"]:disabled {
     background: var(--disabled-background-color) !important;
 }
 
-.toggle-switch .switch-label-wrapper input:disabled ~ .label {
+.toggle-switch .switch-label-wrapper input:disabled ~ .label-text {
     color: var(--disabled-color) !important;
 }
 
 .disabled .replace-input-type,
-.toggle-switch.disabled .label::before {
+.toggle-switch.disabled .label-text::before {
     border-color: var(--disabled-color) !important;
 }
 /* end disabled ------------------------------------------------------------------------------------------ */
@@ -824,9 +824,9 @@ label, .label {
     grid-column: span var(--grid-large-span);
 }
 
-:where(label, .label) > span sup {
-    font-size: inherit; /* overwrite normalize.css */
-    top: 0; /* overwrite normalize.css */
+.label-text sup {
+    font-size: 1.5rem; /* overwrite normalize.css */
+    top: -.2rem; /* overwrite normalize.css */
     color: var(--primary-color);
 }
 
@@ -842,17 +842,18 @@ td .toggle-switch.switch-label{
     display: inline-flex;
 }
 
-:where(label, .label).inline > span > sup {
-    top: -.5rem;
-}
-
-/* use :where for child-selector to set specificity to 0 */
-:where(label, .label):not(.inline) > :where(span:first-child:not(.hidden)) {
+/* use :where for selectors to set specificity to 0 */
+:where(label, .label):not(.inline) :where(.label-text:not(.hidden)) {
     display: flex;
     margin-bottom: calc(var(--default-margin) / 2);
 }
 
-label > :where(input, select, textarea, .input):not(:first-child) {
+input + .label-text {
+    display: inline-flex;
+    margin-bottom: 0;
+}
+
+label :where(input, select, textarea, .input):not(:first-child) {
     display: block;
     width: 100%;
 }
@@ -866,13 +867,13 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
     border: var(--error-border);
 }
 
-:is(label, .label) sup + [class*="icon"] {
+:is(label, .label) .label-text [class*="icon"] {
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
 }
 
-:is(label, .label).error sup + [class*="icon"] {
+:is(label, .label).error .label-text [class*="icon"] {
     color: var(--error-color);
 }
 
@@ -880,7 +881,7 @@ fieldset.warning, :where(label, .label).warning :where(input:not([type="range"])
     border-color: var(--warning-color);
 }
 
-:is(label, .label).warning sup + [class*="icon"] {
+:is(label, .label).warning .label-text [class*="icon"] {
     color: var(--warning-color);
 }
 
@@ -888,7 +889,7 @@ fieldset.success, :where(label, .label).success :where(input:not([type="range"])
     border-color: var(--success-color);
 }
 
-:is(label, .label).success sup + [class*="icon"] {
+:is(label, .label).success .label-text [class*="icon"] {
     color: var(--success-color);
 }
 
@@ -896,7 +897,7 @@ fieldset.info, :where(label, .label).info :where(input:not([type="range"]), sele
     border-color: var(--info-color);
 }
 
-:is(label, .label).info sup + [class*="icon"] {
+:is(label, .label).info .label-text [class*="icon"] {
     color: var(--info-color);
 }
 
@@ -1278,6 +1279,11 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     align-items: center;
 }
 
+
+.icon-globe::before {
+}
+
+
 .toggle-switch input:where([type="checkbox"], [type="radio"]) { /* type required for specificity */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1302,7 +1308,6 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     height: 1.4rem;
     display: block;
     align-self: center;
-    margin-right: auto;
 }
 
 .toggle-switch input:checked {
@@ -1312,20 +1317,44 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 .toggle-switch input:checked::after {
     border-color: var(--primary-color);
     background: var(--primary-color);
-    margin-right: 0;
     margin-left: auto
 }
 
-.toggle-switch .label {
+.toggle-switch .label-text {
     align-self: center;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
-.toggle-switch input:is(:focus, :checked) ~ .label {
+.toggle-switch input:is(:focus, :checked) ~ .label-text {
     color: var(--primary-color)
 }
 
-.toggle-switch.error .label {
+.toggle-switch input[class*="icon"]::before {
+    position:absolute;
+    z-index: 10;
+    font-size: 1.6rem;
+    top: 0.1rem;
+    left: 0.1rem;
+}
+
+.toggle-switch input[class*="icon"]::after,
+.toggle-switch input[class*="icon"]:checked:disabled::after {
+    border: 0 !important;
+    background: none !important;
+}
+
+.toggle-switch input[class*="icon"]:checked::before {
+    left: auto;
+    right: 0.1rem;
+    color: var(--primary-color);
+}
+
+.toggle-switch input[class*="icon"]:checked:disabled::before {
+    color: var(--disabled-color);
+}
+
+.toggle-switch.error .label-text {
     color: var(--error-color);
 }
 
@@ -1349,7 +1378,6 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     height: 2rem;
     padding: .2rem var(--default-padding);
     align-self: center;
-    margin-top: calc(var(--default-margin) / 2);
 }
 
 .toggle-switch .switch-label-wrapper input {
@@ -1358,33 +1386,33 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     display: none;
 }
 
-.toggle-switch .switch-label-wrapper input ~ .label {
+.toggle-switch .switch-label-wrapper input ~ .label-text {
     white-space: nowrap;
     transition: left .3s linear;
     left: 0;
 }
 
-.toggle-switch .switch-label-wrapper input + .label {
+.toggle-switch .switch-label-wrapper input + .label-text {
     padding-right: var(--default-padding);
     display: block;
 }
 
-.toggle-switch .switch-label-wrapper input:not(:checked) + .label:not(:only-child) {
+.toggle-switch .switch-label-wrapper input:not(:checked) + .label-text:not(:only-child) {
     position: absolute;
     left: 100%;
 }
 
-.toggle-switch .switch-label-wrapper input + .label + .label {
+.toggle-switch .switch-label-wrapper input + .label-text + .label-text {
     padding-left: var(--default-padding);
     text-align: right;
 }
 
-.toggle-switch .switch-label-wrapper input:checked + .label + .label {
+.toggle-switch .switch-label-wrapper input:checked + .label-text + .label-text {
     left: -100%;
     position: absolute;
 }
 
-.toggle-switch .switch-label-wrapper input ~ .label::before {
+.toggle-switch .switch-label-wrapper input ~ .label-text::before {
     content: "";
     border-radius: var(--full-circle);
     border: var(--primary-border);
@@ -1399,7 +1427,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     top: 0;
 }
 
-.toggle-switch .switch-label-wrapper input + .label + .label::before {
+.toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
     border-color: var(--color-scheme-text-color);
     background: var(--color-scheme-background-color);
     left: -.7rem;
@@ -1647,6 +1675,17 @@ a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
 a span[class*="icon"]:not(:only-child) {
     font-size: var(--font-size); /* adjust icon on to size as text */
 }
+
+/* begin active links */
+a.active, li.active > a {
+    background: var(--primary-color);
+    color: var(--pure-white);
+}
+
+:is(a, li).active :is(span, span[class*="icon"]) {
+    color: var(--pure-white);
+}
+/* end active links */
 /* end hyperlinks ------------------------------------------------------------------------------------------ */
 
 /* begin icons ------------------------------------------------------------------------------------------ */
@@ -1792,6 +1831,10 @@ nav {
 
 nav ul li a span[class*='icon-'] {
     font-size: 1rem;
+}
+
+nav ul li li a span[class*='icon-']::before {
+    transform: rotate(90deg);
 }
 
 :where(nav, .nav) ul ul {
@@ -2006,6 +2049,10 @@ thead.word-wrap-normal th {
 
 td form {
     margin-bottom: 0; /* margin-bottoms of forms in table-cells */
+}
+
+td .toggle-switch > span {
+    white-space: nowrap;
 }
 /* end tables ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END MAIN STYLES -------------------------------------------------- */
