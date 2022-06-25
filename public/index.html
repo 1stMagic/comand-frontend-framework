@@ -819,12 +819,12 @@
               <input name="datefield" id="datefield" type="date" required="required"/>
             </label>
             <label class="inline" for="rangeslider">
-              <span class="label-text"><span>Label for (required) rangeslider (inline):<sup>*</sup></span></span>
-              <input name="rangeslider" id="rangeslider" type="range" required="required"/>
+              <span class="label-text"><span>Label for (required) rangeslider (inline):</span></span>
+              <input name="rangeslider" id="rangeslider" type="range"/>
             </label>
-            <label class="inline" for="rangeslider">
-              <span class="label-text"><span>Label for (required and disabled) rangeslider (inline):<sup>*</sup></span></span>
-              <input name="rangeslider" id="rangeslider2" type="range" required="required" disabled="disabled"/>
+            <label class="inline" for="rangeslider2">
+              <span class="label-text"><span>Label for (required and disabled) rangeslider (inline):</span></span>
+              <input name="rangeslider" id="rangeslider2" type="range" disabled="disabled"/>
             </label>
             <div class="flex-container">
               <div class="label">
@@ -845,7 +845,7 @@
                   <span>Label for selectbox (required):<sup>*</sup></span>
                 </span>
                 <select name="selectbox-required" id="selectbox-required" required="required">
-                  <option>Bitte wählen</option>
+                  <option value="">Bitte wählen</option>
                   <option value="option1">Option 1</option>
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>
@@ -981,14 +981,14 @@
                 </span>
                 <input name="inputfield-with-error" id="inputfield-with-error" placeholder="Placeholdertext for inputfield with error" type="text"/>
               </label>
-              <label class="warning" for="default-inputfield">
+              <label class="warning" for="inputfield-with-warning">
                 <span class="label-text">
                   <span>Inputfield with warning:<sup>*</sup></span>
                   <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
                 </span>
                 <input name="inputfield-with-warning" id="inputfield-with-warning" placeholder="Placeholdertext for inputfield with warning" type="text"/>
               </label>
-              <label class="success" for="default-inputfield">
+              <label class="success" for="inputfield-with-success">
                 <span class="label-text">
                   <span>Inputfield with success:<sup>*</sup></span>
                   <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
@@ -1059,7 +1059,7 @@
                   <a href="#" class="icon-info-circle" title="Some information!"></a>
                 </span>
                 <select name="selectbox-with-info" id="selectbox-with-info" required="required">
-                  <option value="0">Please select&hellip;</option>
+                  <option value="">Please select&hellip;</option>
                   <option value="1">Option 1</option>
                   <option value="2">Option 2</option>
                   <option value="3">Option 3</option>
@@ -1152,7 +1152,7 @@
                     <input type="radio" id="radio8" name="radiogroup2-disabled" value="3" disabled="disabled" checked="checked"/>
                     <span class="label-text">Label 4 (checked and disabled)</span>
                 </label>
-            </span>
+              </span>
             </div>
             <!-- end toggle-switch-radio -->
 
@@ -1167,7 +1167,7 @@
                 <input type="checkbox" class="icon-cancel-circle" disabled="disabled" id="toggle-switch-with-icon-disabled" value="1"/>
                 <span class="label-text">Toggle-Switch with Icon (disabled)</span>
               </label>
-              <label class="toggle-switch" for="toggle-switch-with-icon-disabled">
+              <label class="toggle-switch" for="toggle-switch-with-icon-disabled-checked">
                 <input type="checkbox" class="icon-check-circle" disabled="disabled" checked="checked" id="toggle-switch-with-icon-disabled-checked" value="1"/>
                 <span class="label-text">Toggle-Switch with Icon (disabled and checked)</span>
               </label>

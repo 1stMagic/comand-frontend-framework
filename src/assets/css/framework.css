@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.57 - last update: 2022/06/21
+framework.css version 3.2.60- last update: 2022/06/25
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -228,7 +228,7 @@ html {
 
     /* colors for color-schemes (light-/dark-mode) */
     --light-mode-text-color: var(--text-color);
-    --dark-mode-text-color: var(--pure-white);
+    --dark-mode-text-color: hsl(0, 0%, 80%);
     --light-mode-background-color: var(--pure-white);
     --dark-mode-background-color: var(--dark-gray);
 
@@ -619,7 +619,7 @@ input[type="submit"]:disabled {
     color: var(--disabled-color) !important;
 }
 
-:where([readonly], .disabled, [disabled]):is(:hover, :active. :focus) {
+:where([readonly], .disabled, [disabled]):is(:hover, :active, :focus) {
     cursor: not-allowed !important;
 }
 
@@ -1677,7 +1677,7 @@ a span[class*="icon"]:not(:only-child) {
 }
 
 /* begin active links */
-a.active, li.active > a {
+a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
     background: var(--primary-color);
     color: var(--pure-white);
 }

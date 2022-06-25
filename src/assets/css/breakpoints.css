@@ -30,8 +30,9 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         align-self: flex-start;
     }
 
-    :where(label, .label).inline > span:first-child {
-        margin-bottom: calc(var(--default-margin) / 2);
+
+    :where(label, .label).inline > .label-text {
+        margin: 0 0 calc(var(--default-margin) / 2) 0;
     }
 
     :where(label, .label).inline:not(.textarea) > * {
@@ -94,8 +95,12 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         --grid-gap: calc(var(--grid-gap) / 2);
     }
 
-    :where(label, .label).inline .label-text {
-        margin: 0 0 calc(var(--default-margin) / 2) 0;
+    .replace-input-type + .label-text, .label :where(.switch-label-wrapper, .toggle-switch) .label-text {
+        margin: 0;
+    }
+
+    :is(label.toggle-switch, .label .toggle-switch) input {
+        width: 4rem;
     }
 
     .inline input:where([type="date"], [type="number"], [type="color"]) {
