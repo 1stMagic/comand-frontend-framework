@@ -1173,7 +1173,7 @@
               </label>
             </div>
             <div class="label inline">
-              <span class="label-text">Label for Toggle-Switch-Checkbox-Group:</span>
+              <span class="label-text">Label for Toggle-Switch-Checkbox-Group:<sup>*</sup></span>
               <span class="flex-container no-flex">
                 <label class="toggle-switch" for="checkbox5">
                     <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="1"/>
@@ -1271,61 +1271,46 @@
             <!-- end toggle-switch-checkbox with switch-label -->
 
             <!-- begin multiple-switch (radio) -->
-            <div class="label multiple-switch">
-              <span class="label-text">Label for Multiple-Switch (Radio):</span>
+            <div class="cmd-input-group label multiple-switch">
+              <span class="label-text" id="label-multiple-switch-radio" aria-labelledby="label-multiple-switch-radio">
+                <span>Grouplabel for radio-group  given by property styled as multiple-switch</span>
+              </span>
               <span class="flex-container no-flex no-gap">
-                <label for="multiple-switch1" title="default">
-                    <input type="radio" id="multiple-switch1" name="radiogroup5" value="web"/>
-                    <span class="icon-globe"></span>
-                    <span>Web</span>
+                <label for="radio-id-1-multi">
+                  <input type="radio" id="radio-id-1-multi" name="input-group-radio-multi" value="website">
+                  <span class="icon-globe"></span><span>Website</span>
                 </label>
-                <label for="multiple-switch2" title="checked (by default)">
-                    <input type="radio" id="multiple-switch2" name="radiogroup5" value="email"
-                           checked="checked"/>
-                    <span class="icon-mail"></span>
-                    <span>Email</span>
+                <label for="radio-id-2-multi">
+                  <input type="radio" id="radio-id-2-multi" name="input-group-radio-multi" value="email">
+                  <span class="icon-mail"></span><span>E-Mail</span>
                 </label>
-                <label for="multiple-switch3" class="disabled" title="disabled">
-                    <input type="radio" id="multiple-switch3" name="radiogroup5" value="phone"/>
-                    <span class="icon-phone"></span>
-                    <span>Phone</span>
-                </label>
-                <label for="multiple-switch4" class="disabled" title="checked and disabled">
-                    <input type="radio" id="multiple-switch4" name="radiogroup-disabled5"
-                           value="fax" checked="checked"/>
-                    <span class="icon-fax"></span>
-                    <span>Fax</span>
+                <label for="radio-id-3-multi">
+                  <input type="radio" id="radio-id-3-multi" name="input-group-radio-multi" value="phone">
+                  <span class="icon-phone"></span>
+                  <span>Phone</span>
                 </label>
               </span>
             </div>
             <!-- end multiple-switch (radio) -->
 
             <!-- begin multiple-switch (checkbox) -->
-            <div class="label multiple-switch">
-              <span class="label-text">Label for Multiple-Switch (Checkbox):</span>
-              <span class="flex-container no-flex no-gap">
-                <label for="multiple-switch5" title="default">
-                    <input type="checkbox" id="multiple-switch5" name="checkboxgroup5" value="Web"/>
-                    <span class="icon-globe"></span>
-                    <span>Label 1</span>
+            <div class="cmd-input-group label multiple-switch">
+              <span class="label-text" id="label-multiple-switch-checkbox" aria-labelledby="label-multiple-switch-checkbox">
+                <span>Grouplabel for checkbox-group  given by property styled as multiple-switch (stretched)</span>
+              </span>
+              <span class="flex-container no-gap">
+                <label for="checkbox-id-1-multi">
+                  <input type="checkbox" id="checkbox-id-1-multi" name="input-group-checkbox-multi" value="website">
+                  <span class="icon-globe"></span><span>Website</span>
                 </label>
-                <label for="multiple-switch6" title="checked (by default)">
-                    <input type="checkbox" id="multiple-switch6" name="checkboxgroup5" value="email"
-                           checked="checked"/>
-                    <span class="icon-mail"></span>
-                    <span>Email</span>
+                <label for="checkbox-id-2-multi">
+                  <input type="checkbox" id="checkbox-id-2-multi" name="input-group-checkbox-multi" value="email">
+                  <span class="icon-mail"></span><span>E-Mail</span>
                 </label>
-                <label for="multiple-switch7" class="disabled" title="disabled">
-                    <input type="checkbox" id="multiple-switch7" name="checkboxgroup5"
-                           value="phone"/>
-                    <span class="icon-phone"></span>
-                    <span>Phone</span>
-                </label>
-                <label for="multiple-switch8" class="disabled" title="checked and disabled">
-                    <input type="checkbox" id="multiple-switch8" name="checkboxgroup5" value="fax"
-                           checked="checked"/>
-                    <span class="icon-fax"></span>
-                    <span>Fax</span>
+                <label for="checkbox-id-3-multi">
+                  <input type="checkbox" id="checkbox-id-3-multi" name="input-group-checkbox-multi" value="phone">
+                  <span class="icon-phone"></span>
+                  <span>Phone</span>
                 </label>
               </span>
             </div>

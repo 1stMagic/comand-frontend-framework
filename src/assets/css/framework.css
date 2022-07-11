@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.60- last update: 2022/06/25
+framework.css version 3.2.61- last update: 2022/06/28
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -228,12 +228,15 @@ html {
 
     /* colors for color-schemes (light-/dark-mode) */
     --light-mode-text-color: var(--text-color);
+    --light-mode-text-color-buttons: var(--pure-white);
     --dark-mode-text-color: hsl(0, 0%, 80%);
+    --dark-mode-text-color-buttons: var(--dark-mode-text-color);
     --light-mode-background-color: var(--pure-white);
     --dark-mode-background-color: var(--dark-gray);
 
     /* assign default colors for light-mode */
     --color-scheme-text-color: var(--light-mode-text-color);
+    --color-scheme-text-color-buttons: var(--light-mode-text-color-buttons);
     --color-scheme-background-color: var(--light-mode-background-color);
     --color-scheme-text-color-inverted: var(--dark-mode-text-color);
     --color-scheme-background-inverted: var(--dark-mode-background-color);
@@ -491,7 +494,7 @@ button, .button, input[type="submit"] {
     border: var(--default-border);
     border-color: var(--color-scheme-text-color);
     border-radius: var(--border-radius);
-    color: var(--color-scheme-text-color-inverted);
+    color: var(--color-scheme-text-color-buttons);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -507,7 +510,7 @@ button, .button, input[type="submit"] {
 
 :is(button, .button) > span,
 :is(button, .button) > span[class*="icon-"] {
-    color: var(--color-scheme-text-color-inverted);
+    color: var(--color-scheme-text-color-buttons);
     align-self: center; /* necessary to keep text and icon centered if button has different alignment */
 }
 
@@ -615,7 +618,7 @@ input[type="submit"]:disabled {
 }
 
 :where(input[type="checkbox"], input[type="radio"]):disabled + span,
-.toggle-switch .switch-label-wrapper input:disabled ~ .label {
+.toggle-switch .switch-label-wrapper input:disabled ~ .label-text {
     color: var(--disabled-color) !important;
 }
 
@@ -871,9 +874,10 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
+    color: var(--text-color);
 }
 
-:is(label, .label).error .label-text [class*="icon"] {
+:is(label, .label).error .label-text * {
     color: var(--error-color);
 }
 
@@ -881,7 +885,7 @@ fieldset.warning, :where(label, .label).warning :where(input:not([type="range"])
     border-color: var(--warning-color);
 }
 
-:is(label, .label).warning .label-text [class*="icon"] {
+:is(label, .label).warning .label-text * {
     color: var(--warning-color);
 }
 
@@ -889,7 +893,7 @@ fieldset.success, :where(label, .label).success :where(input:not([type="range"])
     border-color: var(--success-color);
 }
 
-:is(label, .label).success .label-text [class*="icon"] {
+:is(label, .label).success .label-text * {
     color: var(--success-color);
 }
 
@@ -897,7 +901,7 @@ fieldset.info, :where(label, .label).info :where(input:not([type="range"]), sele
     border-color: var(--info-color);
 }
 
-:is(label, .label).info .label-text [class*="icon"] {
+:is(label, .label).info .label-text * {
     color: var(--info-color);
 }
 
@@ -1453,8 +1457,12 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     flex-direction: column;
 }
 
-.multiple-switch label.disabled {
+.multiple-switch.disabled label {
     background: var(--disabled-background-color) !important;
+}
+
+.multiple-switch.disabled label:hover {
+    cursor: not-allowed;
 }
 
 .multiple-switch label:first-child {
@@ -2115,10 +2123,14 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
 @media (prefers-color-scheme: dark) {
     html {
         --color-scheme-text-color: var(--dark-mode-text-color);
-        --color-scheme-background-color: var(--dark-mode-background-color);
+        --color-scheme-text-color-buttons: var(--dark-mode-text-color-buttons);
         --color-scheme-text-color-inverted: var(--light-mode-text-color);
         --color-scheme-background-inverted: var(--light-mode-background-color);
         --default-background-color-lightness: 20%;
+    }
+
+    html::-webkit-scrollbar-track {
+        background-color: var(--dark-gray);
     }
 }
 /* end styles for dark-mode only ------------------------------------------------------------------------------------------ */
