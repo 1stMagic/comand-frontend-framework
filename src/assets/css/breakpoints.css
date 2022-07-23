@@ -30,7 +30,6 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         align-self: flex-start;
     }
 
-
     :where(label, .label).inline > .label-text {
         margin: 0 0 calc(var(--default-margin) / 2) 0;
     }

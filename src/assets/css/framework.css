@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.61- last update: 2022/06/28
+framework.css version 3.2.65- last update: 2022/07/21
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -230,7 +230,7 @@ html {
     --light-mode-text-color: var(--text-color);
     --light-mode-text-color-buttons: var(--pure-white);
     --dark-mode-text-color: hsl(0, 0%, 80%);
-    --dark-mode-text-color-buttons: var(--dark-mode-text-color);
+    --dark-mode-text-color-buttons: var(--dark-mode-background-color);
     --light-mode-background-color: var(--pure-white);
     --dark-mode-background-color: var(--dark-gray);
 
@@ -870,7 +870,7 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
     border: var(--error-border);
 }
 
-:is(label, .label) .label-text [class*="icon"] {
+:where(label, .label) .label-text > [class*="icon"] {
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
@@ -1881,7 +1881,6 @@ nav ul li li a span[class*='icon-']::before {
     display: flex;
     font-weight: bold;
     padding: var(--default-padding);
-    text-align: center;
     margin-bottom: var(--default-margin);
     border: var(--default-border);
     border-width: .2rem;
@@ -1890,15 +1889,19 @@ nav ul li li a span[class*='icon-']::before {
     background-clip: padding-box; /* important to keep border transparent */
 }
 
-.system-message > h4 {
+.system-message > .message-headline {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
 }
 
-.system-message > * {
+.system-message * {
     color: var(--system-message-text-color);
+}
+
+.system-message .message-headline {
+    margin: 0 auto;
 }
 
 .system-message.error {
@@ -1967,6 +1970,15 @@ th {
     font-size: 1.5rem;
     font-weight: bold;
     white-space: nowrap;
+}
+
+th[scope="row"] {
+    border-radius: 0;
+    border-bottom: .1rem solid var(--pure-white);
+}
+
+tr:last-child th[scope="row"] {
+    border-bottom: 0;
 }
 
 thead, th:first-child, th:last-child {
@@ -2131,6 +2143,10 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
 
     html::-webkit-scrollbar-track {
         background-color: var(--dark-gray);
+    }
+
+    :where(label, .label) .label-text [class*="icon"] {
+        background: var(--dark-gray);
     }
 }
 /* end styles for dark-mode only ------------------------------------------------------------------------------------------ */
