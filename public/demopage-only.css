@@ -1,10 +1,5 @@
 /* demopage-only.css - STYLES FOR DEMOPAGE ONLY - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
 
-html, body {
-    height: auto;
-    min-height: 100%;
-}
-
 #component-library {
     overflow-y: auto;
     scroll-padding-top: 1.2rem;

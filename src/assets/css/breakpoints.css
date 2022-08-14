@@ -1,13 +1,22 @@
-/* breakpoints.css - last update: 2022/11/05
+/* breakpoints.css - last update: 2022/08/02
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN breakpoint-css
 */
 /* begin styles medium for screens ------------------------------------------------------------------------------------------ */
+/* put new media query syntax level 4 here, as good browser support exists
+@media only screen and (width < 1024px) {
+ */
 @media only screen and (max-width: 1023px) {
     html {
         --grid-columns: 6; /* grid-columns */
         --grid-small-span: calc(var(--grid-columns) / 2); /* default column span smaller part */
         --grid-large-span: var(--grid-small-span); /* default column span larger part */
         --line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
+    }
+
+    html, body {
+        height: auto;
+        min-height: 100%; /* fallback for old browser */
+        min-height: 100dvh;
     }
 
     .grid-container-create-columns > .grid-item-half-width {
@@ -42,20 +51,23 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
         margin: 0 var(--default-margin) 0 0;
     }
+
+    nav ul li li a span[class*='icon-']::before {
+        transform: rotate(180deg);
+    }
 }
 /* end styles medium for screens ------------------------------------------------------------------------------------------ */
 
 /* begin styles small for screens ------------------------------------------------------------------------------------------ */
+/* put new media query syntax level 4 here, as good browser support exists
+@media only screen and (width <= 600px) {
+ */
 @media only screen and (max-width: 600px) {
     html {
         --grid-columns: 4; /* grid-columns */
         --grid-small-span: var(--grid-columns); /* default column span smaller part */
         --grid-large-span: var(--grid-columns); /* default column span larger part */
         font-size: 56.25%; /* default size is 16px, 56.25% of that is 9px = 0.9rem */
-    }
-
-    html, body {
-        min-height: 100%;
     }
 
     [class*="grid-container"][class$="fractions"] {

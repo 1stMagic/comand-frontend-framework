@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.65- last update: 2022/07/21
+framework.css version 3.2.70  last update: 2022/08/14
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -877,7 +877,7 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
     color: var(--text-color);
 }
 
-:is(label, .label).error .label-text * {
+:is(label, .label).error .label-text > * {
     color: var(--error-color);
 }
 
@@ -885,7 +885,7 @@ fieldset.warning, :where(label, .label).warning :where(input:not([type="range"])
     border-color: var(--warning-color);
 }
 
-:is(label, .label).warning .label-text * {
+:is(label, .label).warning .label-text > * {
     color: var(--warning-color);
 }
 
@@ -893,7 +893,7 @@ fieldset.success, :where(label, .label).success :where(input:not([type="range"])
     border-color: var(--success-color);
 }
 
-:is(label, .label).success .label-text * {
+:is(label, .label).success .label-text > * {
     color: var(--success-color);
 }
 
@@ -901,7 +901,7 @@ fieldset.info, :where(label, .label).info :where(input:not([type="range"]), sele
     border-color: var(--info-color);
 }
 
-:is(label, .label).info .label-text * {
+:is(label, .label).info .label-text > * {
     color: var(--info-color);
 }
 
@@ -2011,6 +2011,16 @@ td[colspan] {
     text-align: center;
 }
 
+thead tr {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+tfoot tr, tbody:last-child tr:last-of-type {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
 tr:last-of-type td {
     border-bottom: 0;
 }
@@ -2025,6 +2035,10 @@ tr:last-of-type td:last-child {
 
 tfoot {
     border: var(--default-border);
+}
+
+tfoot td {
+    border-top: var(--default-border);
 }
 
 /* begin highlighted table rows/cells */
