@@ -1364,25 +1364,31 @@
       <section>
         <a id="anchor-main-navigation"></a>
         <h2 class="headline-demopage">Main Navigation</h2>
-        <div class="main-navigation-wrapper">
+        <div id="main-navigation-wrapper">
           <nav>
             <ul>
-              <li><a href="#">Entry 1</a></li>
               <li>
                 <a href="#">
+                  <span class="icon-home"></span>
+                  <span>Entry 1</span>
+                </a>
+              </li>
+              <li class="has-subentries">
+                <a href="#">
+                  <span class="icon-user-profile"></span>
                   <span>Entry 2</span>
-                  <span class="icon-single-arrow-down"></span>
+                  <span class="subentry-icon icon-single-arrow-down"></span>
                 </a>
                 <ul>
-                  <li>
+                  <li class="has-subentries">
                     <a href="#">
                       <span>Entry 2.1</span>
-                      <span class="icon-single-arrow-right"></span>
+                      <span class="subentry-icon icon-single-arrow-down"></span>
                     </a>
                     <ul>
-                      <li><a href="#">Entry 2.1</a></li>
-                      <li><a href="#">Entry 2.2</a></li>
-                      <li><a href="#">Entry 2.3</a></li>
+                      <li><a href="#">Entry 2.1.1</a></li>
+                      <li><a href="#">Entry 2.1.2</a></li>
+                      <li><a href="#">Entry 2.1.3</a></li>
                     </ul>
                   </li>
                   <li><a href="#">Entry 2.2</a></li>
@@ -1394,7 +1400,6 @@
         </div>
       </section>
     </div>
-    <!-- end main-navigation -->
     <!-- end main-navigation -->
 
     <div class="width-limitation-wrapper">

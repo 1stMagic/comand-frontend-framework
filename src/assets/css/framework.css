@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.70  last update: 2022/08/14
+framework.css version 3.2.77 last update: 2022/09/15
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -129,9 +129,9 @@ html {
     --error-color-hsl-values: var(--error-color-hue), var(--error-color-saturation), var(--error-color-lightness); /* error-color-hsl-value */
     --error-color: hsl(var(--error-color-hsl-values)); /* error-color */
 
-    --warning-color-hue: 60; /* warning-color-hue */
-    --warning-color-saturation: 77%; /* warning-color-saturation */
-    --warning-color-lightness: 36%; /* warning-color-lightness */
+    --warning-color-hue: 46; /* warning-color-hue */
+    --warning-color-saturation: 100%; /* warning-color-saturation */
+    --warning-color-lightness: 70%; /* warning-color-lightness */
     --warning-color-hsl-values: var(--warning-color-hue), var(--warning-color-saturation), var(--warning-color-lightness); /* warning-color-hsl-values: */
     --warning-color: hsl(var(--warning-color-hsl-values)); /* warning-color */
 
@@ -193,7 +193,8 @@ html {
 
     /* fonts and typography */
     --font-family: arial, sans-serif; /* font-family */
-    --font-size: 1.4rem; /* font-size */
+    --font-size: 1.4rem; /* font-size for text */
+    --icon-size: 1.8rem; /* font-size for icons */
     --line-height: 140%; /* line-height */
     --headline-font-weight: bold; /* font-weight for headlines */
     --hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
@@ -255,11 +256,12 @@ html, textarea {
 }
 
 html, body {
-    height: 100%; /* maximises visible area. do not set to "min-height" (important to fix footer at bottom!) */
+    height: auto; /* maximises visible area. do not set to "min-height" (important to fix footer at bottom!) */
     background: var(--color-scheme-background-color); /* necessary for accessibility to set default value */
 }
 
 body {
+    min-height: 100%;
     color: var(--color-scheme-text-color);
     word-wrap: break-word; /* breaks word at the end of the line */
     font-size: var(--font-size); /* sets the default font-size for every element */
@@ -322,6 +324,15 @@ object, svg, img, video, canvas, .responsive-wrapper {
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+.center-absolute {
+    --position: 50%;
+    position: absolute;
+    display: block;
+    top: var(--position);
+    left: var(--position);
+    translate: calc(var(--position) * -1);
 }
 
 .full-width, .full-height {
@@ -453,7 +464,7 @@ a:where(:hover, :active, :focus) img {
     border: var(--default-border);
     margin: 0 auto;
     top: 50%;
-    transform: translateY(-50%);
+    translateY: -50%;
     display: table;
     padding: var(--default-padding);
 }
@@ -1698,7 +1709,7 @@ a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
 
 /* begin icons ------------------------------------------------------------------------------------------ */
 [class*="icon-"] {
-    font-size: 1.8rem;
+    font-size: var(--icon-size);
     text-decoration: none !important;
     display: inline-block;
 }
@@ -1784,7 +1795,8 @@ dl.wrap dd {
 /* end lists ------------------------------------------------------------------------------------------ */
 
 /* begin navigation ------------------------------------------------------------------------------------------ */
-.main-navigation-wrapper {
+/* wrapper must have id to keep high specificity */
+#main-navigation-wrapper {
     background: var(--default-background-color);
     border-top: var(--default-border);
     border-bottom: var(--default-border);
@@ -1819,7 +1831,8 @@ nav {
 }
 
 :where(nav, .nav) ul li a {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: var(--default-padding);
     text-decoration: none;
     color: var(--color-scheme-text-color);
@@ -1837,12 +1850,18 @@ nav {
     color: var(--pure-white);
 }
 
-nav ul li a span[class*='icon-'] {
+#main-navigation-wrapper nav ul li a span[class*='icon-'] {
+    font-size: var(--icon-size);
+}
+
+/* do not remove id to keep high specificity */
+#main-navigation-wrapper nav ul li a span[class*='icon-'].subentry-icon {
     font-size: 1rem;
 }
 
-nav ul li li a span[class*='icon-']::before {
-    transform: rotate(90deg);
+nav ul li li a span[class*='icon-'].subentry-icon::before {
+    display: inline-block;
+    transform: rotate(-90deg);
 }
 
 :where(nav, .nav) ul ul {
@@ -1912,6 +1931,10 @@ nav ul li li a span[class*='icon-']::before {
 .system-message.warning {
     --system-message-background-color: var(--warning-color);
     border-color: hsla(var(--warning-color-hsl-values), var(--reduced-opacity));
+}
+
+.system-message.warning * {
+    color: var(--text-color);
 }
 
 .system-message.success {

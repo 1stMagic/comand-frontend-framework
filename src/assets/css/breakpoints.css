@@ -51,10 +51,6 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
         margin: 0 var(--default-margin) 0 0;
     }
-
-    nav ul li li a span[class*='icon-']::before {
-        transform: rotate(180deg);
-    }
 }
 /* end styles medium for screens ------------------------------------------------------------------------------------------ */
 
