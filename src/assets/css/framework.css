@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.77 last update: 2022/09/15
+framework.css version 3.2.78 last update: 2022/09/22
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -1293,11 +1293,6 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     display: flex;
     align-items: center;
 }
-
-
-.icon-globe::before {
-}
-
 
 .toggle-switch input:where([type="checkbox"], [type="radio"]) { /* type required for specificity */
     -webkit-appearance: none;
