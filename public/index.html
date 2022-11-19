@@ -47,13 +47,12 @@
           allowed. It should be also avoided placing to &lt;br /&gt; after each other (use a &lt;p&gt; instead),
           because another paragraph is required if you want to create a blank line (which is no real line, but a
           margin). Of course a paragraph may not contain tags for headlines, tables or forms.</p>
-        <p class="text-align_justify">This is continuous text within a paragraph with text-align justify. Longer texts
+        <p class="text-align-justify">This is continuous text within a paragraph with text-align justify. Longer texts
           should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;,
           &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a
           surrounding &lt;p&gt;-tag is not allowed. It should be also avoided placing to &lt;br /&gt; after each other
           (use a &lt;p&gt; instead), because another paragraph is required if you want to create a blank line (which is
           no real line, but a margin). Of course a paragraph may not contain tags for headlines, tables or forms.</p>
-
         <a id="anchor-lists"></a>
         <h3 class="headline-demopage">Lists</h3>
         <h4>Unordered List</h4>
@@ -75,8 +74,9 @@
           <li>List item</li>
           <li>List item
             <ul>
-              <li>List item level 2</li>
-              <li>List item level 2</li>
+              <li>List item (text only)</li>
+              <li><a href="#">List item (default link)</a></li>
+              <li><a href="#" class="active">List item (active link)</a></li>
             </ul>
           </li>
           <li>List item</li>
@@ -672,6 +672,7 @@
         </dl>
         <form novalidate="novalidate">
           <fieldset class="flex-container">
+            <legend>Form without validation</legend>
             <div class="flex-container">
               <label for="inputfield-without-validation">
                 <span class="label-text">
@@ -679,7 +680,7 @@
                 </span>
                 <input name="inputfield-without-validation" id="inputfield-without-validation" placeholder="Placeholdertext for inputfield with error" type="text" required="required" minlength="5"/>
               </label>
-              <label for="selectbox-without-validation">
+              <label>
                 <span class="label-text">
                   <span>Inputfield without validation:<sup>*</sup></span>
                 </span>
@@ -703,8 +704,9 @@
           <dt>Styling:</dt>
           <dd>Native/Pseudo-classes</dd>
         </dl>
-        <form>
+        <form method="post" action="#">
           <fieldset class="flex-container">
+            <legend>Form with native validation</legend>
             <div class="flex-container">
               <label for="inputfield-with-native-validation">
                   <span class="label-text">
@@ -713,7 +715,7 @@
                 <input name="inputfield-with-native-validation" id="inputfield-with-native-validation" placeholder="Placeholdertext for inputfield with native validation" type="text"
                        required="required" minlength="5"/>
               </label>
-              <label for="selectbox-with-native-validation">
+              <label>
                 <span class="label-text">
                   <span>Selectbox with native validation:<sup>*</sup></span>
                 </span>
@@ -726,6 +728,7 @@
               </label>
             </div>
           </fieldset>
+          <button type="submit">Submit</button>
         </form>
 
         <h4>Custom validation</h4>
@@ -739,6 +742,7 @@
         </dl>
         <form data-use-validation="true" novalidate="novalidate">
           <fieldset class="flex-container">
+            <legend>Form with custom validation</legend>
             <h5>Inputfields</h5>
             <div class="flex-container">
               <label for="inputfield-default">

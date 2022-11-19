@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.78 last update: 2022/09/22
+framework.css version 3.2.95 last update: 2022/11/17
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -31,7 +31,7 @@ G ------------------------
 
 H ------------------------
   - headlines
-  - hyperlinks
+  - hyperlinks & anchors
 
 I ------------------------
   - icons
@@ -122,7 +122,7 @@ html {
     --pure-black: hsl(var(--pure-black-hsl-values)); /* pure-black-color */
     --pure-black-reduced-opacity: hsla(var(--pure-black-hsl-values), var(--reduced-opacity)); /* pure-black-color with reduced opacity */
 
-    /* system-colors (i.e. for errors) */
+    /* system-colors (for errors, warnings, successes, infos) */
     --error-color-hue: 8; /* error-color-hue */
     --error-color-saturation: 100%; /* error-color-saturation */
     --error-color-lightness: 36%; /* error-color-lightness */
@@ -152,7 +152,7 @@ html {
     /* primary-color (i.e. for highlights, primary-buttons) */
     --primary-color-hue: 201; /* primary-color-hue */
     --primary-color-saturation: 93%; /* primary-color-saturation */
-    --primary-color-lightness: 40%; /* primary-color-lightness */
+    --primary-color-lightness: 26%; /* primary-color-lightness */
     --primary-color-hsl-values: var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness); /* primary-color-hsl-values */
     --primary-color: hsl(var(--primary-color-hsl-values)); /* primary-color */
     --primary-color-reduced-opacity: hsla(var(--primary-color-hsl-values), var(--reduced-opacity)); /* primary-color with reduced opacity */
@@ -160,7 +160,7 @@ html {
     /* secondary-color (i.e. for secondary-buttons) */
     --secondary-color-hue: 0; /* secondary-color-hue */
     --secondary-color-saturation: 0%; /* secondary-color-saturation */
-    --secondary-color-lightness: 50%; /* secondary-color-lightness */
+    --secondary-color-lightness: 30%; /* secondary-color-lightness */
     --secondary-color-hsl-values: var(--secondary-color-hue), var(--secondary-color-saturation), var(--secondary-color-lightness); /* secondary-color-hsl-values */
     --secondary-color: hsl(var(--secondary-color-hsl-values)); /* secondary-color */
     --secondary-color-reduced-opacity: hsla(var(--secondary-color-hsl-values), var(--reduced-opacity)); /* secondary-color with reduced opacity */
@@ -176,7 +176,7 @@ html {
     /* text- and hyperlink-colors */
     --text-color-hue: 0; /* text-color-hue */
     --text-color-saturation: 0%; /* text-color-saturation */
-    --text-color-lightness: 16%; /* text-color-lightness */
+    --text-color-lightness: 15%; /* text-color-lightness */
     --text-color-hsl-values: var(--text-color-hue), var(--text-color-saturation), var(--text-color-lightness); /* text-color-hsl-values */
     --text-color: hsl(var(--text-color-hsl-values)); /* text-color */
 
@@ -193,8 +193,10 @@ html {
 
     /* fonts and typography */
     --font-family: arial, sans-serif; /* font-family */
-    --font-size: 1.4rem; /* font-size for text */
-    --icon-size: 1.8rem; /* font-size for icons */
+    --font-size: 1.4rem; /* font-size for default-text */
+    --font-size-small: 1rem; /* font-size for small text */
+    --icon-size: 1.4rem; /* font-size for icons */
+    --icon-size-small: 1rem; /* font-size for small icons */
     --line-height: 140%; /* line-height */
     --headline-font-weight: bold; /* font-weight for headlines */
     --hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
@@ -268,6 +270,10 @@ body {
     line-height: var(--line-height); /* improves reading on the screen. default is 120% */
 }
 
+body.no-transitions *, .no-transitions {
+    transition: none !important;
+}
+
 .no-padding {
     padding: 0 !important;
 }
@@ -286,6 +292,10 @@ body {
 
 .hide-for-small-up, .hide-for-medium-up {
     display: none !important;
+}
+
+dialog {
+    border: var(--default-border);
 }
 
 time {
@@ -322,8 +332,7 @@ object, svg, img, video, canvas, .responsive-wrapper {
 
 .center-item-wrapper {
     display: grid;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
 }
 
 .center-absolute {
@@ -379,7 +388,7 @@ object, svg, img, video, canvas, .responsive-wrapper {
 
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl, table, fieldset, address {
-    margin-bottom: var(--default-margin); /* margin-bottom for most every element */
+    margin-bottom: var(--default-margin); /* margin-bottom for most elements */
 }
 
 strong {
@@ -400,7 +409,7 @@ blockquote, q {
 
 hr {
     border-width: 0;
-    border-top-width: .1rem;
+    border-top-width: var(--border-width);
     margin: calc(var(--default-margin) * 2);
     clear: both;
 }
@@ -423,12 +432,12 @@ a img {
     border: var(--default-border);
 }
 
-p :is(code, pre) {
-    display: inline;
-}
-
 a:where(:hover, :active, :focus) img {
     border-color: var(--primary-color);
+}
+
+:is(p, li, a, dd, td) :is(code, pre) {
+    display: inline;
 }
 
 .hidden, .display-none {
@@ -470,8 +479,7 @@ a:where(:hover, :active, :focus) img {
 }
 
 .box.center-content:is(.grid-container, .flex-container) {
-    align-content: center;
-    justify-content: center;
+    place-content: center;
 }
 
 .box.center-content.flex-container {
@@ -803,6 +811,44 @@ fieldset legend {
     font-weight: bold; /* font-weight of legends */
     padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
+
+fieldset.success, :where(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+    border-color: var(--success-color);
+}
+
+fieldset.warning, :where(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+    border-color: var(--warning-color);
+}
+
+fieldset.error, :where(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+    border: var(--error-border);
+}
+
+fieldset.info, :where(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+    border-color: var(--info-color);
+}
+
+fieldset.disabled, :where(label, .label).disabled span {
+    color: var(--disabled-color);
+}
+
+fieldset > *:first-child,
+fieldset legend + * {
+    margin-top: 0;
+}
+
+fieldset[class*="grid-container"] > * {
+    grid-column: 1 / span var(--grid-columns);
+    margin-bottom: 0;
+}
+
+fieldset hr {
+    margin: var(--default-margin);
+}
+
+fieldset hr + * {
+    margin-top: 0;
+}
 /* end fieldsets */
 
 /* begin labels */
@@ -852,7 +898,7 @@ label, .label {
     grid-column: 1 / span var(--grid-columns);
 }
 
-td .toggle-switch.switch-label{
+td .toggle-switch.switch-label {
     display: inline-flex;
 }
 
@@ -877,10 +923,6 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
     width: auto;
 }
 
-fieldset.error, :where(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
-    border: var(--error-border);
-}
-
 :where(label, .label) .label-text > [class*="icon"] {
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
@@ -888,50 +930,29 @@ fieldset.error, :where(label, .label).error :where(input:not([type="range"]), se
     color: var(--text-color);
 }
 
-:is(label, .label).error .label-text > * {
+:is(label, .label).error .label-text * {
     color: var(--error-color);
 }
 
-fieldset.warning, :where(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
-    border-color: var(--warning-color);
-}
-
-:is(label, .label).warning .label-text > * {
+:is(label, .label).warning .label-text * {
     color: var(--warning-color);
 }
 
-fieldset.success, :where(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
-    border-color: var(--success-color);
-}
-
-:is(label, .label).success .label-text > * {
+:is(label, .label).success .label-text * {
     color: var(--success-color);
 }
 
-fieldset.info, :where(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
-    border-color: var(--info-color);
-}
-
-:is(label, .label).info .label-text > * {
+:is(label, .label).info .label-text * {
     color: var(--info-color);
 }
 
-fieldset.disabled, :where(label, .label).disabled span {
-    color: var(--disabled-color);
-}
-
 :where(label, .label) span > a[class*="icon"] {
-   font-size: var(--font-size);
-   margin-left: auto;
-}
-
-fieldset > *:first-child,
-fieldset legend + * {
-    margin-top: 0;
+    font-size: var(--font-size);
+    margin-left: auto;
 }
 /* end labels */
 
-/* begin input-elements */
+/* begin form-elements */
 input, select, textarea, .input {
     min-width: 5rem;
     border: var(--default-border);
@@ -1039,7 +1060,7 @@ input[type="submit"] input:where(:hover, :active, :focus) {
 :where(input, select):not([type="hidden"]) + input, :where(input:not([type="hidden"]), select) + select {
     border-left: 0;
 }
-/* end input-elements */
+/* end form-elements */
 
 /* begin form-elements in table */
 td :where(label, .label, select, textarea, .input) {
@@ -1294,6 +1315,12 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     align-items: center;
 }
 
+.toggle-switch .label-text {
+    align-self: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .toggle-switch input:where([type="checkbox"], [type="radio"]) { /* type required for specificity */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1306,7 +1333,6 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     background: var(--color-scheme-background-color);
     box-shadow: none;
     display: flex;
-    transition: var(--default-transition);
 }
 
 .toggle-switch input::after {
@@ -1324,28 +1350,42 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     border-color: var(--primary-color);
 }
 
+.toggle-switch input:is(:hover, :active, :focus),
+.toggle-switch input:is(:hover, :active, :focus)::after {
+    border-color: var(--hyperlink-color-highlighted);
+}
+
+.toggle-switch input:is(:hover, :active, :focus) + .label-text,
+.toggle-switch input:checked:is(:hover, :active, :focus) + .label-text,
+.toggle-switch input[class*="icon"]:is(:hover, :active, :focus),
+.toggle-switch input[class*="icon"]:checked:is(:hover, :active, :focus)::before {
+    color: var(--hyperlink-color-highlighted);
+}
+
+/* begin checked toggle-switch */
+.toggle-switch input:checked ~ .label-text {
+    color: var(--primary-color)
+}
+
 .toggle-switch input:checked::after {
     border-color: var(--primary-color);
     background: var(--primary-color);
     margin-left: auto
 }
 
-.toggle-switch .label-text {
-    align-self: center;
-    margin-top: 0;
-    margin-bottom: 0;
+.toggle-switch input:checked:is(:hover, :active, :focus)::after {
+    border-color: var(--hyperlink-color-highlighted);
+    background: var(--hyperlink-color-highlighted);
 }
-
-.toggle-switch input:is(:focus, :checked) ~ .label-text {
-    color: var(--primary-color)
-}
+/* end checked toggle-switch */
 
 .toggle-switch input[class*="icon"]::before {
     position:absolute;
     z-index: 10;
     font-size: 1.6rem;
-    top: 0.1rem;
-    left: 0.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: .2rem;
 }
 
 .toggle-switch input[class*="icon"]::after,
@@ -1356,7 +1396,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 .toggle-switch input[class*="icon"]:checked::before {
     left: auto;
-    right: 0.1rem;
+    right: .2rem;
     color: var(--primary-color);
 }
 
@@ -1398,7 +1438,6 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 .toggle-switch .switch-label-wrapper input ~ .label-text {
     white-space: nowrap;
-    transition: left .3s linear;
     left: 0;
 }
 
@@ -1432,9 +1471,18 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     display: block;
     align-self: center;
     position: absolute;
-    transition: var(--default-transition);
     right: -.7rem;
     top: 0;
+}
+
+.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus),
+.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text::before {
+    border-color: var(--hyperlink-color-highlighted);
+    color: var(--hyperlink-color-highlighted);
+}
+
+.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text {
+    color: var(--hyperlink-color-highlighted);
 }
 
 .toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
@@ -1442,6 +1490,14 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     background: var(--color-scheme-background-color);
     left: -.7rem;
     top: 0;
+}
+
+.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input:checked + .label-text::before {
+    background: var(--hyperlink-color-highlighted);
+}
+
+.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text + .label-text::before {
+    border-color: var(--hyperlink-color-highlighted);
 }
 
 .toggle-switch .switch-label-wrapper + span {
@@ -1519,9 +1575,9 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 /* begin place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
 .place-inside[class*="icon-"] {
     position: absolute;
-    top: auto;
-    bottom: 1rem;
-    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: var(--default-margin);
     z-index: 10;
     color: var(--color-scheme-text-color);
     margin: 0;
@@ -1552,7 +1608,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 }
 
 .place-inside[class*="icon-"] + :is(input, select, textarea, .input){
-    padding-left: calc(var(--default-padding) * 4);
+    padding-left: calc(var(--default-padding) * 3);
 }
 
 .place-inside[class*="icon-"] + input:focus {
@@ -1624,19 +1680,6 @@ h1, h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
     margin-bottom: 0;
 }
 
-fieldset > * {
-    grid-column: 1 / span var(--grid-columns);
-    margin-bottom: 0;
-}
-
-fieldset hr {
-    margin: var(--default-margin);
-}
-
-fieldset hr + * {
-    margin-top: 0;
-}
-
 h1, h2, h3, h4, h5, h6,
 :where(h1, h2, h3, h4, h5, h6) > a {
     line-height: 130%;
@@ -1667,7 +1710,7 @@ h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
 }
 /* end headlines ------------------------------------------------------------------------------------------ */
 
-/* begin hyperlinks ------------------------------------------------------------------------------------------ */
+/* begin hyperlinks & anchors ------------------------------------------------------------------------------------------ */
 a {
     color: var(--hyperlink-color);
 }
@@ -1699,14 +1742,30 @@ a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
 :is(a, li).active :is(span, span[class*="icon"]) {
     color: var(--pure-white);
 }
+
+li a.active {
+    padding: .2rem calc(var(--default-padding) / 2);
+    text-decoration: none;
+}
+
+li a.active:is(:hover, :active, :focus) {
+    color: var(--primary-color);
+    background: none
+}
 /* end active links */
-/* end hyperlinks ------------------------------------------------------------------------------------------ */
+
+/* set display 'inline-block' to avoid font-size-rendering for empty anchors in firefox */
+a[id]:not([href]):empty {
+    display: inline-block;
+}
+/* end hyperlinks & anchors ------------------------------------------------------------------------------------------ */
 
 /* begin icons ------------------------------------------------------------------------------------------ */
 [class*="icon-"] {
     font-size: var(--icon-size);
     text-decoration: none !important;
     display: inline-block;
+    vertical-align: text-bottom;
 }
 
 [class*="icon-"] > * {
@@ -1716,25 +1775,6 @@ a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
 
 [class*="icon-"].button, button[class*="icon-"] {
     line-height: 100%;
-}
-
-a.link-with-icon span[class*="icon"] {
-    font-size: var(--font-size);
-    text-decoration: none !important; /* for links, that contain icons */
-}
-
-a.link-with-icon.disabled span {
-    color: var(--color-scheme-text-color);
-    opacity: var(--reduced-opacity);
-    text-decoration: none !important; /* for links, that contain icons */
-}
-
-a.link-with-icon.disabled:is(:hover, :active, :focus) span {
-    cursor: not-allowed;
-}
-
-a.link-with-icon.disabled [class*="icon-"] + span {
-    font-style: italic;
 }
 
 [class*="icon-"] + span,
@@ -1749,7 +1789,7 @@ span + [class*="icon-"] {
 
 /* begin lists ------------------------------------------------------------------------------------------ */
 /* indent for nested lists */
-:where(ul, ol) :where(ul, ol) {
+:where(ul, ol) {
     margin: 0 0 0 var(--default-margin);
 }
 
@@ -1851,7 +1891,7 @@ nav {
 
 /* do not remove id to keep high specificity */
 #main-navigation-wrapper nav ul li a span[class*='icon-'].subentry-icon {
-    font-size: 1rem;
+    font-size: var(--font-size-small);
 }
 
 nav ul li li a span[class*='icon-'].subentry-icon::before {
@@ -1992,7 +2032,8 @@ th {
 
 th[scope="row"] {
     border-radius: 0;
-    border-bottom: .1rem solid var(--pure-white);
+    border-bottom: var(--default-border);
+    border-bottom-color: var(--pure-white);
 }
 
 tr:last-child th[scope="row"] {

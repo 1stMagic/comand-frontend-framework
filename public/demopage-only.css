@@ -2,7 +2,7 @@
 
 #component-library {
     overflow-y: auto;
-    scroll-padding-top: 1.2rem;
+    scroll-padding-top: 2rem; /* height of header minus height of section-padding */
     scroll-snap-type: y mandatory;
 }
 
