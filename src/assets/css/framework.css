@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.2.95 last update: 2022/11/17
+framework.css version 3.3.0 last update: 2023/01/23
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -197,7 +197,8 @@ html {
     --font-size-small: 1rem; /* font-size for small text */
     --icon-size: 1.4rem; /* font-size for icons */
     --icon-size-small: 1rem; /* font-size for small icons */
-    --line-height: 140%; /* line-height */
+    --line-height: 1.4; /* line-height - may not be set as percentage to work properly in calc() */
+    --line-of-text-height: calc(var(--font-size) * var(--line-height)); /* height of one line of (default) text */
     --headline-font-weight: bold; /* font-weight for headlines */
     --hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
     --hyperlink-text-decoration-highlighted: none; /* text-decoration for highlighted (:hover, :active, :focus) hyperlinks */
@@ -612,9 +613,9 @@ button, .button, input[type="submit"] {
 /* begin disabled ------------------------------------------------------------------------------------------ */
 [readonly],
 .disabled,
-.disabled :is(span, input, select, textarea, .input),
+.disabled :is(> span, input, select, textarea, .input),
 [disabled],
-[disabled] span,
+[disabled] > span,
 input[type="submit"]:disabled {
     background: var(--disabled-background-color) !important;
     color: var(--disabled-color) !important;
@@ -923,7 +924,7 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
     width: auto;
 }
 
-:where(label, .label) .label-text > [class*="icon"] {
+:where(label, .label) .label-text [class*="icon"] {
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
@@ -946,7 +947,7 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
     color: var(--info-color);
 }
 
-:where(label, .label) span > a[class*="icon"] {
+:where(label, .label) span > a {
     font-size: var(--font-size);
     margin-left: auto;
 }
