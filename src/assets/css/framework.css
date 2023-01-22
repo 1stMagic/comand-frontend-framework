@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.0 last update: 2023/01/23
+framework.css version 3.3.2 last update: 2023/01/22
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -658,6 +658,7 @@ input[type="submit"]:disabled {
 }
 
 .toggle-switch.disabled .switch-label-wrapper {
+    border-color: var(--disabled-color) !important;
     background: var(--disabled-background-color) !important;
 }
 
@@ -830,7 +831,7 @@ fieldset.info, :where(label, .label).info :where(input:not([type="range"]), sele
 }
 
 fieldset.disabled, :where(label, .label).disabled span {
-    color: var(--disabled-color);
+    color: var(--disabled-color) !important;
 }
 
 fieldset > *:first-child,
@@ -947,7 +948,7 @@ label > :where(input[type="checkbox"], input[type="radio"]) {
     color: var(--info-color);
 }
 
-:where(label, .label) span > a {
+:is(label, .label) span > a {
     font-size: var(--font-size);
     margin-left: auto;
 }
@@ -1061,6 +1062,10 @@ input[type="submit"] input:where(:hover, :active, :focus) {
 :where(input, select):not([type="hidden"]) + input, :where(input:not([type="hidden"]), select) + select {
     border-left: 0;
 }
+
+:is(input, select, textarea):invalid {
+    border-color: var(--error-color);
+}
 /* end form-elements */
 
 /* begin form-elements in table */
@@ -1110,6 +1115,19 @@ label input.replace-input-type { /* label required for specificity */
     display: inline-flex; /* avoids label-text to wrap */
 }
 
+label input.replace-input-type:is(:hover, :active, :focus),
+label input.replace-input-type:checked:is(:hover, :active, :focus)::after {
+    border-color: var(--hyperlink-color-highlighted);
+}
+
+label input.replace-input-type:is(:hover, :active, :focus) + .label-text {
+    color: var(--hyperlink-color-highlighted);
+}
+
+label input[type="radio"].replace-input-type:checked:is(:hover, :active, :focus)::after {
+    background-color: var(--hyperlink-color-highlighted);
+}
+
 input.replace-input-type.error,
 input.replace-input-type.error:checked {
     border-color: var(--error-color);
@@ -1134,8 +1152,8 @@ input.replace-input-type:checked::after {
     display: block;
 }
 
-input.replace-input-type:disabled:checked::after {
-    background: var(--disabled-color);
+input[type="radio"].replace-input-type:disabled:checked::after {
+    background: var(--disabled-color) !important;
 }
 
 input[type="checkbox"].replace-input-type {
@@ -1351,15 +1369,17 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     border-color: var(--primary-color);
 }
 
-.toggle-switch input:is(:hover, :active, :focus),
-.toggle-switch input:is(:hover, :active, :focus)::after {
+.toggle-switch input[disabled]::after {
+    border-color: var(--disabled-color) !important;
+}
+
+.toggle-switch:is(:hover, :active, :focus) input,
+.toggle-switch:is(:hover, :active, :focus) input::after {
     border-color: var(--hyperlink-color-highlighted);
 }
 
-.toggle-switch input:is(:hover, :active, :focus) + .label-text,
-.toggle-switch input:checked:is(:hover, :active, :focus) + .label-text,
-.toggle-switch input[class*="icon"]:is(:hover, :active, :focus),
-.toggle-switch input[class*="icon"]:checked:is(:hover, :active, :focus)::before {
+.toggle-switch:is(:hover, :active, :focus) *,
+.toggle-switch:is(:hover, :active, :focus) input:checked + .label-text {
     color: var(--hyperlink-color-highlighted);
 }
 
@@ -1476,13 +1496,13 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     top: 0;
 }
 
-.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus),
-.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text::before {
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper,
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input + .label-text::before {
     border-color: var(--hyperlink-color-highlighted);
     color: var(--hyperlink-color-highlighted);
 }
 
-.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text {
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input + .label-text {
     color: var(--hyperlink-color-highlighted);
 }
 
@@ -1493,11 +1513,11 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     top: 0;
 }
 
-.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input:checked + .label-text::before {
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input:checked + .label-text::before {
     background: var(--hyperlink-color-highlighted);
 }
 
-.toggle-switch .switch-label-wrapper:is(:hover, :active, :focus) input + .label-text + .label-text::before {
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input + .label-text + .label-text::before {
     border-color: var(--hyperlink-color-highlighted);
 }
 
