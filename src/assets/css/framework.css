@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.2 last update: 2023/01/22
+framework.css version 3.3.3 last update: 2023/01/23
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -613,7 +613,7 @@ button, .button, input[type="submit"] {
 /* begin disabled ------------------------------------------------------------------------------------------ */
 [readonly],
 .disabled,
-.disabled :is(> span, input, select, textarea, .input),
+.disabled :is(span, input, select, textarea, .input),
 [disabled],
 [disabled] > span,
 input[type="submit"]:disabled {
@@ -1741,17 +1741,19 @@ a:is(:hover, :active, :focus) > * {
     color: var(--hyperlink-color-highlighted);
 }
 
-a[class*="icon-"]:not(.button) {
+a[class*="icon-"]:not(.button),
+a:not(.button) [class*="icon-"] {
     color: var(--color-scheme-text-color);
 }
 
 a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
+a:not(.button):is(:hover, :active, :focus, .active) [class*="icon-"],
 .highlighted {
     color: var(--primary-color);
 }
 
 a span[class*="icon"]:not(:only-child) {
-    font-size: var(--font-size); /* adjust icon on to size as text */
+    font-size: var(--font-size); /* adjust icon to size as text */
 }
 
 /* begin active links */
@@ -1971,7 +1973,7 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
     margin: 0;
 }
 
-.system-message * {
+.system-message *, .system-message [class*="icon"] {
     color: var(--system-message-text-color);
 }
 
