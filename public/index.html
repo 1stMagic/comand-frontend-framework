@@ -377,18 +377,18 @@
         <h3 class="headline-demopage">Images</h3>
         <div class="flex-container" id="richmedia-wrapper">
           <figure>
-            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Simple image"/>
+            <img src="images/landscape-medium.jpg" alt="Alternative text" title="Simple image"/>
           </figure>
           <a href="#">
-            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with surrounding link"/>
+            <img src="images/landscape-medium.jpg" alt="Alternative text" title="Image with link (and border)"/>
           </a>
           <figure>
-            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption below"/>
+            <img src="images/landscape-medium.jpg" alt="Alternative text" title="Image with caption below"/>
             <figcaption>Caption below image</figcaption>
           </figure>
           <figure>
             <figcaption>Caption above image</figcaption>
-            <img src="images/logo-comand.jpg" alt="Logo CoManD" title="Image with caption above"/>
+            <img src="images/landscape-medium.jpg" alt="Alternative text" title="Image with caption above"/>
           </figure>
         </div>
       </section>
@@ -488,19 +488,23 @@
             <div class="label">
               <span class="label-text">Enter dates:</span>
               <span class="flex-container no-flex">
-                                    <label class="inline" for="startdate">
-                                        <span class="label-text">Start date:<sup>*</sup></span>
-                                        <input type="date" id="startdate"/>
-                                    </label>
-                                    <label class="inline" for="enddate">
-                                        <span class="label-text">End date:</span>
-                                        <input type="date" id="enddate"/>
-                                    </label>
-                                </span>
+                <label class="inline" for="startdate">
+                    <span class="label-text">Start date:<sup>*</sup></span>
+                    <input type="date" id="startdate"/>
+                </label>
+                <label class="inline" for="enddate">
+                    <span class="label-text">End date:</span>
+                    <input type="date" id="enddate"/>
+                </label>
+              </span>
             </div>
-            <label for="radiobutton0">
-              <input name="radiobutton" id="radiobutton0" value="1" checked="checked" type="checkbox"/>
+            <label for="single-checkbox">
+              <input id="single-checkbox" value="1" checked="checked" type="checkbox"/>
               <span class="label-text">Label for single checkbox</span>
+            </label>
+            <label for="checkbox-with-long-label">
+              <input id="checkbox-with-long-label" value="1" type="checkbox"/>
+              <span class="label-text">Label for single checkbox with very long text that wraps on small devices</span>
             </label>
             <div class="label">
               <span class="label-text">Label for radiobuttons:</span>
@@ -1288,20 +1292,6 @@
         </div>
       </section>
     </div>
-
-    <!--div class="width-limitation-wrapper">
-        <section>
-            <a id="anchor-iconfont"></a>
-            <h2 class="headline-demopage">Iconfont</h2>
-            <p>
-                The icons below are also already included within the frontend-framework/CMS. The font is based on a free to use icomoon-font, but a lot of custom styled icons were added. An icon can be used with <em>class="icon-NAME"</em>. To edit or expand the font, you can overwrite and add icons individaul for each template inside the <em>iconfont.css</em>-file (CMS only).
-            </p>
-            <div class="grid-container-create-columns list-icons" data-url="css/default-iconfont.css"></div>
-
-            <h2>Custom Iconfont</h2>
-            <div class="grid-container-create-columns list-icons" data-url="css/custom-iconfont.css"></div>
-        </section>
-    </div-->
   </main>
 </div>
 <script>

@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.3 last update: 2023/01/23
+framework.css version 3.3.20 last update: 2023/03/12
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -50,9 +50,8 @@ T ------------------------
   - transforms
 
 - MEDIA QUERIES ------------------------
-- styles for medium screens
-- styles for small screens
 - styles for print only
+- styles for for dark-mode
 */
 /* end table of contents ------------------------------------------------------------------------------------------ */
 
@@ -194,9 +193,11 @@ html {
     /* fonts and typography */
     --font-family: arial, sans-serif; /* font-family */
     --font-size: 1.4rem; /* font-size for default-text */
-    --font-size-small: 1rem; /* font-size for small text */
+    --font-size-small: 1.2rem; /* font-size for small text */
+    --font-size-large: 1.6rem; /* font-size for large text */
     --icon-size: 1.4rem; /* font-size for icons */
-    --icon-size-small: 1rem; /* font-size for small icons */
+    --icon-size-small: 1.2rem; /* font-size for small icons */
+    --icon-size-large: 1.6rem; /* font-size for small icons */
     --line-height: 1.4; /* line-height - may not be set as percentage to work properly in calc() */
     --line-of-text-height: calc(var(--font-size) * var(--line-height)); /* height of one line of (default) text */
     --headline-font-weight: bold; /* font-weight for headlines */
@@ -215,6 +216,7 @@ html {
     --grid-columns: 12; /* grid-columns */
     --grid-layout-columns: 4; /* layout/optical columns */
     --grid-small-span: 3; /* default column span smaller part */
+    --grid-half-span: calc(var(--grid-columns) / 2); /* half column span of grid columns */
     --grid-large-span: 9; /* default column span larger part */
     --grid-gap: var(--default-gap); /* grid-gap for grid-items */
 
@@ -273,6 +275,10 @@ body {
 
 body.no-transitions *, .no-transitions {
     transition: none !important;
+}
+
+.inline-size {
+    container-type: inline-size; /* set reference for @container-rule for child-elements */
 }
 
 .no-padding {
@@ -351,21 +357,21 @@ object, svg, img, video, canvas, .responsive-wrapper {
 }
 
 .full-width {
-    width: 100% !important; /* overwrite all set widths */
-    max-width: none !important; /* overwrite all set max-widths */
+    width: 100% !important; /* overwrite set width */
+    max-width: none !important; /* overwrite set max-width */
 }
 
 .full-height {
-    height: 100% !important; /* overwrite all set heights */
-    max-height: none !important; /* overwrite all set max-height */
+    height: 100% !important; /* overwrite set height */
+    max-height: none !important; /* overwrite set max-height */
 }
 
 .auto-width {
-    width: auto !important;
+    width: auto !important; /* overwrite set width */
 }
 
 .auto-height {
-    height: auto !important;
+    height: auto !important; /* overwrite set height */
 }
 
 .sticky {
@@ -401,7 +407,7 @@ em, cite, .italic {
 }
 
 small, small > a, small > span, .small {
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
 }
 
 blockquote, q {
@@ -435,6 +441,10 @@ a img {
 
 a:where(:hover, :active, :focus) img {
     border-color: var(--primary-color);
+}
+
+img.grayscale {
+    filter: grayscale(1);
 }
 
 :is(p, li, a, dd, td) :is(code, pre) {
@@ -474,7 +484,7 @@ a:where(:hover, :active, :focus) img {
     border: var(--default-border);
     margin: 0 auto;
     top: 50%;
-    translateY: -50%;
+    transform: translateY(-50%);
     display: table;
     padding: var(--default-padding);
 }
@@ -528,8 +538,7 @@ button, .button, input[type="submit"] {
     min-height: 4rem;
 }
 
-:is(button, .button) > span,
-:is(button, .button) > span[class*="icon-"] {
+:is(button, .button) > :is(span, [class*="icon-"]) {
     color: var(--color-scheme-text-color-buttons);
     align-self: center; /* necessary to keep text and icon centered if button has different alignment */
 }
@@ -571,21 +580,41 @@ button, .button, input[type="submit"] {
     border-color: var(--tertiary-color);
 }
 
-:is(button, .button):is(:hover, :active, :focus) > span,
-:is(button, .button):is(:hover, :active, :focus) > span[class*="icon-"] {
+:is(button, .button):is(:hover, :active, :focus) > :is(span, [class*="icon-"]) {
     color: var(--color-scheme-text-color);
     text-shadow: none;
 }
 
-:is(button, .button).primary:is(:hover, :active, :focus) > span,
-:is(button, .button).primary:is(:hover, :active, :focus) > span[class*="icon-"] {
+:is(button, .button).primary:is(:hover, :active, :focus) > :is(span, [class*="icon-"]) {
     color: var(--primary-color);
 }
 
-:is(button, .button).tertiary:is(:hover, :active, :focus) > span,
-:is(button, .button).tertiary:is(:hover, :active, :focus) > span[class*="icon-"] {
+:is(button, .button).tertiary:is(:hover, :active, :focus) > :is(span, [class*="icon-"]) {
     color: var(--tertiary-color);
 }
+
+/* begin small buttons */
+:is(button, .button).small {
+    padding: calc(var(--default-padding) / 2);
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+:is(button, .button).small, :is(button, .button).small :is(span, [class*="icon-"]) {
+    font-size: var(--font-size-small);
+}
+/* end small buttons */
+
+/* begin large buttons */
+:is(button, .button).large {
+    padding: calc(var(--default-padding) * 2);
+    min-width: 6rem;
+}
+
+:is(button, .button).large, :is(button, .button).large :is(span, [class*="icon-"]) {
+    font-size: var(--font-size-large);
+}
+/* end large buttons */
 /* end buttons ------------------------------------------------------------------------------------------ */
 
 /* begin clearfix ------------------------------------------------------------------------------------------ */
@@ -612,11 +641,12 @@ button, .button, input[type="submit"] {
 
 /* begin disabled ------------------------------------------------------------------------------------------ */
 [readonly],
-.disabled,
-.disabled :is(span, input, select, textarea, .input),
+.disabled:not(a),
+.disabled:not(a) :is(span, input, select, textarea, .input),
 [disabled],
 [disabled] > span,
-input[type="submit"]:disabled {
+:is(button, input[type="submit"]):disabled,
+.button.disabled {
     background: var(--disabled-background-color) !important;
     color: var(--disabled-color) !important;
     border-color: var(--disabled-color) !important;
@@ -679,6 +709,11 @@ input[type="submit"]:disabled {
     gap: var(--default-gap);
 }
 
+:where(ul, ol).flex-container:not(.vertical) li {
+    list-style-type: none;
+    margin: 0;
+}
+
 :where(.flex-container, .button-wrapper ) > * {
     float: none !important; /* flex-items should not be floated */
 }
@@ -701,6 +736,7 @@ input[type="submit"]:disabled {
 }
 
 .flex-container.vertical > * {
+    max-width: 100%;
     flex: none;
     margin-top: 0;
     margin-bottom: 0;
@@ -851,6 +887,10 @@ fieldset hr {
 fieldset hr + * {
     margin-top: 0;
 }
+
+fieldset:is(.flex-container, [class*="grid-container"]) :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0;
+}
 /* end fieldsets */
 
 /* begin labels */
@@ -864,6 +904,7 @@ label, .label {
 
 :where(label, .label).inline {
     display: flex;
+    flex-wrap: wrap;
 }
 
 :where(label, .label).inline:not(.textarea) > * {
@@ -920,12 +961,12 @@ label :where(input, select, textarea, .input):not(:first-child) {
     width: 100%;
 }
 
-label > :where(input[type="checkbox"], input[type="radio"]) {
+label :where(input[type="checkbox"], input[type="radio"]) {
     display: inline-block;
     width: auto;
 }
 
-:where(label, .label) .label-text [class*="icon"] {
+:where(label, .label) .label-text [class*="icon-"] {
     align-self: flex-start; /* avoids stretching if label wraps */
     background: var(--pure-white);
     border-radius: var(--full-circle);
@@ -1046,7 +1087,7 @@ input[type="image"] {
     border: 0;
 }
 
-input:where([type="checkbox"], [type="radio"], [type="image"]) {
+input:is([type="checkbox"], [type="radio"], [type="image"]) {
     background: none;
     width: auto;
 }
@@ -1266,6 +1307,10 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     margin-top: -.7rem;
     background: var(--color-scheme-background-color);
+    border: var(--default-border);
+}
+
+input[type="range"]::-webkit-slider-thumb:is(:hover, :active, :focus) {
     border: var(--primary-border);
 }
 
@@ -1276,27 +1321,39 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     margin-top: -.5rem;
     background: var(--color-scheme-background-color);
-    border: var(--primary-border);
+    border: var(--default-border);
+}
+
+input[type="range"]::-moz-range-thumb:is(:hover, :active, :focus) {
+    border-color: var(--hyperlink-color);
 }
 
 /* the track */
 input[type="range"]::-webkit-slider-runnable-track {
     background: var(--color-scheme-background-color);
-    border: var(--primary-border);
+    border-color: var(--hyperlink-color);
+}
+
+input[type="range"]::-webkit-slider-runnable-track:is(:hover, :active, :focus) {
+    boborder-color: var(--hyperlink-color);
 }
 
 input[type="range"]::-moz-range-track {
     background: var(--color-scheme-background-color);
-    border: var(--primary-border);
+    border: var(--default-border);
+}
+
+input[type="range"]::-moz-range-track:is(:hover, :active, :focus) {
+    border-color: var(--hyperlink-color);
 }
 
 /* focus the track */
 /* do not set :focus for IE - styles are controlled by -ms-fill-lower/-ms-fill-upper */
-input[type="range"]:focus::-webkit-slider-runnable-track {
+input[type="range"]:focus::-moz-range-thumb {
     background: var(--primary-color);
 }
 
-input[type="range"]:focus::-moz-range-track {
+input[type="range"]:focus::-moz-range-thumb {
     background: var(--primary-color);
 }
 
@@ -1400,7 +1457,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 }
 /* end checked toggle-switch */
 
-.toggle-switch input[class*="icon"]::before {
+.toggle-switch input[class*="icon-"]::before {
     position:absolute;
     z-index: 10;
     font-size: 1.6rem;
@@ -1409,19 +1466,19 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     left: .2rem;
 }
 
-.toggle-switch input[class*="icon"]::after,
-.toggle-switch input[class*="icon"]:checked:disabled::after {
+.toggle-switch input[class*="icon-"]::after,
+.toggle-switch input[class*="icon-"]:checked:disabled::after {
     border: 0 !important;
     background: none !important;
 }
 
-.toggle-switch input[class*="icon"]:checked::before {
+.toggle-switch input[class*="icon-"]:checked::before {
     left: auto;
     right: .2rem;
     color: var(--primary-color);
 }
 
-.toggle-switch input[class*="icon"]:checked:disabled::before {
+.toggle-switch input[class*="icon-"]:checked:disabled::before {
     color: var(--disabled-color);
 }
 
@@ -1575,7 +1632,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     margin: 0;
 }
 
-.multiple-switch label [class*="icon"] {
+.multiple-switch label [class*="icon-"] {
     font-size: 3rem;
     margin-bottom: calc(var(--default-margin) / 2);
 }
@@ -1594,7 +1651,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 /* end multiple-switch ------------------------------------------------------------------------------------------ */
 
 /* begin place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
-.place-inside[class*="icon-"] {
+:where(label, .label) .place-inside {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1604,35 +1661,37 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     margin: 0;
 }
 
-:is(label, .label).inline .place-inside {
+:where(label, .label).inline .place-inside {
     display: none;
 }
 
-.place-inside.focus[class*="icon-"] {
-    color: var(--primary-color);
-}
-
-.place-inside.error[class*="icon-"] {
+.place-inside[class*="icon-"].error,
+.place-inside.error [class*="icon-"] {
     color: var(--error-color);
 }
 
-.place-inside.warning[class*="icon-"] {
+.place-inside.warning[class*="icon-"],
+.place-inside.warning [class*="icon-"]{
     color: var(--warning-color);
 }
 
-.place-inside.success[class*="icon-"] {
+.place-inside.success[class*="icon-"],
+.place-inside.success [class*="icon-"]{
     color: var(--success-color);
 }
 
-.place-inside.info[class*="icon-"] {
+.place-inside.info[class*="icon-"],
+.place-inside.info [class*="icon-"] {
     color: var(--info-color);
 }
 
-.place-inside[class*="icon-"] + :is(input, select, textarea, .input){
+.place-inside[class*="icon-"] + :is(input, select, textarea, .input),
+.place-inside [class*="icon-"] + :is(input, select, textarea, .input){
     padding-left: calc(var(--default-padding) * 3);
 }
 
-.place-inside[class*="icon-"] + input:focus {
+.place-inside[class*="icon-"] + input:focus,
+.place-inside [class*="icon-"] + input:focus {
     border-color: var(--primary-color);
 }
 /* end place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
@@ -1645,6 +1704,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 [class*="grid-container"] > [class*="grid-item"] {
     grid-column: span var(--grid-small-span);
+    container-type: inline-size;
 }
 
 [class*="grid-container"].stretch-items {
@@ -1684,6 +1744,56 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     width: 38.2%
 }
 /* end golden-ratio */
+
+/* begin classic grid controlled by classes */
+.grid-item-1 {
+    grid-column: span 1
+}
+
+.grid-item-2 {
+    grid-column: span 2
+}
+
+.grid-item-3 {
+    grid-column: span 3
+}
+
+.grid-item-4 {
+    grid-column: span 4
+}
+
+.grid-item-5 {
+    grid-column: span 5
+}
+
+.grid-item-6 {
+    grid-column: span 6
+}
+
+.grid-item-7 {
+    grid-column: span 7
+}
+
+.grid-item-8 {
+    grid-column: span 8
+}
+
+.grid-item-9 {
+    grid-column: span 9
+}
+
+.grid-item-10 {
+    grid-column: span 10
+}
+
+.grid-item-11 {
+    grid-column: span 11
+}
+
+.grid-item-12 {
+    grid-column: span 12
+}
+/* end classic grid controlled by classes */
 /* end grid-containers ------------------------------------------------------------------------------------------ */
 
 /* begin headlines ------------------------------------------------------------------------------------------ */
@@ -1706,27 +1816,27 @@ h1, h2, h3, h4, h5, h6,
     line-height: 130%;
 }
 
-h1, h1 > a, h1 > span, h1 > span[class*="icon-"] {
+h1, h1 > :is(a, span, [class*="icon-"]) {
     font-size: 3rem; /* font-size for h1 */
 }
 
-h2, h2 > a, h2 > span, h2 > span[class*="icon-"] {
+h2, h2 > :is(a, span, [class*="icon-"]) {
     font-size: 2.6rem; /* font-size for h2 */
 }
 
-h3, h3 > a, h3 > span, h3 > span[class*="icon-"] {
+h3, h3 > :is(a, span, [class*="icon-"]) {
     font-size: 2.2rem; /* font-size for h3 */
 }
 
-h4, h4 > a, h4 > span, h4 > span[class*="icon-"] {
+h4, h4 > :is(a, span, [class*="icon-"]) {
     font-size: 2rem; /* font-size for h4 */
 }
 
-h5, h5 > a, h5 > span, h5 > span[class*="icon-"] {
+h5, h5 > :is(a, span, [class*="icon-"]) {
     font-size: 1.8rem; /* font-size for h5 */
 }
 
-h6, h6 > a, h6 > span, h6 > span[class*="icon-"] {
+h6, h6 > :is(a, span, [class*="icon-"]) {
     font-size: 1.6rem; /* font-size for h6 */
 }
 /* end headlines ------------------------------------------------------------------------------------------ */
@@ -1742,27 +1852,27 @@ a:is(:hover, :active, :focus) > * {
 }
 
 a[class*="icon-"]:not(.button),
-a:not(.button) [class*="icon-"] {
-    color: var(--color-scheme-text-color);
+a:not(.button) [class*="icon-"],
+.highlighted {
+    color: var(--hyperlink-color);
 }
 
 a[class*="icon-"]:not(.button):is(:hover, :active, :focus, .active),
-a:not(.button):is(:hover, :active, :focus, .active) [class*="icon-"],
-.highlighted {
-    color: var(--primary-color);
+a:not(.button):is(:hover, :active, :focus, .active) [class*="icon-"] {
+    color: var(--hyperlink-color-highlighted);
 }
 
-a span[class*="icon"]:not(:only-child) {
+a [class*="icon-"]:not(:only-child) {
     font-size: var(--font-size); /* adjust icon to size as text */
 }
 
 /* begin active links */
-a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
+a.active:not([class*="icon-"]), li.active > a:not([class*="icon-"]) {
     background: var(--primary-color);
     color: var(--pure-white);
 }
 
-:is(a, li).active :is(span, span[class*="icon"]) {
+:is(a, li).active :is(span, [class*="icon-"]) {
     color: var(--pure-white);
 }
 
@@ -1777,9 +1887,18 @@ li a.active:is(:hover, :active, :focus) {
 }
 /* end active links */
 
-/* set display 'inline-block' to avoid font-size-rendering for empty anchors in firefox */
+/* set display 'none' to avoid font-size-rendering for empty anchors in firefox and to let element not be counted as flex- or grid-item */
 a[id]:not([href]):empty {
     display: inline-block;
+}
+
+/* avoid email-links to wrap */
+a[href^="mailto:"] {
+    white-space: nowrap;
+}
+
+a.disabled, a.disabled span, a.disabled [class*="icon-"] {
+    color: var(--disabled-color) !important;
 }
 /* end hyperlinks & anchors ------------------------------------------------------------------------------------------ */
 
@@ -1796,7 +1915,8 @@ a[id]:not([href]):empty {
     font-size: var(--font-size);
 }
 
-[class*="icon-"].button, button[class*="icon-"] {
+[class*="icon-"].button, button[class*="icon-"],
+:where(buttn, .button) [class*="icon-"] {
     line-height: 100%;
 }
 
@@ -1893,6 +2013,11 @@ nav {
     align-items: center;
     padding: var(--default-padding);
     text-decoration: none;
+}
+
+:is(nav, .nav) ul li a,
+:is(nav, .nav) ul li a span,
+:is(nav, .nav) ul li a span[class*="icon-"] {
     color: var(--color-scheme-text-color);
 }
 
@@ -1902,18 +2027,18 @@ nav {
     color: var(--pure-white);
 }
 
-:is(nav, .nav) ul li a:is(:hover, :active, :focus) span,
-:is(nav, .nav) ul li.active a span {
+:is(nav, .nav) ul li a:is(:hover, :active, :focus) :is(span, [class*="icon-"]),
+:is(nav, .nav) ul li.active a :is(span, [class*="icon-"]) {
     background: none;
     color: var(--pure-white);
 }
 
-#main-navigation-wrapper nav ul li a span[class*='icon-'] {
+#main-navigation-wrapper nav ul li a [class*="icon-"] {
     font-size: var(--icon-size);
 }
 
 /* do not remove id to keep high specificity */
-#main-navigation-wrapper nav ul li a span[class*='icon-'].subentry-icon {
+#main-navigation-wrapper nav ul li a [class*="icon-"].subentry-icon {
     font-size: var(--font-size-small);
 }
 
@@ -1973,7 +2098,7 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
     margin: 0;
 }
 
-.system-message *, .system-message [class*="icon"] {
+.system-message *, .system-message [class*="icon-"] {
     color: var(--system-message-text-color);
 }
 
@@ -2235,13 +2360,14 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         --color-scheme-text-color-inverted: var(--light-mode-text-color);
         --color-scheme-background-inverted: var(--light-mode-background-color);
         --default-background-color-lightness: 20%;
+        --hyperlink-color: var(--hyperlink-color-highlighted);
     }
 
     html::-webkit-scrollbar-track {
         background-color: var(--dark-gray);
     }
 
-    :where(label, .label) .label-text [class*="icon"] {
+    :where(label, .label) .label-text [class*="icon-"] {
         background: var(--dark-gray);
     }
 }

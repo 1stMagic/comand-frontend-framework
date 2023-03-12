@@ -1,11 +1,8 @@
-/* breakpoints.css - last update: 2022/08/02
+/* breakpoints.css - last update: 2023/03/06
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN breakpoint-css
 */
-/* begin styles medium for screens ------------------------------------------------------------------------------------------ */
-/* put new media query syntax level 4 here, as good browser support exists
-@media only screen and (width < 1024px) {
- */
-@media only screen and (max-width: 1023px) {
+/* begin styles for medium breakpoint ------------------------------------------------------------------------------------------ */
+@media only screen and (width <= 1023px) {
     html {
         --grid-columns: 6; /* grid-columns */
         --grid-small-span: calc(var(--grid-columns) / 2); /* default column span smaller part */
@@ -17,6 +14,10 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         height: auto;
         min-height: 100%; /* fallback for old browser */
         min-height: 100dvh;
+    }
+
+    [class*="grid-item"] {
+        grid-column: span var(--grid-columns)
     }
 
     .grid-container-create-columns > .grid-item-half-width {
@@ -52,18 +53,28 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         margin: 0 var(--default-margin) 0 0;
     }
 }
-/* end styles medium for screens ------------------------------------------------------------------------------------------ */
+/* end styles for medium breakpoint ------------------------------------------------------------------------------------------ */
 
-/* begin styles small for screens ------------------------------------------------------------------------------------------ */
-/* put new media query syntax level 4 here, as good browser support exists
+/* begin styles for small breakpoint ------------------------------------------------------------------------------------------ */
 @media only screen and (width <= 600px) {
- */
-@media only screen and (max-width: 600px) {
     html {
         --grid-columns: 4; /* grid-columns */
         --grid-small-span: var(--grid-columns); /* default column span smaller part */
         --grid-large-span: var(--grid-columns); /* default column span larger part */
         font-size: 56.25%; /* default size is 16px, 56.25% of that is 9px = 0.9rem */
+        --line-height: 1.2; /* line-height - may not be set as percentage to work properly in calc() */
+    }
+
+    :is(button, .button, input[type="submit"]):not(.stretch-on-small-devices) {
+        width: auto;
+    }
+
+    .flex-container {
+        flex-direction: column; /* arrange flex-items vertically */
+    }
+
+    .flex-container > * {
+        max-width: 100%;
     }
 
     [class*="grid-container"][class$="fractions"] {
@@ -114,10 +125,6 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         max-width: none;
     }
 
-    .flex-container {
-        flex-direction: column; /* arrange flex-items vertically */
-    }
-
     .input-wrapper {
         flex-direction: row; /* avoid flex-items to be arranged vertically */
     }
@@ -126,7 +133,7 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         flex: 1;
     }
 
-    .input-wrapper :where(button, .button), input:is([type="checkbox"], [type="radio"]),
+    .input-wrapper :where(button, .button, input, select, textarea), input:is([type="checkbox"], [type="radio"]),
     :where(label, .label) .flex-container :where(button, .button) {
         width: auto;
     }
@@ -169,5 +176,5 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         flex-direction: row;
     }
 }
-/* end styles for small screens ------------------------------------------------------------------------------------------ */
+/* end styles for small breakpoint ------------------------------------------------------------------------------------------ */
 /* end breakpoints.css */
