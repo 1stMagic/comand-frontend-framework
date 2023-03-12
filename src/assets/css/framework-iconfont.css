@@ -1,10 +1,10 @@
-/* framework-iconfont.css - last update: 2022/06/21
+/* framework-iconfont.css - last update: 2023/03/12
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN iconfont-css-file
 */
 
 @font-face {
 	font-family: 'icomoon';
-	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?kwx7nw') format('woff');
+	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?vbp22i') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -25,6 +25,15 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-moon:before {
+  content: "\a217";
+}
+.icon-sun:before {
+  content: "\a218";
+}
+.icon-company:before {
+  content: "\a219";
+}
 .icon-accessibility:before {
   content: "\a100";
 }
@@ -570,4 +579,7 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 }
 .icon-wrench:before {
   content: "\a215";
+}
+.icon-qrcode:before {
+  content: "\a216";
 }
