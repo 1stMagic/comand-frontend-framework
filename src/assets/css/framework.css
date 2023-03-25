@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.21 last update: 2023/03/12
+framework.css version 3.3.23 last update: 2023/03/20
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -1916,7 +1916,7 @@ a.disabled, a.disabled span, a.disabled [class*="icon-"] {
 }
 
 [class*="icon-"].button, button[class*="icon-"],
-:where(buttn, .button) [class*="icon-"] {
+:where(button, .button) [class*="icon-"] {
     line-height: 100%;
 }
 

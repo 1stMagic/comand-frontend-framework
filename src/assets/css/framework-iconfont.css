@@ -5,12 +5,13 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 @font-face {
 	font-family: 'icomoon';
 	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?vbp22i') format('woff');
-	font-weight: normal;
+    unicode-range: U+a???;
+    font-weight: normal;
 	font-style: normal;
 	font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*="icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
