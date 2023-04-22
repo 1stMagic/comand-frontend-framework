@@ -1,11 +1,4 @@
 /* demopage-only.css - STYLES FOR DEMOPAGE ONLY - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
-
-#component-library {
-    overflow-y: auto;
-    scroll-padding-top: 2rem; /* height of header minus height of section-padding */
-    scroll-snap-type: y mandatory;
-}
-
 #header_options .grid-small-item {
     grid-column: span 4;
 }

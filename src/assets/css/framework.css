@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.24 last update: 2023/03/28
+framework.css version 3.3.29 last update: 2023/01/04
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -195,6 +195,9 @@ html {
     --font-size: 1.4rem; /* font-size for default-text */
     --font-size-small: 1.2rem; /* font-size for small text */
     --font-size-large: 1.6rem; /* font-size for large text */
+    --font-weight-light: 200; /* font-weight for light text (must be supported by font-family) */
+    --font-weight-normal: 400; /* font-weight for normal/default text */
+    --font-weight-bold: 600; /* font-weight for bold text (must be supported by font-family) */
     --icon-size: 1.4rem; /* font-size for icons */
     --icon-size-small: 1.2rem; /* font-size for small icons */
     --icon-size-large: 1.6rem; /* font-size for small icons */
@@ -457,6 +460,10 @@ img.grayscale {
 
 .visibility-hidden {
     visibility: hidden !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
 }
 /* end basic selectors and classes ------------------------------------------------------------------------------------------ */
 
@@ -1907,7 +1914,7 @@ a.disabled, a.disabled span, a.disabled [class*="icon-"] {
     font-size: var(--icon-size);
     text-decoration: none !important;
     display: inline-block;
-    vertical-align: text-bottom;
+    vertical-align: middle;
 }
 
 [class*="icon-"] > * {
@@ -1950,8 +1957,8 @@ ol li {
 dl {
     display: grid;
     grid-gap: .2rem 1rem; /* row, column */
+    grid-template-columns: min-content auto;
     grid-auto-rows: min-content;
-    grid-template-columns: min-content max-content;
 }
 
 dt {
@@ -1960,15 +1967,7 @@ dt {
 
 dd {
     grid-column: 2;
-}
-
-dl.wrap {
-    grid-template-columns: min-content auto;
-}
-
-dl.wrap dd {
     white-space: normal;
-    word-break: break-all; /* break long strings */
 }
 /* end lists ------------------------------------------------------------------------------------------ */
 

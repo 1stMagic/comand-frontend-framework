@@ -1,15 +1,13 @@
-/* framework-iconfont.css - last update: 2023/03/28
+/* framework-iconfont.css - last update: 2023/03/29
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN iconfont-css-file
 */
 
 @font-face {
 	font-family: 'icomoon';
 	src: url('../fonts/iconfonts/framework-iconfont/icomoon.woff?m358kr') format('woff');
-    /*unicode-range: U+a???;*/
     font-weight: normal;
 	font-style: normal;
 	font-display: block;
-
 }
 
 [class^="icon-"], [class*="icon-"] {
