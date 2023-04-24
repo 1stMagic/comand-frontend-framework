@@ -259,10 +259,6 @@ html {
     scroll-behavior: smooth; /* let pages scroll smoothly to anchors */
 }
 
-html, textarea {
-    font-family: var(--font-family);
-}
-
 html, body {
     height: auto; /* maximises visible area. do not set to "min-height" (important to fix footer at bottom!) */
     background: var(--color-scheme-background-color); /* necessary for accessibility to set default value */
@@ -274,6 +270,10 @@ body {
     word-wrap: break-word; /* breaks word at the end of the line */
     font-size: var(--font-size); /* sets the default font-size for every element */
     line-height: var(--line-height); /* improves reading on the screen. default is 120% */
+}
+
+body, textarea {
+    font-family: var(--font-family);
 }
 
 body.no-transitions *, .no-transitions {
@@ -650,8 +650,8 @@ button, .button, input[type="submit"] {
 [readonly],
 .disabled:not(a),
 .disabled:not(a) :is(span, input, select, textarea, .input),
-[disabled],
-[disabled] > span,
+[disabled]:not(fieldset),
+[disabled]:not(fieldset) > span,
 :is(button, input[type="submit"]):disabled,
 .button.disabled {
     background: var(--disabled-background-color) !important;
@@ -679,7 +679,7 @@ button, .button, input[type="submit"] {
     color: var(--disabled-color) !important;
 }
 
-:where([readonly], .disabled, [disabled]):is(:hover, :active, :focus) {
+:where([readonly], .disabled, [disabled]:not(fieldset)):is(:hover, :active, :focus) {
     cursor: not-allowed !important;
 }
 
@@ -857,25 +857,85 @@ fieldset legend {
     padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
 
-fieldset.success, :where(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+fieldset.success, :where(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--success-color);
 }
 
-fieldset.warning, :where(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+fieldset.warning, :where(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--warning-color);
 }
 
-fieldset.error, :where(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+fieldset.error, :where(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border: var(--error-border);
 }
 
-fieldset.info, :where(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type) {
+fieldset.info, :where(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--info-color);
 }
 
-fieldset.disabled, :where(label, .label).disabled span {
-    color: var(--disabled-color) !important;
+fieldset[disabled] {
+    background: var(--default-background-color) !important;
 }
+
+fieldset[disabled] :is(input, select, textarea, .input, .replace-input-type) {
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] :is(input, select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch):is(:hover, :active, :focus),
+fieldset[disabled] .multiple-switch label:is(:hover, :active, :focus) {
+    cursor: not-allowed;
+}
+
+fieldset[disabled] input[type="range"] {
+    background: none !important;
+}
+
+fieldset[disabled] input[type="range"]::-webkit-slider-thumb {
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] input[type="range"]::-moz-range-thumb {
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] input[type="range"]::-moz-range-track {
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] input[type="search"] + a.button {
+    color: var(--disabled-color);
+    background: var(--disabled-background-color);
+}
+
+fieldset[disabled] input[type="search"] + a.button span,
+fieldset[disabled] .switch-label-wrapper + span {
+    color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] :is(.toggle-switch input::after, .toggle-switch .label-text::before, .switch-label-wrapper),
+fieldset[disabled] input[type="checkbox"].replace-input-type:checked::after{
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+/* do not combine to :where/:is-selector (does not work for pseudo-elements */
+fieldset[disabled] .toggle-switch input::after,
+fieldset[disabled] .switch-label-wrapper,
+fieldset[disabled] .toggle-switch .label-text::before {
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
+}
+
+fieldset[disabled] .toggle-switch > input[class*="icon"],
+fieldset[disabled] .multiple-switch span {
+    color: var(--disabled-color) !important;  /* avoid overwriting */
+}
+
 
 fieldset > *:first-child,
 fieldset legend + * {
@@ -1201,7 +1261,7 @@ input.replace-input-type:checked::after {
 }
 
 input[type="radio"].replace-input-type:disabled:checked::after {
-    background: var(--disabled-color) !important;
+    background: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 input[type="checkbox"].replace-input-type {
@@ -2366,7 +2426,7 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         background-color: var(--dark-gray);
     }
 
-    :where(label, .label) .label-text [class*="icon-"] {
+    body, :where(label, .label) .label-text [class*="icon-"] {
         background: var(--dark-gray);
     }
 }
