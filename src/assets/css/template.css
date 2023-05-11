@@ -1,1 +1,51 @@
 /* template.css - ADD OVERWRITES AND YOUR CUSTOM STYLES IN THIS FILE */
+@font-face {
+    font-family: 'Exo', sans-serif;
+    src:  url('../fonts/exo/exo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+}
+
+html {
+    --text-color: #777;
+    --border-radius: 1rem;
+    --box-shadow: 0 0 1rem #aaa;
+    --font-family: 'Exo', sans-serif;
+    --primary-color-hue: 178; /* primary-color-hue */
+    --primary-color-saturation: 98%; /* primary-color-saturation */
+    --primary-color-lightness: 33%; /* primary-color-lightness */
+    --hyperlink-color-lightness: 20%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
+    --default-background-color: var(--pure-white);
+    --border-color: #bbb;
+    --default-padding: 1.5rem;
+    --default-margin: 1.5rem;
+    --font-size: 1.6rem;
+    --primary-background-gradient: linear-gradient(to bottom,  #02a8a3 0%,#028c87 100%);
+    --text-shadow: .1rem .1rem .1rem #333;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+    background: #f0f0f0;
+}
+
+.box, fieldset, .system-message {
+    box-shadow: var(--box-shadow);
+}
+
+.box, fieldset {
+    background: linear-gradient(to bottom,  #ffffff 0%,#ededed 100%);
+}
+
+legend {
+    bottom: .4rem;
+}
+
+:is(button, .button, input[type="submit"]) {
+    background: var(--primary-background-gradient);
+}
+
+:is(button, .button, input[type="submit"]),
+:is(button, .button, input[type="submit"]) :is(span, [class*="icon"]),
+th {
+    text-shadow: var(--text-shadow);
+}

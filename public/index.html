@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" id="frontend-framework">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
@@ -10,15 +10,107 @@
       @import url("../src/assets/css/framework.css") all;
       @import url("../src/assets/css/breakpoints.css") all;
       @import url("../src/assets/css/framework-iconfont.css") all;
-      @import url("../src/assets/css/template.css") all;
+     /* @import url("../src/assets/css/template.css") all;*/
       @import url("<%= BASE_URL %>demopage-only.css") all;
       @import url("demopage-only.css") all;
+      @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body class="nojs frontend-framework">
+<body class="nojs">
 <div id="app">
+  <div id="navigation">
+    <h1>Table of contents</h1>
+    <div>
+    <ul>
+      <li>
+        <a href="#anchor-typography">Typography</a>
+        <ul>
+          <li><a href="#anchor-headlines">Headlines</a></li>
+          <li><a href="#anchor-paragraphs">Paragraphs</a></li>
+          <li>
+            <a href="#anchor-lists">Lists</a>
+            <ul>
+              <li><a href="#anchor-unordered-list">Unordered List</a></li>
+              <li><a href="#anchor-ordered-list">Ordered List</a></li>
+              <li><a href="#anchor-definition-list">Definition List</a></li>
+            </ul>
+          </li>
+          <li><a href="#anchor-hyperlinks">Hyperlinks</a></li>
+          <li><a href="#anchor-miscellaneous">Miscellaneous Typo</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-tables">Tables</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-boxes">Boxes</a>
+        <ul>
+          <li><a href="#anchor-stretched-boxes">Stretched Boxes</a></li>
+          <li><a href="#anchor-boxes-with-centered-content">Boxes with centered content</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-richmedia">Richmedia</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-user-interface">User Interface</a>
+        <ul>
+          <li><a href="#anchor-system-messages">System Messages</a></li>
+          <li><a href="#anchor-buttons">Buttons</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-forms">Forms</a>
+        <ul>
+          <li><a href="#anchor-native-form-elements">Native Form Elements</a></li>
+          <li><a href="#anchor-form-validation">Form Validation</a></li>
+          <li><a href="#anchor-advanced-form-elements">Advanced Form Elements</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-main-navigation">Main Navigation</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#anchor-flex-containers">Flex-Containers</a>
+        <ul>
+          <li><a href="#anchor-flex-containers-default">Default</a></li>
+          <li><a href="#anchor-flex-containers-no-gap">No Gap</a></li>
+          <li><a href="#anchor-flex-containers-no-flex-all">No Flex All items</a></li>
+          <li><a href="#anchor-flex-containers-no-flex-single-item">No Flex Single Item</a></li>
+          <li><a href="#anchor-flex-containers-vertical">Vertical</a></li>
+        </ul>
+      </li>
+      </ul>
+      <ul>
+      <li>
+        <a href="#anchor-grid-containers">Grid-Containers</a>
+        <ul>
+          <li><a href="#anchor-grid-containers-regular-grid">Regular Grid</a></li>
+          <li><a href="#anchor-grid-containers-default-classes">Default Classes</a></li>
+          <li><a href="#anchor-grid-containers-two-fractions">Two Fractions</a></li>
+          <li><a href="#anchor-grid-containers-complex-grid">Complex Grid</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+  </div>
   <main id="content">
+    <a id="top-of-page"></a>
     <div class="width-limitation-wrapper">
       <section>
         <a id="anchor-typography"></a>
@@ -27,15 +119,10 @@
         <a id="anchor-headlines"></a>
         <h3 class="headline-demopage">Headlines</h3>
         <h1>Headline 1</h1>
-
         <h2>Headline 2</h2>
-
         <h3>Headline 3</h3>
-
         <h4>Headline 4</h4>
-
         <h5>Headline 5</h5>
-
         <h6>Headline 6</h6>
 
         <a id="anchor-paragraphs"></a>
@@ -55,6 +142,7 @@
           no real line, but a margin). Of course a paragraph may not contain tags for headlines, tables or forms.</p>
         <a id="anchor-lists"></a>
         <h3 class="headline-demopage">Lists</h3>
+        <a id="anchor-unordered-list"></a>
         <h4>Unordered List</h4>
         <ul>
           <li>List item</li>
@@ -69,6 +157,7 @@
           </li>
           <li>List item</li>
         </ul>
+        <a id="anchor-ordered-list"></a>
         <h4>Ordered List</h4>
         <ol>
           <li>List item</li>
@@ -81,12 +170,13 @@
           </li>
           <li>List item</li>
         </ol>
+        <a id="anchor-definition-list"></a>
         <h4>Definition List</h4>
         <h5>List with texts as terms</h5>
         <dl>
           <dt>Definition term:</dt><dd>Definition data</dd>
           <dt>Definition term:</dt><dd>Definition data</dd>
-          <dt>Definition longer term:</dt><dd>Definition data with a very long text will should wrap on small devices</dd>
+          <dt>Definition longer term:</dt><dd>Definition data with a very long text which will wrap on small devices</dd>
         </dl>
         <h5>List with icons as terms</h5>
         <dl>
@@ -94,14 +184,16 @@
           <dt><span class="icon-phone" title="Phone"></span></dt><dd>Definition data</dd>
           <dt><span class="icon-mail" title="Email"></span></dt><dd>Definition data with a very long text which will wrap on small devices</dd>
         </dl>
-        <h4>Hyperlinks</h4>
-        <h5>Link with text only</h5>
+        <hr/>
+        <a id="anchor-hyperlinks"></a>
+        <h3>Hyperlinks</h3>
+        <h4>Link with text only</h4>
         <a href="#">Hyperlink</a>
-        <h5>Link with icon only</h5>
+        <h4>Link with icon only</h4>
         <a href="#">
           <span class="icon-user-profile"></span>
         </a>
-        <h5>Link with icon and text</h5>
+        <h4>Link with icon and text</h4>
         <a href="#">
           <span class="icon-user-profile"></span><span>Hyperlink</span>
         </a>
@@ -298,6 +390,7 @@
       <section>
         <a id="anchor-boxes"></a>
         <h2 class="headline-demopage">Boxes</h2>
+        <a id="anchor-simple-boxes"></a>
         <h3>Simple Box</h3>
         <!-- simple box -->
         <div class="box">
@@ -308,6 +401,7 @@
           </p>
         </div>
 
+        <a id="anchor-stretched-boxes"></a>
         <h3>Stretched boxes with different content</h3>
         <div class="flex-container">
           <div class="box">
@@ -353,6 +447,7 @@
           </div>
         </div>
 
+        <a id="anchor-boxes-with-centered-content"></a>
         <h3>Boxes with centered content</h3>
         <div class="grid-container-auto-columns" id="demopage-boxes">
           <div class="box center-content">
@@ -402,7 +497,7 @@
       <section>
         <a id="anchor-userinterface"></a>
         <h2 class="headline-demopage">User Interface</h2>
-        <a id="anchor-messages"></a>
+        <a id="anchor-system-messages"></a>
         <h3 class="headline-demopage">System messages</h3>
         <!--                    <p>-->
         <!--                        <a href="#" id="toggle-stretch-messages" title="(add/remove class 'full-width')">Toggle stretched messages</a>-->
@@ -485,6 +580,8 @@
       <section>
         <a id="anchor-forms"></a>
         <h2 class="headline-demopage">Forms</h2>
+
+        <a id="anchor-native-form-elements"></a>
         <h3>Native form elements (fieldset with grid-container)</h3>
         <form method="post" novalidate="novalidate">
           <fieldset class="grid-container-create-column">
@@ -668,6 +765,7 @@
           </div>
         </form>
 
+        <a id="anchor-form-validation"></a>
         <h3>Form Validation</h3>
         <h4>No validation</h4>
         <dl>
@@ -702,7 +800,6 @@
             </div>
           </fieldset>
         </form>
-
         <h4>Native validation</h4>
         <dl>
           <dt>Validation:</dt>
@@ -738,7 +835,6 @@
           </fieldset>
           <button type="submit">Submit</button>
         </form>
-
         <h4>Custom validation</h4>
         <dl>
           <dt>Validation:</dt>
@@ -855,6 +951,7 @@
           </fieldset>
         </form>
 
+        <a id="advanced-form-elements"></a>
         <h3>Advanced form elements (fieldset with flex-container)</h3>
         <form>
           <fieldset class="flex-container" disabled>
@@ -1189,31 +1286,37 @@
 
     <div class="width-limitation-wrapper">
       <section id="flex-section">
+        <a id="anchor-flex-containers"></a>
         <h2 class="headline-demopage">Flex-Containers</h2>
+        <a id="anchor-flex-containers-default"></a>
         <h3>Default</h3>
         <div class="flex-container">
           <div>flex-item</div>
           <div>flex-item</div>
           <div>flex-item</div>
         </div>
+        <a id="anchor-flex-containers-no-gap"></a>
         <h3>No-gap</h3>
         <div class="flex-container no-gap">
           <div>flex-item</div>
           <div>flex-item</div>
           <div>flex-item</div>
         </div>
+        <a id="anchor-flex-containers-no-flex-all"></a>
         <h3>No-flex (for all items)</h3>
         <div class="flex-container no-flex">
           <div>flex-item</div>
           <div>flex-item</div>
           <div>flex-item</div>
         </div>
+        <a id="anchor-flex-containers-no-flex-single-item"></a>
         <h3>No-flex (for single item)</h3>
-        <div class="flex-container ">
+        <div class="flex-container">
           <div>flex-item</div>
           <div class="no-flex">flex-item (no-flex)</div>
           <div>flex-item</div>
         </div>
+        <a id="anchor-flex-containers-vertical"></a>
         <h3>Vertical</h3>
         <div class="flex-container vertical">
           <div>flex-item</div>
@@ -1225,7 +1328,7 @@
 
     <div class="width-limitation-wrapper">
       <section id="grid-section">
-        <a id="anchor-grids"></a>
+        <a id="anchor-grid-containers"></a>
         <h2 class="headline-demopage">Grid-Containers</h2>
         <!--h3 class="headline-demopage">Simple Grid</h3>
         <form novalidate="novalidate">
@@ -1250,7 +1353,7 @@
                 </div>
             </div>
         </form-->
-
+        <a id="anchor-grid-containers-regular-grid"></a>
         <h3>Regular Grid</h3>
         <div class="grid-container-create-columns" id="grid-regular">
           <div>1</div>
@@ -1267,18 +1370,21 @@
           <div>12</div>
         </div>
 
+        <a id="anchor-grid-containers-default-classes"></a>
         <h3>Grid based on default classes</h3>
         <div class="grid-container-create-columns" id="grid-default">
           <div class="grid-small-item">Small item</div>
           <div class="grid-large-item">Large item</div>
         </div>
 
+        <a id="anchor-grid-containers-two-fractions"></a>
         <h3>Grid two fractions (with same width)</h3>
         <div class="grid-container-create-columns">
           <div class="grid-item-half-width">grid-item</div>
           <div class="grid-item-half-width">grid-item</div>
         </div>
 
+        <a id="anchor-grid-containers-complex-grid"></a>
         <h3>Complex Grid</h3>
         <div class="grid-container" id="grid-complex">
           <div>1</div>
@@ -1296,6 +1402,9 @@
         </div>
       </section>
     </div>
+    <a class="button" id="back-to-top-button" href="#top-of-page" title="Back to top">
+      <span class="icon-single-arrow-up"></span>
+    </a>
   </main>
 </div>
 <script>

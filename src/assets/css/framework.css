@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css version 3.3.29 last update: 2023/01/04
+framework.css version 3.3.42 last update: 2023/05/12
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -179,9 +179,12 @@ html {
     --text-color-hsl-values: var(--text-color-hue), var(--text-color-saturation), var(--text-color-lightness); /* text-color-hsl-values */
     --text-color: hsl(var(--text-color-hsl-values)); /* text-color */
 
-    --hyperlink-color: var(--primary-color); /* hyperlink-color */
-    --hyperlink-color-lightness: 50%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
-    --hyperlink-color-highlighted: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--hyperlink-color-lightness)); /* hyperlink-color highlighted (:hover, :active, :focus) hyperlinks */
+    --hyperlink-color-hue: var(--primary-color-hue); /* hyperlink-color-hue */
+    --hyperlink-color-saturation: var(--primary-color-saturation); /* hyperlink-color-saturation */
+    --hyperlink-color-lightness: var(--primary-color-lightness); /* hyperlink-color-lightness */
+    --hyperlink-color: hsl(var(--hyperlink-color-hue), var(--hyperlink-color-saturation), var(--hyperlink-color-lightness)); /* hyperlink-color */
+    --hyperlink-color-highlighted-lightness: 40%; /* hyperlink-color-highlighted-lightness (used for highlighted hyperlinks) */
+    --hyperlink-color-highlighted: hsl(var(--hyperlink-color-hue), var(--hyperlink-color-saturation), var(--hyperlink-color-highlighted-lightness)); /* hyperlink-color highlighted (:hover, :active, :focus) hyperlinks */
 
     --disabled-color-hue: 0; /* disabled-color-hue */
     --disabled-color-saturation: 0%; /* disabled-color-saturation */
@@ -192,8 +195,9 @@ html {
 
     /* fonts and typography */
     --font-family: arial, sans-serif; /* font-family */
-    --font-size: 1.4rem; /* font-size for default-text */
+    --font-size: 1.4rem; /* global font-size for text-elements */
     --font-size-small: 1.2rem; /* font-size for small text */
+    --font-size-medium: var(--font-size); /* font-size for default-/medium-text */
     --font-size-large: 1.6rem; /* font-size for large text */
     --font-weight-light: 200; /* font-weight for light text (must be supported by font-family) */
     --font-weight-normal: 400; /* font-weight for normal/default text */
@@ -438,12 +442,16 @@ a :is(img, figcaption) {
     margin: 0 auto;
 }
 
+img {
+    border-radius: var(--border-radius);
+}
+
 a img {
     border: var(--default-border);
 }
 
 a:where(:hover, :active, :focus) img {
-    border-color: var(--primary-color);
+    border-color: var(--hyperlink-color);
 }
 
 img.grayscale {
@@ -622,6 +630,20 @@ button, .button, input[type="submit"] {
     font-size: var(--font-size-large);
 }
 /* end large buttons */
+
+/* begin back-to-top-button */
+#back-to-top-button {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 1000;
+    line-height: 100%;
+}
+
+#back-to-top-button [class*="icon-"] {
+    line-height: inherit; /* avoids icon-bounding-box to be stretched by global line-height */
+}
+/* end back-to-top-button */
 /* end buttons ------------------------------------------------------------------------------------------ */
 
 /* begin clearfix ------------------------------------------------------------------------------------------ */
@@ -657,7 +679,12 @@ button, .button, input[type="submit"] {
     background: var(--disabled-background-color) !important;
     color: var(--disabled-color) !important;
     border-color: var(--disabled-color) !important;
-    text-shadow: inherit;
+    text-shadow: none !important;
+}
+
+:is(button, input[type="submit"]):disabled :is(span, [class*="icon"]),
+.button.disabled :is(span, [class*="icon"]) {
+    text-shadow: none !important;
 }
 
 /* set disabled-color in chrome (will be to set darkest-possible value by browser) */
@@ -839,6 +866,10 @@ fieldset.flex-container {
     flex-direction: column;
 }
 
+fieldset .flex-container:not(.vertical) {
+    align-items: flex-end;
+}
+
 fieldset.grid-container-create-columns {
     grid-template-columns: min-content; /* items should be minimum as wide as content */
 }
@@ -857,22 +888,23 @@ fieldset legend {
     padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
 
-fieldset.success, :where(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
+fieldset.success, :is(label, .label).success :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--success-color);
 }
 
-fieldset.warning, :where(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
+fieldset.warning, :is(label, .label).warning :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--warning-color);
 }
 
-fieldset.error, :where(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
+fieldset.error, :is(label, .label).error :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border: var(--error-border);
 }
 
-fieldset.info, :where(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
+fieldset.info, :is(label, .label).info :where(input:not([type="range"]), select, textarea, .input, .replace-input-type, .toggle-switch, .multiple-switch) {
     border-color: var(--info-color);
 }
 
+/* begin disabled fieldset */
 fieldset[disabled] {
     background: var(--default-background-color) !important;
 }
@@ -936,6 +968,10 @@ fieldset[disabled] .multiple-switch span {
     color: var(--disabled-color) !important;  /* avoid overwriting */
 }
 
+fieldset[disabled] .multiple-switch label {
+    background: var(--disabled-background-color);
+}
+/* end disabled fieldset */
 
 fieldset > *:first-child,
 fieldset legend + * {
@@ -997,11 +1033,11 @@ label, .label {
 .label-text sup {
     font-size: 1.5rem; /* overwrite normalize.css */
     top: -.2rem; /* overwrite normalize.css */
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 :where(label, .label):focus input + span {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 .grid-container-create-columns > :where(label, .label) {
@@ -1028,9 +1064,9 @@ label :where(input, select, textarea, .input):not(:first-child) {
     width: 100%;
 }
 
-label :where(input[type="checkbox"], input[type="radio"]) {
+label :is(input[type="checkbox"], input[type="radio"]) {
     display: inline-block;
-    width: auto;
+    align-self: center;
 }
 
 :where(label, .label) .label-text [class*="icon-"] {
@@ -1072,11 +1108,11 @@ input, select, textarea, .input {
 }
 
 :is(input, select, textarea, .input):is(:hover, :active, :focus) {
-    border-color: var(--primary-color);
+    border-color: var(--hyperlink-color);
 }
 
 input:checked + span {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 input, select, .input {
@@ -1096,15 +1132,18 @@ select[multiple] {
 input[type="search"] {
     align-self: stretch;
     box-sizing: border-box; /* overwrite normalize.css */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-input[type="search"] + button {
+input[type="search"] + :is(button, .button) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    padding: 1rem;
 }
 
 input:where([type="checkbox"], [type="radio"]):focus + span {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 ::placeholder {
@@ -1204,6 +1243,11 @@ td :where(label, .label) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+:is(.input-wrapper, .input-group) > :is(label, .label):last-child :is(input, select) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 /* end .input-wrapper/.input-group */
 /* end forms: basic elements ------------------------------------------------------------------------------------------ */
 
@@ -1246,13 +1290,13 @@ input.replace-input-type.error:checked::after {
 }
 
 input.replace-input-type:checked {
-    border-color: var(--primary-color);
+    border-color: var(--hyperlink-color);
 }
 
 input.replace-input-type:checked::after {
     content: "";
     border-radius: var(--full-circle);
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
     width: 0.8rem;
     height: 0.8rem;
     align-self: center;
@@ -1274,7 +1318,7 @@ input[type="checkbox"].replace-input-type:checked::after {
     width: 0.9rem;
     height: 0.5rem;
     border-radius: 0;
-    border: .2rem solid var(--primary-color);
+    border: .2rem solid var(--hyperlink-color);
     border-top: 0;
     border-right: 0;
     background: none;
@@ -1292,7 +1336,7 @@ input[type="checkbox"].error.replace-input-type:checked::after {
 }
 
 input.replace-input-type:checked + .label {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 input.replace-input-type.error:checked + .label {
@@ -1321,7 +1365,8 @@ progress[value] {
     appearance: none;
     width: 25rem;
     border-radius: var(--border-radius);
-    border: var(--primary-border);
+    border: var(--default-border);
+    border-color: var(--hyperlink-color);
     background: var(--color-scheme-background-color); /* background-color for entire bar - does not work on -webkit-browsers */
     box-shadow: none;
 }
@@ -1332,13 +1377,13 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-    background-image: -webkit-repeating-linear-gradient(-45deg, var(--primary-color), var(--primary-color) .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
+    background-image: -webkit-repeating-linear-gradient(-45deg, var(--hyperlink-color), var(--hyperlink-color) .7rem, var(--hyperlink-color) .7rem, var(--hyperlink-color) 1.4rem);
 }
 
 progress[value]::-moz-progress-bar {
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
-    background-image: repeating-linear-gradient(-45deg, var(--primary-color), var(--primary-color) .7rem, var(--primary-color) .7rem, var(--primary-color) 1.4rem);
+    background-image: repeating-linear-gradient(-45deg, var(--hyperlink-color), var(--hyperlink-color) .7rem, var(--hyperlink-color) .7rem, var(--hyperlink-color) 1.4rem);
 }
 /* end forms: progressbar ------------------------------------------------------------------------------------------ */
 
@@ -1378,7 +1423,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb:is(:hover, :active, :focus) {
-    border: var(--primary-border);
+    border: var(--hyperlink-color);
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -1402,7 +1447,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="range"]::-webkit-slider-runnable-track:is(:hover, :active, :focus) {
-    boborder-color: var(--hyperlink-color);
+    border-color: var(--hyperlink-color);
 }
 
 input[type="range"]::-moz-range-track {
@@ -1417,11 +1462,11 @@ input[type="range"]::-moz-range-track:is(:hover, :active, :focus) {
 /* focus the track */
 /* do not set :focus for IE - styles are controlled by -ms-fill-lower/-ms-fill-upper */
 input[type="range"]:focus::-moz-range-thumb {
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
 }
 
 input[type="range"]:focus::-moz-range-thumb {
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
 }
 
 /* disabled styles */
@@ -1490,7 +1535,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 }
 
 .toggle-switch input:checked {
-    border-color: var(--primary-color);
+    border-color: var(--hyperlink-color);
 }
 
 .toggle-switch input[disabled]::after {
@@ -1509,12 +1554,12 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 /* begin checked toggle-switch */
 .toggle-switch input:checked ~ .label-text {
-    color: var(--primary-color)
+    color: var(--hyperlink-color)
 }
 
 .toggle-switch input:checked::after {
-    border-color: var(--primary-color);
-    background: var(--primary-color);
+    border-color: var(--hyperlink-color);
+    background: var(--hyperlink-color);
     margin-left: auto
 }
 
@@ -1542,7 +1587,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 .toggle-switch input[class*="icon-"]:checked::before {
     left: auto;
     right: .2rem;
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 .toggle-switch input[class*="icon-"]:checked:disabled::before {
@@ -1609,8 +1654,9 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 .toggle-switch .switch-label-wrapper input ~ .label-text::before {
     content: "";
     border-radius: var(--full-circle);
-    border: var(--primary-border);
-    background: var(--primary-color);
+    border: var(--default-border);
+    border-color: var(--hyperlink-color);
+    background: var(--hyperlink-color);
     width: 1.4rem;
     height: 1.4rem;
     display: block;
@@ -1689,7 +1735,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 .multiple-switch label:is(:hover, :active, :focus) input ~ span,
 .multiple-switch label input:checked ~ span {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
 }
 
 .multiple-switch label span {
@@ -1705,7 +1751,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 }
 
 .multiple-switch label.active {
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
 }
 
 .multiple-switch label.active input:checked ~ span {
@@ -1759,7 +1805,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 .place-inside[class*="icon-"] + input:focus,
 .place-inside [class*="icon-"] + input:focus {
-    border-color: var(--primary-color);
+    border-color: var(--hyperlink-color);
 }
 /* end place-inside (place icon inside/over inputfield) ------------------------------------------------------------------------------------------ */
 
@@ -1935,7 +1981,7 @@ a [class*="icon-"]:not(:only-child) {
 
 /* begin active links */
 a.active:not([class*="icon-"]), li.active > a:not([class*="icon-"]) {
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
     color: var(--pure-white);
 }
 
@@ -1949,7 +1995,7 @@ li a.active {
 }
 
 li a.active:is(:hover, :active, :focus) {
-    color: var(--primary-color);
+    color: var(--hyperlink-color);
     background: none
 }
 /* end active links */
@@ -2082,7 +2128,7 @@ nav {
 
 :is(nav, .nav) ul li a:is(:hover, :active, :focus),
 :is(nav, .nav) ul li.active a {
-    background: var(--primary-color);
+    background: var(--hyperlink-color);
     color: var(--pure-white);
 }
 
@@ -2144,7 +2190,7 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
     padding: var(--default-padding);
     margin-bottom: var(--default-margin);
     border: var(--default-border);
-    border-width: .2rem;
+    border-width: .3rem;
     background: var(--system-message-background-color);
     -webkit-background-clip: padding-box; /* important to keep border transparent */
     background-clip: padding-box; /* important to keep border transparent */
@@ -2417,17 +2463,20 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
         --color-scheme-text-color: var(--dark-mode-text-color);
         --color-scheme-text-color-buttons: var(--dark-mode-text-color-buttons);
         --color-scheme-text-color-inverted: var(--light-mode-text-color);
+        --color-scheme-background-color: var(--dark-mode-background-color);
         --color-scheme-background-inverted: var(--light-mode-background-color);
         --default-background-color-lightness: 20%;
+        --hyperlink-color-lightness: 40%; /* hyperlink-color-lightness */
+        --hyperlink-color-highlighted-lightness: 50%; /* hyperlink-color-highlighted-lightness (used for highlighted hyperlinks) */
         --hyperlink-color: var(--hyperlink-color-highlighted);
     }
 
     html::-webkit-scrollbar-track {
-        background-color: var(--dark-gray);
+        background-color: var(--color-scheme-background-color);
     }
 
     body, :where(label, .label) .label-text [class*="icon-"] {
-        background: var(--dark-gray);
+        background: var(--color-scheme-background-color);
     }
 }
 /* end styles for dark-mode only ------------------------------------------------------------------------------------------ */

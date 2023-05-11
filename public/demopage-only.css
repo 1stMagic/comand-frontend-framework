@@ -1,4 +1,67 @@
 /* demopage-only.css - STYLES FOR DEMOPAGE ONLY - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css ONLY */
+
+body {
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+}
+
+#navigation {
+    border-right: var(--default-border);
+    background: var(--pure-white);
+}
+
+#navigation h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    padding: var(--default-padding) calc(var(--default-padding) / 2);
+    background: var(--primary-color);
+    color: var(--pure-white);
+}
+
+#navigation div {
+    padding: var(--default-padding);
+}
+
+#navigation > div > ul > li {
+    margin-left: 0;
+}
+
+#navigation > div > ul > li:first-child > a {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#navigation li {
+    list-style-type: none;
+}
+
+#navigation li a {
+    font-size: 1.3rem;
+}
+
+#navigation hr {
+    margin: calc(var(--default-margin) / 2);
+    border-color: var(--border-color);
+}
+
+#navigation hr + * {
+    margin: 0;
+}
+
+#frontend-framework main {
+    overflow-y: scroll;
+    height: 100vh;
+    flex: 1;
+}
+
+#frontend-framework main a[id^="anchor"] + h3 {
+    color: var(--primary-color);
+}
+
 #header_options .grid-small-item {
     grid-column: span 4;
 }
@@ -13,14 +76,6 @@ html.global-border-radius {
 
 #introduction table th {
     white-space: normal;
-}
-
-a {
-    color: var(--primary-color);
-}
-
-a[href]:hover {
-    cursor: pointer;
 }
 
 #table_of_contents ul {
@@ -411,6 +466,7 @@ small sup {
     border: var(--default-border);
     text-align: center;
     padding: var(--default-padding);
+    background: var(--pure-white);
 }
 
 #filter .select {
