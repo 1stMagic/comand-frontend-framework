@@ -1,0 +1,27 @@
+#frontend-framework-demo.template-business {
+    --primary-color: var(--dark-blue);
+    --light-blue: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
+    --dark-blue: hsl(207, 69%, 50%);
+    --default-radius: 1rem;
+    --hyperlink-color: var(--dark-blue);
+    --hyperlink-color-highlighted: var(--light-blue);
+    --default-background: rgba(255, 255, 255, 0.2);
+    --colored-background-gradient: linear-gradient(180deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+    --colored-background-gradient-rotated: linear-gradient(0deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+    --button-border: .2rem solid var(--pure-white);
+    --button-outline: .2rem solid var(--primary-color);
+}
+
+html {
+    --primary-color-hue: 186;
+    --primary-color-saturation: 82%;
+    --primary-color-lightness: 43%;
+    --box-shadow: .1rem .1rem .5rem #666;
+    --font-size: 1.3rem;
+    --default-radius: 1rem;
+    --font-family: "Open Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+}
+
+button, .button, input[type="submit"] {
+    border-color: var(--pure-white);
+}

@@ -1,0 +1,246 @@
+/* template.styles - ADD OVERWRITES AND YOUR CUSTOM STYLES IN THIS FILE */
+@font-face {
+    font-family: 'Exo', sans-serif;
+    src:  url('../../fonts/textfonts/exo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+}
+
+html {
+    --text-color: #555;
+    --border-radius: 1rem;
+    --box-shadow: 0 0 1rem #aaa;
+    --font-family: 'Exo', sans-serif;
+    --primary-color-hue: 178; /* primary-color-hue */
+    --primary-color-saturation: 98%; /* primary-color-saturation */
+    --primary-color-lightness: 33%; /* primary-color-lightness */
+    --hyperlink-color-lightness: 20%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
+    --default-background-color: var(--pure-white);
+    --border-color: #bbb;
+    --default-padding: 1.5rem;
+    --default-margin: 1.5rem;
+    --font-size: 1.6rem;
+    --primary-background-gradient: linear-gradient(to bottom,  #02a8a3 0%,#028c87 100%);
+    --text-shadow: .1rem .1rem .1rem #333;
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+    background: #e0e0e0;
+}
+
+.box, fieldset, .system-message, :is(button, .button, input[type="submit"]) {
+    border: 0;
+    border-radius: 2.5rem;
+    box-shadow:  10px 10px 25px #bebebe,
+    -10px -10px 25px #ffffff;
+}
+
+.box, fieldset, :is(button, .button, input[type="submit"]) {
+    background: #e0e0e0;
+}
+
+legend {
+    bottom: .4rem;
+}
+
+:is(button, .button, input[type="submit"]) {
+    background: var(--primary-background-gradient);
+}
+
+:is(button, .button, input[type="submit"]),
+:is(button, .button, input[type="submit"]) :is(span, [class*="icon"]),
+th {
+    text-shadow: var(--text-shadow);
+}
+
+input, select, textarea, .input, .multiple-switch label {
+    border: none;
+    padding-left: 1.5rem;
+    outline: none;
+    border-radius: 2rem;
+    background-color: #fcfcfc;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
+    transition: 300ms ease-in-out;
+}
+
+input, select, .input {
+    padding-top: 1.2rem;
+    padding-bottom: 0.8rem;
+}
+
+:is(input, select, textarea, .input):focus {
+    background-color: white;
+    box-shadow: 13px 13px 100px #969696,
+    -13px -13px 100px #ffffff;
+}
+
+label input.replace-input-type {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    background-color: #ccc;
+    border-radius: 100%;
+    background: #e8e8e8;
+    transition-duration: 0.5s;
+    box-shadow: inset 3px 3px 5px #c5c5c5,
+    inset -3px -3px 5px #ffffff;
+    border: 0;
+    margin-right: .5rem;
+}
+
+input[type="checkbox"].replace-input-type:checked::after {
+    width: 1.4rem;
+    height: 0.7rem;
+    border: .3rem solid var(--hyperlink-color);
+    border-top: 0;
+    border-right: 0;
+    transform: rotate(-45deg) skewX(-10deg) translateX(-50%) translateY(-50%);
+    top: 15%;
+    left: 50%;
+}
+
+.multiple-switch label {
+    border-radius: 0;
+}
+
+/* begin toggle-switch */
+
+.toggle-switch input ~ .label-text {
+    margin-left: .5rem;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"], .switch-label-wrapper) {
+    background: var(--error-color);
+    border-radius: 2.5rem;
+    box-shadow: inset 0 1px 4px hsla(0,0%,0%,.5),
+    inset 0 0 10px hsla(0,0%,0%,.5),
+    0 0 0 1px hsla(0,0%,0%,.1),
+    0 -1px 2px 2px hsla(0,0%,0%,.25),
+    0 2px 2px 2px hsla(0,0%,100%,.75);
+    cursor: pointer;
+    height: 2.5rem;
+    padding-right: 2.5rem;
+    width: 7rem;
+    -webkit-appearance: none;
+    -webkit-transition: .25s;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"]):after,
+.toggle-switch .switch-label-wrapper input ~ .label-text::before {
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
+    border-radius: 2.5rem;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,1),
+    inset 0 -1px 1px 1px hsla(0,0%,0%,.25),
+    0 1px 3px 1px hsla(0,0%,0%,.5),
+    0 0 2px hsla(0,0%,0%,.25);
+    display: block;
+    height: 2.4rem;
+    width: 4rem;
+    top: -0.2rem;
+    left: -0.3rem;
+    border: 0;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked {
+    background: var(--success-color);
+    padding-left: 2.5rem;
+    padding-right: 0;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"]):before {
+    left: .1rem;
+    right: auto;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked:before {
+    left: auto !important;
+    right: .2rem;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked:after {
+    left: 0;
+}
+
+.toggle-switch:is(:hover, :active, :focus) *,
+.toggle-switch:is(:hover, :active, :focus) input:checked + .label-text {
+    color: var(--hyperlink-color-highlighted);
+}
+
+.toggle-switch :is(input, .switch-label-wrapper) {
+    border: none;
+}
+
+.toggle-switch:is(:hover, :active, :focus) input::after,
+.toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
+    background: #eee;
+}
+
+.toggle-switch input:checked::after,
+.toggle-switch .switch-label-wrapper input ~ .label-text::before,
+.toggle-switch input:checked:is(:hover, :active, :focus)::after,
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input ~ .label-text::before,
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input:checked + .label-text::before{
+    background: var(--pure-white);
+}
+
+/* begin toggle-switch with icon */
+.toggle-switch input[class*="icon-"]::before {
+    font-size: 2rem;
+}
+
+.toggle-switch input[class*="icon-"]:checked:disabled::before {
+    color: var(--pure-white);
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"]:after,
+.toggle-switch .switch-label-wrapper input ~ .label-text::before {
+    width: 2.4rem;
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"] {
+    background: var(--error-color);
+}
+
+.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"]:checked {
+    background: var(--success-color);
+}
+/* end toggle-switch with icon */
+
+/* begin toggle-switch with switch-label */
+.toggle-switch .switch-label-wrapper input + .label-text,
+.toggle-switch .switch-label-wrapper input + .label-text + .label-text {
+    margin: 0;
+    font-weight: bold;
+    color: var(--pure-white) !important;
+}
+
+.toggle-switch .switch-label-wrapper input ~ .label-text::before {
+    left: auto;
+}
+
+.toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
+    left: -1.5rem;
+    top: unset;
+}
+
+.toggle-switch .switch-label-wrapper input:checked + .label-text::before {
+    left: auto;
+    right: -1.3rem;
+    top: -.4rem;
+}
+
+.toggle-switch .switch-label-wrapper:has(input:checked) {
+    background: var(--success-color);
+}
+
+.toggle-switch .switch-label-wrapper:has(input:checked) ~ span:last-child {
+    color: var(--hyperlink-color);
+}
+
+.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper:has(input:checked) ~ span:last-child {
+    color: var(--hyperlink-color-highlighted);
+}
+/* end toggle-switch with switch-label */

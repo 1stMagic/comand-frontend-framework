@@ -1,46 +1,44 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.3.43",
+  "version": "3.3.45",
   "private": false,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build src/index.js",
-    "build-lib": "vue-cli-service build --target lib --name comand-frontend-framework src/index.js",
-    "lint": "vue-cli-service lint",
-    "prepublishOnly": "npm run build-lib"
+    "publish": "npm publish",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "main": "dist/comand-frontend-framework.umd.min.js",
+  "main": "dist/comand-frontend-framework.umd.cjs",
+  "module": "dist/comand-frontend-framework.js",
   "files": [
-    "dist/*.css",
-    "src",
-    "public/*"
+    "dist",
+    "src"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/comand-frontend-framework.js",
+      "require": "./dist/comand-frontend-framework.umd.cjs"
+    },
+    "./styles": {
+      "import": "./dist/style.css"
+    },
+    "./demopage-only.css": {
+      "import": "./dist/demopage-only.css"
+    },
+    "./casual.css": {
+      "import": "./src/assets/styles/templates/casual.css"
+    },
+    "./dating.css": {
+      "import": "./src/assets/styles/templates/dating.css"
+    }
+  },
+  "dependencies": {
+    "core-js": "^3.20.1",
+    "vue": "^3.2.31"
+  },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-plugin-eslint": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite": "^3.2.6"
+  }
 }

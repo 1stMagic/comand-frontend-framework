@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Dancing Script';
+    src: url('../../fonts/textfonts/dancingscript.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+#frontend-framework-demo.template-dating {
+    --primary-color: var(--light-pink);
+    --light-pink: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
+    --dark-pink: hsl(288, 79%, 47%);
+    --default-radius: 1rem;
+    --hyperlink-color: var(--light-pink);
+    --hyperlink-color-highlighted: var(--dark-pink);
+    --default-background: rgba(255, 255, 255, 0.2);
+    --colored-background-gradient: linear-gradient(180deg, var(--primary-color) 0%, var(--dark-pink) 100%);
+    --colored-background-gradient-rotated: linear-gradient(0deg, var(--primary-color) 0%, var(--dark-pink) 100%);
+    --button-font-weight: 400;
+}
+
+html {
+    --primary-color-hue: 326;
+    --primary-color-saturation: 70%;
+    --primary-color-lightness: 58%;
+    --box-shadow: .1rem .1rem .5rem #666;
+    --font-size: 1.8rem;
+    --default-radius: 1rem;
+    --font-family: 'Dancing Script', cursive;
+}
+
+main {
+    background: var(--colored-background-gradient);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#6b043e+0,d60868+20,8e054c+70,6b043e+100 */
+    background: hsl(324, 100%, 98%); /* Old browsers */
+}
+
+.box, fieldset, #flex-section .flex-container > *,
+#grid-section [class*="grid-"] > div, table {
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(.3rem);
+    -webkit-backdrop-filter: blur(.3rem);
+    border-color: rgba(0, 0, 0, 0.5);
+    background: var(--pure-white);
+}
+
+fieldset{
+    background: linear-gradient(180deg, hsl(326, 73%, 97%) 0%, hsl(326, 73%, 92%) 100%);
+}
+
+tr {
+    background: none;
+}
+
+button, .button, input[type="submit"] {
+    border: var(--default-border);
+    display: inline-flex;
+    padding: var(--default-padding);
+    background: var(--colored-background-gradient);
+    color: var(--pure-white);
+    font-weight: var(--button-font-weight);
+}
+
+:is(button, .button, input[type="submit"]) :is(span, [class*="icon"]),
+:is(button, .button, input[type="submit"]).primary :is(span, [class*="icon"]) {
+    color: var(--pure-white);
+}
+
+:is(button, .button, input[type="submit"]) [class*="icon"] {
+    font-size: 2rem;
+    line-height: 100%;
+}
+
+:is(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
+    background: var(--pure-white);
+    outline-color: var(--hyperlink-color-highlighted);
+    text-shadow: 0 0 .2rem var(--box-shadow-color);
+    animation: gradient 10s ease infinite;
+    border-color: var(--light-pink) !important;
+}
+
+:is(button, .button, input[type="submit"]):is(:hover, :active, :focus) :is(span, [class*="icon"]) {
+    color: var(--light-pink) !important;
+}
+
+:is(button, .button).primary {
+    background: var(--dark-pink);
+}
+
+:is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
+    background: var(--pure-white);
+    background-image: none;
+    border-color: var(--dark-pink);
+}
+
+:is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) :is(span, [class*="icon"]) {
+    color: var(--dark-pink);
+}
+
+.system-message :is(span, [class*="icon-"]) {
+    text-shadow: var(--text-shadow);
+}
