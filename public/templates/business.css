@@ -1,0 +1,92 @@
+#template-business {
+    --primary-color: var(--dark-blue);
+    --light-blue: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
+    --dark-blue: hsl(207, 69%, 50%);
+    --default-radius: 1rem;
+    --hyperlink-color: var(--dark-blue);
+    --hyperlink-color-highlighted: var(--light-blue);
+    --default-background: rgba(255, 255, 255, 0.1);
+    --colored-background-gradient: linear-gradient(180deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+    --colored-background-gradient-rotated: linear-gradient(0deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+    --button-border: .2rem solid var(--pure-white);
+    --button-outline: .2rem solid var(--primary-color);
+    --border-radius: 0;
+}
+
+html {
+    --primary-color-hue: 186;
+    --primary-color-saturation: 82%;
+    --primary-color-lightness: 43%;
+    --box-shadow: .1rem .1rem .5rem #666;
+    --font-size: 1.5rem;
+    --default-radius: 1rem;
+    --dark-mode-text-color: hsl(0, 0%, 100%);
+    --font-family: "NeuzeitGro-Reg", "Open Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+}
+
+button, .button, input[type="submit"] {
+    border-color: rgba(255, 255, 255, .5);
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --primary-color-hue: 216;
+        --primary-color-saturation: 80%;
+        --primary-color-lightness: 25%;
+        --tertiary-color-hue: 210;
+        --tertiary-color-saturation: 71%;
+        --tertiary-color-lightness: 50%;
+    }
+
+    #template-business {
+        --dark-blue: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
+        --medium-blue: hsl(var(--tertiary-color-hue), var(--tertiary-color-saturation), var(--tertiary-color-lightness));
+        --colored-background-gradient: linear-gradient(180deg, var(--dark-blue) 0%, var(--medium-blue) 50%, var(--dark-blue) 100%);
+        --button-text-color: var(--pure-white);
+        --hyperlink-color: var(--pure-white);
+        --hyperlink-color-highlighted: var(--dark-blue);
+        --color-scheme-background-color: rgba(255, 255, 255, .1);
+        --disabled-color: rgb(55, 55, 55);
+        --button-background-color: var(--color-scheme-background-color);
+
+        background: var(--colored-background-gradient);
+    }
+
+    option {
+        color: var(--color-scheme-text-color-inverted);
+    }
+
+    a.active:not([class*="icon-"]), li.active > a:not([class*="icon-"]) {
+        color: var(--dark-blue);
+    }
+
+    :is(button, .button, input[type="submit"]) {
+        outline: var(--color-scheme-background-color);
+    }
+
+    :is(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
+        border-color: var(--dark-blue);
+        background: var(--dark-blue);
+    }
+
+    :is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
+        border-color: var(--dark-blue);
+        background: var(--pure-white);
+    }
+
+    input, select, textarea, .input {
+        background: none;
+    }
+
+    :is(input:not([type="range"]), select, textarea, .input):focus {
+        background: rgba(255, 255, 255, .1)
+    }
+
+    :is(input, select, textarea, .input):focus::placeholder {
+        color: var(--color-scheme-text-color);
+    }
+
+    tr.highlighted td, td.highlighted {
+        background: rgba(255, 255, 255, var(--reduced-opacity));
+    }
+}

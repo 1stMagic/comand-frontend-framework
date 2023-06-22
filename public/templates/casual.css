@@ -1,11 +1,11 @@
 /* template.styles - ADD OVERWRITES AND YOUR CUSTOM STYLES IN THIS FILE */
 @font-face {
     font-family: 'Exo', sans-serif;
-    src:  url('../../fonts/textfonts/exo-regular-webfont.woff') format('woff');
+    src:  url('../../src/assets/fonts/textfonts/exo-regular-webfont.woff') format('woff');
     font-weight: normal;
 }
 
-html {
+#template-casual {
     --text-color: #555;
     --border-radius: 1rem;
     --box-shadow: 0 0 1rem #aaa;

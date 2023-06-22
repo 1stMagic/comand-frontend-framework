@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'Dancing Script';
-    src: url('../../fonts/textfonts/dancingscript.woff') format('woff');
+    src: url('../../src/assets/fonts/textfonts/dancingscript.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 
-#frontend-framework-demo.template-dating {
+#template-dating {
     --primary-color: var(--light-pink);
     --light-pink: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
     --dark-pink: hsl(288, 79%, 47%);

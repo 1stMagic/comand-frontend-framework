@@ -4,7 +4,7 @@ body {
     overflow: hidden;
 }
 
-#frontend-framework-demo {
+#frontend-framework-demo > div:first-child {
     display: flex;
 }
 
@@ -28,6 +28,14 @@ body {
     width: 25rem;
     border-right: var(--default-border);
     background: var(--pure-white);
+}
+
+#template-business #navigation {
+    background: rgba(255, 255, 255, .1);
+}
+
+#frontend-framework-demo #template-business main a[id^="anchor"] + h3 {
+    color: var(--pure-white);
 }
 
 #navigation h1 {

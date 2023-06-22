@@ -12,7 +12,7 @@
     --button-background-color: var(--medium-green);
 }
 
-html {
+#template-influencer {
     --dark-green: hsl(120, 81%, 15%);
     --primary-color-hue: 22;
     --primary-color-saturation: 100%;

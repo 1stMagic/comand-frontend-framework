@@ -1,6 +1,6 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.3.45",
+  "version": "3.3.51",
   "private": false,
   "type": "module",
   "scripts": {
@@ -25,12 +25,6 @@
     },
     "./demopage-only.css": {
       "import": "./dist/demopage-only.css"
-    },
-    "./casual.css": {
-      "import": "./src/assets/styles/templates/casual.css"
-    },
-    "./dating.css": {
-      "import": "./src/assets/styles/templates/dating.css"
     }
   },
   "dependencies": {
