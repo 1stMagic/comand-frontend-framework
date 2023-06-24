@@ -1681,7 +1681,7 @@ input[type="range"]:is([disabled], .disabled):is(:hover, :active, :focus) {
 
 input[type="range"]:is([disabled], .disabled)::-moz-range-thumb {
     background: var(--disabled-background-color) !important; /* avoid overwriting */
-    border-color: var(--disabled-color); !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 input[type="range"]:is([disabled], .disabled)::-webkit-slider-thumb {
