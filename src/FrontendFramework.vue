@@ -571,18 +571,20 @@
 
                         <a id="anchor-buttons"></a>
                         <h3 class="headline-demopage">Buttons</h3>
-                        <h4>Button types</h4>
-                        <div class="button-wrapper">
-                            <a href="#" class="button tertiary"
-                               role="button"><span>Tertiary button with a-tag</span></a>
-                            <button class="button tertiary"><span>Tertiary button with button-tag</span></button>
+                        <h4>Default buttons</h4>
+                        <h5>Button types</h5>
+                        <div class="button-wrapper align-left">
+                            <a href="#" class="button primary" role="button"><span>Primary button with a-tag</span></a>
+                            <button class="button primary"><span>Primary button with button-tag</span></button>
                             <a href="#" class="button"
                                role="button"><span>Default/Secondary button with a-tag</span></a>
                             <button class="button"><span>Default/Secondary button with button-tag</span></button>
-                            <a href="#" class="button primary" role="button"><span>Primary button with a-tag</span></a>
-                            <button class="button primary"><span>Primary button with button-tag</span></button>
+                            <a href="#" class="button tertiary"
+                               role="button"><span>Tertiary button with a-tag</span></a>
+                            <button class="button tertiary"><span>Tertiary button with button-tag</span></button>
                         </div>
-                        <h4>&lt;a&gt;-tags as buttons (using class="button") aligned left</h4>
+
+                        <h5>&lt;a&gt;-tags as buttons (using class="button") aligned left</h5>
                         <div class="button-wrapper align-left">
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span
                                     class="hidden">Hidden label-text</span></a>
@@ -590,16 +592,7 @@
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                         </div>
 
-                        <h4>&lt;button&gt;-tags (for forms) aligned right</h4>
-                        <div class="button-wrapper align-right">
-                            <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span>
-                            </button>
-                            <button>Button with label-text only</button>
-                            <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span>
-                            </button>
-                        </div>
-
-                        <h4>Buttons with no gap (centered)</h4>
+                        <h5>Buttons with no gap (centered)</h5>
                         <div class="button-wrapper align-center">
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span
                                     class="hidden">Hidden label-text</span></a>
@@ -609,27 +602,120 @@
                                     class="icon-check"></span></a>
                         </div>
 
-                        <h4>Buttons (space-between)</h4>
+                        <h5>&lt;button&gt;-tags (for forms) aligned right</h5>
+                        <div class="button-wrapper align-right">
+                            <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span>
+                            </button>
+                            <button>Button with label-text only</button>
+                            <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span>
+                            </button>
+                        </div>
+
+                        <h5>Buttons (space-between)</h5>
                         <div class="button-wrapper space-between">
-                            <a class="button" href="#" role="button"><span class="icon-register"></span><span
-                                    class="hidden">Hidden label-text</span></a>
+                            <a class="button" href="#" role="button"><span class="icon-register"></span>
+                                <span class="hidden">Hidden label-text</span></a>
                             <a class="button" href="#" role="button">Button with label-text only</a>
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                         </div>
 
-                        <h4>Disabled buttons</h4>
-                        <div class="button-wrapper">
-                            <a class="button disabled" href="#" role="button">
+                        <h5>Disabled buttons</h5>
+                        <div class="button-wrapper align-left">
+                            <button class="button" disabled="disabled" role="button">
                                 <span class="icon-register"></span>
-                                <span>A-tag with class "disabled"</span>
-                            </a>
+                                <span>Button with attribute "disabled"</span>
+                            </button>
                             <button class="button disabled" role="button">
                                 <span class="icon-register"></span>
                                 <span>Button with class "disabled"</span>
                             </button>
-                            <button class="button" disabled="disabled" role="button">
+                            <a class="button disabled" href="#" role="button">
                                 <span class="icon-register"></span>
-                                <span>Button with attribute "disabled"</span>
+                                <span>A-tag with class "disabled"</span>
+                            </a>
+                        </div>
+
+                        <h4>Small buttons</h4>
+                        <div class="button-wrapper align-left">
+                            <a href="#" class="button small primary" role="button">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with a-tag</span>
+                            </a>
+                            <button class="button small primary">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button small" role="button">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with a-tag</span>
+                            </a>
+                            <button class="button small">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button small tertiary" role="button">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with a-tag</span>
+                            </a>
+                            <button class="button small tertiary">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with button-tag</span>
+                            </button>
+                        </div>
+
+                        <h4>Large buttons</h4>
+                        <div class="button-wrapper align-left">
+                            <a href="#" class="button large primary" role="button">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with a-tag</span>
+                            </a>
+                            <button class="button large primary">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button large" role="button">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with a-tag</span>
+                            </a>
+                            <button class="button large">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button large tertiary" role="button">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with a-tag</span>
+                            </a>
+                            <button class="button large tertiary">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with button-tag</span>
+                            </button>
+                        </div>
+
+                        <h4>Buttons with large icons</h4>
+                        <div class="button-wrapper align-left">
+                            <a href="#" class="button large-icon primary" role="button">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with a-tag</span>
+                            </a>
+                            <button class="button large-icon primary">
+                                <span class="icon-location-set"></span>
+                                <span>Primary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button large-icon" role="button">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with a-tag</span>
+                            </a>
+                            <button class="button large-icon">
+                                <span class="icon-cogs"></span>
+                                <span>Default/Secondary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button large-icon tertiary" role="button">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with a-tag</span>
+                            </a>
+                            <button class="button large-icon tertiary">
+                                <span class="icon-file-pdf"></span>
+                                <span>Tertiary button with button-tag</span>
                             </button>
                         </div>
                     </section>

@@ -45,7 +45,7 @@ button, .button, input[type="submit"] {
         --button-text-color: var(--pure-white);
         --hyperlink-color: var(--pure-white);
         --hyperlink-color-highlighted: var(--dark-blue);
-        --color-scheme-background-color: rgba(255, 255, 255, .1);
+        --color-scheme-background-color: rgba(255, 255, 255, .15);
         --disabled-color: rgb(55, 55, 55);
         --button-background-color: var(--color-scheme-background-color);
 
@@ -66,12 +66,17 @@ button, .button, input[type="submit"] {
 
     :is(button, .button, input[type="submit"]):is(:hover, :active, :focus) {
         border-color: var(--dark-blue);
-        background: var(--dark-blue);
+        background: var(--medium-blue);
     }
 
-    :is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
+    :is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus),
+    :is(button, .button, input[type="submit"]).tertiary:is(:hover, :active, :focus) {
         border-color: var(--dark-blue);
         background: var(--pure-white);
+    }
+
+    :is(button, .button, input[type="submit"]).tertiary:is(:hover, :active, :focus) {
+        border-color: var(--tertiary-color);
     }
 
     input, select, textarea, .input {

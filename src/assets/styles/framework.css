@@ -57,23 +57,49 @@ T ------------------------
 
 /* ---------------------------------------------- BEGIN VARIABLES & TOKENS -------------------------------------------------- */
 html {
+    /* BEGIN WEBSITE-GRID AND GLOBAL SETTINGS ------------------------------------------------------------------------------------------ */
     /* max-width */
     --max-width: 144rem; /* width used to limit website-content */
 
-    /* backgrounds */
+    /* grid */
+    --grid-columns: 12; /* grid-columns */
+    --grid-small-span: 3; /* default column span smaller part */
+    --grid-half-span: calc(var(--grid-columns) / 2); /* half column span of grid columns */
+    --grid-large-span: calc(var(--grid-columns) - var(--grid-small-span)); /* default column span larger part */
+    --grid-layout-columns: calc(var(--grid-columns) / var(--grid-small-span)); /* layout/optical columns */
+    --grid-gap: var(--default-gap); /* grid-gap for grid-items */
+
+    /* paddings, margins, gaps, radii */
+    --default-padding: 1rem; /* default paddings */
+    --default-margin: 1rem; /* default margins */
+    --default-gap: 2rem; /* default gap for flex- and grid-containers */
+    --default-radius: 0; /* default radius */
+    --full-circle: 50%; /* radius for full circles */
+    /* END WEBSITE-GRID AND GLOBAL SETTINGS ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN MAIN NAVIGATION------------------------------------------------------------------------------------------ */
+    --main-navigation-background: var(--default-background); /* background for main navigation (and all sub-entries) */
+    --main-navigation-border: var(--default-border); /* border for main navigation (and all sub-entries) */
+    --main-navigation-border-radius: var(--border-radius); /* border-radius for main navigation (and bottom of sub-entries-list) */
+    /* END MAIN NAVIGATION ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN BACKGROUNDS ------------------------------------------------------------------------------------------ */
+    /* default backgrounds */
     --default-background-color-hue: 0; /* default-background-color-hue */
     --default-background-color-saturation: 0%; /* default-background-color-saturation */
     --default-background-color-lightness: 97%; /* default-background-color-lightness */
     --default-background-color-hsl-values: var(--default-background-color-hue), var(--default-background-color-saturation), var(--default-background-color-lightness); /* default-background-color-hsl-values */
-    --default-background: hsl(var(--default-background-color-hsl-values)); /* default-background-color-hue */
+    --default-background: hsl(var(--default-background-color-hsl-values)); /* default-background (do not rename to background-color to allow gradients and images */
     --default-background-color-reduced-opacity: hsla(var(--default-background-color-hsl-values), var(--reduced-opacity)); /* default-background-color with reduced opacity */
+
+    /* disabled backgrounds */
     --disabled-background-color-lightness: 78%; /* disabled-background-color-lightness */
     --disabled-background-color-hsl-values: var(--default-background-color-hue), var(--default-background-color-saturation), var(--disabled-background-color-lightness); /* disabled-background-color-hsl-values */
     --disabled-background-color: hsl(var(--disabled-background-color-hsl-values)); /* disabled-background-color-hue */
     --disabled-background-color-reduced-opacity: hsla(var(--disabled-background-color-hsl-values), var(--reduced-opacity)); /* disabled-background-color with reduced opacity */
-    --button-background-color: var(--color-scheme-text-color); /* background-color for buttons */
-    --button-background-color-highlighted: var(--color-scheme-background-color); /* background-color for highlighted buttons (.i.e :hover) */
+    /* END BACKGROUNDS ------------------------------------------------------------------------------------------ */
 
+    /* BEGIN BORDERS AND OUTLINES ------------------------------------------------------------------------------------------ */
     /* borders */
     --border-radius: var(--default-radius); /* border-radius */
     --border-color: var(--color-scheme-text-color); /* border-color */
@@ -87,7 +113,6 @@ html {
     --secondary-border: var(--border-width) var(--border-style) var(--secondary-color); /* border width secondary-color */
     --tertiary-border: var(--border-width) var(--border-style) var(--tertiary-color); /* border width tertiary-color */
     --disabled-border: var(--border-width) var(--border-style) var(--disabled-color); /* border width disabled-color */
-    --button-border: var(--default-border); /* border for buttons */
 
     /* outlines */
     --outline-color: var(--color-scheme-text-color); /* outline-color */
@@ -101,9 +126,9 @@ html {
     --secondary-outline: var(--outline-width) var(--outline-style) var(--secondary-color); /* outline secondary-color */
     --tertiary-outline: var(--outline-width) var(--outline-style) var(--tertiary-color); /* outline tertiary-color */
     --disabled-outline: var(--outline-width) var(--outline-style) var(--disabled-color); /* outline disabled-color */
-    --button-outline: var(--default-outline); /* outline for buttons */
+    /* END BORDERS AND OUTLINES ------------------------------------------------------------------------------------------ */
 
-    /* colors */
+    /* BEGIN COLORS ------------------------------------------------------------------------------------------ */
     /* white */
     --pure-white-hue: 0; /* pure-white-hue */
     --pure-white-saturation: 0%; /* pure-white-saturation */
@@ -177,7 +202,7 @@ html {
     --primary-color: hsl(var(--primary-color-hsl-values)); /* primary-color */
     --primary-color-reduced-opacity: hsla(var(--primary-color-hsl-values), var(--reduced-opacity)); /* primary-color with reduced opacity */
 
-    /* secondary-color (i.e. for secondary-buttons) */
+    /* secondary-color (i.e. for default-/secondary-buttons) */
     --secondary-color-hue: 0; /* secondary-color-hue */
     --secondary-color-saturation: 0%; /* secondary-color-saturation */
     --secondary-color-lightness: 30%; /* secondary-color-lightness */
@@ -199,8 +224,6 @@ html {
     --text-color-lightness: 15%; /* text-color-lightness */
     --text-color-hsl-values: var(--text-color-hue), var(--text-color-saturation), var(--text-color-lightness); /* text-color-hsl-values */
     --text-color: hsl(var(--text-color-hsl-values)); /* text-color */
-    --button-text-color: var(--color-scheme-text-color-buttons); /* button-text-color */
-    --button-text-color-highlighted: var(--color-scheme-text-color); /* button-text-color highlighted */
 
     /* hyperlink-color */
     --hyperlink-color-hue: var(--primary-color-hue); /* hyperlink-color-hue */
@@ -217,45 +240,133 @@ html {
     --disabled-color-hsl-values: var(--disabled-color-hue), var(--disabled-color-saturation), var(--disabled-color-lightness); /* disabled-color-hsl-values */
     --disabled-color: hsl(var(--disabled-color-hsl-values)); /* disabled-color */
     --disabled-color-reduced-opacity: hsla(var(--disabled-color-hsl-values), var(--reduced-opacity)); /* disabled-color with reduced opacity */
+    /* END COLORS ------------------------------------------------------------------------------------------ */
 
-    /* fonts and typography */
+    /* BEGIN FONTS AND TYPOGRAPHY ------------------------------------------------------------------------------------------ */
     --font-family: arial, sans-serif; /* font-family */
-    --font-size: 1.4rem; /* global font-size for text-elements */
+
+    /* font-sizes */
+    --font-size: var(--font-size-medium); /* default font-size for text-elements */
     --font-size-small: 1.2rem; /* font-size for small text */
-    --font-size-medium: var(--font-size); /* font-size for default-/medium-text */
+    --font-size-medium: 1.4rem; /* font-size for default/medium text */
     --font-size-large: 1.6rem; /* font-size for large text */
-    --button-font-size: var(--font-size); /* font-size for buttons */
+
+    /* font-weights */
+    --font-weight: var(--font-weight-normal); /* default font-weight for text-elements */
     --font-weight-light: 200; /* font-weight for light text (must be supported by font-family) */
-    --font-weight-normal: 400; /* font-weight for normal/default text */
+    --font-weight-normal: 400; /* font-weight for default text */
     --font-weight-bold: 600; /* font-weight for bold text (must be supported by font-family) */
-    --button-font-weight: var(--font-weight-bold); /* font-weight for buttons */
-    --icon-size: 1.4rem; /* font-size for icons */
+
+    /* icon-sizes */
+    --icon-size: var(--icon-size-medium); /* default font-size for icons */
     --icon-size-small: 1.2rem; /* font-size for small icons */
+    --icon-size-medium: 1.4rem; /* font-size for default/medium icons */
     --icon-size-large: 1.6rem; /* font-size for small icons */
+
+    /* line-heights */
     --line-height: 1.4; /* line-height - may not be set as percentage to work properly in calc() */
+    --line-height-none: 1; /* may not be set to zero and may not be set as percentage to work properly in calc() */
     --line-of-text-height: calc(var(--font-size) * var(--line-height)); /* height of one line of (default) text */
-    --button-line-height: 100%; /* line-height for buttons */
-    --headline-font-weight: bold; /* font-weight for headlines */
+
+    /* text-decorations */
     --hyperlink-text-decoration: underline; /* text-decoration for hyperlinks */
     --hyperlink-text-decoration-highlighted: none; /* text-decoration for highlighted (:hover, :active, :focus) hyperlinks */
 
+    /* headlines */
+    --headline-font-size-h1: 3.6rem; /* font-size for h1 */
+    --headline-font-size-h2: 2.8rem; /* font-size for h2 */
+    --headline-font-size-h3: 2.4rem; /* font-size for h3 */
+    --headline-font-size-h4: 2rem; /* font-size for h4 */
+    --headline-font-size-h5: 1.8rem; /* font-size for h5 */
+    --headline-font-size-h6: 1.6rem; /* font-size for h6 */
+    --headline-text-color: var(--color-scheme-text-color); /* text-color for headlines */
+    --headline-line-height: 1.3; /* line-height for headlines */
+    --headline-font-weight: var(--font-weight-bold); /* font-weight for headlines */
+    --headline-margin-top: calc(var(--default-margin) * 2); /* margin-top for headlines */
+    /* END FONTS AND TYPOGRAPHY ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN BUTTONS ------------------------------------------------------------------------------------------ */
+    /* button typography */
+    --button-text-color: var(--color-scheme-text-color-buttons); /* button-text-color */
+    --button-text-color-highlighted: var(--color-scheme-text-color); /* button-text-color highlighted */
+    --button-font-size: var(--font-size-medium); /* font-size for buttons */
+    --button-font-weight: var(--font-weight-bold); /* font-weight for buttons */
+    --button-line-height: var(--line-height-none); /* line-height for buttons */
+
+    /* button border and outline */
+    --button-outline: var(--default-outline); /* outline for buttons */
+    --button-border: var(--default-border); /* border for buttons */
+
+    /* button backgrounds */
+    --button-background-color: var(--color-scheme-text-color); /* background-color for buttons */
+    --button-background-color-highlighted: var(--color-scheme-background-color); /* background-color for highlighted buttons (.i.e :hover) */
+
+    /* button dimensions */
+    --button-padding: var(--default-padding); /* padding for button */
+    --button-min-width: var(--button-min-width-medium); /* required to keep buttons identical in size across different browsers */
+    --button-min-height: var(--button-min-height-medium); /* required to keep buttons identical in size across different browsers */
+
+    /* small buttons */
+    --button-min-width-small: 3rem; /* minimum width for small buttons */
+    --button-min-height-small: 3rem; /* minimum height for small buttons */
+    --button-font-size-small: var(--font-size-small); /* font-size for small buttons */
+    --button-padding-small: calc(var(--button-padding) / 2); /* padding for small buttons */
+
+    /* default/medium buttons */
+    --button-min-width-medium: 4rem; /* minimum width for medium buttons */
+    --button-min-height-medium: 4rem; /* minimum height for medium buttons */
+
+    /* large buttons */
+    --button-font-size-large: var(--font-size-large); /* font-size for large buttons */
+    --button-min-width-large: 6rem; /* minimum width for small buttons */
+    --button-min-height-large: 6rem; /* minimum height for small buttons */
+    --button-padding-large: calc(var(--button-padding) * 2); /* padding for large buttons */
+
+    /* button with large icon */
+    --button-large-icon-icon-size: 5rem; /* icon-size for button with large-icon */
+    /* END BUTTONS ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN FORMS AND FIELDSETS ------------------------------------------------------------------------------------------ */
+    /* fieldsets */
+    --fieldset-background: var(--default-background); /* background for fieldsets */
+    --fieldset-border: var(--default-border); /* border for fieldsets */
+    --fieldset-border-radius: var(--border-radius); /* border-radius for fieldsets */
+    --fieldset-padding: calc(var(--default-padding) * 2); /* padding for fieldsets */
+
+    /* placeholder texts */
+    --placeholder-font-style: italic; /* font-style for placeholder texts */
+
+    /* input fields */
+    --input-max-width-short-fields: 14rem; /* maximum width for small inputs (to avoid stretching if horizontal space is available) */
+    /* END FORMS AND FIELDSETS ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN SYSTEM-MESSAGES ------------------------------------------------------------------------------------------ */
+    --system-message-border: var(--default-border); /* border for system-messages */
+    --system-message-border-radius: var(--border-radius); /* border-radius for system-messages */
+    --system-message-font-weight: var(--font-weight-bold); /* font-weight for system-messages */
+    --system-message-padding: var(--default-padding); /* padding for system-messages */
+    /* END SYSTEM-MESSAGES ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN TABLES ------------------------------------------------------------------------------------------ */
+    /* tables */
+    --table-border: var(--default-border); /* border for table (not cells) */
+    --table-border-radius: var(--border-radius); /* border-radius for table (and cells in the corners) */
+
+    /* table cells (th and td) */
+    --table-cell-padding: var(--default-padding); /* padding for all cells */
+    --table-cell-border: var(--default-border); /* border for all cells */
+
+    /* table head */
+    --table-head-background-color: var(--primary-color); /* background-color for table-head */
+    --table-head-text-color: var(--pure-white); /* text-color for table-head */
+    --table-head-font-size: var(--font-size-large); /* font-size for table-head */
+    --table-head-font-weight: var(--font-weight-bold); /* font-weight-color for table-head */
+    --table-head-text-align: center; /* text-align for table-head */
+    /* END TABLES ------------------------------------------------------------------------------------------ */
+
+    /* BEGIN MISCELLANEOUS ------------------------------------------------------------------------------------------ */
     /* form-elements */
     --input-height: 4rem; /* fixed height to render inputs and select same height across different browsers */
-
-    /* paddings, margins, gaps, radii */
-    --default-padding: 1rem; /* default paddings */
-    --default-margin: 1rem; /* default margins */
-    --default-gap: 2rem; /* default gap for flex- and grid-containers */
-    --default-radius: 0; /* default radius */
-    --full-circle: 50%; /* radius for full circles */
-
-    /* grid */
-    --grid-columns: 12; /* grid-columns */
-    --grid-small-span: 3; /* default column span smaller part */
-    --grid-half-span: calc(var(--grid-columns) / 2); /* half column span of grid columns */
-    --grid-large-span: calc(var(--grid-columns) - var(--grid-small-span)); /* default column span larger part */
-    --grid-layout-columns: calc(var(--grid-columns) / var(--grid-small-span)); /* layout/optical columns */
-    --grid-gap: var(--default-gap); /* grid-gap for grid-items */
 
     /* opacity */
     --reduced-opacity: .75; /* reduced opacity (should be at least 0.75 for accessibility) */
@@ -268,22 +379,39 @@ html {
 
     /* transitions */
     --default-transition: all .5s; /* default transition */
+    /* END MISCELLANEOUS ------------------------------------------------------------------------------------------ */
 
+    /* BEGIN COLORS FOR COLOR-SCHEMES  ------------------------------------------------------------------------------------------ */
     /* colors for color-schemes (light-/dark-mode) */
-    --light-mode-text-color: var(--text-color);
-    --light-mode-text-color-buttons: var(--pure-white);
-    --light-mode-background-color: var(--pure-white);
-    --dark-mode-text-color: hsl(0, 0%, 80%);
-    --dark-mode-text-color-buttons: var(--dark-mode-background-color);
-    --dark-mode-background-color: var(--dark-gray);
+    --light-mode-text-color: var(--text-color); /* text-color for light-mode */
+    --light-mode-text-color-buttons: var(--pure-white); /* button-text-color for light-mode */
+    --light-mode-background-color: var(--pure-white); /* background-color for light-mode */
+    --dark-mode-text-color: hsl(0, 0%, 85%); /* text-color for dark-mode */
+    --dark-mode-text-color-buttons: var(--dark-mode-background-color); /* button-text-color for dark-mode */
+    --dark-mode-background-color: var(--dark-gray); /* background-color for dark-mode */
 
     /* assign default colors for light-mode only */
-    --color-scheme-text-color: var(--light-mode-text-color);
-    --color-scheme-text-color-buttons: var(--light-mode-text-color-buttons);
-    --color-scheme-background-color: var(--light-mode-background-color);
-    --color-scheme-text-color-inverted: var(--dark-mode-text-color);
-    --color-scheme-background-inverted: var(--dark-mode-background-color);
+    --color-scheme-text-color: var(--light-mode-text-color); /* assign text-color for light-mode to color-scheme */
+    --color-scheme-text-color-buttons: var(--light-mode-text-color-buttons); /* assign button-text-color for light-mode to color-scheme */
+    --color-scheme-text-color-inverted: var(--dark-mode-text-color); /* assign an inverted text-color for light-mode to color-scheme */
+    --color-scheme-background-color: var(--light-mode-background-color); /* assign background-color for light-mode to color-scheme */
+    --color-scheme-background-inverted: var(--dark-mode-background-color); /* assign an inverted background-color for light-mode to color-scheme */
 }
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --color-scheme-text-color: var(--dark-mode-text-color); /* assign text-color for dark-mode to color-scheme */
+        --color-scheme-text-color-buttons: var(--dark-mode-text-color-buttons); /* assign button-text-color for dark-mode to color-scheme*/
+        --color-scheme-text-color-inverted: var(--light-mode-text-color); /* assign an inverted text-color for dark-mode to color-scheme */
+        --color-scheme-background-color: var(--dark-mode-background-color); /* assign background-color for dark-mode to color-scheme */
+        --color-scheme-background-inverted: var(--light-mode-background-color); /* assign an inverted background-color for dark-mode to color-scheme */
+        --default-background-color-lightness: 20%; /* reduce default background-color-lightness for dark-mode */
+        --hyperlink-color-lightness: 40%; /* hyperlink-color-lightness for dark-mode */
+        --hyperlink-color-highlighted-lightness: 50%; /* hyperlink-color-highlighted-lightness (used for highlighted hyperlinks) for dark-mode */
+        --hyperlink-color: var(--hyperlink-color-highlighted); /* hyperlink-color for dark-mode */
+    }
+}
+/* END COLORS FOR COLOR-SCHEMES ------------------------------------------------------------------------------------------ */
 /* ---------------------------------------------- END VARIABLES & TOKENS -------------------------------------------------- */
 
 /* ---------------------------------------------- BEGIN MAIN STYLES -------------------------------------------------- */
@@ -435,6 +563,14 @@ object, svg, img, video, canvas, .responsive-wrapper {
     text-align: right;
 }
 
+.text-align-justify {
+    text-align: justify;
+}
+
+.text-align-justify-all {
+    text-align: justify-all;
+}
+
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl, table, fieldset, address {
     margin-bottom: var(--default-margin); /* margin-bottom for most elements */
@@ -582,13 +718,13 @@ button, .button, input[type="submit"] {
     justify-content: center;
     font-weight: var(--button-font-weight);
     margin: 0;
-    padding: var(--default-padding);
+    padding: var(--button-padding);
     text-align: center;
     text-decoration: none;
     line-height: var(--button-line-height);
     font-size: var(--button-font-size);
-    min-width: 4rem; /* required to keep buttons identical in size in all browsers */
-    min-height: 4rem; /* required to keep buttons identical in size in all browsers */
+    min-width: var(--button-min-width);
+    min-height: var(--button-min-height);
 }
 
 :is(button, .button) > :is(span, [class*="icon-"]) {
@@ -648,26 +784,42 @@ button, .button, input[type="submit"] {
 
 /* begin small buttons */
 :is(button, .button).small {
-    padding: calc(var(--default-padding) / 2);
-    min-width: 3rem;
-    min-height: 3rem;
+    padding: var(--button-padding-small);
+    min-width: var(--button-min-width-small);
+    min-height: var(--button-min-height-small);
 }
 
 :is(button, .button).small, :is(button, .button).small :is(span, [class*="icon-"]) {
-    font-size: var(--font-size-small);
+    font-size: var(--button-font-size-small);
 }
 /* end small buttons */
 
 /* begin large buttons */
 :is(button, .button).large {
-    padding: calc(var(--default-padding) * 2);
-    min-width: 6rem;
+    padding: var(--button-padding-large);
+    min-width: var(--button-min-width-large);
+    min-height: var(--button-min-height-large);
 }
 
 :is(button, .button).large, :is(button, .button).large :is(span, [class*="icon-"]) {
-    font-size: var(--font-size-large);
+    font-size: var(--button-font-size-large);
 }
 /* end large buttons */
+
+/* begin buttons with large icons */
+:is(button, .button, input[type="submit"]).large-icon {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+:is(button, .button, input[type="submit"]).large-icon :is(span, [class*="icon-"]) {
+    margin: 0;
+}
+
+:is(button, .button, input[type="submit"]).large-icon [class*="icon-"] {
+    font-size: var(--button-large-icon-icon-size);
+}
+/* end buttons with large icons */
 
 /* begin back-to-top-button */
 #back-to-top-button {
@@ -800,7 +952,7 @@ button, .button, input[type="submit"] {
 }
 
 .flex-container.align-bottom > * {
-  align-self: flex-end;
+    align-self: flex-end;
 }
 
 .flex-container.vertical {
@@ -829,7 +981,7 @@ button, .button, input[type="submit"] {
 }
 
 .no-flex, .no-flex > * {
-    flex: none !important; /* don't stretch items (item(s) should have default width) */
+    flex: none !important; /* don't stretch items (item(s) will have default width) */
 }
 
 [data-type="multistep"] .button-wrapper {
@@ -893,10 +1045,10 @@ form [class*="grid-container"] {
 
 /* begin fieldsets */
 fieldset {
-    background: var(--default-background);
-    border: var(--default-border);
-    border-radius: var(--border-radius);
-    padding: calc(var(--default-padding) * 2);
+    background: var(--fieldset-background);
+    border: var(--fieldset-border);
+    border-radius: var(--fieldset-border-radius);
+    padding: var(--fieldset-padding);
 }
 
 fieldset.flex-container {
@@ -923,7 +1075,7 @@ fieldset fieldset {
 }
 
 fieldset legend {
-    font-weight: bold; /* font-weight of legends */
+    font-weight: var(--font-weight-bold); /* font-weight of legends */
     padding: 0 .3rem .3rem .3rem; /* padding of legends */
 }
 
@@ -981,8 +1133,8 @@ fieldset[disabled] input[type="range"]::-moz-range-track {
 }
 
 fieldset[disabled] input[type="search"] + a.button {
-    color: var(--disabled-color);
-    background: var(--disabled-background-color);
+    color: var(--disabled-color) !important; /* avoid overwriting */
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
 }
 
 fieldset[disabled] input[type="search"] + a.button span,
@@ -1004,11 +1156,11 @@ fieldset[disabled] .toggle-switch .label-text::before {
 
 fieldset[disabled] .toggle-switch > input[class*="icon"],
 fieldset[disabled] .multiple-switch span {
-    color: var(--disabled-color) !important;  /* avoid overwriting */
+    color: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 fieldset[disabled] .multiple-switch label {
-    background: var(--disabled-background-color);
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
 }
 /* end disabled fieldset */
 
@@ -1046,7 +1198,6 @@ label, .label {
 
 :where(label, .label).inline {
     display: flex;
-    flex-wrap: wrap;
 }
 
 :where(label, .label).inline:not(.textarea) > * {
@@ -1055,7 +1206,7 @@ label, .label {
 }
 
 :where(label, .label) > span {
-    line-height: 100%;
+    line-height: 1;
     white-space: normal;
 }
 
@@ -1110,26 +1261,42 @@ label :is(input[type="checkbox"], input[type="radio"]) {
 
 :where(label, .label) .label-text [class*="icon-"] {
     align-self: flex-start; /* avoids stretching if label wraps */
-    background: var(--pure-white);
     border-radius: var(--full-circle);
     color: var(--color-scheme-text-color);
-    border: var(--default-border);
+    line-height: 1;
+    aspect-ratio: 1/1;
 }
 
-:is(label, .label).error .label-text * {
-    color: var(--error-color);
+:where(label, .label) .label-text [class*="icon-"]:is(:hover, :active, :focus) {
+    background: var(--pure-white);
 }
 
-:is(label, .label).warning .label-text * {
-    color: var(--warning-color);
+:is(label, .label) .label-text a {
+    color: var(--primary-color);
 }
 
-:is(label, .label).success .label-text * {
-    color: var(--success-color);
+:is(label, .label).error {
+    --system-color: var(--error-color);
 }
 
-:is(label, .label).info .label-text * {
-    color: var(--info-color);
+:is(label, .label).warning {
+    --system-color: var(--warning-color);
+}
+
+:is(label, .label).success {
+    --system-color: var(--success-color);
+}
+
+:is(label, .label).info {
+    --system-color: var(--info-color);
+}
+
+:is(label, .label) .label-text * {
+    color: var(--system-color);
+}
+
+:is(label, .label) .label-text [class*="icon-"] {
+    color: var(--system-color) !important;
 }
 
 :is(label, .label) span > a {
@@ -1179,7 +1346,6 @@ input[type="search"] {
 input[type="search"] + :is(button, .button) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    padding: 1rem;
 }
 
 input:where([type="checkbox"], [type="radio"]):focus + span {
@@ -1187,7 +1353,7 @@ input:where([type="checkbox"], [type="radio"]):focus + span {
 }
 
 ::placeholder {
-    font-style: italic;
+    font-style: var(--placeholder-font-style);
 }
 
 :where(input, textarea, .input).error::placeholder {
@@ -1239,7 +1405,7 @@ input:is([type="checkbox"], [type="radio"], [type="image"]) {
 }
 
 .inline input:where([type="date"], [type="number"], [type="color"]) {
-    max-width: 14rem;
+    max-width: var(--input-max-width-short-fields);
 }
 
 input[type="submit"] input:where(:hover, :active, :focus) {
@@ -1448,17 +1614,17 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 input[type="range"]::-moz-range-track {
     height: .4rem;
-    border: none;
+    border: 0;
     border-radius: .2rem;
 }
 
 /* the thumb */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    border: none;
-    height: 1.6rem;
+    border: 0;
     width: 1.6rem;
-    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border-radius: var(--full-circle);
     margin-top: -.7rem;
     background: var(--color-scheme-background-color);
     border: var(--default-border);
@@ -1469,10 +1635,10 @@ input[type="range"]::-webkit-slider-thumb:is(:hover, :active, :focus) {
 }
 
 input[type="range"]::-moz-range-thumb {
-    border: none;
-    height: 1.6rem;
+    border: 0;
     width: 1.6rem;
-    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border-radius: var(--full-circle);
     margin-top: -.5rem;
     background: var(--color-scheme-background-color);
     border: var(--default-border);
@@ -1507,34 +1673,30 @@ input[type="range"]:focus::-moz-range-thumb {
     background: var(--hyperlink-color);
 }
 
-input[type="range"]:focus::-moz-range-thumb {
-    background: var(--hyperlink-color);
-}
-
 /* disabled styles */
 input[type="range"]:is([disabled], .disabled),
 input[type="range"]:is([disabled], .disabled):is(:hover, :active, :focus) {
-    background: none !important;
+    background: none !important; /* avoid overwriting */
 }
 
 input[type="range"]:is([disabled], .disabled)::-moz-range-thumb {
-    background: var(--disabled-background-color);
-    border-color: var(--disabled-color);
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color); !important; /* avoid overwriting */
 }
 
 input[type="range"]:is([disabled], .disabled)::-webkit-slider-thumb {
-    background: var(--disabled-background-color);
-    border-color: var(--disabled-color);
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 input[type="range"]:is([disabled], .disabled)::-moz-range-track {
-    background: var(--disabled-background-color);
-    border-color: var(--disabled-color);
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
-    background: var(--disabled-background-color);
-    border-color: var(--disabled-color);
+    background: var(--disabled-background-color) !important; /* avoid overwriting */
+    border-color: var(--disabled-color) !important; /* avoid overwriting */
 }
 /* end forms: range-slider ------------------------------------------------------------------------------------------ */
 
@@ -1571,7 +1733,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     border: var(--default-border);
     background: var(--color-scheme-background-color);
     width: 1.4rem;
-    height: 1.4rem;
+    aspect-ratio: 1/1;
     display: block;
     align-self: center;
 }
@@ -1612,9 +1774,9 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 /* end checked toggle-switch */
 
 .toggle-switch input[class*="icon-"]::before {
-    position:absolute;
+    position: absolute;
     z-index: 10;
-    font-size: 1.6rem;
+    font-size: var(--font-size-large);
     top: 50%;
     transform: translateY(-50%);
     left: .2rem;
@@ -1633,7 +1795,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 }
 
 .toggle-switch input[class*="icon-"]:checked:disabled::before {
-    color: var(--disabled-color);
+    color: var(--disabled-color) !important; /* avoid overwriting */
 }
 
 .toggle-switch.error .label-text {
@@ -1700,7 +1862,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     border-color: var(--hyperlink-color);
     background: var(--hyperlink-color);
     width: 1.4rem;
-    height: 1.4rem;
+    aspect-ratio: 1/1;
     display: block;
     align-self: center;
     position: absolute;
@@ -1929,15 +2091,15 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
     grid-column: span 7
 }
 
-.grid-item-8, .grid-span-9 {
+.grid-item-8, .grid-span-8 {
     grid-column: span 8
 }
 
-.grid-item-9, .grid-span-10 {
+.grid-item-9, .grid-span-9 {
     grid-column: span 9
 }
 
-.grid-item-10m .grid-span-10 {
+.grid-item-10, .grid-span-10 {
     grid-column: span 10
 }
 
@@ -1953,8 +2115,9 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
 /* begin headlines ------------------------------------------------------------------------------------------ */
 h1, h2, h3, h4, h5, h6 {
+    color: var(--headline-text-color);
     font-weight: var(--headline-font-weight);
-    margin-top: calc(var(--default-margin) * 2);
+    margin-top: var(--headline-margin-top);
 }
 
 h1, h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
@@ -1968,31 +2131,31 @@ h1, h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
 
 h1, h2, h3, h4, h5, h6,
 :where(h1, h2, h3, h4, h5, h6) > a {
-    line-height: 130%;
+    line-height: var(--headline-line-height);
 }
 
 h1, h1 > :is(a, span, [class*="icon-"]) {
-    font-size: 3rem; /* font-size for h1 */
+    font-size: var(--headline-font-size-h1); /* font-size for h1 */
 }
 
 h2, h2 > :is(a, span, [class*="icon-"]) {
-    font-size: 2.6rem; /* font-size for h2 */
+    font-size: var(--headline-font-size-h2); /* font-size for h2 */
 }
 
 h3, h3 > :is(a, span, [class*="icon-"]) {
-    font-size: 2.2rem; /* font-size for h3 */
+    font-size: var(--headline-font-size-h3); /* font-size for h3 */
 }
 
 h4, h4 > :is(a, span, [class*="icon-"]) {
-    font-size: 2rem; /* font-size for h4 */
+    font-size: var(--headline-font-size-h4); /* font-size for h4 */
 }
 
 h5, h5 > :is(a, span, [class*="icon-"]) {
-    font-size: 1.8rem; /* font-size for h5 */
+    font-size: var(--headline-font-size-h5); /* font-size for h5 */
 }
 
 h6, h6 > :is(a, span, [class*="icon-"]) {
-    font-size: 1.6rem; /* font-size for h6 */
+    font-size: var(--headline-font-size-h6); /* font-size for h6 */
 }
 /* end headlines ------------------------------------------------------------------------------------------ */
 
@@ -2122,9 +2285,10 @@ dd {
 /* begin navigation ------------------------------------------------------------------------------------------ */
 /* wrapper must have id to keep high specificity */
 #main-navigation-wrapper {
-    background: var(--default-background);
-    border-top: var(--default-border);
-    border-bottom: var(--default-border);
+    background: var(--main-navigation-background);
+    border-top: var(--main-navigation-border);
+    border-bottom: var(--main-navigation-border);
+    border-radius: var(--main-navigation-border-radius);
 }
 
 nav {
@@ -2136,13 +2300,13 @@ nav {
 :where(nav, .nav) ul {
     margin: 0;
     display: flex;
-    border-left: var(--default-border);
-    border-right: var(--default-border);
-    background: var(--default-background);
+    border-left: var(--main-navigation-border);
+    border-right: var(--main-navigation-border);
+    background: var(--main-navigation-background);
 }
 
 :where(nav, .nav) > ul > li {
-    border-right: var(--default-border);
+    border-right: var(--main-navigation-border);
 }
 
 :where(nav, .nav) ul.stretch-items > li {
@@ -2200,17 +2364,17 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
     left: 0; /* left-position of layer (as left as top-level-entries) */
     z-index: 100; /* brings sub-navigation to front */
     min-width: 100%;
-    border-bottom: var(--default-border);
+    border-bottom: var(--main-navigation-border);
 }
 
 :where(nav, .nav) ul ul li {
-    border-top: var(--default-border);
+    border-top: var(--main-navigation-border);
 }
 
 :where(nav, .nav) ul ul li:last-child {
     border-bottom: 0;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--main-navigation-border-radius);
+    border-bottom-right-radius: var(--main-navigation-border-radius);
 }
 
 :where(nav, .nav) ul ul ul {
@@ -2226,14 +2390,14 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
 
 /* begin system messages ------------------------------------------------------------------------------------------ */
 .system-message {
-    border-radius: var(--border-radius);
     display: flex;
-    font-weight: bold;
-    padding: var(--default-padding);
+    border: var(--system-message-border);
+    border-radius: var(--system-message-border-radius);
+    font-weight: var(--system-message-font-weight);
+    padding: var(--system-message-padding);
     margin-bottom: var(--default-margin);
-    border: var(--default-border);
-    border-width: .3rem;
     background: var(--system-message-background-color);
+    border-width: .3rem;
     -webkit-background-clip: padding-box; /* important to keep border transparent */
     background-clip: padding-box; /* important to keep border transparent */
 }
@@ -2297,8 +2461,8 @@ nav ul li li a span[class*='icon-'].subentry-icon::before {
 }
 
 table {
-    border: var(--default-border);
-    border-radius: var(--border-radius);
+    border: var(--table-border);
+    border-radius: var(--table-border-radius);
 }
 
 table.full-width {
@@ -2314,25 +2478,26 @@ tr {
 }
 
 th, td {
-    padding: var(--default-padding);
-    border: var(--default-border);
+    padding: var(--table-cell-padding);
+    border: var(--table-cell-border);
     border-top: 0;
     border-left: 0;
 }
 
 th {
-    background: var(--primary-color);
-    border-right: var(--default-border);
+    background: var(--table-head-background-color);
+    color: var(--table-head-text-color);
+    font-size: var(--table-head-font-size);
+    font-weight: var(--table-head-font-weight);
+    text-align: var(--table-head-text-align);
+    border-right: var(--table-cell-border);
     border-right-color: var(--color-scheme-text-color-inverted);
-    color: var(--pure-white);
-    font-size: 1.5rem;
-    font-weight: bold;
     white-space: nowrap;
 }
 
 th[scope="row"] {
     border-radius: 0;
-    border-bottom: var(--default-border);
+    border-bottom: var(--table-border);
     border-bottom-color: var(--pure-white);
 }
 
@@ -2341,7 +2506,7 @@ tr:last-child th[scope="row"] {
 }
 
 thead, th:first-child, th:last-child {
-    border-radius: var(--border-radius);
+    border-radius: var(--table-border-radius);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -2371,13 +2536,13 @@ td[colspan] {
 }
 
 thead tr {
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--table-border-radius);
+    border-top-right-radius: var(--table-border-radius);
 }
 
 tfoot tr, tbody:last-child tr:last-of-type {
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--table-border-radius);
+    border-bottom-right-radius: var(--table-border-radius);
 }
 
 tr:last-of-type td {
@@ -2385,19 +2550,19 @@ tr:last-of-type td {
 }
 
 tr:last-of-type td:first-child {
-    border-bottom-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--table-border-radius);
 }
 
 tr:last-of-type td:last-child {
-    border-bottom-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--table-border-radius);
 }
 
 tfoot {
-    border: var(--default-border);
+    border: var(--table-border);
 }
 
 tfoot td {
-    border-top: var(--default-border);
+    border-top: var(--table-border);
 }
 
 /* begin highlighted table rows/cells */
@@ -2507,18 +2672,6 @@ html::-webkit-scrollbar-track:hover { /* do not set :active, :focus (does not wo
 
 /* begin styles for dark-mode only ------------------------------------------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
-    html {
-        --color-scheme-text-color: var(--dark-mode-text-color);
-        --color-scheme-text-color-buttons: var(--dark-mode-text-color-buttons);
-        --color-scheme-text-color-inverted: var(--light-mode-text-color);
-        --color-scheme-background-color: var(--dark-mode-background-color);
-        --color-scheme-background-inverted: var(--light-mode-background-color);
-        --default-background-color-lightness: 20%;
-        --hyperlink-color-lightness: 40%; /* hyperlink-color-lightness */
-        --hyperlink-color-highlighted-lightness: 50%; /* hyperlink-color-highlighted-lightness (used for highlighted hyperlinks) */
-        --hyperlink-color: var(--hyperlink-color-highlighted);
-    }
-
     html::-webkit-scrollbar-track {
         background-color: var(--color-scheme-background-color);
     }
