@@ -10,7 +10,6 @@
     --primary-color: var(--light-pink);
     --light-pink: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
     --dark-pink: hsl(288, 79%, 47%);
-    --default-radius: 1rem;
     --hyperlink-color: var(--light-pink);
     --hyperlink-color-highlighted: var(--dark-pink);
     --default-background: rgba(255, 255, 255, 0.2);
@@ -27,6 +26,7 @@ html {
     --font-size: 1.8rem;
     --default-radius: 1rem;
     --font-family: 'Dancing Script', cursive;
+    --default-border-radius: .5rem;
 }
 
 main {

@@ -291,7 +291,7 @@
                                     <td>Table data</td>
                                     <td>Table data</td>
                                 </tr>
-                                <tr class="highlighted">
+                                <tr class="active">
                                     <td>Table data (default-align)</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
@@ -333,7 +333,7 @@
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
-                                    <td class="highlighted">cell (highlighted)</td>
+                                    <td class="active">cell (highlighted)</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>

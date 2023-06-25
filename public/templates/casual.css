@@ -5,38 +5,40 @@
     font-weight: normal;
 }
 
-#template-casual {
-    --text-color: #555;
-    --border-radius: 1rem;
-    --box-shadow: 0 0 1rem #aaa;
-    --font-family: 'Exo', sans-serif;
+html {
     --primary-color-hue: 178; /* primary-color-hue */
     --primary-color-saturation: 98%; /* primary-color-saturation */
     --primary-color-lightness: 33%; /* primary-color-lightness */
+
+}
+
+#template-casual {
+    --text-color: #555;
+    --border-radius: 2.5rem;
+    --box-shadow: 0 0 1rem #aaa;
+    --font-family: 'Exo', sans-serif;
     --hyperlink-color-lightness: 20%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
     --default-background-color: var(--pure-white);
     --border-color: #bbb;
     --default-padding: 1.5rem;
     --default-margin: 1.5rem;
     --font-size: 1.6rem;
-    --primary-background-gradient: linear-gradient(to bottom,  #02a8a3 0%,#028c87 100%);
-    --text-shadow: .1rem .1rem .1rem #333;
+    --primary-background-gradient: linear-gradient(to bottom, var(--primary-color) 0%,#028c87 100%);
 }
 
 body {
     font-family: 'Exo', sans-serif;
-    background: #e0e0e0;
+    background: var(--color-scheme-background-color);
 }
 
 .box, fieldset, .system-message, :is(button, .button, input[type="submit"]) {
     border: 0;
-    border-radius: 2.5rem;
-    box-shadow:  10px 10px 25px #bebebe,
-    -10px -10px 25px #ffffff;
+    box-shadow:  10px 10px 25px var(--color-scheme-background-color),
+    -10px -10px 25px #000;
 }
 
 .box, fieldset, :is(button, .button, input[type="submit"]) {
-    background: #e0e0e0;
+    background: var(--color-scheme-background-color);
 }
 
 legend {
@@ -244,3 +246,9 @@ input[type="checkbox"].replace-input-type:checked::after {
     color: var(--hyperlink-color-highlighted);
 }
 /* end toggle-switch with switch-label */
+
+@media (prefers-color-scheme: dark) {
+    html {
+
+    }
+}

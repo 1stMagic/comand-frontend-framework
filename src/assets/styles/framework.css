@@ -73,7 +73,7 @@ html {
     --default-padding: 1rem; /* default paddings */
     --default-margin: 1rem; /* default margins */
     --default-gap: 2rem; /* default gap for flex- and grid-containers */
-    --default-radius: 0; /* default radius */
+    --default-border-radius: 0; /* default radius */
     --full-circle: 50%; /* radius for full circles */
     /* END WEBSITE-GRID AND GLOBAL SETTINGS ------------------------------------------------------------------------------------------ */
 
@@ -101,7 +101,7 @@ html {
 
     /* BEGIN BORDERS AND OUTLINES ------------------------------------------------------------------------------------------ */
     /* borders */
-    --border-radius: var(--default-radius); /* border-radius */
+    --border-radius: var(--default-border-radius); /* border-radius */
     --border-color: var(--color-scheme-text-color); /* border-color */
     --border-width: .1rem; /* border-width */
     --border-style: solid; /* border-style */
@@ -287,19 +287,19 @@ html {
 
     /* BEGIN BUTTONS ------------------------------------------------------------------------------------------ */
     /* button typography */
-    --button-text-color: var(--color-scheme-text-color-buttons); /* button-text-color */
-    --button-text-color-highlighted: var(--color-scheme-text-color); /* button-text-color highlighted */
+    --button-text-color: var(--pure-white); /* button-text-color */
+    --button-text-color-highlighted: var(--secondary-color); /* button-text-color highlighted */
     --button-font-size: var(--font-size-medium); /* font-size for buttons */
     --button-font-weight: var(--font-weight-bold); /* font-weight for buttons */
     --button-line-height: var(--line-height-none); /* line-height for buttons */
 
     /* button border and outline */
     --button-outline: var(--default-outline); /* outline for buttons */
-    --button-border: var(--default-border); /* border for buttons */
+    --button-border: var(--secondary-border); /* border for buttons */
 
     /* button backgrounds */
-    --button-background-color: var(--color-scheme-text-color); /* background-color for buttons */
-    --button-background-color-highlighted: var(--color-scheme-background-color); /* background-color for highlighted buttons (.i.e :hover) */
+    --button-background-color: var(--secondary-color); /* background-color for buttons */
+    --button-background-color-highlighted: var(--pure-white); /* background-color for highlighted buttons (.i.e :hover) */
 
     /* button dimensions */
     --button-padding: var(--default-padding); /* padding for button */
@@ -362,6 +362,12 @@ html {
     --table-head-font-size: var(--font-size-large); /* font-size for table-head */
     --table-head-font-weight: var(--font-weight-bold); /* font-weight-color for table-head */
     --table-head-text-align: center; /* text-align for table-head */
+
+    /* active table-cells */
+    --active-table-cell-background-color: var(--light-gray);
+    --active-table-cell-text-color: var(--primary-color);
+    --active-table-cell-background-color-highlighted: var(--primary-color);
+    --active-table-cell-text-color-highlighted: var(--color-scheme-background-color);
     /* END TABLES ------------------------------------------------------------------------------------------ */
 
     /* BEGIN MISCELLANEOUS ------------------------------------------------------------------------------------------ */
@@ -757,6 +763,7 @@ button, .button, input[type="submit"] {
     background: var(--button-background-color-highlighted);
     cursor: pointer;
     text-shadow: none;
+    outline: var(--button-outline); /* avoids overwrite from a:hover */
 }
 
 :is(button, .button, input[type="submit"]).primary:is(:hover, :active, :focus) {
@@ -770,7 +777,7 @@ button, .button, input[type="submit"] {
 }
 
 :is(button, .button):is(:hover, :active, :focus) > :is(span, [class*="icon-"]) {
-    color: var(--color-scheme-text-color);
+    color: var(--button-text-color-highlighted);
     text-shadow: none;
 }
 
@@ -1190,6 +1197,10 @@ fieldset:is(.flex-container, [class*="grid-container"]) :is(h1, h2, h3, h4, h5, 
 /* begin labels */
 label, .label {
     display: block;
+}
+
+:is(label):has(:is(input[type="checkbox"], input[type="radio"]):only-of-type) {
+    display: flex; /* avoids showing label-text in separate row for long labels (for checkbox/radiobutton) if parent container will be too small */
 }
 
 :where(label, .label) :where(button, .button) button {
@@ -2334,14 +2345,13 @@ nav {
 
 :is(nav, .nav) ul li a:is(:hover, :active, :focus),
 :is(nav, .nav) ul li.active a {
-    background: var(--hyperlink-color);
-    color: var(--pure-white);
+    background: var(--primary-color);
+    color: var(--color-scheme-text-color);
 }
 
 :is(nav, .nav) ul li a:is(:hover, :active, :focus) :is(span, [class*="icon-"]),
 :is(nav, .nav) ul li.active a :is(span, [class*="icon-"]) {
-    background: none;
-    color: var(--pure-white);
+    color: var(--color-scheme-text-color);
 }
 
 #main-navigation-wrapper nav ul li a [class*="icon-"] {
@@ -2566,20 +2576,16 @@ tfoot td {
 }
 
 /* begin highlighted table rows/cells */
-th.highlighted {
-    color: var(--pure-white);
+tr.active td, td.active {
+    background: var(--active-table-cell-background-color);
+    color: var(--active-table-cell-text-color);
 }
 
-tr.highlighted td, td.highlighted {
-    background: var(--color-scheme-text-color);
-    color: var(--primary-color);
-}
-
-tr.highlighted:is(:hover, :active, :focus) td,
-td.highlighted:is(:hover, :active, :focus),
-tr:is(:hover, :active, :focus) td.highlighted {
-    background: var(--primary-color);
-    color: var(--color-scheme-text-color);
+tr.active:is(:hover, :active, :focus) td,
+td.active:is(:hover, :active, :focus),
+tr:is(:hover, :active, :focus) td.active {
+    background: var(--active-table-cell-background-color-highlighted);
+    color: var(--active-table-cell-text-color-highlighted);
 }
 /* end highlighted table rows/cells */
 

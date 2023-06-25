@@ -15,10 +15,6 @@ body {
     padding: 2rem 5rem;
 }
 
-#frontend-framework-demo main a[id^="anchor"] + h3 {
-    color: var(--primary-color);
-}
-
 .width-limitation-wrapper section {
     padding-top: 6rem;
     padding-bottom: 6rem;
@@ -32,10 +28,6 @@ body {
 
 #template-business #navigation {
     background: rgba(255, 255, 255, .1);
-}
-
-#frontend-framework-demo #template-business main a[id^="anchor"] + h3 {
-    color: var(--pure-white);
 }
 
 #navigation h1 {
