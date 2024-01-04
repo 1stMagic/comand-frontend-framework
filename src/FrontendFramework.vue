@@ -1,144 +1,217 @@
 <template>
     <div id="frontend-framework-demo">
         <div :id="templateId">
-            <div id="navigation">
-                <h1>Table of contents</h1>
-                <label for="select-template">
-                    <span class="hidden">Select template</span>
-                    <select id="select-template" v-model="selectedTemplate">
-                        <option value="blank">Blank</option>
-                        <option value="business">Business</option>
-                        <option value="casual">Casual</option>
-                        <option value="dating">Dating</option>
-                        <option value="influencer">Influencer</option>
-                    </select>
-                </label>
-                <div>
-                    <ul>
-                        <li>
-                            <a href="#anchor-typography">Typography</a>
-                            <ul>
-                                <li><a href="#anchor-headlines">Headlines</a></li>
-                                <li><a href="#anchor-paragraphs">Paragraphs</a></li>
-                                <li>
-                                    <a href="#anchor-lists">Lists</a>
-                                    <ul>
-                                        <li><a href="#anchor-unordered-list">Unordered List</a></li>
-                                        <li><a href="#anchor-ordered-list">Ordered List</a></li>
-                                        <li><a href="#anchor-definition-list">Definition List</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#anchor-hyperlinks">Hyperlinks</a></li>
-                                <li><a href="#anchor-miscellaneous">Miscellaneous Typo</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-tables">Tables</a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-boxes">Boxes</a>
-                            <ul>
-                                <li><a href="#anchor-stretched-boxes">Stretched Boxes</a></li>
-                                <li><a href="#anchor-boxes-with-centered-content">Boxes with centered content</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-richmedia">Richmedia</a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-user-interface">User Interface</a>
-                            <ul>
-                                <li><a href="#anchor-system-messages">System Messages</a></li>
-                                <li><a href="#anchor-buttons">Buttons</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-forms">Forms</a>
-                            <ul>
-                                <li><a href="#anchor-native-form-elements">Native Form Elements</a></li>
-                                <li><a href="#anchor-form-validation">Form Validation</a></li>
-                                <li><a href="#anchor-advanced-form-elements">Advanced Form Elements</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-main-navigation">Main Navigation</a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-flex-containers">Flex-Containers</a>
-                            <ul>
-                                <li><a href="#anchor-flex-containers-default">Default</a></li>
-                                <li><a href="#anchor-flex-containers-no-gap">No Gap</a></li>
-                                <li><a href="#anchor-flex-containers-no-flex-all">No Flex All items</a></li>
-                                <li><a href="#anchor-flex-containers-no-flex-single-item">No Flex Single Item</a></li>
-                                <li><a href="#anchor-flex-containers-vertical">Vertical</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#anchor-grid-containers">Grid-Containers</a>
-                            <ul>
-                                <li><a href="#anchor-grid-containers-regular-grid">Regular Grid</a></li>
-                                <li><a href="#anchor-grid-containers-default-classes">Default Classes</a></li>
-                                <li><a href="#anchor-grid-containers-two-fractions">Two Fractions</a></li>
-                                <li><a href="#anchor-grid-containers-complex-grid">Complex Grid</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="site-header sticky" id="anchor-back-to-top" role="banner">
+                <header class="grid-container-create-columns">
+                    <div class="company-logo">
+                        <a href="./" title="Tooltip">
+                            <picture>
+                                <source srcset="./assets/images/logos/logo-darkmode.svg"
+                                        media="(prefers-color-scheme: dark)">
+                                <img src="./assets/images/logos/logo.svg" alt="Company Logo">
+                            </picture>
+                        </a>
+                    </div>
+                </header>
             </div>
+            <aside :class="['sidebar box', {'open': openSidebar}]">
+                <!-- begin inner-sidebar-wrapper -->
+                <div v-if="openSidebar" class="inner-sidebar-wrapper">
+                    <h3 class="text-align-center">Site Settings</h3>
+                    <!-- begin select template -->
+                    <div class="box content collapsible stretch-horizontally" @click.prevent="toggleBox('template')">
+                        <a href="#" class="box-header" title="Show content">
+                            <h4>
+                                <span class="icon-home"></span>
+                                <span>Template Settings</span>
+                            </h4>
+                            <span
+                                :class="openBoxes.includes('template') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                        </a>
+                        <div v-if="openBoxes.includes('template')" class="box-body" aria-expanded="true" role="article">
+                            <div class="default-padding">
+                                <label for="select-template">
+                                    <span>Select template</span>
+                                    <select id="select-template" v-model="selectedTemplate">
+                                        <option value="blank">Blank</option>
+                                        <option value="business">Business</option>
+                                        <option value="casual">Casual</option>
+                                        <option value="dating">Dating</option>
+                                        <option value="influencer">Influencer</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end select template -->
+
+                    <!-- begin table of contents -->
+                    <div class="box content collapsible stretch-horizontally">
+                        <a href="#" class="box-header" title="Show content" @click.prevent="toggleBox('table')">
+                            <h4>
+                                <span class="icon-table"></span>
+                                <span>Table of contents</span>
+                            </h4>
+                            <span
+                                :class="openBoxes.includes('table') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                        </a>
+                        <div v-if="openBoxes.includes('table')" class="box-body" aria-expanded="true" role="article">
+                            <div class="default-padding">
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-typography">Typography</a>
+                                        <ul>
+                                            <li><a href="#anchor-headlines">Headlines</a></li>
+                                            <li><a href="#anchor-paragraphs">Paragraphs</a></li>
+                                            <li>
+                                                <a href="#anchor-lists">Lists</a>
+                                                <ul>
+                                                    <li><a href="#anchor-unordered-list">Unordered List</a></li>
+                                                    <li><a href="#anchor-ordered-list">Ordered List</a></li>
+                                                    <li><a href="#anchor-definition-list">Definition List</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#anchor-hyperlinks">Hyperlinks</a></li>
+                                            <li><a href="#anchor-miscellaneous">Miscellaneous Typo</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-tables">Tables</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-boxes">Boxes</a>
+                                        <ul>
+                                            <li><a href="#anchor-stretched-boxes">Stretched Boxes</a></li>
+                                            <li><a href="#anchor-boxes-with-centered-content">Boxes with centered
+                                                content</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-richmedia">Richmedia</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-user-interface">User Interface</a>
+                                        <ul>
+                                            <li><a href="#anchor-system-messages">System Messages</a></li>
+                                            <li><a href="#anchor-buttons">Buttons</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-forms">Forms</a>
+                                        <ul>
+                                            <li><a href="#anchor-native-form-elements">Native Form Elements</a></li>
+                                            <li><a href="#anchor-form-validation">Form Validation</a></li>
+                                            <li><a href="#anchor-advanced-form-elements">Advanced Form Elements</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-main-navigation">Main Navigation</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-flex-containers">Flex-Containers</a>
+                                        <ul>
+                                            <li><a href="#anchor-flex-containers-default">Default</a></li>
+                                            <li><a href="#anchor-flex-containers-no-gap">No Gap</a></li>
+                                            <li><a href="#anchor-flex-containers-no-flex-all">No Flex All items</a></li>
+                                            <li><a href="#anchor-flex-containers-no-flex-single-item">No Flex Single
+                                                Item</a>
+                                            </li>
+                                            <li><a href="#anchor-flex-containers-vertical">Vertical</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#anchor-grid-containers">Grid-Containers</a>
+                                        <ul>
+                                            <li><a href="#anchor-grid-containers-regular-grid">Regular Grid</a></li>
+                                            <li><a href="#anchor-grid-containers-default-classes">Default Classes</a>
+                                            </li>
+                                            <li><a href="#anchor-grid-containers-two-fractions">Two Fractions</a></li>
+                                            <li><a href="#anchor-grid-containers-complex-grid">Complex Grid</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end table of contents -->
+                </div>
+                <div v-else>
+                    <div class="closed-sidebar">
+                        <a href="#" class="button primary" title="Open Template Settings" @click.prevent="openBox('template')">
+                            <span class="icon-home"></span>
+                        </a>
+                        <a href="#" class="button primary" title="Open Template Settings"
+                           @click.prevent="openBox('table')">
+                            <span class="icon-cogs"></span>
+                        </a>
+                    </div>
+                </div>
+                <a href="#" :title="openSidebar ? 'Collapse sidebar' : 'Expand sidebar'" @click.prevent="toggleSidebar">
+                    <span :class="openSidebar ? 'icon-single-arrow-left' : 'icon-single-arrow-right'"></span>
+                </a>
+            </aside>
             <main id="content">
                 <a id="top-of-page"></a>
                 <div class="width-limitation-wrapper">
                     <section>
-                        <a id="anchor-typography"></a>
-                        <h2 class="headline-demopage">Typography</h2>
-
-                        <a id="anchor-headlines"></a>
-                        <h3 class="headline-demopage">Headlines</h3>
+                        <h2 class="headline-demopage" id="anchor-typography">Typography</h2>
+                        <h3 class="headline-demopage" id="anchor-headlines">Headlines</h3>
+                        <h4>Headlines without icons</h4>
                         <h1>Headline 1</h1>
                         <h2>Headline 2</h2>
                         <h3>Headline 3</h3>
                         <h4>Headline 4</h4>
                         <h5>Headline 5</h5>
                         <h6>Headline 6</h6>
-
-                        <a id="anchor-paragraphs"></a>
-                        <h3 class="headline-demopage">Paragraphs (continuous text)</h3>
+                        <h4>Headlines with icons</h4>
+                        <h1><span class="icon-home"></span><span>Headline 1</span></h1>
+                        <h2><span class="icon-home"></span><span>Headline 2</span></h2>
+                        <h3><span class="icon-home"></span><span>Headline 3</span></h3>
+                        <h4><span class="icon-home"></span><span>Headline 4</span></h4>
+                        <h5><span class="icon-home"></span><span>Headline 5</span></h5>
+                        <h6><span class="icon-home"></span><span>Headline 6</span></h6>
+                        <h3 class="headline-demopage" id="anchor-paragraphs">Paragraphs (continuous text)</h3>
                         <p>This is a short paragraph</p>
-                        <p>This is continuous text within a paragraph with text-align left (which is default). Longer
+                        <p>This is continuous text within a paragraph with text-align left (which is default).
+                            Longer
                             texts
                             should always
                             be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e. &lt;br /&gt;,
                             &lt;a&gt;,
                             &lt;span&gt;,
-                            &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a surrounding
+                            &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag inside a
+                            surrounding
                             &lt;p&gt;-tag
                             is not
                             allowed. It should be also avoided placing to &lt;br /&gt; after each other (use a &lt;p&gt;
                             instead),
-                            because another paragraph is required if you want to create a blank line (which is no real
+                            because another paragraph is required if you want to create a blank line (which is no
+                            real
                             line, but
                             a
                             margin). Of course a paragraph may not contain tags for headlines, tables or forms.</p>
                         <p class="text-align-justify">This is continuous text within a paragraph with text-align
                             justify. Longer
                             texts
-                            should always be formatted with a &lt;p&gt;-tag. It can contain different further tags, i.e.
+                            should always be formatted with a &lt;p&gt;-tag. It can contain different further tags,
+                            i.e.
                             &lt;br
                             /&gt;,
                             &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;div&gt;. An additional &lt;p&gt;-tag
@@ -153,10 +226,9 @@
                             no real line, but a margin). Of course a paragraph may not contain tags for headlines,
                             tables or
                             forms.</p>
-                        <a id="anchor-lists"></a>
-                        <h3 class="headline-demopage">Lists</h3>
-                        <a id="anchor-unordered-list"></a>
-                        <h4>Unordered List</h4>
+                        <h3 class="headline-demopage" id="anchor-lists">Lists</h3>
+
+                        <h4 id="anchor-unordered-list">Unordered List</h4>
                         <ul>
                             <li>List item</li>
                             <li>List item
@@ -170,8 +242,7 @@
                             </li>
                             <li>List item</li>
                         </ul>
-                        <a id="anchor-ordered-list"></a>
-                        <h4>Ordered List</h4>
+                        <h4 id="anchor-ordered-list">Ordered List</h4>
                         <ol>
                             <li>List item</li>
                             <li>List item
@@ -183,8 +254,7 @@
                             </li>
                             <li>List item</li>
                         </ol>
-                        <a id="anchor-definition-list"></a>
-                        <h4>Definition List</h4>
+                        <h4 id="anchor-definition-list">Definition List</h4>
                         <h5>List with texts as terms</h5>
                         <dl>
                             <dt>Definition term:</dt>
@@ -204,8 +274,7 @@
                             <dd>Definition data with a very long text which will wrap on small devices</dd>
                         </dl>
                         <hr/>
-                        <a id="anchor-hyperlinks"></a>
-                        <h3>Hyperlinks</h3>
+                        <h3 id="anchor-hyperlinks">Hyperlinks</h3>
                         <h4>Link with text only</h4>
                         <a href="#">Hyperlink</a>
                         <h4>Link with icon only</h4>
@@ -217,8 +286,7 @@
                             <span class="icon-user-profile"></span><span>Hyperlink</span>
                         </a>
                         <hr/>
-                        <a id="anchor-miscellaneous"></a>
-                        <h3 class="headline-demopage">Miscellaneous Typo</h3>
+                        <h3 class="headline-demopage" id="anchor-miscellaneous">Miscellaneous Typo</h3>
                         <h4>Emphasized</h4>
                         <p><em>Emphasized text</em></p>
                         <h4>Strong</h4>
@@ -261,21 +329,26 @@
                                     <th>Table head</th>
                                     <th>Table head</th>
                                     <th>Table head</th>
+                                    <th>Table head</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>Table data (default-align)</td>
                                     <td>
-                                        <label class="toggle-switch" for="toggle-switch-checkbox-in-table"
-                                               title="default">
-                    <span class="switch-label-wrapper">
-                      <input type="checkbox" id="toggle-switch-checkbox-in-table" name="chechboxgroup3" value="1"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
+                                        <label class="toggle-switch"
+                                               for="toggle-switch-checkbox-in-table"
+                                               title="default"
+                                        >
+                                            <span class="switch-label-wrapper">
+                                              <input type="checkbox" id="toggle-switch-checkbox-in-table"
+                                                     name="chechboxgroup3" value="1"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
                                             <span>Label #1</span>
                                         </label>
                                     </td>
+                                    <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
@@ -308,9 +381,11 @@
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
+                                    <td>Table data</td>
                                 </tr>
                                 <tr>
                                     <td>Table data (default-align)</td>
+                                    <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
@@ -344,23 +419,6 @@
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
                                     <td>Table data</td>
                                 </tr>
                                 <tr>
@@ -380,9 +438,30 @@
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
+                                    <td>Table data</td>
                                 </tr>
                                 <tr>
                                     <td>Table data (default-align)</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                    <td>Table data</td>
+                                </tr>
+                                <tr>
+                                    <td>Table data (default-align)</td>
+                                    <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
                                     <td>Table data</td>
@@ -440,12 +519,14 @@
                             </div>
                             <div class="box">
                                 <p>
-                                    The default width of all grid-items would be different relating to their individual
+                                    The default width of all grid-items would be different relating to their
+                                    individual
                                     content.
                                     By defining
                                     the width of each item as 1 fraction and defining auto-fit (by using
                                     (grid-template-columns:
-                                    repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are stretched
+                                    repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are
+                                    stretched
                                     equaly.<br/>
                                     Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not
                                     have to set
@@ -456,7 +537,8 @@
                                     horizontally and vertically.
                                 </p>
                                 <p>
-                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it causes
+                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it
+                                    causes
                                     problems
                                     to handle the
                                     grid!
@@ -476,10 +558,12 @@
                                         repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are
                                         stretched
                                         equaly.<br/>
-                                        Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not
+                                        Flex-Box can do the same, but the advantage of using CSS-Grid is that you do
+                                        not
                                         have to
                                         set margins for
-                                        the space between the boxes, because you can define a specific gap (i.e.: 2rem),
+                                        the space between the boxes, because you can define a specific gap (i.e.:
+                                        2rem),
                                         which
                                         is used
                                         horizontally and vertically.
@@ -558,15 +642,18 @@
                             </h4>
                         </div>
                         <div class="system-message warning full-width">
-                            <h4 class="message-headline"><span class="icon-warning"></span><span>Warning message</span>
+                            <h4 class="message-headline"><span
+                                class="icon-warning"></span><span>Warning message</span>
                             </h4>
                         </div>
                         <div class="system-message success full-width">
-                            <h4 class="message-headline"><span class="icon-check"></span><span>Success message</span>
+                            <h4 class="message-headline"><span
+                                class="icon-check"></span><span>Success message</span>
                             </h4>
                         </div>
                         <div class="system-message info full-width">
-                            <h4 class="message-headline"><span class="icon-info"></span><span>Info message</span></h4>
+                            <h4 class="message-headline"><span class="icon-info"></span><span>Info message</span>
+                            </h4>
                         </div>
 
                         <a id="anchor-buttons"></a>
@@ -587,7 +674,7 @@
                         <h5>&lt;a&gt;-tags as buttons (using class="button") aligned left</h5>
                         <div class="button-wrapper align-left">
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span
-                                    class="hidden">Hidden label-text</span></a>
+                                class="hidden">Hidden label-text</span></a>
                             <a class="button" href="#" role="button"><span>Button with label-text only</span></a>
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
                         </div>
@@ -595,11 +682,11 @@
                         <h5>Buttons with no gap (centered)</h5>
                         <div class="button-wrapper align-center">
                             <a class="button" href="#" role="button"><span class="icon-register"></span><span
-                                    class="hidden">Hidden label-text</span></a>
+                                class="hidden">Hidden label-text</span></a>
                             <a class="button" href="#" role="button">Button with label-text only</a>
                             <a class="button" href="#"
                                role="button"><span>Button with icon and label-text within a-tag</span><span
-                                    class="icon-check"></span></a>
+                                class="icon-check"></span></a>
                         </div>
 
                         <h5>&lt;button&gt;-tags (for forms) aligned right</h5>
@@ -632,6 +719,18 @@
                             <a class="button disabled" href="#" role="button">
                                 <span class="icon-register"></span>
                                 <span>A-tag with class "disabled"</span>
+                            </a>
+                        </div>
+
+                        <h5>Colored buttons</h5>
+                        <div class="button-wrapper align-left">
+                            <button class="button cancel">
+                                <span class="icon-cancel-circle"></span>
+                                <span>Button Cancel</span>
+                            </button>
+                            <a class="button confirm" href="#" role="button">
+                                <span class="icon-check-circle"></span>
+                                <span>Button Confirm</span>
                             </a>
                         </div>
 
@@ -718,6 +817,29 @@
                                 <span>Tertiary button with button-tag</span>
                             </button>
                         </div>
+
+                        <h4>Buttons with different shapes (and icons only)</h4>
+                        <div class="button-wrapper align-left">
+                            <a href="#" class="button primary icon-hexagon use-icon-as-background" role="button">
+                                <span class="icon-plus"></span>
+                            </a>
+                            <a href="#" class="button icon-triangle use-icon-as-background" role="button">
+                                <span class="icon-plus"></span>
+                            </a>
+                            <a href="#" class="button tertiary icon-circle use-icon-as-background" role="button">
+                                <span class="icon-plus"></span>
+                            </a>
+                            <a href="#" class="button tertiary icon-square use-icon-as-background disabled"
+                               role="button">
+                                <span class="icon-plus"></span>
+                            </a>
+                            <a href="#" class="button confirm icon-square use-icon-as-background" role="button">
+                                <span class="icon-plus"></span>
+                            </a>
+                            <button href="#" class="button cancel icon-square use-icon-as-background">
+                                <span class="icon-plus"></span>
+                            </button>
+                        </div>
                     </section>
                 </div>
 
@@ -725,7 +847,6 @@
                     <section>
                         <a id="anchor-forms"></a>
                         <h2 class="headline-demopage">Forms</h2>
-
                         <a id="anchor-native-form-elements"></a>
                         <h3>Native form elements (fieldset with grid-container)</h3>
                         <form method="post" novalidate="novalidate">
@@ -734,15 +855,15 @@
                                 <div class="label">
                                     <span class="label-text">Enter dates:</span>
                                     <span class="flex-container no-flex">
-                <label class="inline" for="startdate">
-                    <span class="label-text">Start date:<sup>*</sup></span>
-                    <input type="date" id="startdate"/>
-                </label>
-                <label class="inline" for="enddate">
-                    <span class="label-text">End date:</span>
-                    <input type="date" id="enddate"/>
-                </label>
-              </span>
+                                    <label class="inline" for="startdate">
+                                        <span class="label-text">Start date:<sup>*</sup></span>
+                                        <input type="date" id="startdate"/>
+                                    </label>
+                                    <label class="inline" for="enddate">
+                                        <span class="label-text">End date:</span>
+                                        <input type="date" id="enddate"/>
+                                    </label>
+                                  </span>
                                 </div>
                                 <label for="single-checkbox">
                                     <input id="single-checkbox" value="1" checked="checked" type="checkbox"/>
@@ -755,49 +876,49 @@
                                 <div class="label">
                                     <span class="label-text">Label for radiobuttons:</span>
                                     <span class="flex-container no-flex">
-                <label for="radio1">
-                    <input name="radiogroup" id="radio1" value="1" type="radio"/>
-                    <span>Radiobutton 1 (default)</span>
-                </label>
-                <label for="radio2">
-                    <input name="radiogroup" id="radio2" value="2" type="radio" checked="checked"/>
-                    <span>Radiobutton 2 (checked (by default))</span>
-                </label>
-                <label for="radio3">
-                    <input name="radiogroup" id="radio3" value="3" type="radio"
-                           disabled="disabled"/>
-                    <span>Radiobutton 3 (disabled)</span>
-                </label>
-                <label for="radio4">
-                    <input name="radiogroup-disabled" id="radio4" value="4" type="radio"
-                           disabled="disabled" checked="checked"/>
-                    <span>Radiobutton 4 (checked and disabled)</span>
-                </label>
-              </span>
+                                    <label for="radio1">
+                                        <input name="radiogroup" id="radio1" value="1" type="radio"/>
+                                        <span>Radiobutton 1 (default)</span>
+                                    </label>
+                                    <label for="radio2">
+                                        <input name="radiogroup" id="radio2" value="2" type="radio" checked="checked"/>
+                                        <span>Radiobutton 2 (checked (by default))</span>
+                                    </label>
+                                    <label for="radio3">
+                                        <input name="radiogroup" id="radio3" value="3" type="radio"
+                                               disabled="disabled"/>
+                                        <span>Radiobutton 3 (disabled)</span>
+                                    </label>
+                                    <label for="radio4">
+                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio"
+                                               disabled="disabled" checked="checked"/>
+                                        <span>Radiobutton 4 (checked and disabled)</span>
+                                    </label>
+                                  </span>
                                 </div>
                                 <div class="label">
                                     <span class="label-text">Label for checkboxes:</span>
                                     <span class="flex-container no-flex">
-                  <label for="checkbox1">
-                      <input name="checkbox" id="checkbox1" value="1" type="checkbox"/>
-                      <span>Checkbox 1 (default)</span>
-                  </label>
-                  <label for="checkbox2">
-                      <input name="checkbox" id="checkbox2" value="2" type="checkbox"
-                             checked="checked"/>
-                      <span>Checkbox 2 (checked (by default))</span>
-                  </label>
-                  <label for="checkbox3">
-                      <input name="checkbox" id="checkbox3" value="3" type="checkbox"
-                             disabled="disabled"/>
-                      <span>Checkbox 3 (disabled)</span>
-                  </label>
-                  <label for="checkbox4">
-                      <input name="checkbox" id="checkbox4" value="4" type="checkbox"
-                             disabled="disabled" checked="checked"/>
-                      <span>Checkbox 4 (checked and disabled)</span>
-                  </label>
-              </span>
+                                      <label for="checkbox1">
+                                          <input name="checkbox" id="checkbox1" value="1" type="checkbox"/>
+                                          <span>Checkbox 1 (default)</span>
+                                      </label>
+                                      <label for="checkbox2">
+                                          <input name="checkbox" id="checkbox2" value="2" type="checkbox"
+                                                 checked="checked"/>
+                                          <span>Checkbox 2 (checked (by default))</span>
+                                      </label>
+                                      <label for="checkbox3">
+                                          <input name="checkbox" id="checkbox3" value="3" type="checkbox"
+                                                 disabled="disabled"/>
+                                          <span>Checkbox 3 (disabled)</span>
+                                      </label>
+                                      <label for="checkbox4">
+                                          <input name="checkbox" id="checkbox4" value="4" type="checkbox"
+                                                 disabled="disabled" checked="checked"/>
+                                          <span>Checkbox 4 (checked and disabled)</span>
+                                      </label>
+                                  </span>
                                 </div>
                                 <label for="default-inputfield">
               <span class="label-text">
@@ -828,37 +949,41 @@
                     <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search"/>
                     <a href="#" class="button no-flex"><span class="icon-search"></span></a>
                 </span>
-                    </label>
-                </div>
-                <label class="inline" for="numberfield">
-                    <span class="label-text"><span>Label for numberfield (inline):</span></span>
-                    <input name="numberfield" id="numberfield" placeholder="1" type="number"/>
-                </label>
-                <label class="inline" for="numberfield2">
-                    <span class="label-text"><span>Label for numberfield with decimal (inline):</span></span>
-                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number"
-                           step="0.1"/>
-                </label>
-                <label class="inline" for="colorfield">
-                    <span class="label-text"><span>Label for colorfield (inline):</span></span>
-                    <input name="colorfield" id="colorfield" type="color"/>
-                </label>
-                <label class="inline" for="datefield">
-                    <span class="label-text"><span>Label for (required) datefield (inline):<sup>*</sup></span></span>
-                    <input name="datefield" id="datefield" type="date" required="required"/>
-                </label>
-                <label class="inline" for="rangeslider">
-                    <span class="label-text"><span>Label for (required) rangeslider (inline):</span></span>
-                    <input name="rangeslider" id="rangeslider" type="range"/>
-                </label>
-                <label class="inline" for="rangeslider2">
-                    <span class="label-text"><span>Label for (required and disabled) rangeslider (inline):</span></span>
-                    <input name="rangeslider" id="rangeslider2" type="range" disabled="disabled"/>
-                </label>
-                <div class="flex-container">
-                    <div class="label">
-                        <span class="label-text"><span>Label for Zip/City (with hidden labels):</span></span>
-                        <span class="input-wrapper">
+                                    </label>
+                                </div>
+                                <label class="inline" for="numberfield">
+                                    <span class="label-text"><span>Label for numberfield (inline):</span></span>
+                                    <input name="numberfield" id="numberfield" placeholder="1" type="number"/>
+                                </label>
+                                <label class="inline" for="numberfield2">
+                                        <span
+                                            class="label-text"><span>Label for numberfield with decimal (inline):</span></span>
+                                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number"
+                                           step="0.1"/>
+                                </label>
+                                <label class="inline" for="colorfield">
+                                    <span class="label-text"><span>Label for colorfield (inline):</span></span>
+                                    <input name="colorfield" id="colorfield" type="color"/>
+                                </label>
+                                <label class="inline" for="datefield">
+                                        <span
+                                            class="label-text"><span>Label for (required) datefield (inline):<sup>*</sup></span></span>
+                                    <input name="datefield" id="datefield" type="date" required="required"/>
+                                </label>
+                                <label class="inline" for="rangeslider">
+                                    <span
+                                        class="label-text"><span>Label for (required) rangeslider (inline):</span></span>
+                                    <input name="rangeslider" id="rangeslider" type="range"/>
+                                </label>
+                                <label class="inline" for="rangeslider2">
+                                    <span class="label-text"><span>Label for (required and disabled) rangeslider (inline):</span></span>
+                                    <input name="rangeslider" id="rangeslider2" type="range" disabled="disabled"/>
+                                </label>
+                                <div class="flex-container">
+                                    <div class="label">
+                                            <span
+                                                class="label-text"><span>Label for Zip/City (with hidden labels):</span></span>
+                                        <span class="input-wrapper">
                     <label for="zip" class="no-flex">
                         <span class="hidden">Zip</span>
                         <input name="zip" id="zip" placeholder="12345" type="number"/>
@@ -873,7 +998,8 @@
                 <span class="label-text">
                   <span>Label for selectbox (required):<sup>*</sup></span>
                 </span>
-                                        <select name="selectbox-required" id="selectbox-required" required="required">
+                                        <select name="selectbox-required" id="selectbox-required"
+                                                required="required">
                                             <option value="">Bitte wählen</option>
                                             <option value="option1">Option 1</option>
                                             <option value="option2">Option 2</option>
@@ -884,7 +1010,8 @@
                 <span class="label-text">
                   <span>Label for selectbox (disabled):</span>
                   </span>
-                                        <select name="selectbox-disabled" id="selectbox-disabled" disabled="disabled">
+                                        <select name="selectbox-disabled" id="selectbox-disabled"
+                                                disabled="disabled">
                                             <option value="option1">Option 1</option>
                                             <option value="option2">Option 2</option>
                                             <option value="option3">Option 3</option>
@@ -936,7 +1063,8 @@
                 <span class="label-text">
                   <span>Inputfield without validation:<sup>*</sup></span>
                 </span>
-                                        <input name="inputfield-without-validation" id="inputfield-without-validation"
+                                        <input name="inputfield-without-validation"
+                                               id="inputfield-without-validation"
                                                placeholder="Placeholdertext for inputfield with error" type="text"
                                                required="required" minlength="5"/>
                                     </label>
@@ -944,7 +1072,8 @@
                 <span class="label-text">
                   <span>Inputfield without validation:<sup>*</sup></span>
                 </span>
-                                        <select name="selectbox-without-validation" id="selectbox-without-validation"
+                                        <select name="selectbox-without-validation"
+                                                id="selectbox-without-validation"
                                                 required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
@@ -1032,7 +1161,8 @@
                   <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
                 </span>
                                         <input name="inputfield-with-warning" id="inputfield-with-warning"
-                                               placeholder="Placeholdertext for inputfield with warning" type="text"/>
+                                               placeholder="Placeholdertext for inputfield with warning"
+                                               type="text"/>
                                     </label>
                                     <label class="success" for="inputfield-with-success">
                 <span class="label-text">
@@ -1040,7 +1170,8 @@
                   <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
                 </span>
                                         <input name="inputfield-with-success" id="inputfield-with-success"
-                                               placeholder="Placeholdertext for inputfield with success" type="text"/>
+                                               placeholder="Placeholdertext for inputfield with success"
+                                               type="text"/>
                                     </label>
                                     <label class="info" for="inputfield-with-info">
                 <span class="label-text">
@@ -1109,7 +1240,8 @@
                   <span>Selectbox with info:<sup>*</sup></span>
                   <a href="#" class="icon-info-circle" title="Some information!"></a>
                 </span>
-                                        <select name="selectbox-with-info" id="selectbox-with-info" required="required">
+                                        <select name="selectbox-with-info" id="selectbox-with-info"
+                                                required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1220,7 +1352,8 @@
                                 <h4>Toggle-Switch-Checkbox</h4>
                                 <div class="flex-container no-flex">
                                     <label class="toggle-switch" for="toggle-switch-with-icon">
-                                        <input type="checkbox" class="icon-cancel-circle" id="toggle-switch-with-icon"
+                                        <input type="checkbox" class="icon-cancel-circle"
+                                               id="toggle-switch-with-icon"
                                                value="1"/>
                                         <span class="label-text">Toggle-Switch with Icon</span>
                                     </label>
@@ -1233,11 +1366,13 @@
                                         <input type="checkbox" class="icon-check-circle" disabled="disabled"
                                                checked="checked"
                                                id="toggle-switch-with-icon-disabled-checked" value="1"/>
-                                        <span class="label-text">Toggle-Switch with Icon (disabled and checked)</span>
+                                        <span
+                                            class="label-text">Toggle-Switch with Icon (disabled and checked)</span>
                                     </label>
                                 </div>
                                 <div class="label inline">
-                                    <span class="label-text">Label for Toggle-Switch-Checkbox-Group:<sup>*</sup></span>
+                                        <span
+                                            class="label-text">Label for Toggle-Switch-Checkbox-Group:<sup>*</sup></span>
                                     <span class="flex-container no-flex">
                 <label class="toggle-switch" for="checkbox5">
                     <input type="checkbox" id="checkbox5" name="chechboxgroup2" value="1"/>
@@ -1264,7 +1399,8 @@
                                 <!-- begin toggle-switch-radio with switch-label -->
                                 <h4>Toggle-Switch-Radio with Switch-Label</h4>
                                 <div class="label inline">
-                                    <span class="label-text">Label for Toggle-Switch-Radio-Group with Switch-Label:</span>
+                                        <span
+                                            class="label-text">Label for Toggle-Switch-Radio-Group with Switch-Label:</span>
                                     <span class="flex-container no-flex">
                 <label class="toggle-switch" for="toggle-switch-radio1" title="default">
                     <span class="switch-label-wrapper">
@@ -1302,7 +1438,8 @@
                                 <!-- begin toggle-switch-checkbox with switch-label -->
                                 <h4>Toggle-Switch-Checkbox with Switch-Label-Group</h4>
                                 <div class="label inline">
-                                    <span class="label-text">Label for Toggle-Switch-Checkbox with Switch-Label:</span>
+                                        <span
+                                            class="label-text">Label for Toggle-Switch-Checkbox with Switch-Label:</span>
                                     <span class="flex-container no-flex">
                 <label class="toggle-switch" for="toggle-switch-checkbox1" title="default">
                     <span class="switch-label-wrapper">
@@ -1606,20 +1743,44 @@
                     <span class="icon-single-arrow-up"></span>
                 </a>
             </main>
-        </div>
-    </div>
+            <div class="cmd-copyright-information" role="contentinfo"><a href="http://www.comand-cms.com"
+                                                                         target="_blank" lang="en"
+                                                                         title="CoManD-Website">© CoManD</a></div>
+        </div> <!-- end main-wrapper -->
+    </div> <!-- #frontend-demo -->
 </template>
 
 <script>
 export default {
     data() {
         return {
-            selectedTemplate: "blank"
+            selectedTemplate: "blank",
+            openBoxes: ["template", "table"],
+            openSidebar: true
         }
     },
     computed: {
         templateId() {
             return "template-" + this.selectedTemplate
+        }
+    },
+    methods: {
+        toggleSidebar() {
+            this.openSidebar = !this.openSidebar
+        },
+        openBox(boxName) {
+            this.openSidebar = true
+
+            if (!this.openBoxes.includes(boxName)) {
+                this.openBoxes.push(boxName)
+            }
+        },
+        toggleBox(boxName) {
+            if (this.openBoxes.includes(boxName)) {
+                this.openBoxes.splice(boxName, 1)
+            } else {
+                this.openBoxes.push(boxName)
+            }
         }
     },
     watch: {
@@ -1641,3 +1802,48 @@ export default {
     }
 }
 </script>
+
+<style>
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    max-width: 30rem;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    border: 0;
+    border-right-width: 0px;
+    border-right-style: none;
+    border-right-color: currentcolor;
+    border-right-width: 0;
+    border-right-style: none;
+    border-right-color: currentcolor;
+    border-right: var(--default-border);
+    display: flex;
+}
+
+.sidebar .box {
+    padding: 0;
+}
+
+.sidebar .inner-sidebar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar > h3 {
+    padding: var(--default-padding);
+    margin: 0;
+}
+
+.sidebar .closed-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-gap);
+    padding: var(--default-padding);
+}
+</style>

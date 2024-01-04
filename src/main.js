@@ -2,10 +2,10 @@ import { createApp } from 'vue'
 
 import FrontendFramework from "./FrontendFramework.vue"
 
-import './assets/styles/normalize.css'
-import './assets/styles/framework.css'
-import './assets/styles/framework-iconfont.css'
-import './assets/styles/breakpoints.css'
+import './assets/css/normalize.css'
+import './assets/css/framework.css'
+import './assets/css/framework-iconfont.css'
+import './assets/css/breakpoints.css'
 
 createApp(FrontendFramework).mount("#app")
 

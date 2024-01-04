@@ -1,7 +1,7 @@
-/* breakpoints.styles - last update: 2023/03/06
-IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.styles OR YOUR OWN breakpoint-styles
+/* breakpoints.css - last update: 2023/08/21
+IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES IN template.css OR YOUR OWN breakpoint-css
 */
-/* begin styles for medium breakpoint ------------------------------------------------------------------------------------------ */
+/* begin css for medium breakpoint ------------------------------------------------------------------------------------------ */
 @media only screen and (width <= 1023px) {
     html {
         --grid-columns: 6; /* grid-columns */
@@ -53,9 +53,9 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         margin: 0 var(--default-margin) 0 0;
     }
 }
-/* end styles for medium breakpoint ------------------------------------------------------------------------------------------ */
+/* end css for medium breakpoint ------------------------------------------------------------------------------------------ */
 
-/* begin styles for small breakpoint ------------------------------------------------------------------------------------------ */
+/* begin css for small breakpoint ------------------------------------------------------------------------------------------ */
 @media only screen and (width <= 600px) {
     html {
         --grid-columns: 4; /* grid-columns */
@@ -71,6 +71,10 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 
     .flex-container {
         flex-direction: column; /* arrange flex-items vertically */
+    }
+
+    .flex-container.row-for-small {
+        flex-direction: row; /* arrange flex-items horizontally */
     }
 
     .flex-container > * {
@@ -176,5 +180,5 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         flex-direction: row;
     }
 }
-/* end styles for small breakpoint ------------------------------------------------------------------------------------------ */
-/* end breakpoints.styles */
+/* end css for small breakpoint ------------------------------------------------------------------------------------------ */
+/* end breakpoints.css */

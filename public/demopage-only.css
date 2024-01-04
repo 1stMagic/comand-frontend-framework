@@ -1,23 +1,120 @@
 /* demopage-only.css - STYLES FOR DEMOPAGE ONLY - IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) */
-
 body {
     overflow: hidden;
 }
 
-#frontend-framework-demo > div:first-child {
+#frontend-framework-demo > [id^="template-"] {
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    scroll-behavior: smooth
+}
+
+#frontend-framework-demo .sidebar {
+    display: flex;
+    padding: 0;
+}
+
+#frontend-framework-demo .inner-sidebar-wrapper {
+    padding: 0;
+    padding-top: var(--default-padding);
+    padding-bottom: var(--default-padding);
+}
+
+#frontend-framework-demo .sidebar > a {
+    display: flex;
+    flex: none;
+    text-decoration: none;
+    padding: calc(var(--default-padding) / 2);
+    align-items: center;
+    border: 0;
+    border-left: var(--default-border);
+}
+
+#frontend-framework-demo .sidebar.open {
+    width: 30rem;
+}
+
+#frontend-framework-demo .sidebar .box {
+    border: 0;
+}
+
+#frontend-framework-demo .sidebar .box:last-of-type {
+    border-bottom: var(--default-border);
+}
+
+#frontend-framework-demo .sidebar .box > .box-header {
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
+    padding: calc(var(--default-padding) / 2) var(--default-padding);
+    justify-content: space-between;
+    background: var(--primary-color);
+    color: var(--pure-white);
+    text-decoration: none;
+    border: var(--primary-border);
+}
+
+#frontend-framework-demo .sidebar .box > .box-header * {
+    color: var(--pure-white);
+    margin-bottom: 0;
+}
+
+#frontend-framework-demo .sidebar .box .box-header:is(:hover, :active, :focus) {
+    background: var(--pure-white);
+}
+
+#frontend-framework-demo .sidebar .box > .box-header:is(:hover, :active, :focus) * {
+    color: var(--primary-color);
+}
+
+#frontend-framework-demo .sidebar .box > .box-header [class*="icon"] {
+    font-size: var(--icon-size);
+}
+
+#frontend-framework-demo .width-limitation-wrapper > section {
+    padding: var(--default-padding);
+}
+
+#frontend-framework-demo .site-footer footer {
+    height: 5vh;
+}
+
+#frontend-framework-demo #main-wrapper {
     display: flex;
 }
 
 #frontend-framework-demo main {
     overflow-y: scroll;
-    height: 100vh;
+    height: calc(100vh - 20vh);
     flex: 1;
-    padding: 2rem 5rem;
+}
+
+#frontend-framework-demo [class*="copyright-information"] {
+    background: var(--text-color);
+    text-align: center;
+    padding: var(--default-padding);
+}
+
+#frontend-framework-demo [class*="copyright-information"] a {
+    color: var(--pure-white);
+    text-decoration: none;
+}
+
+#frontend-framework-demo [class*="copyright-information"] a:is(:hover, :active, :focus) {
+    text-decoration: underline;
 }
 
 .width-limitation-wrapper section {
     padding-top: 6rem;
     padding-bottom: 6rem;
+}
+
+.width-limitation-wrapper:first-of-type section {
+    padding-top: 0;
 }
 
 #navigation {
@@ -26,15 +123,19 @@ body {
     background: var(--pure-white);
 }
 
+#template-business .site-header {
+    background: hsla(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness), .85);
+}
+
 #template-business #navigation {
     background: rgba(255, 255, 255, .1);
 }
 
 #navigation h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     text-align: center;
     margin: 0;
-    padding: var(--default-padding) calc(var(--default-padding) / 2);
+    padding: calc(var(--default-padding) / 2);
     background: var(--primary-color);
     color: var(--pure-white);
 }
@@ -73,11 +174,6 @@ body {
 
 #navigation hr + * {
     margin: 0;
-}
-h1 > span:last-child {
-    display: block;
-    font-size: 1.8rem;
-    line-height: 1.4;
 }
 
 h2.headline-demopage {

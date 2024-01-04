@@ -40,7 +40,7 @@ button, .button, input[type="submit"] {
     background: var(--dark-blue);
 }
 
-:is(button, .button, input[type="submit"]) > :is(span, [class*="icon-"]) {
+:is(button, .button, input[type="submit"]) > :is(span, [class*="icon"]) {
     color: var(--pure-white);
 }
 
@@ -49,7 +49,6 @@ button, .button, input[type="submit"] {
     border-color: var(--dark-blue);
     background: var(--pure-white);
 }
-
 
 @media (prefers-color-scheme: dark) {
     #template-business {
@@ -68,7 +67,7 @@ button, .button, input[type="submit"] {
         color: var(--color-scheme-text-color-inverted);
     }
 
-    a.active:not([class*="icon-"]), li.active > a:not([class*="icon-"]) {
+    a.active:not([class*="icon"]), li.active > a:not([class*="icon"]) {
         color: var(--dark-blue);
     }
 
