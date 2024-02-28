@@ -32,20 +32,22 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         display: block !important;
     }
 
-    :where(label, .label).inline {
-        flex-direction: column;
-    }
+    :where(label, .label) {
+        &.inline {
+            flex-direction: column;
+        }
 
-    :where(label, .label).inline > span {
-        align-self: flex-start;
-    }
+        & > span {
+            align-self: flex-start;
+        }
 
-    :where(label, .label).inline > .label-text {
-        margin: 0 0 calc(var(--default-margin) / 2) 0;
-    }
+        & > .label-text {
+            margin: 0 0 calc(var(--default-margin) / 2) 0;
+        }
 
-    :where(label, .label).inline:not(.textarea) > * {
-        align-self: flex-start;
+        &:not(.textarea) > * {
+            align-self: flex-start;
+        }
     }
 
     input.replace-input-type:where([type="checkbox"], [type="radio"]) {
@@ -71,14 +73,14 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 
     .flex-container {
         flex-direction: column; /* arrange flex-items vertically */
-    }
 
-    .flex-container.row-for-small {
-        flex-direction: row; /* arrange flex-items horizontally */
-    }
+        > * {
+            max-width: 100%;
+        }
 
-    .flex-container > * {
-        max-width: 100%;
+        &.row-for-small {
+            flex-direction: row; /* arrange flex-items horizontally */
+        }
     }
 
     [class*="grid-container"][class$="fractions"] {
@@ -91,12 +93,14 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         text-align: center;
     }
 
-    .button-wrapper.no-flex > :where(button, .button) {
-        width: auto;
-    }
+    .button-wrapper {
+        &.no-flex > :where(button, .button) {
+            width: auto;
+        }
 
-    .button-wrapper.align-right {
-        flex-direction: column-reverse;
+        &.align-right {
+            flex-direction: column-reverse;
+        }
     }
 
     fieldset {
@@ -109,12 +113,14 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         width: 100%;
     }
 
-    fieldset > label:first-child {
-        margin-top: 0;
-    }
+    fieldset {
+        > label:first-child {
+            margin-top: 0;
+        }
 
-    fieldset [class*="grid-container"] {
-        --grid-gap: calc(var(--grid-gap) / 2);
+        [class*="grid-container"] {
+            --grid-gap: calc(var(--grid-gap) / 2);
+        }
     }
 
     .replace-input-type + .label-text, .label :where(.switch-label-wrapper, .toggle-switch) .label-text {
@@ -131,10 +137,10 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
 
     .input-wrapper {
         flex-direction: row; /* avoid flex-items to be arranged vertically */
-    }
 
-    .input-wrapper input[type="search"] {
-        flex: 1;
+        input[type="search"] {
+            flex: 1;
+        }
     }
 
     .input-wrapper :where(button, .button, input, select, textarea), input:is([type="checkbox"], [type="radio"]),
