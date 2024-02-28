@@ -6,8 +6,7 @@
                     <div class="company-logo">
                         <a href="./" title="Tooltip">
                             <picture>
-                                <source srcset="./assets/images/logos/logo-darkmode.svg"
-                                        media="(prefers-color-scheme: dark)">
+                                <source srcset="./assets/images/logos/logo-darkmode.svg" media="(prefers-color-scheme: dark)">
                                 <img src="./assets/images/logos/logo.svg" alt="Company Logo">
                             </picture>
                         </a>
@@ -25,8 +24,7 @@
                                 <span class="icon-home"></span>
                                 <span>Template Settings</span>
                             </h4>
-                            <span
-                                :class="openBoxes.includes('template') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                            <span :class="openBoxes.includes('template') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
                         </a>
                         <div v-if="openBoxes.includes('template')" class="box-body" aria-expanded="true" role="article">
                             <div class="default-padding">
@@ -52,8 +50,7 @@
                                 <span class="icon-table"></span>
                                 <span>Table of contents</span>
                             </h4>
-                            <span
-                                :class="openBoxes.includes('table') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                            <span :class="openBoxes.includes('table') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
                         </a>
                         <div v-if="openBoxes.includes('table')" class="box-body" aria-expanded="true" role="article">
                             <div class="default-padding">
@@ -77,9 +74,7 @@
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li>
-                                        <a href="#anchor-tables">Tables</a>
-                                    </li>
+                                    <li><a href="#anchor-tables">Tables</a></li>
                                 </ul>
                                 <ul>
                                     <li>
@@ -140,8 +135,7 @@
                                         <a href="#anchor-grid-containers">Grid-Containers</a>
                                         <ul>
                                             <li><a href="#anchor-grid-containers-regular-grid">Regular Grid</a></li>
-                                            <li><a href="#anchor-grid-containers-default-classes">Default Classes</a>
-                                            </li>
+                                            <li><a href="#anchor-grid-containers-default-classes">Default Classes</a></li>
                                             <li><a href="#anchor-grid-containers-two-fractions">Two Fractions</a></li>
                                             <li><a href="#anchor-grid-containers-complex-grid">Complex Grid</a></li>
                                         </ul>
@@ -284,7 +278,8 @@
                         </a>
                         <h4>Link with icon and text</h4>
                         <a href="#">
-                            <span class="icon-user-profile"></span><span>Hyperlink</span>
+                            <span class="icon-user-profile"></span>
+                            <span>Hyperlink</span>
                         </a>
                         <hr/>
                         <h3 class="headline-demopage" id="anchor-miscellaneous">Miscellaneous Typo</h3>
@@ -312,172 +307,172 @@
                             <table class="full-width">
                                 <caption>Tablecaption</caption>
                                 <thead>
-                                <tr>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                    <th>Table head</th>
-                                </tr>
+                                    <tr>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                        <th>Table head</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>
-                                        <label class="toggle-switch"
-                                               for="toggle-switch-checkbox-in-table"
-                                               title="default"
-                                        >
-                                            <span class="switch-label-wrapper">
-                                              <input type="checkbox" id="toggle-switch-checkbox-in-table"
-                                                     name="chechboxgroup3" value="1"/>
-                                              <span class="label-text">Yes</span><span class="label-text">No</span>
-                                            </span>
-                                            <span>Label #1</span>
-                                        </label>
-                                    </td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr class="active">
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td class="nowrap">Table data (nowrap)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td class="active">cell (highlighted)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
-                                <tr>
-                                    <td>Table data (default-align)</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                    <td>Table data</td>
-                                </tr>
+                                    <tr>
+                                        <td>Table data (default-align)</td>
+                                        <td>
+                                            <label class="toggle-switch"
+                                                   for="toggle-switch-checkbox-in-table"
+                                                   title="default"
+                                            >
+                                                <span class="switch-label-wrapper">
+                                                  <input type="checkbox" id="toggle-switch-checkbox-in-table"
+                                                         name="chechboxgroup3" value="1"/>
+                                                  <span class="label-text">Yes</span><span class="label-text">No</span>
+                                                </span>
+                                                <span>Label #1</span>
+                                            </label>
+                                        </td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>Table data (default-align)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table data (default-align)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="nowrap">Table data (nowrap)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td class="active">cell (highlighted)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table data (default-align)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table data (default-align)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Table data (default-align)</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                        <td>Table data</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -488,8 +483,7 @@
                 <div class="width-limitation-wrapper" id="section-boxes">
                     <section>
                         <h2 class="headline-demopage" id="anchor-boxes">Boxes</h2>
-                        <a id="anchor-simple-boxes"></a>
-                        <h3>Simple Box</h3>
+                        <h3 id="anchor-simple-boxes">Simple Box</h3>
                         <!-- simple box -->
                         <div class="box">
                             <p>
@@ -576,8 +570,7 @@
                             </div>
                         </div>
 
-                        <a id="anchor-boxes-with-centered-content"></a>
-                        <h3>Boxes with centered content</h3>
+                        <h3 id="anchor-boxes-with-centered-content">Boxes with centered content</h3>
                         <div class="grid-container-auto-columns" id="demopage-boxes">
                             <div class="box center-content">
                                 <div>
@@ -604,22 +597,18 @@
                         <h3 class="headline-demopage">Images</h3>
                         <div class="flex-container" id="richmedia-wrapper">
                             <figure>
-                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text"
-                                     title="Simple image"/>
+                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text" title="Simple image"/>
                             </figure>
                             <a href="#">
-                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text"
-                                     title="Image with link (and border)"/>
+                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text" title="Image with link (and border)"/>
                             </a>
                             <figure>
-                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text"
-                                     title="Image with caption below"/>
+                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text" title="Image with caption below"/>
                                 <figcaption>Caption below image</figcaption>
                             </figure>
                             <figure>
                                 <figcaption>Caption above image</figcaption>
-                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text"
-                                     title="Image with caption above"/>
+                                <img src="./assets/images/landscape-medium.jpg" alt="Alternative text" title="Image with caption above"/>
                             </figure>
                         </div>
                     </section>
@@ -627,81 +616,111 @@
 
                 <div class="width-limitation-wrapper">
                     <section>
-                        <a id="anchor-userinterface"></a>
-                        <h2 class="headline-demopage">User Interface</h2>
-                        <a id="anchor-system-messages"></a>
-                        <h3 class="headline-demopage">System messages</h3>
+                        <h2 class="headline-demopage" id="anchor-user-interface">User Interface</h2>
+                        <h3 class="headline-demopage" id="anchor-system-messages">System messages</h3>
                         <div class="system-message error full-width">
-                            <h4 class="message-headline"><span class="icon-cancel"></span><span>Error message</span>
+                            <h4 class="message-headline">
+                                <span class="icon-cancel"></span>
+                                <span>Error message</span>
                             </h4>
                             <input type="checkbox" title="Close system message">
                         </div>
                         <div class="system-message warning full-width">
-                            <h4 class="message-headline"><span
-                                class="icon-warning"></span><span>Warning message</span>
+                            <h4 class="message-headline">
+                                <span class="icon-warning"></span>
+                                <span>Warning message</span>
                             </h4>
                             <input type="checkbox" title="Close system message">
                         </div>
                         <div class="system-message success full-width">
-                            <h4 class="message-headline"><span
-                                class="icon-check"></span><span>Success message</span>
+                            <h4 class="message-headline">
+                                <span class="icon-check"></span>
+                                <span>Success message</span>
                             </h4>
                             <input type="checkbox" title="Close system message">
                         </div>
                         <div class="system-message info full-width">
-                            <h4 class="message-headline"><span class="icon-info"></span><span>Info message</span>
+                            <h4 class="message-headline">
+                                <span class="icon-info"></span>
+                                <span>Info message</span>
                             </h4>
                             <input type="checkbox" title="Close system message">
                         </div>
 
-                        <a id="anchor-buttons"></a>
-                        <h3 class="headline-demopage">Buttons</h3>
+                        <h3 class="headline-demopage" id="anchor-buttons">Buttons</h3>
                         <h4>Default buttons</h4>
                         <h5>Button types</h5>
                         <div class="button-wrapper align-left">
-                            <a href="#" class="button primary" role="button"><span>Primary button with a-tag</span></a>
-                            <button class="button primary"><span>Primary button with button-tag</span></button>
-                            <a href="#" class="button"
-                               role="button"><span>Default/Secondary button with a-tag</span></a>
-                            <button class="button"><span>Default/Secondary button with button-tag</span></button>
-                            <a href="#" class="button tertiary"
-                               role="button"><span>Tertiary button with a-tag</span></a>
-                            <button class="button tertiary"><span>Tertiary button with button-tag</span></button>
+                            <a href="#" class="button primary" role="button">
+                                <span>Primary button with a-tag</span>
+                            </a>
+                            <button class="button primary">
+                                <span>Primary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button" role="button">
+                                <span>Default/Secondary button with a-tag</span>
+                            </a>
+                            <button class="button">
+                                <span>Default/Secondary button with button-tag</span>
+                            </button>
+                            <a href="#" class="button tertiary" role="button">
+                                <span>Tertiary button with a-tag</span>
+                            </a>
+                            <button class="button tertiary">
+                                <span>Tertiary button with button-tag</span>
+                            </button>
                         </div>
 
                         <h5>&lt;a&gt;-tags as buttons (using class="button") aligned left</h5>
                         <div class="button-wrapper align-left">
-                            <a class="button" href="#" role="button"><span class="icon-register"></span><span
-                                class="hidden">Hidden label-text</span></a>
+                            <a class="button" href="#" role="button">
+                                <span class="icon-register"></span>
+                                <span class="hidden">Hidden label-text</span>
+                            </a>
                             <a class="button" href="#" role="button"><span>Button with label-text only</span></a>
-                            <a class="button" href="#" role="button"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+                            <a class="button" href="#" role="button">
+                                <span class="icon-register"></span>
+                                <span>Button with icon and label-text within a-tag</span>
+                            </a>
                         </div>
 
                         <h5>Buttons with no gap (centered)</h5>
                         <div class="button-wrapper align-center">
-                            <a class="button" href="#" role="button"><span class="icon-register"></span><span
-                                class="hidden">Hidden label-text</span></a>
+                            <a class="button" href="#" role="button">
+                                <span class="icon-register"></span>
+                                <span class="hidden">Hidden label-text</span>
+                            </a>
                             <a class="button" href="#" role="button">Button with label-text only</a>
-                            <a class="button" href="#"
-                               role="button"><span>Button with icon and label-text within a-tag</span><span
-                                class="icon-check"></span></a>
+                            <a class="button" href="#" role="button">
+                                <span>Button with icon and label-text within a-tag</span>
+                                <span class="icon-check"></span>
+                            </a>
                         </div>
 
                         <h5>&lt;button&gt;-tags (for forms) aligned right</h5>
                         <div class="button-wrapper align-right">
-                            <button><span class="icon-register"></span><span class="hidden">Hidden label-text</span>
+                            <button>
+                                <span class="icon-register"></span>
+                                <span class="hidden">Hidden label-text</span>
                             </button>
                             <button>Button with label-text only</button>
-                            <button><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span>
+                            <button>
+                                <span class="icon-register"></span>
+                                <span>Button with icon and label-text within a-tag</span>
                             </button>
                         </div>
 
                         <h5>Buttons (space-between)</h5>
                         <div class="button-wrapper space-between">
-                            <a class="button" href="#" role="button"><span class="icon-register"></span>
-                                <span class="hidden">Hidden label-text</span></a>
+                            <a class="button" href="#" role="button">
+                                <span class="icon-register"></span>
+                                <span class="hidden">Hidden label-text</span>
+                            </a>
                             <a class="button" href="#" role="button">Button with label-text only</a>
-                            <a class="button" href="#" role="button"><span class="icon-register"></span><span>Button with icon and label-text within a-tag</span></a>
+                            <a class="button" href="#" role="button">
+                                <span class="icon-register"></span>
+                                <span>Button with icon and label-text within a-tag</span>
+                            </a>
                         </div>
 
                         <h5>Disabled buttons</h5>
@@ -842,11 +861,9 @@
                 </div>
 
                 <div class="width-limitation-wrapper">
-                    <section>
-                        <a id="anchor-forms"></a>
-                        <h2 class="headline-demopage">Forms</h2>
-                        <a id="anchor-native-form-elements"></a>
-                        <h3>Native form elements (fieldset with grid-container)</h3>
+                    <section>>
+                        <h2 class="headline-demopage" id="anchor-forms">Forms</h2>
+                        <h3 id="anchor-native-form-elements">Native form elements (fieldset with grid-container)</h3>
                         <form method="post" novalidate="novalidate">
                             <fieldset class="grid-container-create-column">
                                 <legend>Legend</legend>
@@ -883,13 +900,11 @@
                                         <span>Radiobutton 2 (checked (by default))</span>
                                     </label>
                                     <label for="radio3">
-                                        <input name="radiogroup" id="radio3" value="3" type="radio"
-                                               disabled="disabled"/>
+                                        <input name="radiogroup" id="radio3" value="3" type="radio" disabled="disabled"/>
                                         <span>Radiobutton 3 (disabled)</span>
                                     </label>
                                     <label for="radio4">
-                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio"
-                                               disabled="disabled" checked="checked"/>
+                                        <input name="radiogroup-disabled" id="radio4" value="4" type="radio" disabled="disabled" checked="checked"/>
                                         <span>Radiobutton 4 (checked and disabled)</span>
                                     </label>
                                   </span>
@@ -902,51 +917,43 @@
                                           <span>Checkbox 1 (default)</span>
                                       </label>
                                       <label for="checkbox2">
-                                          <input name="checkbox" id="checkbox2" value="2" type="checkbox"
-                                                 checked="checked"/>
+                                          <input name="checkbox" id="checkbox2" value="2" type="checkbox" checked="checked"/>
                                           <span>Checkbox 2 (checked (by default))</span>
                                       </label>
                                       <label for="checkbox3">
-                                          <input name="checkbox" id="checkbox3" value="3" type="checkbox"
-                                                 disabled="disabled"/>
+                                          <input name="checkbox" id="checkbox3" value="3" type="checkbox" disabled="disabled"/>
                                           <span>Checkbox 3 (disabled)</span>
                                       </label>
                                       <label for="checkbox4">
-                                          <input name="checkbox" id="checkbox4" value="4" type="checkbox"
-                                                 disabled="disabled" checked="checked"/>
+                                          <input name="checkbox" id="checkbox4" value="4" type="checkbox" disabled="disabled" checked="checked"/>
                                           <span>Checkbox 4 (checked and disabled)</span>
                                       </label>
                                   </span>
                                 </div>
                                 <label for="default-inputfield">
-              <span class="label-text">
-                <span>Default inputfield:<sup>*</sup></span>
-                <a href="#" class="icon-questionmark-circle" title="Open help"></a>
-              </span>
-                                    <input name="default-inputfield" id="default-inputfield"
-                                           placeholder="Placeholdertext for default inputfield" type="text"/>
+                                    <span class="label-text">
+                                        <span>Default inputfield:<sup>*</sup></span>
+                                        <a href="#" class="icon-questionmark-circle" title="Open help"></a>
+                                    </span>
+                                    <input name="default-inputfield" id="default-inputfield" placeholder="Placeholdertext for default inputfield" type="text"/>
                                 </label>
                                 <div class="flex-container align-bottom">
                                     <label for="textfield1">
-                <span class="label-text">
-                  <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
-                </span>
-                                        <input name="textfield1" id="textfield1"
-                                               placeholder="Placeholdertext for textfield 1"
-                                               type="text"/>
+                                        <span class="label-text">
+                                            <span>A very long label for textfield 1 that wraps if there is no available space left:</span>
+                                        </span>
+                                        <input name="textfield1" id="textfield1" placeholder="Placeholdertext for textfield 1" type="text"/>
                                     </label>
                                     <label for="textfield_disabled">
                                         <span class="label-text"><span>Label for (disabled) textfield:</span></span>
-                                        <input name="textfield" id="textfield_disabled"
-                                               value="Some text for disabled textfield"
-                                               type="text" disabled="disabled" title="tooltip"/>
+                                        <input name="textfield" id="textfield_disabled" value="Some text for disabled textfield" type="text" disabled="disabled" title="tooltip"/>
                                     </label>
                                     <label for="searchfield">
                                         <span class="label-text"><span>Label for searchfield:</span></span>
                                         <span class="input-wrapper">
-                    <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search"/>
-                    <a href="#" class="button no-flex"><span class="icon-search"></span></a>
-                </span>
+                                            <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search"/>
+                                            <a href="#" class="button no-flex"><span class="icon-search"></span></a>
+                                        </span>
                                     </label>
                                 </div>
                                 <label class="inline" for="numberfield">
@@ -954,23 +961,19 @@
                                     <input name="numberfield" id="numberfield" placeholder="1" type="number"/>
                                 </label>
                                 <label class="inline" for="numberfield2">
-                                        <span
-                                            class="label-text"><span>Label for numberfield with decimal (inline):</span></span>
-                                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number"
-                                           step="0.1"/>
+                                        <span class="label-text"><span>Label for numberfield with decimal (inline):</span></span>
+                                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number" step="0.1"/>
                                 </label>
                                 <label class="inline" for="colorfield">
                                     <span class="label-text"><span>Label for colorfield (inline):</span></span>
                                     <input name="colorfield" id="colorfield" type="color"/>
                                 </label>
                                 <label class="inline" for="datefield">
-                                        <span
-                                            class="label-text"><span>Label for (required) datefield (inline):<sup>*</sup></span></span>
+                                    <span class="label-text"><span>Label for (required) datefield (inline):<sup>*</sup></span></span>
                                     <input name="datefield" id="datefield" type="date" required="required"/>
                                 </label>
                                 <label class="inline" for="rangeslider">
-                                    <span
-                                        class="label-text"><span>Label for (required) rangeslider (inline):</span></span>
+                                    <span class="label-text"><span>Label for (required) rangeslider (inline):</span></span>
                                     <input name="rangeslider" id="rangeslider" type="range"/>
                                 </label>
                                 <label class="inline" for="rangeslider2">
@@ -979,25 +982,23 @@
                                 </label>
                                 <div class="flex-container">
                                     <div class="label">
-                                            <span
-                                                class="label-text"><span>Label for Zip/City (with hidden labels):</span></span>
+                                        <span class="label-text"><span>Label for Zip/City (with hidden labels):</span></span>
                                         <span class="input-wrapper">
-                    <label for="zip" class="no-flex">
-                        <span class="hidden">Zip</span>
-                        <input name="zip" id="zip" placeholder="12345" type="number"/>
-                    </label>
-                    <label for="city">
-                        <span class="hidden">City</span>
-                        <input name="city" id="city" placeholder="City" type="text"/>
-                    </label>
-                </span>
+                                            <label for="zip" class="no-flex">
+                                                <span class="hidden">Zip</span>
+                                                <input name="zip" id="zip" placeholder="12345" type="number"/>
+                                            </label>
+                                            <label for="city">
+                                                <span class="hidden">City</span>
+                                                <input name="city" id="city" placeholder="City" type="text"/>
+                                            </label>
+                                        </span>
                                     </div>
                                     <label for="selectbox-required">
-                <span class="label-text">
-                  <span>Label for selectbox (required):<sup>*</sup></span>
-                </span>
-                                        <select name="selectbox-required" id="selectbox-required"
-                                                required="required">
+                                        <span class="label-text">
+                                          <span>Label for selectbox (required):<sup>*</sup></span>
+                                        </span>
+                                        <select name="selectbox-required" id="selectbox-required" required="required">
                                             <option value="">Bitte wählen</option>
                                             <option value="option1">Option 1</option>
                                             <option value="option2">Option 2</option>
@@ -1005,23 +1006,20 @@
                                         </select>
                                     </label>
                                     <label for="selectbox-disabled">
-                <span class="label-text">
-                  <span>Label for selectbox (disabled):</span>
-                  </span>
-                                        <select name="selectbox-disabled" id="selectbox-disabled"
-                                                disabled="disabled">
+                                        <span class="label-text">
+                                          <span>Label for selectbox (disabled):</span>
+                                        </span>
+                                        <select name="selectbox-disabled" id="selectbox-disabled" disabled="disabled">
                                             <option value="option1">Option 1</option>
                                             <option value="option2">Option 2</option>
                                             <option value="option3">Option 3</option>
                                         </select>
                                     </label>
                                     <label for="datalist">
-                <span class="label-text">
-                  <span>Label for datalist:</span>
-                </span>
-                                        <input type="text" list="options" name="datalist" id="datalist"
-                                               autocomplete="off"
-                                               placeholder="Placeholder text for datalist-input"/>
+                                        <span class="label-text">
+                                          <span>Label for datalist:</span>
+                                        </span>
+                                        <input type="text" list="options" name="datalist" id="datalist" autocomplete="off" placeholder="Placeholder text for datalist-input"/>
                                         <datalist id="options">
                                             <option value="Option 1"></option>
                                             <option value="Option 2"></option>
@@ -1030,11 +1028,10 @@
                                     </label>
                                 </div>
                                 <label class="textarea" for="textarea">
-              <span class="label-text">
-                <span>Label for textarea:<sup>*</sup></span>
-              </span>
-                                    <textarea id="textarea" placeholder="Placeholdertext for textarea"
-                                              required="required"></textarea>
+                                  <span class="label-text">
+                                    <span>Label for textarea:<sup>*</sup></span>
+                                  </span>
+                                    <textarea id="textarea" placeholder="Placeholdertext for textarea" required="required"></textarea>
                                 </label>
                             </fieldset>
                             <div class="button-wrapper align-right">
@@ -1042,8 +1039,7 @@
                             </div>
                         </form>
 
-                        <a id="anchor-form-validation"></a>
-                        <h3>Form Validation</h3>
+                        <h3 id="anchor-form-validation">Form Validation</h3>
                         <h4>No validation</h4>
                         <dl>
                             <dt>Validation:</dt>
@@ -1058,21 +1054,16 @@
                                 <legend>Form without validation</legend>
                                 <div class="flex-container">
                                     <label for="inputfield-without-validation">
-                <span class="label-text">
-                  <span>Inputfield without validation:<sup>*</sup></span>
-                </span>
-                                        <input name="inputfield-without-validation"
-                                               id="inputfield-without-validation"
-                                               placeholder="Placeholdertext for inputfield with error" type="text"
-                                               required="required" minlength="5"/>
+                                        <span class="label-text">
+                                            <span>Inputfield without validation:<sup>*</sup></span>
+                                        </span>
+                                        <input name="inputfield-without-validation" id="inputfield-without-validation" placeholder="Placeholdertext for inputfield with error" type="text" required="required" minlength="5"/>
                                     </label>
                                     <label>
-                <span class="label-text">
-                  <span>Inputfield without validation:<sup>*</sup></span>
-                </span>
-                                        <select name="selectbox-without-validation"
-                                                id="selectbox-without-validation"
-                                                required="required">
+                                        <span class="label-text">
+                                            <span>Inputfield without validation:<sup>*</sup></span>
+                                        </span>
+                                        <select name="selectbox-without-validation" id="selectbox-without-validation" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1096,22 +1087,16 @@
                                 <legend>Form with native validation</legend>
                                 <div class="flex-container">
                                     <label for="inputfield-with-native-validation">
-                  <span class="label-text">
-                    <span>Inputfield with native validation:<sup>*</sup></span>
-                  </span>
-                                        <input name="inputfield-with-native-validation"
-                                               id="inputfield-with-native-validation"
-                                               placeholder="Placeholdertext for inputfield with native validation"
-                                               type="text"
-                                               required="required" minlength="5"/>
+                                        <span class="label-text">
+                                            <span>Inputfield with native validation:<sup>*</sup></span>
+                                        </span>
+                                        <input name="inputfield-with-native-validation" id="inputfield-with-native-validation" placeholder="Placeholdertext for inputfield with native validation" type="text" required="required" minlength="5"/>
                                     </label>
                                     <label>
-                <span class="label-text">
-                  <span>Selectbox with native validation:<sup>*</sup></span>
-                </span>
-                                        <select name="selectbox-with-native-validation"
-                                                id="selectbox-with-native-validation"
-                                                required="required">
+                                        <span class="label-text">
+                                            <span>Selectbox with native validation:<sup>*</sup></span>
+                                        </span>
+                                        <select name="selectbox-with-native-validation" id="selectbox-with-native-validation" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1137,56 +1122,48 @@
                                 <h5>Inputfields</h5>
                                 <div class="flex-container align-bottom">
                                     <label for="inputfield-default">
-                <span class="label-text">
-                  <span>Inputfield (default with help-icon):<sup>*</sup></span>
-                  <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
-                </span>
-                                        <input name="inputfield-default" id="inputfield-default"
-                                               placeholder="Placeholdertext for inputfield (default with help-icon"
-                                               type="text"/>
+                                        <span class="label-text">
+                                            <span>Inputfield (default with help-icon):<sup>*</sup></span>
+                                            <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
+                                        </span>
+                                        <input name="inputfield-default" id="inputfield-default" placeholder="Placeholdertext for inputfield (default with help-icon" type="text"/>
                                     </label>
                                     <label class="error" for="inputfield-with-error">
-                <span class="label-text">
-                  <span>Inputfield with error:<sup>*</sup></span>
-                  <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
-                </span>
-                                        <input name="inputfield-with-error" id="inputfield-with-error"
-                                               placeholder="Placeholdertext for inputfield with error" type="text"/>
+                                        <span class="label-text">
+                                            <span>Inputfield with error:<sup>*</sup></span>
+                                            <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
+                                        </span>
+                                        <input name="inputfield-with-error" id="inputfield-with-error" placeholder="Placeholdertext for inputfield with error" type="text"/>
                                     </label>
                                     <label class="warning" for="inputfield-with-warning">
-                <span class="label-text">
-                  <span>Inputfield with warning:<sup>*</sup></span>
-                  <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
-                </span>
-                                        <input name="inputfield-with-warning" id="inputfield-with-warning"
-                                               placeholder="Placeholdertext for inputfield with warning"
-                                               type="text"/>
+                                        <span class="label-text">
+                                            <span>Inputfield with warning:<sup>*</sup></span>
+                                            <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
+                                        </span>
+                                        <input name="inputfield-with-warning" id="inputfield-with-warning" placeholder="Placeholdertext for inputfield with warning" type="text"/>
                                     </label>
                                     <label class="success" for="inputfield-with-success">
-                <span class="label-text">
-                  <span>Inputfield with success:<sup>*</sup></span>
-                  <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
-                </span>
-                                        <input name="inputfield-with-success" id="inputfield-with-success"
-                                               placeholder="Placeholdertext for inputfield with success"
-                                               type="text"/>
+                                        <span class="label-text">
+                                            <span>Inputfield with success:<sup>*</sup></span>
+                                            <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
+                                        </span>
+                                        <input name="inputfield-with-success" id="inputfield-with-success" placeholder="Placeholdertext for inputfield with success" type="text"/>
                                     </label>
                                     <label class="info" for="inputfield-with-info">
-                <span class="label-text">
-                  <span>Inputfield with info:<sup>*</sup></span>
-                  <a href="#" class="icon-info-circle" title="Some information!"></a>
-                </span>
-                                        <input name="inputfield-with-info" id="inputfield-with-info"
-                                               placeholder="Placeholdertext for inputfield with info" type="text"/>
+                                        <span class="label-text">
+                                            <span>Inputfield with info:<sup>*</sup></span>
+                                            <a href="#" class="icon-info-circle" title="Some information!"></a>
+                                        </span>
+                                        <input name="inputfield-with-info" id="inputfield-with-info" placeholder="Placeholdertext for inputfield with info" type="text"/>
                                     </label>
                                 </div>
                                 <h5>Selectboxes</h5>
                                 <div class="flex-container align-bottom">
                                     <label for="selectbox-default">
-                <span class="label-text">
-                  <span>Selectbox with (default with help-icon) and wrapping label-text:<sup>*</sup></span>
-                  <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
-                </span>
+                                        <span class="label-text">
+                                            <span>Selectbox with (default with help-icon) and wrapping label-text:<sup>*</sup></span>
+                                            <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
+                                        </span>
                                         <select name="selectbox-default" id="selectbox-default" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
@@ -1195,12 +1172,11 @@
                                         </select>
                                     </label>
                                     <label class="error" for="selectbox-with-error">
-                <span class="label-text">
-                  <span>Selectbox with error:<sup>*</sup></span>
-                  <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
-                </span>
-                                        <select name="selectbox-with-error" id="selectbox-with-error"
-                                                required="required">
+                                        <span class="label-text">
+                                            <span>Selectbox with error:<sup>*</sup></span>
+                                            <a href="#" class="icon-error-circle" title="Please fill field correctly!"></a>
+                                        </span>
+                                        <select name="selectbox-with-error" id="selectbox-with-error" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1208,12 +1184,11 @@
                                         </select>
                                     </label>
                                     <label class="warning" for="selectbox-with-warning">
-                <span class="label-text">
-                  <span>Selectbox with warning:<sup>*</sup></span>
-                  <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
-                </span>
-                                        <select name="selectbox-with-warning" id="selectbox-with-warning"
-                                                required="required">
+                                        <span class="label-text">
+                                          <span>Selectbox with warning:<sup>*</sup></span>
+                                          <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
+                                        </span>
+                                        <select name="selectbox-with-warning" id="selectbox-with-warning" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1221,12 +1196,11 @@
                                         </select>
                                     </label>
                                     <label class="success" for="selectbox-with-success">
-                <span class="label-text">
-                  <span>Selectbox with success:<sup>*</sup></span>
-                  <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
-                </span>
-                                        <select name="selectbox-with-success" id="selectbox-with-success"
-                                                required="required">
+                                        <span class="label-text">
+                                            <span>Selectbox with success:<sup>*</sup></span>
+                                            <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
+                                        </span>
+                                        <select name="selectbox-with-success" id="selectbox-with-success" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1234,12 +1208,11 @@
                                         </select>
                                     </label>
                                     <label class="info" for="selectbox-with-info">
-                <span class="label-text">
-                  <span>Selectbox with info:<sup>*</sup></span>
-                  <a href="#" class="icon-info-circle" title="Some information!"></a>
-                </span>
-                                        <select name="selectbox-with-info" id="selectbox-with-info"
-                                                required="required">
+                                        <span class="label-text">
+                                          <span>Selectbox with info:<sup>*</sup></span>
+                                          <a href="#" class="icon-info-circle" title="Some information!"></a>
+                                        </span>
+                                        <select name="selectbox-with-info" id="selectbox-with-info" required="required">
                                             <option value="">Please select&hellip;</option>
                                             <option value="1">Option 1</option>
                                             <option value="2">Option 2</option>
@@ -1250,8 +1223,7 @@
                             </fieldset>
                         </form>
 
-                        <a id="anchor-advanced-form-elements"></a>
-                        <h3>Advanced form elements (fieldset with flex-container)</h3>
+                        <h3 id="anchor-advanced-form-elements">Advanced form elements (fieldset with flex-container)</h3>
                         <form>
                             <fieldset class="flex-container">
                                 <legend>Legend</legend>
@@ -1262,30 +1234,27 @@
                                 <!-- begin replace input-type-radio -->
                                 <h4>Replaced Input-Type-Radio</h4>
                                 <div class="label inline">
-              <span class="label-text">
-                <span>Label for Replaced Input-Type-Radio:<sup>*</sup></span>
-              </span>
+                                    <span class="label-text">
+                                        <span>Label for Replaced Input-Type-Radio:<sup>*</sup></span>
+                                    </span>
                                     <span class="flex-container no-flex">
-                <label for="replaced-radio1">
-                    <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1"/>
-                    <span class="label-text">Label 1 (default)</span>
-                </label>
-                <label for="replaced-radio2">
-                    <input type="radio" class="replace-input-type" id="replaced-radio2" name="radiogroup" value="2"
-                           checked="checked"/>
-                    <span class="label-text">Label 2 (checked (by default))</span>
-                </label>
-                <label for="replaced-radio3">
-                    <input type="radio" class="replace-input-type" id="replaced-radio3" name="radiogroup" value="3"
-                           disabled="disabled"/>
-                    <span class="label-text">Label 3 (disabled)</span>
-                </label>
-                <label for="replaced-radio4">
-                    <input type="radio" class="replace-input-type" id="replaced-radio4" name="radiogroup-disabled"
-                           value="4" disabled="disabled" checked="checked"/>
-                    <span class="label-text">Label 4 (checked and disabled)</span>
-                </label>
-              </span>
+                                        <label for="replaced-radio1">
+                                            <input type="radio" class="replace-input-type" id="replaced-radio1" name="radiogroup" value="1"/>
+                                            <span class="label-text">Label 1 (default)</span>
+                                        </label>
+                                        <label for="replaced-radio2">
+                                            <input type="radio" class="replace-input-type" id="replaced-radio2" name="radiogroup" value="2" checked="checked"/>
+                                            <span class="label-text">Label 2 (checked (by default))</span>
+                                        </label>
+                                        <label for="replaced-radio3">
+                                            <input type="radio" class="replace-input-type" id="replaced-radio3" name="radiogroup" value="3" disabled="disabled"/>
+                                            <span class="label-text">Label 3 (disabled)</span>
+                                        </label>
+                                        <label for="replaced-radio4">
+                                            <input type="radio" class="replace-input-type" id="replaced-radio4" name="radiogroup-disabled" value="4" disabled="disabled" checked="checked"/>
+                                            <span class="label-text">Label 4 (checked and disabled)</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end replace input-type-radio -->
 
@@ -1294,27 +1263,23 @@
                                 <div class="label inline">
                                     <span class="label-text">Label for Replaced Input-Type-Checkboxes:</span>
                                     <span class="flex-container no-flex">
-            <label for="replaced-checkbox1">
-                <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup"
-                       value="1"/>
-                <span class="label-text">Label 1 (default)</span>
-            </label>
-            <label for="replaced-checkbox2">
-                <input type="checkbox" class="replace-input-type" id="replaced-checkbox2" name="checkboxgroup" value="2"
-                       checked="checked"/>
-                <span class="label-text">Label 2 (checked (by default))</span>
-            </label>
-            <label for="replaced-checkbox3">
-                <input type="checkbox" class="replace-input-type" id="replaced-checkbox3" name="checkboxgroup" value="3"
-                       disabled="disabled"/>
-                <span class="label-text">Label 3 (disabled)</span>
-            </label>
-            <label for="replaced-checkbox4">
-                <input type="checkbox" class="replace-input-type" id="replaced-checkbox4" name="checkboxgroup" value="4"
-                       disabled="disabled" checked="checked"/>
-                <span class="label-text">Label 4 (checked and disabled)</span>
-            </label>
-        </span>
+                                        <label for="replaced-checkbox1">
+                                            <input type="checkbox" class="replace-input-type" id="replaced-checkbox1" name="checkboxgroup" value="1"/>
+                                            <span class="label-text">Label 1 (default)</span>
+                                        </label>
+                                        <label for="replaced-checkbox2">
+                                            <input type="checkbox" class="replace-input-type" id="replaced-checkbox2" name="checkboxgroup" value="2" checked="checked"/>
+                                            <span class="label-text">Label 2 (checked (by default))</span>
+                                        </label>
+                                        <label for="replaced-checkbox3">
+                                            <input type="checkbox" class="replace-input-type" id="replaced-checkbox3" name="checkboxgroup" value="3" disabled="disabled"/>
+                                            <span class="label-text">Label 3 (disabled)</span>
+                                        </label>
+                                        <label for="replaced-checkbox4">
+                                            <input type="checkbox" class="replace-input-type" id="replaced-checkbox4" name="checkboxgroup" value="4" disabled="disabled" checked="checked"/>
+                                            <span class="label-text">Label 4 (checked and disabled)</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end replace-input-type-checkbox -->
 
@@ -1325,38 +1290,37 @@
                                 <div class="label inline">
                                     <span class="label-text">Label for Toggle-Switch-Radio-Group:</span>
                                     <span class="flex-container no-flex">
-            <label class="toggle-switch" for="radio5">
-                <input type="radio" id="radio5" name="toggle-switch-radiogroup-1" value="1"/>
-                <span class="label-text">Label 1 (default)</span>
-            </label>
-            <label class="toggle-switch" for="radio6">
-                <input type="radio" id="radio6" name="toggle-switch-radiogroup-1" value="2" checked="checked"/>
-                <span class="label-text">Label 2 (checked (by default))</span>
-            </label>
-            <label class="toggle-switch" for="radio7">
-                <input type="radio" id="radio7" name="toggle-switch-radiogroup-2" value="3" disabled="disabled"/>
-                <span class="label-text">Label 3 (disabled)</span>
-            </label>
-            <label class="toggle-switch" for="radio8">
-                <input type="radio" id="radio8" name="toggle-switch-radiogroup-2" value="4" disabled="disabled"
-                       checked="checked"/>
-                <span class="label-text">Label 4 (checked and disabled)</span>
-            </label>
-        </span>
+                                        <label class="toggle-switch" for="radio5">
+                                            <input type="radio" id="radio5" name="toggle-switch-radiogroup-1" value="1"/>
+                                            <span class="label-text">Label 1 (default)</span>
+                                        </label>
+                                        <label class="toggle-switch" for="radio6">
+                                            <input type="radio" id="radio6" name="toggle-switch-radiogroup-1" value="2" checked="checked"/>
+                                            <span class="label-text">Label 2 (checked (by default))</span>
+                                        </label>
+                                        <label class="toggle-switch" for="radio7">
+                                            <input type="radio" id="radio7" name="toggle-switch-radiogroup-2" value="3" disabled="disabled"/>
+                                            <span class="label-text">Label 3 (disabled)</span>
+                                        </label>
+                                        <label class="toggle-switch" for="radio8">
+                                            <input type="radio" id="radio8" name="toggle-switch-radiogroup-2" value="4" disabled="disabled" checked="checked"/>
+                                            <span class="label-text">Label 4 (checked and disabled)</span>
+                                        </label>
+                                    </span>
                                 </div>
 
                                 <div class="label inline">
                                     <span class="label-text">Label for Toggle-Switch-Radio-Group (colored):</span>
                                     <span class="flex-container no-flex">
-                        <label class="toggle-switch colored" for="radio9">
-        <input type="radio" id="radio9" name="toggle-switch-radiogroup-3" value="5"/>
-        <span class="label-text">Label 5 (colored)</span>
-        </label>
-        <label class="toggle-switch colored" for="radio10">
-        <input type="radio" id="radio10" name="toggle-switch-radiogroup-3" value="6" checked="checked"/>
-        <span class="label-text">Label 6 (checked and colored)</span>
-        </label>
-        </span>
+                                        <label class="toggle-switch colored" for="radio9">
+                                            <input type="radio" id="radio9" name="toggle-switch-radiogroup-3" value="5"/>
+                                            <span class="label-text">Label 5 (colored)</span>
+                                        </label>
+                                        <label class="toggle-switch colored" for="radio10">
+                                            <input type="radio" id="radio10" name="toggle-switch-radiogroup-3" value="6" checked="checked"/>
+                                            <span class="label-text">Label 6 (checked and colored)</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end toggle-switch-radio -->
 
@@ -1364,118 +1328,102 @@
                                 <h4>Toggle-Switch-Checkbox</h4>
                                 <div class="flex-container no-flex">
                                     <label class="toggle-switch" for="toggle-switch-with-icon">
-                                        <input type="checkbox" class="icon-cancel-circle" id="toggle-switch-with-icon"
-                                               value="1"/>
+                                        <input type="checkbox" class="icon-cancel-circle" id="toggle-switch-with-icon" value="1"/>
                                         <span class="label-text">Toggle-Switch with Icon</span>
                                     </label>
                                     <label class="toggle-switch" for="toggle-switch-with-icon-disabled">
-                                        <input type="checkbox" class="icon-cancel-circle" disabled="disabled"
-                                               id="toggle-switch-with-icon-disabled" value="1"/>
+                                        <input type="checkbox" class="icon-cancel-circle" disabled="disabled" id="toggle-switch-with-icon-disabled" value="1"/>
                                         <span class="label-text">Toggle-Switch with Icon (disabled)</span>
                                     </label>
                                     <label class="toggle-switch" for="toggle-switch-with-icon-disabled-checked">
-                                        <input type="checkbox" class="icon-check-circle" disabled="disabled"
-                                               checked="checked" id="toggle-switch-with-icon-disabled-checked"
-                                               value="1"/>
+                                        <input type="checkbox" class="icon-check-circle" disabled="disabled" checked="checked" id="toggle-switch-with-icon-disabled-checked" value="1"/>
                                         <span class="label-text">Toggle-Switch with Icon (disabled and checked)</span>
                                     </label>
                                 </div>
                                 <div class="label inline">
                                     <span class="label-text">Label for Toggle-Switch-Checkbox-Group:<sup>*</sup></span>
                                     <span class="flex-container no-flex">
-                <label class="toggle-switch" for="checkbox5">
-                    <input type="checkbox" id="checkbox5" name="toggle-switch-chechboxgroup-1" value="1"/>
-                    <span class="label-text">Label 1 (default)</span>
-                </label>
-                <label class="toggle-switch" for="checkbox6">
-                    <input type="checkbox" id="checkbox6" name="toggle-switch-chechboxgroup-1" value="2"
-                           checked="checked"/>
-                    <span class="label-text">Label 2 (checked (by default))</span>
-                </label>
-                <label class="toggle-switch" for="checkbox7">
-                    <input type="checkbox" id="checkbox7" name="toggle-switch-chechboxgroup-2" value="3"
-                           disabled="disabled"/>
-                    <span class="label-text">Label 3 (disabled)</span>
-                </label>
-                <label class="toggle-switch" for="checkbox8">
-                    <input type="checkbox" id="checkbox8" name="toggle-switch-chechboxgroup-2" value="4"
-                           disabled="disabled" checked="checked"/>
-                    <span class="label-text">Label 4 (checked and disabled)</span>
-                </label>
-            </span>
+                                        <label class="toggle-switch" for="checkbox5">
+                                            <input type="checkbox" id="checkbox5" name="toggle-switch-chechboxgroup-1" value="1"/>
+                                            <span class="label-text">Label 1 (default)</span>
+                                        </label>
+                                        <label class="toggle-switch" for="checkbox6">
+                                            <input type="checkbox" id="checkbox6" name="toggle-switch-chechboxgroup-1" value="2" checked="checked"/>
+                                            <span class="label-text">Label 2 (checked (by default))</span>
+                                        </label>
+                                        <label class="toggle-switch" for="checkbox7">
+                                            <input type="checkbox" id="checkbox7" name="toggle-switch-chechboxgroup-2" value="3" disabled="disabled"/>
+                                            <span class="label-text">Label 3 (disabled)</span>
+                                        </label>
+                                        <label class="toggle-switch" for="checkbox8">
+                                            <input type="checkbox" id="checkbox8" name="toggle-switch-chechboxgroup-2" value="4" disabled="disabled" checked="checked"/>
+                                            <span class="label-text">Label 4 (checked and disabled)</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <div class="label inline">
-                                    <span
-                                        class="label-text">Label for Toggle-Switch-Checkbox-Group (colored):<sup>*</sup></span>
+                                    <span class="label-text">Label for Toggle-Switch-Checkbox-Group (colored):<sup>*</sup></span>
                                     <span class="flex-container no-flex">
-                                <label class="toggle-switch colored" for="checkbox9">
-                <input type="checkbox" id="checkbox9" name="toggle-switch-chechboxgroup-3" value="5"/>
-                <span class="label-text">Label 5 (colored)</span>
-            </label>
-            <label class="toggle-switch colored" for="checkbox10">
-                <input type="checkbox" id="checkbox10" name="toggle-switch-chechboxgroup-3" value="6"
-                       checked="checked"/>
-                <span class="label-text">Label 6 (checked and colored)</span>
-            </label>
-        </span>
+                                        <label class="toggle-switch colored" for="checkbox9">
+                                            <input type="checkbox" id="checkbox9" name="toggle-switch-chechboxgroup-3" value="5"/>
+                                            <span class="label-text">Label 5 (colored)</span>
+                                        </label>
+                                        <label class="toggle-switch colored" for="checkbox10">
+                                            <input type="checkbox" id="checkbox10" name="toggle-switch-chechboxgroup-3" value="6" checked="checked"/>
+                                            <span class="label-text">Label 6 (checked and colored)</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end toggle-switch-checkbox -->
 
                                 <!-- begin toggle-switch-radio with switch-label -->
                                 <h4>Toggle-Switch-Radio with Switch-Label</h4>
                                 <div class="label inline">
-                                    <span
-                                        class="label-text">Label for Toggle-Switch-Radio-Group with Switch-Label:</span>
+                                    <span class="label-text">Label for Toggle-Switch-Radio-Group with Switch-Label:</span>
                                     <span class="flex-container no-flex">
-            <label class="toggle-switch" for="toggle-switch-radio1" title="default">
-                <span class="switch-label-wrapper">
-                  <input type="radio" id="toggle-switch-radio1" name="toggle-switch-switch-label-radiogroup-1"
-                         value="1"/>
-                  <span class="label-text">Yes</span><span class="label-text">No</span>
-                </span>
-                <span>Label #1</span>
-            </label>
-            <label class="toggle-switch" for="toggle-switch-radio2" title="checked (by default)">
-                <span class="switch-label-wrapper">
-                  <input type="radio" id="toggle-switch-radio2" name="toggle-switch-switch-label-radiogroup-1" value="2"
-                         checked="checked"/>
-                  <span class="label-text">Yes</span><span class="label-text">No</span>
-                </span>
-                <span>Label #2</span>
-            </label>
-            <label class="toggle-switch disabled" for="toggle-switch-radio3" title="disabled">
-              <span class="switch-label-wrapper">
-                <input type="radio" id="toggle-switch-radio3" name="toggle-switch-switch-label-radiogroup-2" value="3"
-                       disabled="disabled"/>
-                <span class="label-text">Yes</span><span class="label-text">No</span>
-              </span>
-              <span>Label #3</span>
-            </label>
-            <label class="toggle-switch disabled" for="toggle-switch-radio4" title="checked and disabled">
-                <span class="switch-label-wrapper">
-                  <input type="radio" id="toggle-switch-radio4" name="toggle-switch-switch-label-radiogroup-2" value="4"
-                         disabled="disabled" checked="checked"/>
-                  <span class="label-text">Yes</span><span class="label-text">No</span>
-                </span>
-                <span>Label #4</span>
-            </label>
-            <label class="toggle-switch colored" for="toggle-switch-radio5" title="checked and disabled">
-                <span class="switch-label-wrapper">
-                  <input type="radio" id="toggle-switch-radio5" name="toggle-switch-switch-label-radiogroup-3"
-                         value="5"/>
-                  <span class="label-text">Yes</span><span class="label-text">No</span>
-                </span>
-                <span>Label #5</span>
-            </label>
-            <label class="toggle-switch colored" for="toggle-switch-radio6" title="checked and disabled">
-                <span class="switch-label-wrapper">
-                  <input type="radio" id="toggle-switch-radio6" name="toggle-switch-switch-label-radiogroup-3" value="6"
-                         checked="checked"/>
-                  <span class="label-text">Yes</span><span class="label-text">No</span>
-                </span>
-                <span>Label #6</span>
-            </label>
-          </span>
+                                        <label class="toggle-switch" for="toggle-switch-radio1" title="default">
+                                            <span class="switch-label-wrapper">
+                                              <input type="radio" id="toggle-switch-radio1" name="toggle-switch-switch-label-radiogroup-1" value="1"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #1</span>
+                                        </label>
+                                        <label class="toggle-switch" for="toggle-switch-radio2" title="checked (by default)">
+                                            <span class="switch-label-wrapper">
+                                              <input type="radio" id="toggle-switch-radio2" name="toggle-switch-switch-label-radiogroup-1" value="2" checked="checked"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #2</span>
+                                        </label>
+                                        <label class="toggle-switch disabled" for="toggle-switch-radio3" title="disabled">
+                                          <span class="switch-label-wrapper">
+                                            <input type="radio" id="toggle-switch-radio3" name="toggle-switch-switch-label-radiogroup-2" value="3" disabled="disabled"/>
+                                            <span class="label-text">Yes</span><span class="label-text">No</span>
+                                          </span>
+                                          <span>Label #3</span>
+                                        </label>
+                                        <label class="toggle-switch disabled" for="toggle-switch-radio4" title="checked and disabled">
+                                            <span class="switch-label-wrapper">
+                                              <input type="radio" id="toggle-switch-radio4" name="toggle-switch-switch-label-radiogroup-2" value="4" disabled="disabled" checked="checked"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #4</span>
+                                        </label>
+                                        <label class="toggle-switch colored" for="toggle-switch-radio5" title="checked and disabled">
+                                            <span class="switch-label-wrapper">
+                                              <input type="radio" id="toggle-switch-radio5" name="toggle-switch-switch-label-radiogroup-3" value="5"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #5</span>
+                                        </label>
+                                        <label class="toggle-switch colored" for="toggle-switch-radio6" title="checked and disabled">
+                                            <span class="switch-label-wrapper">
+                                              <input type="radio" id="toggle-switch-radio6" name="toggle-switch-switch-label-radiogroup-3" value="6" checked="checked"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #6</span>
+                                        </label>
+                                      </span>
                                 </div>
                                 <!-- end toggle-switch-radio with switch-label -->
 
@@ -1484,134 +1432,128 @@
                                 <div class="label inline">
                                     <span class="label-text">Label for Toggle-Switch-Checkbox with Switch-Label:</span>
                                     <span class="flex-container no-flex">
-                <label class="toggle-switch" for="toggle-switch-checkbox1" title="default">
-                    <span class="switch-label-wrapper">
-                      <input type="checkbox" id="toggle-switch-checkbox1" name="chechboxgroup3" value="1"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                    <span>Label #1</span>
-                </label>
-                <label class="toggle-switch" for="toggle-switch-checkbox2" title="checked (by default)">
-                    <span class="switch-label-wrapper">
-                      <input type="checkbox" id="toggle-switch-checkbox2" name="chechboxgroup3" value="2"
-                             checked="checked"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                  <span>Label #2</span>
-                </label>
-                <label class="toggle-switch disabled" for="toggle-switch-checkbox3" title="disabled">
-                  <span class="switch-label-wrapper">
-                    <input type="checkbox" id="toggle-switch-checkbox3" name="chechboxgroup3" value="3"
-                           disabled="disabled"/>
-                    <span class="label-text">Yes</span><span class="label-text">No</span>
-                  </span>
-                  <span>Label #3</span>
-                </label>
-                <label class="toggle-switch disabled" for="toggle-switch-checkbox4" title="checked and disabled">
-                  <span class="switch-label-wrapper">
-                    <input type="checkbox" id="toggle-switch-checkbox4" name="chechboxgroup3" value="4"
-                           disabled="disabled" checked="checked"/>
-                    <span class="label-text">Yes</span><span class="label-text">No</span>
-                  </span>
-                  <span>Label #4</span>
-                </label>
-              </span>
+                                        <label class="toggle-switch" for="toggle-switch-checkbox1" title="default">
+                                            <span class="switch-label-wrapper">
+                                              <input type="checkbox" id="toggle-switch-checkbox1" name="chechboxgroup3" value="1"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #1</span>
+                                        </label>
+                                        <label class="toggle-switch" for="toggle-switch-checkbox2" title="checked (by default)">
+                                            <span class="switch-label-wrapper">
+                                              <input type="checkbox" id="toggle-switch-checkbox2" name="chechboxgroup3" value="2" checked="checked"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                          <span>Label #2</span>
+                                        </label>
+                                        <label class="toggle-switch disabled" for="toggle-switch-checkbox3" title="disabled">
+                                          <span class="switch-label-wrapper">
+                                            <input type="checkbox" id="toggle-switch-checkbox3" name="chechboxgroup3" value="3" disabled="disabled"/>
+                                            <span class="label-text">Yes</span><span class="label-text">No</span>
+                                          </span>
+                                          <span>Label #3</span>
+                                        </label>
+                                        <label class="toggle-switch disabled" for="toggle-switch-checkbox4" title="checked and disabled">
+                                          <span class="switch-label-wrapper">
+                                            <input type="checkbox" id="toggle-switch-checkbox4" name="chechboxgroup3" value="4" disabled="disabled" checked="checked"/>
+                                            <span class="label-text">Yes</span><span class="label-text">No</span>
+                                          </span>
+                                          <span>Label #4</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end toggle-switch-checkbox with switch-label -->
 
                                 <h4>Toggle-Switch-Radio with Switch-Label</h4>
                                 <div class="label inline">
-                    <span
-                        class="label-text">Label for Toggle-Switch-Radio with Switch-Label:</span>
-                                    <span class="flex-container no-flex">
-                <label class="toggle-switch colored" for="toggle-switch-radio-colored1" title="default">
-                    <span class="switch-label-wrapper">
-                      <input type="radio" id="toggle-switch-radio-colored1" name="radiogroup-colored"
-                             value="1"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                    <span>Label #1</span>
-                </label>
-                <label class="toggle-switch colored" for="toggle-switch-radio-colored2" title="checked (by default)">
-                    <span class="switch-label-wrapper">
-                      <input type="radio" id="toggle-switch-radio-colored2" name="radiogroup-colored" value="2"
-                             checked="checked"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                  <span>Label #2</span>
-                </label>
-       </span>
+                                    <span class="label-text">Label for Toggle-Switch-Radio with Switch-Label:</span>
+                                        <span class="flex-container no-flex">
+                                            <label class="toggle-switch colored" for="toggle-switch-radio-colored1" title="default">
+                                                <span class="switch-label-wrapper">
+                                                  <input type="radio" id="toggle-switch-radio-colored1" name="radiogroup-colored" value="1"/>
+                                                  <span class="label-text">Yes</span><span class="label-text">No</span>
+                                                </span>
+                                                <span>Label #1</span>
+                                            </label>
+                                            <label class="toggle-switch colored" for="toggle-switch-radio-colored2" title="checked (by default)">
+                                                <span class="switch-label-wrapper">
+                                                  <input type="radio" id="toggle-switch-radio-colored2" name="radiogroup-colored" value="2" checked="checked"/>
+                                                  <span class="label-text">Yes</span><span class="label-text">No</span>
+                                                </span>
+                                              <span>Label #2</span>
+                                            </label>
+                                   </span>
                                 </div>
 
                                 <h4>Toggle-Switch-Checkbox with Switch-Label</h4>
                                 <div class="label inline">
-                                        <span
-                                            class="label-text">Label for Toggle-Switch-Checkbox with Switch-Label:</span>
+                                    <span class="label-text">Label for Toggle-Switch-Checkbox with Switch-Label:</span>
                                     <span class="flex-container no-flex">
-                <label class="toggle-switch colored" for="toggle-switch-checkbox-colored1" title="default">
-                    <span class="switch-label-wrapper">
-                      <input type="checkbox" id="toggle-switch-checkbox-colored1" name="chechboxgroup-colored"
-                             value="1"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                    <span>Label #1</span>
-                </label>
-                <label class="toggle-switch colored" for="toggle-switch-checkbox-colored2" title="checked (by default)">
-                    <span class="switch-label-wrapper">
-                      <input type="checkbox" id="toggle-switch-checkbox-colored2" name="chechboxgroup-colored" value="2"
-                             checked="checked"/>
-                      <span class="label-text">Yes</span><span class="label-text">No</span>
-                    </span>
-                  <span>Label #2</span>
-                </label>
-       </span>
+                                        <label class="toggle-switch colored" for="toggle-switch-checkbox-colored1" title="default">
+                                            <span class="switch-label-wrapper">
+                                              <input type="checkbox" id="toggle-switch-checkbox-colored1" name="chechboxgroup-colored" value="1"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                            <span>Label #1</span>
+                                        </label>
+                                        <label class="toggle-switch colored" for="toggle-switch-checkbox-colored2" title="checked (by default)">
+                                            <span class="switch-label-wrapper">
+                                              <input type="checkbox" id="toggle-switch-checkbox-colored2" name="chechboxgroup-colored" value="2" checked="checked"/>
+                                              <span class="label-text">Yes</span><span class="label-text">No</span>
+                                            </span>
+                                          <span>Label #2</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <hr/>
                                 <!-- begin multiple-switch (radio) -->
                                 <h4>Multiple-Switch</h4>
                                 <div class="cmd-input-group label multiple-switch">
-              <span class="label-text" id="label-multiple-switch-radio" aria-labelledby="label-multiple-switch-radio">
-                <span>Grouplabel for radio-group  given by property styled as multiple-switch</span>
-              </span>
+                                    <span class="label-text" id="label-multiple-switch-radio" aria-labelledby="label-multiple-switch-radio">
+                                        <span>Grouplabel for radio-group  given by property styled as multiple-switch</span>
+                                    </span>
                                     <span class="flex-container no-flex no-gap">
-                <label for="radio-id-1-multi">
-                  <input type="radio" id="radio-id-1-multi" name="input-group-radio-multi" value="website">
-                  <span class="icon-globe"></span><span>Website</span>
-                </label>
-                <label for="radio-id-2-multi">
-                  <input type="radio" id="radio-id-2-multi" name="input-group-radio-multi" value="email">
-                  <span class="icon-mail"></span><span>E-Mail</span>
-                </label>
-                <label for="radio-id-3-multi">
-                  <input type="radio" id="radio-id-3-multi" name="input-group-radio-multi" value="phone">
-                  <span class="icon-phone"></span>
-                  <span>Phone</span>
-                </label>
-              </span>
+                                        <label for="radio-id-1-multi">
+                                          <input type="radio" id="radio-id-1-multi" name="input-group-radio-multi" value="website">
+                                          <span class="icon-globe"></span>
+                                            <span>Website</span>
+                                        </label>
+                                        <label for="radio-id-2-multi">
+                                          <input type="radio" id="radio-id-2-multi" name="input-group-radio-multi" value="email">
+                                          <span class="icon-mail"></span>
+                                            <span>E-Mail</span>
+                                        </label>
+                                        <label for="radio-id-3-multi">
+                                          <input type="radio" id="radio-id-3-multi" name="input-group-radio-multi" value="phone">
+                                          <span class="icon-phone"></span>
+                                          <span>Phone</span>
+                                        </label>
+                                      </span>
                                 </div>
                                 <!-- end multiple-switch (radio) -->
 
                                 <!-- begin multiple-switch (checkbox) -->
                                 <div class="cmd-input-group label multiple-switch">
-              <span class="label-text" id="label-multiple-switch-checkbox"
-                    aria-labelledby="label-multiple-switch-checkbox">
-                <span>Grouplabel for checkbox-group  given by property styled as multiple-switch (stretched)</span>
-              </span>
+                                    <span class="label-text" id="label-multiple-switch-checkbox" aria-labelledby="label-multiple-switch-checkbox">
+                                        <span>Grouplabel for checkbox-group  given by property styled as multiple-switch (stretched)</span>
+                                    </span>
                                     <span class="flex-container no-gap">
-                <label for="checkbox-id-1-multi">
-                  <input type="checkbox" id="checkbox-id-1-multi" name="input-group-checkbox-multi" value="website">
-                  <span class="icon-globe"></span><span>Website</span>
-                </label>
-                <label for="checkbox-id-2-multi">
-                  <input type="checkbox" id="checkbox-id-2-multi" name="input-group-checkbox-multi" value="email">
-                  <span class="icon-mail"></span><span>E-Mail</span>
-                </label>
-                <label for="checkbox-id-3-multi">
-                  <input type="checkbox" id="checkbox-id-3-multi" name="input-group-checkbox-multi" value="phone">
-                  <span class="icon-phone"></span>
-                  <span>Phone</span>
-                </label>
-              </span>
+                                        <label for="checkbox-id-1-multi">
+                                            <input type="checkbox" id="checkbox-id-1-multi" name="input-group-checkbox-multi" value="website">
+                                            <span class="icon-globe"></span>
+                                            <span>Website</span>
+                                        </label>
+                                        <label for="checkbox-id-2-multi">
+                                            <input type="checkbox" id="checkbox-id-2-multi" name="input-group-checkbox-multi" value="email">
+                                            <span class="icon-mail"></span>
+                                            <span>E-Mail</span>
+                                        </label>
+                                        <label for="checkbox-id-3-multi">
+                                            <input type="checkbox" id="checkbox-id-3-multi" name="input-group-checkbox-multi" value="phone">
+                                            <span class="icon-phone"></span>
+                                            <span>Phone</span>
+                                        </label>
+                                    </span>
                                 </div>
                                 <!-- end multiple-switch (checkbox) -->
 
@@ -1621,37 +1563,33 @@
                                     <label for="username">
                                         <span class="label-text"><span>Username (default):</span></span>
                                         <span class="flex-container">
-                    <span class="place-inside icon-user-profile"></span>
-                    <input type="text" name="username" id="username" maxlength="50" placeholder="Username"
-                           title="Please type in username"/>
-                </span>
+                                            <span class="place-inside icon-user-profile"></span>
+                                            <input type="text" name="username" id="username" maxlength="50" placeholder="Username" title="Please type in username"/>
+                                        </span>
                                     </label>
                                     <label for="password">
-                <span class="label-text">
-                  <span>Password (required):<sup>*</sup></span>
-                </span>
+                                        <span class="label-text">
+                                          <span>Password (required):<sup>*</sup></span>
+                                        </span>
                                         <span class="flex-container">
-                    <span class="place-inside icon-security-settings"></span>
-                    <input type="password" name="password" id="password" minlength="6" maxlength="50"
-                           placeholder="Password" required="required" title="Please type in password"/>
-                </span>
+                                            <span class="place-inside icon-security-settings"></span>
+                                            <input type="password" name="password" id="password" minlength="6" maxlength="50" placeholder="Password" required="required" title="Please type in password"/>
+                                        </span>
                                     </label>
                                     <label for="email">
-                <span class="label-text">
-                  <span>Email (with pattern):</span></span>
+                                    <span class="label-text">
+                                      <span>Email (with pattern):</span></span>
                                         <span class="flex-container">
-                    <span class="place-inside icon-mail"></span>
-                    <input type="email" name="email" id="email" minlength="7" maxlength="50" required="required"
-                           placeholder="Email address"/>
-                </span>
+                                            <span class="place-inside icon-mail"></span>
+                                            <input type="email" name="email" id="email" minlength="7" maxlength="50" required="required" placeholder="Email address"/>
+                                        </span>
                                     </label>
                                     <label for="phone" class="disabled">
                                         <span class="label-text"><span>Phone (disabled):</span></span>
                                         <span class="flex-container">
-                    <span class="place-inside icon-phone"></span>
-                    <input type="tel" name="phone" id="phone" minlength="6" maxlength="50" placeholder="Phone number"
-                           disabled="disabled"/>
-                </span>
+                                            <span class="place-inside icon-phone"></span>
+                                            <input type="tel" name="phone" id="phone" minlength="6" maxlength="50" placeholder="Phone number" disabled="disabled"/>
+                                        </span>
                                     </label>
                                 </div>
                                 <!-- end inputfields with icon-->
@@ -1664,8 +1602,7 @@
                 <!-- begin main-navigation -->
                 <div class="width-limitation-wrapper">
                     <section>
-                        <a id="anchor-main-navigation"></a>
-                        <h2 class="headline-demopage">Main Navigation</h2>
+                        <h2 class="headline-demopage" id="anchor-main-navigation">Main Navigation</h2>
                         <div id="main-navigation-wrapper">
                             <nav>
                                 <ul>
@@ -1706,38 +1643,32 @@
 
                 <div class="width-limitation-wrapper">
                     <section id="flex-section">
-                        <a id="anchor-flex-containers"></a>
-                        <h2 class="headline-demopage">Flex-Containers</h2>
-                        <a id="anchor-flex-containers-default"></a>
-                        <h3>Default</h3>
+                        <h2 class="headline-demopage" id="anchor-flex-containers">Flex-Containers</h2>
+                        <h3 id="anchor-flex-containers-default">Default</h3>
                         <div class="flex-container">
                             <div>flex-item</div>
                             <div>flex-item</div>
                             <div>flex-item</div>
                         </div>
-                        <a id="anchor-flex-containers-no-gap"></a>
-                        <h3>No-gap</h3>
+                        <h3 id="anchor-flex-containers-no-gap">No-gap</h3>
                         <div class="flex-container no-gap">
                             <div>flex-item</div>
                             <div>flex-item</div>
                             <div>flex-item</div>
                         </div>
-                        <a id="anchor-flex-containers-no-flex-all"></a>
-                        <h3>No-flex (for all items)</h3>
+                        <h3 id="anchor-flex-containers-no-flex-all">No-flex (for all items)</h3>
                         <div class="flex-container no-flex">
                             <div>flex-item</div>
                             <div>flex-item</div>
                             <div>flex-item</div>
                         </div>
-                        <a id="anchor-flex-containers-no-flex-single-item"></a>
-                        <h3>No-flex (for single item)</h3>
+                        <h3 id="anchor-flex-containers-no-flex-single-item">No-flex (for single item)</h3>
                         <div class="flex-container">
                             <div>flex-item</div>
                             <div class="no-flex">flex-item (no-flex)</div>
                             <div>flex-item</div>
                         </div>
-                        <a id="anchor-flex-containers-vertical"></a>
-                        <h3>Vertical</h3>
+                        <h3 id="anchor-flex-containers-vertical">Vertical</h3>
                         <div class="flex-container vertical">
                             <div>flex-item</div>
                             <div>flex-item</div>
@@ -1748,8 +1679,7 @@
 
                 <div class="width-limitation-wrapper">
                     <section id="grid-section">
-                        <a id="anchor-grid-containers"></a>
-                        <h2 class="headline-demopage">Grid-Containers</h2>
+                        <h2 class="headline-demopage" id="anchor-grid-containers">Grid-Containers</h2>
                         <!--h3 class="headline-demopage">Simple Grid</h3>
                         <form novalidate="novalidate">
                             <div class="fieldset grid-container-create-columns">
@@ -1773,8 +1703,7 @@
                                 </div>
                             </div>
                         </form-->
-                        <a id="anchor-grid-containers-regular-grid"></a>
-                        <h3>Regular Grid</h3>
+                        <h3 id="anchor-grid-containers-regular-grid">Regular Grid</h3>
                         <div class="grid-container-create-columns" id="grid-regular">
                             <div>1</div>
                             <div>2</div>
@@ -1790,15 +1719,13 @@
                             <div>12</div>
                         </div>
 
-                        <a id="anchor-grid-containers-default-classes"></a>
-                        <h3>Grid based on default classes</h3>
+                        <h3 id="anchor-grid-containers-default-classes">Grid based on default classes</h3>
                         <div class="grid-container-create-columns" id="grid-default">
                             <div class="grid-small-item">Small item</div>
                             <div class="grid-large-item">Large item</div>
                         </div>
 
-                        <a id="anchor-grid-containers-layout-columns"></a>
-                        <h3>Grid layout columns (based on "small-item-class")</h3>
+                        <h3 id="anchor-grid-containers-layout-columns">Grid layout columns (based on "small-item-class")</h3>
                         <div class="grid-container-create-columns" id="layout-columns">
                             <div class="grid-small-item">layout column/small item</div>
                             <div class="grid-small-item">layout column/small item</div>
@@ -1806,15 +1733,13 @@
                             <div class="grid-small-item">layout column/small item</div>
                         </div>
 
-                        <a id="anchor-grid-containers-two-fractions"></a>
-                        <h3>Grid two fractions (with same width)</h3>
+                        <h3 id="anchor-grid-containers-two-fractions">Grid two fractions (with same width)</h3>
                         <div class="grid-container-create-columns">
                             <div class="grid-item-half-width">grid-item</div>
                             <div class="grid-item-half-width">grid-item</div>
                         </div>
 
-                        <a id="anchor-grid-containers-complex-grid"></a>
-                        <h3>Complex Grid</h3>
+                        <h3 id="anchor-grid-containers-complex-grid">Complex Grid</h3>
                         <div class="grid-container" id="grid-complex">
                             <div>1</div>
                             <div>2</div>
@@ -1831,17 +1756,17 @@
                         </div>
                     </section>
                 </div>
+                <!-- begin back-to-top-button -->
                 <a class="button" id="back-to-top-button" href="#top-of-page" title="Back to top">
                     <span class="icon-single-arrow-up"></span>
                 </a>
+                <!-- end back-to-top-button -->
             </main>
+            <!-- begin copyright-information -->
             <div class="cmd-copyright-information" role="contentinfo">
-                <a href="http://www.comand-cms.com"
-                   target="_blank" lang="en"
-                   title="CoManD-Website">
-                    © CoManD
-                </a>
+                <a href="http://www.comand-cms.com" target="_blank" lang="en" title="CoManD-Website">© CoManD</a>
             </div>
+            <!-- end copyright-information -->
         </div> <!-- end main-wrapper -->
     </div> <!-- #frontend-demo -->
 </template>
