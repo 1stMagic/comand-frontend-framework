@@ -42,10 +42,6 @@ body {
     border: 0;
 }
 
-#frontend-framework-demo .sidebar .box:last-of-type {
-    border-bottom: var(--default-border);
-}
-
 #frontend-framework-demo .sidebar .box > .box-header {
     display: flex;
     align-items: center;

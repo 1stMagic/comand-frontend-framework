@@ -1,6 +1,6 @@
 {
   "name": "comand-frontend-framework",
-  "version": "3.4.30",
+  "version": "4.0.0",
   "private": false,
   "type": "module",
   "scripts": {
