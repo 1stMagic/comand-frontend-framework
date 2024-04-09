@@ -28,7 +28,7 @@ body {
             > .box-header {
                 display: flex;
                 align-items: center;
-                border-radius: var(--border-radius);
+                border-radius: 0;
                 padding: calc(var(--default-padding) / 2) var(--default-padding);
                 justify-content: space-between;
                 background: var(--primary-color);
@@ -42,7 +42,7 @@ body {
                 }
 
                 [class*="icon-"] {
-                    font-size: var(--icon-size);
+                    font-size: var(--default-icon-size);
                 }
 
                 &:is(:hover, :active, :focus) {
@@ -67,9 +67,7 @@ body {
     }
 
     .inner-sidebar-wrapper {
-        padding: 0;
-        padding-top: var(--default-padding);
-        padding-bottom: var(--default-padding);
+        padding: var(--default-padding) 0;
     }
 
     .width-limitation-wrapper {
@@ -93,16 +91,12 @@ body {
         flex: 1;
     }
 
-    #main-wrapper {
-        display: flex;
-    }
-
     .site-footer footer {
         height: 5vh;
     }
 
     [class*="copyright-information"] {
-        background: var(--text-color);
+        background: var(--default-text-color);
         text-align: center;
         padding: var(--default-padding);
 
@@ -120,6 +114,18 @@ body {
         width: 25rem;
         border-right: var(--default-border);
         background: var(--pure-white);
+    }
+
+    #template-casual {
+        .sidebar {
+            .box {
+                box-shadow: none;
+            }
+        }
+
+        h2.headline-demopage {
+            text-shadow: var(--default-text-shadow);
+        }
     }
 
     #template-business {
@@ -188,6 +194,7 @@ body {
         font-family: "Century Gothic", Arial, sans-serif;
         text-transform: uppercase;
         margin-bottom: 2rem;
+        border-radius: var(--default-border-radius);
     }
 
     #grid-complex {
@@ -217,5 +224,11 @@ body {
         text-align: center;
         padding: var(--default-padding);
         background: var(--default-background);
+    }
+
+    @media only screen and (width <= 1023px) {
+        .sidebar {
+            display: none;
+        }
     }
 }

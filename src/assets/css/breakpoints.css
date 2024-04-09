@@ -7,13 +7,27 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         --grid-columns: 6; /* grid-columns */
         --grid-small-span: calc(var(--grid-columns) / 2); /* default column span smaller part */
         --grid-large-span: var(--grid-small-span); /* default column span larger part */
-        --line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
+        --default-line-height: 150%; /* avoids hyperlinks inside text to be to narrow to each other */
     }
 
     html, body {
         height: auto;
         min-height: 100%; /* fallback for old browser */
         min-height: 100dvh;
+    }
+
+    /* hide navigation */
+    #main-navigation-wrapper {
+        display: flex;
+
+        nav {
+            display: none;
+        }
+    }
+
+    /* show button to potentially toggle off-canvas */
+    #main-navigation-wrapper #toggle-offcanvas {
+        display: inline-flex;
     }
 
     [class*="grid-item"] {
@@ -32,24 +46,6 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         display: block !important;
     }
 
-    :where(label, .label) {
-        &.inline {
-            flex-direction: column;
-        }
-
-        & > span {
-            align-self: flex-start;
-        }
-
-        & > .label-text {
-            margin: 0 0 calc(var(--default-margin) / 2) 0;
-        }
-
-        &:not(.textarea) > * {
-            align-self: flex-start;
-        }
-    }
-
     input.replace-input-type:where([type="checkbox"], [type="radio"]) {
         transform: scale(1.4); /* scale radiobuttons and checkbox to double of original size (to click them more easily) */
         margin: 0 var(--default-margin) 0 0;
@@ -64,11 +60,29 @@ IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING
         --grid-small-span: var(--grid-columns); /* default column span smaller part */
         --grid-large-span: var(--grid-columns); /* default column span larger part */
         font-size: 56.25%; /* default size is 16px, 56.25% of that is 9px = 0.9rem */
-        --line-height: 1.2; /* line-height - may not be set as percentage to work properly in calc() */
+        --default-line-height: 1.2; /* line-height - may not be set as percentage to work properly in calc() */
     }
 
     :is(button, .button, input[type="submit"]):not(.stretch-on-small-devices) {
         width: auto;
+    }
+
+    :is(label, .label) {
+        &.inline {
+            flex-direction: column;
+
+            > span.label-text {
+                margin: 0 0 calc(var(--default-margin) / 2) 0;
+            }
+
+            & > span {
+                align-self: flex-start;
+            }
+
+            &:not(.textarea) > * {
+                align-self: flex-start;
+            }
+        }
     }
 
     .flex-container {

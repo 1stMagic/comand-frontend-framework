@@ -9,60 +9,100 @@ html {
     --primary-color-hue: 178; /* primary-color-hue */
     --primary-color-saturation: 98%; /* primary-color-saturation */
     --primary-color-lightness: 33%; /* primary-color-lightness */
-
-}
-
-#template-casual {
-    --text-color: #555;
-    --border-radius: 2.5rem;
-    --box-shadow: 0 0 1rem #aaa;
-    --font-family: 'Exo', sans-serif;
+    --secondary-color-hue: 183; /* secondary-color-hue */
+    --secondary-color-saturation: 46%; /* secondary-color-saturation */
+    --secondary-color-lightness: 92%; /* secondary-color-lightness */
+    --tertiary-color-hue: 180; /* tertiary-color-hue */
+    --tertiary-color-saturation: 72%; /* tertiary-color-saturation */
+    --tertiary-color-lightness: 65%; /* tertiary-color-lightness */
+    --default-text-color: #555;
+    --default-border-radius: 1rem;
+    --text-shadow-color: #666;
+    --form-element-border-radius: .5rem;
+    --default-box-shadow: 0 0 1rem #bcbcbc;
+    --default-font-family: 'Exo', sans-serif;
     --hyperlink-color-lightness: 20%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
     --default-background-color: var(--pure-white);
     --border-color: #bbb;
     --default-padding: 1.5rem;
     --default-margin: 1.5rem;
-    --font-size: 1.6rem;
-    --primary-background-gradient: linear-gradient(to bottom, var(--primary-color) 0%,#028c87 100%);
+    --default-font-size: 1.6rem;
+    --box-border-radius: .5rem;
+    --button-background-color: red;
+}
+
+#template-casual {
+    --default-background-gradient: linear-gradient(to top, #efefef 0%, #fff 60%);
+    --primary-background-gradient: linear-gradient(to top, var(--primary-color) 0%, var(--tertiary-color) 100%);
 }
 
 body {
-    font-family: 'Exo', sans-serif;
     background: var(--color-scheme-background-color);
 }
 
-.box, fieldset, .system-message, :is(button, .button, input[type="submit"]) {
+.box, fieldset, .system-message {
     border: 0;
-    box-shadow:  10px 10px 25px var(--color-scheme-background-color),
-    -10px -10px 25px #000;
 }
 
-.box, fieldset, :is(button, .button, input[type="submit"]) {
-    background: var(--color-scheme-background-color);
+.box, fieldset {
+    box-shadow: var(--default-box-shadow);
+    background: var(--default-background-gradient);
 }
 
 legend {
-    bottom: .4rem;
+    bottom: .5rem;
 }
 
-:is(button, .button, input[type="submit"]) {
+:is(button, .button, input[type="submit"]):not(.tertiary) {
     background: var(--primary-background-gradient);
+    text-shadow: var(--default-text-shadow);
+    border: var(--primary-border);
+
+    :is(span, [class*="icon"]) {
+        text-shadow: inherit;
+    }
+
+    &:hover, &:active, &:focus {
+      background: var(--pure-white);
+      text-shadow: none;
+
+        :is(span, [class*="icon"]) {
+            color: var(--primary-color);
+        }
+    }
+
+    &.primary {
+        background: var(--primary-color);
+
+        &:hover, &:active, &:focus {
+            background: var(--tertiary-color);
+
+            :is(span, [class*="icon"]) {
+                color: var(--pure-white);
+            }
+        }
+    }
 }
 
-:is(button, .button, input[type="submit"]),
-:is(button, .button, input[type="submit"]) :is(span, [class*="icon"]),
 th {
-    text-shadow: var(--text-shadow);
+    text-shadow: var(--default-text-shadow);
 }
 
-input, select, textarea, .input, .multiple-switch label {
+#main-navigation-wrapper {
+    border-radius: 0;
+}
+
+input, select, textarea, .input {
     border: none;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     outline: none;
-    border-radius: 2rem;
     background-color: #fcfcfc;
-    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
     transition: 300ms ease-in-out;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-shadow: none;
 }
 
 input, select, .input {
@@ -72,24 +112,30 @@ input, select, .input {
 
 :is(input, select, textarea, .input):focus {
     background-color: white;
-    box-shadow: 13px 13px 100px #969696,
-    -13px -13px 100px #ffffff;
+    box-shadow: none;
 }
 
 label input.replace-input-type {
     position: relative;
     top: 0;
     left: 0;
-    height: 2rem;
-    width: 2rem;
-    background-color: #ccc;
     border-radius: 100%;
     background: #e8e8e8;
-    transition-duration: 0.5s;
-    box-shadow: inset 3px 3px 5px #c5c5c5,
-    inset -3px -3px 5px #ffffff;
     border: 0;
     margin-right: .5rem;
+}
+
+label {
+    input.replace-input-type {
+        &[type="checkbox"] {
+            &:checked {
+                &::after {
+                    top: 0.2rem;
+                    left: 0.2rem;
+                }
+            }
+        }
+    }
 }
 
 input[type="checkbox"].replace-input-type:checked::after {
@@ -105,6 +151,19 @@ input[type="checkbox"].replace-input-type:checked::after {
 
 .multiple-switch label {
     border-radius: 0;
+    background: var(--default-background-gradient);
+
+    &:has(input:checked) {
+        background: var(--primary-background-gradient);
+
+        span {
+            color: var(--pure-white);
+        }
+
+        &:hover, &:active, &:focus {
+            background: var(--pure-white);
+        }
+    }
 }
 
 /* begin toggle-switch */
@@ -133,16 +192,16 @@ input[type="checkbox"].replace-input-type:checked::after {
 .toggle-switch .switch-label-wrapper input ~ .label-text::before {
     background-color: #eee;
     background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
-    border-radius: 2.5rem;
+    border-radius: var(--full-circle);
     box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,1),
     inset 0 -1px 1px 1px hsla(0,0%,0%,.25),
     0 1px 3px 1px hsla(0,0%,0%,.5),
     0 0 2px hsla(0,0%,0%,.25);
     display: block;
     height: 2.4rem;
-    width: 4rem;
-    top: -0.2rem;
-    left: -0.3rem;
+    width: 2.4rem;
+    top: -.05rem;
+    left: -.3rem;
     border: 0;
 }
 
@@ -162,8 +221,14 @@ input[type="checkbox"].replace-input-type:checked::after {
     right: .2rem;
 }
 
-.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked:after {
-    left: 0;
+.toggle-switch {
+    input {
+        min-width: 6rem;
+
+        &:is(input[type="checkbox"], input[type="radio"]):checked:after {
+            left: auto;
+        }
+    }
 }
 
 .toggle-switch:is(:hover, :active, :focus) *,
@@ -230,7 +295,7 @@ input[type="checkbox"].replace-input-type:checked::after {
 
 .toggle-switch .switch-label-wrapper input:checked + .label-text::before {
     left: auto;
-    right: -1.3rem;
+    right: -1.5em;
     top: -.4rem;
 }
 
