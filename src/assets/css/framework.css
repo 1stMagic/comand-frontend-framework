@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
-framework.css - last update: 2024/03/27
+framework.css - last update: 2024/04/11
 IT IS NOT RECOMMENDED TO EDIT THIS FILE (TO AVOID TROUBLESHOOTING AFTER UPDATING) - DO CHANGES/OVERWRITES IN template.css or a custom css-file ONLY
 */
 
@@ -50,7 +50,7 @@ T ------------------------
   - transforms
 
 - MEDIA QUERIES ------------------------
-- browser sepcific css
+- browser specific css
 - css for print only
 - css for for dark-mode
 */
@@ -88,7 +88,7 @@ html {
     /* END WEBSITE-GRID AND GLOBAL SETTINGS ------------------------------------------------------------------------------------------ */
 
     /* BEGIN MAIN NAVIGATION------------------------------------------------------------------------------------------ */
-    --main-navigation-background: var(--default-background); /* background for main navigation (and all sub-entries) */
+    --main-navigation-background-color: var(--default-background-color); /* background-color for main navigation (and all sub-entries) */
     --main-navigation-border: var(--default-border); /* border for main navigation (and all sub-entries) */
     --main-navigation-border-radius: var(--default-border-radius); /* border-radius for main navigation (and bottom of sub-entries-list) */
     /* END MAIN NAVIGATION ------------------------------------------------------------------------------------------ */
@@ -100,9 +100,7 @@ html {
     --default-background-color-lightness: 97%; /* default-background-color-lightness */
     --default-background-color-hsl-values: var(--default-background-color-hue), var(--default-background-color-saturation), var(--default-background-color-lightness); /* default-background-color-hsl-values */
     --default-background-color: hsl(var(--default-background-color-hsl-values)); /* default-background-color */
-    --default-background: var(--default-background-color); /* default-background (use for color, gradients or images) */
     --default-background-color-reduced-opacity: hsla(var(--default-background-color-hsl-values), var(--reduced-opacity)); /* default-background-color with reduced opacity */
-    --box-background: var(--default-background-color);
 
     /* disabled backgrounds */
     --disabled-background-color-lightness: 78%; /* disabled-background-color-lightness */
@@ -114,32 +112,30 @@ html {
 
     /* BEGIN BORDERS AND OUTLINES ------------------------------------------------------------------------------------------ */
     /* borders */
-    --border-color: var(--color-scheme-text-color); /* border-color */
-    --border-width: .1rem; /* border-width */
-    --border-style: solid; /* border-style */
-    --default-border: var(--border-width) var(--border-style) var(--border-color); /* default-border */
-    --default-border-reduced-opacity: var(--border-width) var(--border-style) var(--secondary-color-reduced-opacity); /* default-border with reduced opacity */
-    --box-border: var(--default-border); /* border for .box */
-    --box-border-radius: var(--default-border-radius); /* border-radius for .box */
-    --error-border: var(--border-width) var(--border-style) var(--error-color); /* error-border */
-    --success-border: var(--border-width) var(--border-style) var(--success-color); /* success-border */
-    --primary-border: var(--border-width) var(--border-style) var(--primary-color); /* border width primary-color (i.e. for :focus-status) */
-    --secondary-border: var(--border-width) var(--border-style) var(--secondary-color); /* border width secondary-color */
-    --tertiary-border: var(--border-width) var(--border-style) var(--tertiary-color); /* border width tertiary-color */
-    --disabled-border: var(--border-width) var(--border-style) var(--disabled-color); /* border width disabled-color */
+    --default-border-color: var(--color-scheme-text-color); /* border-color */
+    --default-border-width: .1rem; /* border-width */
+    --default-border-style: solid; /* border-style */
+    --default-border: var(--default-border-width) var(--default-border-style) var(--default-border-color); /* default-border */
+    --default-border-reduced-opacity: var(--default-border-width) var(--default-border-style) var(--secondary-color-reduced-opacity); /* default-border with reduced opacity */
+    --error-border: var(--default-border-width) var(--default-border-style) var(--error-color); /* error-border */
+    --success-border: var(--default-border-width) var(--default-border-style) var(--success-color); /* success-border */
+    --primary-border: var(--default-border-width) var(--default-border-style) var(--primary-color); /* border width primary-color (i.e. for :focus-status) */
+    --secondary-border: var(--default-border-width) var(--default-border-style) var(--secondary-color); /* border width secondary-color */
+    --tertiary-border: var(--default-border-width) var(--default-border-style) var(--tertiary-color); /* border width tertiary-color */
+    --disabled-border: var(--default-border-width) var(--default-border-style) var(--disabled-color); /* border width disabled-color */
 
     /* outlines */
-    --outline-color: var(--color-scheme-text-color); /* outline-color */
-    --outline-width: 0; /* outline-width */
-    --outline-style: var(--border-style); /* outline-style */
-    --default-outline: var(--outline-width) var(--outline-style) var(--outline-color); /* default-outline */
-    --default-outline-reduced-opacity: var(--outline-width) var(--outline-style) var(--secondary-color-reduced-opacity); /* default-outline with reduced opacity */
-    --error-outline: var(--outline-width) var(--outline-style) var(--error-color); /* error-outline */
-    --success-outline: var(--outline-width) var(--outline-style) var(--success-color); /* success-outline */
-    --primary-outline: var(--outline-width) var(--outline-style) var(--primary-color); /* outline width primary-color (i.e. for :focus-status) */
-    --secondary-outline: var(--outline-width) var(--outline-style) var(--secondary-color); /* outline secondary-color */
-    --tertiary-outline: var(--outline-width) var(--outline-style) var(--tertiary-color); /* outline tertiary-color */
-    --disabled-outline: var(--outline-width) var(--outline-style) var(--disabled-color); /* outline disabled-color */
+    --default-outline-color: var(--color-scheme-text-color); /* outline-color */
+    --default-outline-width: 0; /* outline-width */
+    --default-outline-style: var(--default-border-style); /* outline-style */
+    --default-outline: var(--default-outline-width) var(--default-outline-style) var(--default-outline-color); /* default-outline */
+    --default-outline-reduced-opacity: var(--default-outline-width) var(--default-outline-style) var(--secondary-color-reduced-opacity); /* default-outline with reduced opacity */
+    --error-outline: var(--default-outline-width) var(--default-outline-style) var(--error-color); /* error-outline */
+    --success-outline: var(--default-outline-width) var(--default-outline-style) var(--success-color); /* success-outline */
+    --primary-outline: var(--default-outline-width) var(--default-outline-style) var(--primary-color); /* outline width primary-color (i.e. for :focus-status) */
+    --secondary-outline: var(--default-outline-width) var(--default-outline-style) var(--secondary-color); /* outline secondary-color */
+    --tertiary-outline: var(--default-outline-width) var(--default-outline-style) var(--tertiary-color); /* outline tertiary-color */
+    --disabled-outline: var(--default-outline-width) var(--default-outline-style) var(--disabled-color); /* outline disabled-color */
     /* END BORDERS AND OUTLINES ------------------------------------------------------------------------------------------ */
 
     /* BEGIN COLORS ------------------------------------------------------------------------------------------ */
@@ -233,7 +229,7 @@ html {
     --tertiary-color: hsl(var(--tertiary-color-hsl-values)); /* tertiary-color */
     --tertiary-color-reduced-opacity: hsla(var(--tertiary-color-hsl-values), var(--reduced-opacity)); /* tertiary-color with reduced opacity */
 
-    /* text-color */
+    /* text-colors */
     --text-color-hue: 0; /* text-color-hue */
     --text-color-saturation: 0%; /* text-color-saturation */
     --text-color-lightness: 15%; /* text-color-lightness */
@@ -308,6 +304,18 @@ html {
     --headline-margin-top: calc(var(--default-margin) * 2); /* margin-top for headlines */
     /* END FONTS AND TYPOGRAPHY ------------------------------------------------------------------------------------------ */
 
+    /* BEGIN BOXES ------------------------------------------------------------------------------------------ */
+    --box-background-color: var(--default-background-color); /* background-color for entire box (could be partially covered by box-header-background-color if box header exists) */
+    --box-header-background-color: var(--primary-color); /* background-color for box-header */
+    --box-footer-background-color: none; /* background-color for box-footer */
+    --box-border: var(--default-border); /* border for .box */
+    --box-border-radius: var(--default-border-radius); /* border-radius for .box */
+    --box-header-text-color: var(--pure-white); /* text-color for box-header */
+    --box-body-text-color: var(--default-text-color); /* text-color for box-header */
+    --box-footer-text-color: var(--default-text-color); /* text-color for box-header */
+    --box-shadow-color: var(--dark-gray); /* box-shadow-color */
+    /* END BOXES ------------------------------------------------------------------------------------------ */
+
     /* BEGIN BUTTONS ------------------------------------------------------------------------------------------ */
     /* button typography */
     --button-text-color: var(--pure-white); /* button-text-color */
@@ -354,7 +362,6 @@ html {
 
     /* BEGIN FORMS AND FIELDSETS ------------------------------------------------------------------------------------------ */
     /* fieldsets */
-    --fieldset-background: var(--default-background); /* background for fieldsets */
     --fieldset-background-color: var(--default-background-color); /* background-color for fieldsets */
     --fieldset-border: var(--default-border); /* border for fieldsets */
     --fieldset-border-radius: var(--default-border-radius); /* border-radius for fieldsets */
@@ -385,7 +392,7 @@ html {
     --system-message-border: var(--default-border); /* border for system-messages */
     --system-message-border-radius: var(--default-border-radius); /* border-radius for system-messages */
     --system-message-font-weight: var(--font-weight-bold); /* font-weight for system-messages */
-    --system-message-padding: var(--default-padding) calc(var(--default-padding) * 2); /* padding for system-messages */
+    --system-message-padding: var(--default-padding); /* padding for system-messages */
     /* END SYSTEM-MESSAGES ------------------------------------------------------------------------------------------ */
 
     /* BEGIN TABLES ------------------------------------------------------------------------------------------ */
@@ -417,7 +424,6 @@ html {
     --reduced-opacity: .75; /* reduced opacity (should be at least 0.75 for accessibility) */
 
     /* shadows */
-    --box-shadow-color: var(--dark-gray); /* box-shadow-color */
     --default-box-shadow: .2rem .2rem .2rem var(--box-shadow-color); /* box-shadow */
     --text-shadow-color: var(--dark-gray); /* text-shadow-color */
     --default-text-shadow: .1rem .1rem .1rem var(--text-shadow-color); /* text-shadow-color */
@@ -649,7 +655,7 @@ blockquote, q {
 
 hr {
     border-width: 0;
-    border-top-width: var(--border-width);
+    border-top-width: var(--default-border-width);
     margin: calc(var(--default-margin) * 2);
     clear: both;
     color: var(--color-scheme-text-color);
@@ -730,10 +736,75 @@ img.grayscale {
 
 /* begin boxes ------------------------------------------------------------------------------------------ */
 .box {
-    background: var(--box-background);
+    background: var(--box-background-color);
     border: var(--box-border);
     border-radius: var(--box-border-radius);
     padding: calc(var(--default-padding) * 2);
+
+    .box-header {
+        display: flex;
+        align-items: center;
+        padding: calc(var(--default-padding) / 2) var(--default-padding);
+        background: var(--box-header-background-color);
+        border-top-left-radius: var(--box-border-radius);
+        border-top-right-radius: var(--box-border-radius);
+
+        & > * {
+            color: var(--box-header-text-color);
+            margin: 0;
+        }
+    }
+
+    &:has(.box-header) {
+        padding: 0;
+    }
+
+    &:has(img:only-child) {
+        align-self: flex-start;
+
+        img {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            display: block;
+        }
+    }
+
+    .box-body {
+        border-bottom-left-radius: var(--default-border-radius);
+        border-bottom-right-radius: var(--default-border-radius);
+
+        &:has(*:only-child) {
+            margin: 0;
+        }
+    }
+
+    &:has(> .box-footer) {
+        display: flex;
+        flex-direction: column;
+
+        .box-body {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    .box-footer {
+        padding: var(--default-padding);
+        color: var(--box-footer-text-color);
+        background: var(--box-footer-background-color);
+        border-top: var(--default-border);
+        border-bottom-left-radius: var(--default-border-radius);
+        border-bottom-right-radius: var(--default-border-radius);
+        margin-top: auto;
+
+        &:has(a:only-child) {
+            text-align: center;
+        }
+
+        &:has(p:only-child) {
+            margin: 0;
+        }
+    }
 
     > div:first-child {
         margin-top: 0;
@@ -917,7 +988,7 @@ img.grayscale {
     &.use-icon-as-background[class*="icon-"] {
         min-width: 0;
         min-height: 0;
-        background: none;
+        background: none !important;
         border: 0 !important;
         padding: 0;
 
@@ -2208,7 +2279,8 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
                     text-align: right;
 
                     &::before {
-                        background: var(--color-scheme-background-color);
+                        border-color: var(--default-text-color);
+                        background: none;
                         left: -.7rem;
                         top: 0;
                     }
@@ -2258,9 +2330,15 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
     &.colored {
         .switch-label-wrapper {
+            --status-color: var(--error-color);
+
             span.label-text {
-                --status-color: var(--error-color); /* overwrite default-checked-colored */
+                --status-color: var(--error-color);
                 color: var(--status-color);
+
+                &::before {
+                    border-color: var(--status-color);
+                }
             }
 
             &:has(input:checked) {
@@ -2272,7 +2350,7 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
                     --status-color: var(--success-color);
 
                     &::before {
-                        background-color: var(--status-color);
+                        background: var(--status-color);
                     }
                 }
             }
@@ -2280,6 +2358,12 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
             + .label-text {
                 span {
                     color: var(--color-scheme-text-color);
+                }
+
+                & + .label-text {
+                    &::before {
+                        border-color: var(--status-color);
+                    }
                 }
             }
         }
@@ -2297,6 +2381,8 @@ input[type="range"]:is([disabled], .disabled)::-webkit-slider-runnable-track {
 
     .label-text {
         display: inline-flex;
+        margin: 0 auto;
+        justify-content: center;
 
         a[class*="icon-"], a:has([class*="icon-"]) {
             margin-left: calc(var(--default-margin) / 2);
@@ -2775,7 +2861,7 @@ dd {
 /* begin main-navigation ------------------------------------------------------------------------------------------ */
 /* wrapper must have id to keep high specificity */
 #main-navigation-wrapper {
-    background: var(--main-navigation-background);
+    background: var(--main-navigation-background-color);
     border-top: var(--main-navigation-border);
     border-bottom: var(--main-navigation-border);
     border-radius: var(--main-navigation-border-radius);
@@ -2791,7 +2877,7 @@ dd {
         display: flex;
         border-left: var(--main-navigation-border);
         border-right: var(--main-navigation-border);
-        background: var(--main-navigation-background);
+        background: var(--main-navigation-background-color);
 
         /* first-level only */
 
@@ -2822,7 +2908,7 @@ dd {
                 list-style-type: none;
                 margin: 0;
                 white-space: nowrap;
-                background: var(--main-navigation-background);
+                background: var(--main-navigation-background-color);
 
                 li a span[class*="icon-"].subentry-icon::before {
                     display: inline-block;
@@ -2887,6 +2973,8 @@ dd {
                 z-index: 100; /* brings sub-navigation to front */
                 min-width: 100%;
                 border-bottom: var(--main-navigation-border);
+                border-bottom-left-radius: var(--main-navigation-border-radius);
+                border-bottom-right-radius: var(--main-navigation-border-radius);
 
                 li {
                     border: var(--main-navigation-border);
@@ -2895,6 +2983,11 @@ dd {
                     &:last-child {
                         border-bottom-left-radius: var(--main-navigation-border-radius);
                         border-bottom-right-radius: var(--main-navigation-border-radius);
+
+                        a {
+                            border-bottom-left-radius: var(--main-navigation-border-radius);
+                            border-bottom-right-radius: var(--main-navigation-border-radius);
+                        }
                     }
                 }
 

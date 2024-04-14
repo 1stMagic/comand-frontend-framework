@@ -16,24 +16,26 @@ html {
     --tertiary-color-saturation: 72%; /* tertiary-color-saturation */
     --tertiary-color-lightness: 65%; /* tertiary-color-lightness */
     --default-text-color: #555;
-    --default-border-radius: 1rem;
+    --default-border-radius: .5rem;
     --text-shadow-color: #666;
     --form-element-border-radius: .5rem;
     --default-box-shadow: 0 0 1rem #bcbcbc;
     --default-font-family: 'Exo', sans-serif;
-    --hyperlink-color-lightness: 20%; /* hyperlink-color-lightness (used for highlighted hyperlinks) */
     --default-background-color: var(--pure-white);
     --border-color: #bbb;
     --default-padding: 1.5rem;
     --default-margin: 1.5rem;
     --default-font-size: 1.6rem;
-    --box-border-radius: .5rem;
     --button-background-color: red;
+    --box-footer-background-color: var(--pure-white);
 }
 
 #template-casual {
-    --default-background-gradient: linear-gradient(to top, #efefef 0%, #fff 60%);
+    --default-background-gradient: linear-gradient(to top, #efefef 0%, var(--pure-white) 60%);
     --primary-background-gradient: linear-gradient(to top, var(--primary-color) 0%, var(--tertiary-color) 100%);
+    --box-background-color: var(--default-background-gradient);
+    --box-header-background-color: var(--primary-background-gradient);
+    --fieldset-background-color: var(--primary-background-gradient);
 }
 
 body {
@@ -46,7 +48,6 @@ body {
 
 .box, fieldset {
     box-shadow: var(--default-box-shadow);
-    background: var(--default-background-gradient);
 }
 
 legend {
@@ -99,6 +100,11 @@ input, select, textarea, .input {
     background-color: #fcfcfc;
     box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
     transition: 300ms ease-in-out;
+
+    &:focus {
+        background-color: white;
+        box-shadow: none;
+    }
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -110,43 +116,31 @@ input, select, .input {
     padding-bottom: 0.8rem;
 }
 
-:is(input, select, textarea, .input):focus {
-    background-color: white;
-    box-shadow: none;
-}
-
-label input.replace-input-type {
-    position: relative;
-    top: 0;
-    left: 0;
-    border-radius: 100%;
-    background: #e8e8e8;
-    border: 0;
-    margin-right: .5rem;
-}
-
 label {
     input.replace-input-type {
+        position: relative;
+        top: 0;
+        left: 0;
+        border-radius: 100%;
+        background: #e8e8e8;
+        border: 0;
+        margin-right: .5rem;
+
         &[type="checkbox"] {
             &:checked {
                 &::after {
-                    top: 0.2rem;
-                    left: 0.2rem;
+                    width: 1.4rem;
+                    height: 0.7rem;
+                    border: .3rem solid var(--hyperlink-color);
+                    border-top: 0;
+                    border-right: 0;
+                    transform: rotate(-45deg) skewX(-10deg) translateX(-50%) translateY(-50%);
+                    top: -0.1rem;
+                    left: 50%;
                 }
             }
         }
     }
-}
-
-input[type="checkbox"].replace-input-type:checked::after {
-    width: 1.4rem;
-    height: 0.7rem;
-    border: .3rem solid var(--hyperlink-color);
-    border-top: 0;
-    border-right: 0;
-    transform: rotate(-45deg) skewX(-10deg) translateX(-50%) translateY(-50%);
-    top: 15%;
-    left: 50%;
 }
 
 .multiple-switch label {
@@ -167,153 +161,175 @@ input[type="checkbox"].replace-input-type:checked::after {
 }
 
 /* begin toggle-switch */
-
-.toggle-switch input ~ .label-text {
-    margin-left: .5rem;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"], .switch-label-wrapper) {
-    background: var(--error-color);
-    border-radius: 2.5rem;
-    box-shadow: inset 0 1px 4px hsla(0,0%,0%,.5),
-    inset 0 0 10px hsla(0,0%,0%,.5),
-    0 0 0 1px hsla(0,0%,0%,.1),
-    0 -1px 2px 2px hsla(0,0%,0%,.25),
-    0 2px 2px 2px hsla(0,0%,100%,.75);
-    cursor: pointer;
-    height: 2.5rem;
-    padding-right: 2.5rem;
-    width: 7rem;
-    -webkit-appearance: none;
-    -webkit-transition: .25s;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"]):after,
-.toggle-switch .switch-label-wrapper input ~ .label-text::before {
-    background-color: #eee;
-    background-image: -webkit-linear-gradient(hsla(0,0%,100%,.1), hsla(0,0%,0%,.1));
-    border-radius: var(--full-circle);
-    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,1),
-    inset 0 -1px 1px 1px hsla(0,0%,0%,.25),
-    0 1px 3px 1px hsla(0,0%,0%,.5),
-    0 0 2px hsla(0,0%,0%,.25);
-    display: block;
-    height: 2.4rem;
-    width: 2.4rem;
-    top: -.05rem;
-    left: -.3rem;
-    border: 0;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked {
-    background: var(--success-color);
-    padding-left: 2.5rem;
-    padding-right: 0;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"]):before {
-    left: .1rem;
-    right: auto;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"]):checked:before {
-    left: auto !important;
-    right: .2rem;
-}
-
 .toggle-switch {
     input {
         min-width: 6rem;
 
-        &:is(input[type="checkbox"], input[type="radio"]):checked:after {
-            left: auto;
+        & ~ .label-text {
+            margin-left: .5rem;
         }
     }
-}
 
-.toggle-switch:is(:hover, :active, :focus) *,
-.toggle-switch:is(:hover, :active, :focus) input:checked + .label-text {
-    color: var(--hyperlink-color-highlighted);
-}
-
-.toggle-switch :is(input, .switch-label-wrapper) {
-    border: none;
-}
-
-.toggle-switch:is(:hover, :active, :focus) input::after,
-.toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
-    background: #eee;
-}
-
-.toggle-switch input:checked::after,
-.toggle-switch .switch-label-wrapper input ~ .label-text::before,
-.toggle-switch input:checked:is(:hover, :active, :focus)::after,
-.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input ~ .label-text::before,
-.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper input:checked + .label-text::before{
-    background: var(--pure-white);
-}
-
-/* begin toggle-switch with icon */
-.toggle-switch input[class*="icon-"]::before {
-    font-size: 2rem;
-}
-
-.toggle-switch input[class*="icon-"]:checked:disabled::before {
-    color: var(--pure-white);
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"]:after,
-.toggle-switch .switch-label-wrapper input ~ .label-text::before {
-    width: 2.4rem;
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"] {
-    background: var(--error-color);
-}
-
-.toggle-switch :is(input[type="checkbox"], input[type="radio"])[class*="icon"]:checked {
-    background: var(--success-color);
-}
-/* end toggle-switch with icon */
-
-/* begin toggle-switch with switch-label */
-.toggle-switch .switch-label-wrapper input + .label-text,
-.toggle-switch .switch-label-wrapper input + .label-text + .label-text {
-    margin: 0;
-    font-weight: bold;
-    color: var(--pure-white) !important;
-}
-
-.toggle-switch .switch-label-wrapper input ~ .label-text::before {
-    left: auto;
-}
-
-.toggle-switch .switch-label-wrapper input + .label-text + .label-text::before {
-    left: -1.5rem;
-    top: unset;
-}
-
-.toggle-switch .switch-label-wrapper input:checked + .label-text::before {
-    left: auto;
-    right: -1.5em;
-    top: -.4rem;
-}
-
-.toggle-switch .switch-label-wrapper:has(input:checked) {
-    background: var(--success-color);
-}
-
-.toggle-switch .switch-label-wrapper:has(input:checked) ~ span:last-child {
-    color: var(--hyperlink-color);
-}
-
-.toggle-switch:is(:hover, :active, :focus) .switch-label-wrapper:has(input:checked) ~ span:last-child {
-    color: var(--hyperlink-color-highlighted);
-}
-/* end toggle-switch with switch-label */
-
-@media (prefers-color-scheme: dark) {
-    html {
-
+    .label-text {
+        color: var(--default-text-color);
     }
+
+    :is(input[type="checkbox"], input[type="radio"], .switch-label-wrapper) {
+        background: #eee;
+        border-radius: 2.5rem;
+        box-shadow: inset 0 .1rem .2rem hsla(0, 0%, 0%, .5),
+        inset 0 0 10px hsla(0, 0%, 0%, .5),
+        0 0 0 1px hsla(0, 0%, 0%, .1),
+        0 -1px 2px 2px hsla(0, 0%, 0%, .25),
+        0 2px 2px 2px hsla(0, 0%, 100%, .75);
+        cursor: pointer;
+        height: 2.5rem;
+        padding-right: 2.5rem;
+        min-width: 7rem;
+        -webkit-appearance: none;
+        -webkit-transition: .25s;
+    }
+
+    :is(input[type="checkbox"], input[type="radio"]):after,
+    .switch-label-wrapper input ~ .label-text::before {
+        background-color: #eee;
+        background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+        border-radius: var(--full-circle);
+        box-shadow: inset 0 1px 1px 1px hsla(0, 0%, 100%, 1),
+        inset 0 -1px 1px 1px hsla(0, 0%, 0%, .25),
+        0 1px 3px 1px hsla(0, 0%, 0%, .5),
+        0 0 2px hsla(0, 0%, 0%, .25);
+        display: block;
+        height: 2.4rem;
+        width: 2.4rem;
+        top: -.05rem;
+        left: -.3rem;
+        border: 0;
+    }
+
+    :is(input[type="checkbox"], input[type="radio"]) {
+        &::before {
+            left: .1rem;
+            right: auto;
+        }
+
+        &:checked {
+            padding-left: 2.5rem;
+            padding-right: 0;
+
+            &::before {
+                left: auto !important;
+                right: .2rem;
+            }
+
+            &:after {
+                left: auto;
+            }
+        }
+    }
+
+    &.colored {
+        :is(input[type="checkbox"], input[type="radio"], .switch-label-wrapper) {
+            background: var(--error-color);
+        }
+
+        :is(input[type="checkbox"], input[type="radio"]) {
+            &:checked {
+                background: var(--success-color);
+            }
+
+            &[class*="icon"] {
+                background: var(--error-color);
+
+                &:checked {
+                    background: var(--success-color);
+                }
+            }
+        }
+    }
+
+    &:is(:hover, :active, :focus) {
+        *, input:checked + .label-text {
+            color: var(--hyperlink-color-highlighted);
+        }
+    }
+
+    &:is(:hover, :active, :focus) input::after,
+    .switch-label-wrapper input + .label-text + .label-text::before {
+        background: #eee;
+    }
+
+    input:checked::after,
+    .switch-label-wrapper input ~ .label-text::before,
+    input:checked:is(:hover, :active, :focus)::after,
+    &:is(:hover, :active, :focus) .switch-label-wrapper {
+        input ~ .label-text::before,
+        input:checked + .label-text::before {
+            background: var(--pure-white);
+        }
+    }
+
+    /* begin toggle-switch with icon */
+    input[class*="icon-"] {
+        &::before {
+            font-size: 2rem;
+        }
+
+        &:checked:disabled::before {
+            color: var(--pure-white);
+        }
+    }
+
+    :is(input[type="checkbox"], input[type="radio"])[class*="icon"]:after,
+    .switch-label-wrapper input ~ .label-text::before {
+        width: 2.4rem;
+    }
+    /* end toggle-switch with icon */
+
+    /* begin toggle-switch with switch-label */
+    .switch-label-wrapper {
+        & ~ span:last-child {
+            color: var(--hyperlink-color);
+        }
+
+        input {
+            & ~ .label-text {
+                margin: 0;
+                font-weight: bold;
+
+                &::before {
+                    left: auto;
+                }
+            }
+
+            & + .label-text + .label-text::before {
+                left: -1.5rem;
+                top: unset;
+            }
+
+            &:checked + .label-text::before {
+                left: auto;
+                right: -1.5em;
+                top: -.4rem;
+            }
+        }
+    }
+
+    &.colored {
+        &:has(input:checked) .switch-label-wrapper {
+            background: var(--success-color);
+        }
+
+        .switch-label-wrapper {
+            .label-text {
+                color: var(--pure-white) !important;
+            }
+        }
+    }
+
+
+    &:is(:hover, :active, :focus) .switch-label-wrapper:has(input:checked) ~ span:last-child {
+        color: var(--hyperlink-color-highlighted);
+    }
+    /* end toggle-switch with switch-label */
 }

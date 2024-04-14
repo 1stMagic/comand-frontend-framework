@@ -1,5 +1,5 @@
 <template>
-    <div id="frontend-framework-demo">
+    <div id="frontend-framework-demo" class="demopage">
         <div :id="templateId">
             <div class="site-header sticky" id="anchor-back-to-top" role="banner">
                 <header class="grid-container-create-columns">
@@ -102,7 +102,8 @@
                                 <span class="icon-home"></span>
                                 <span>Template Settings</span>
                             </h4>
-                            <span :class="openBoxes.includes('template') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                            <span
+                                :class="openBoxes.includes('template') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
                         </a>
                         <div v-if="openBoxes.includes('template')" class="box-body" aria-expanded="true" role="article">
                             <div class="default-padding">
@@ -128,7 +129,8 @@
                                 <span class="icon-table"></span>
                                 <span>Table of contents</span>
                             </h4>
-                            <span :class="openBoxes.includes('table') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
+                            <span
+                                :class="openBoxes.includes('table') ? 'icon-single-arrow-up' : 'icon-single-arrow-down'"></span>
                         </a>
                         <div v-if="openBoxes.includes('table')" class="box-body" aria-expanded="true" role="article">
                             <div class="default-padding">
@@ -222,6 +224,12 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- begin comand-versions -->
+                        <dl class="box-footer comand-versions">
+                            <dt>Frontend-Framework Version:</dt>
+                            <dd>{{ packageJson.version }}</dd>
+                        </dl>
+                        <!-- end comand-versions -->
                     </div>
                     <!-- end table of contents -->
                 </div>
@@ -243,6 +251,7 @@
             </aside>
             <main id="content">
                 <a id="top-of-page"></a>
+                <!-- begin typography -->
                 <div class="width-limitation-wrapper">
                     <section>
                         <h2 class="headline-demopage" id="anchor-typography">Typography</h2>
@@ -379,7 +388,9 @@
                         <hr/>
                     </section>
                 </div>
+                <!-- end typography -->
 
+                <!-- begin tables -->
                 <div class="width-limitation-wrapper">
                     <section>
                         <h2 class="headline-demopage" id="anchor-tables">Tables</h2>
@@ -562,97 +573,95 @@
                         <pre><code class="html"></code></pre>
                     </section>
                 </div>
+                <!-- end tables -->
 
+                <!-- begin boxes -->
                 <div class="width-limitation-wrapper" id="section-boxes">
                     <section>
                         <h2 class="headline-demopage" id="anchor-boxes">Boxes</h2>
                         <h3 id="anchor-simple-boxes">Simple Box</h3>
-                        <!-- simple box -->
+                        <!-- begin simple box -->
                         <div class="box">
                             <p>
                                 A simple box is just a &lt;div&gt; with class="box" that sets default padding-,
-                                background- and
-                                border-style. The box can contain anything. Though the box is a block-element the
-                                default width
-                                of the box
-                                is 100% of its parent.
+                                background- and border-style. The box can contain anything.
+                                Though the box is a block-element the default width of the box is 100% of its parent.
                             </p>
                         </div>
+                        <!-- end simple box -->
 
                         <h3 id="anchor-stretched-boxes">Stretched boxes with different content</h3>
                         <div class="flex-container">
                             <div class="box">
-                                <p>This box (and its siblings) are grid-items, because their parent is defined as a
-                                    grid-container by using
-                                    "display: grid."</p>
-                            </div>
-                            <div class="box">
-                                <p>All boxes/grid-items have the same height (height of the heighest sibling) by
-                                    default. So no
-                                    fixed height
-                                    or JavaScript is necessary.</p>
+                                <p>
+                                    This is a simple box without headline. The box (and its siblings) are grid-items,
+                                    because their parent is defined as a grid-container by using "display: grid."
+                                </p>
                             </div>
                             <div class="box">
                                 <p>
-                                    The default width of all grid-items would be different relating to their
-                                    individual
-                                    content.
-                                    By defining
-                                    the width of each item as 1 fraction and defining auto-fit (by using
-                                    (grid-template-columns:
-                                    repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are
-                                    stretched
-                                    equaly.<br/>
+                                    The default width of all grid-items would be different relating to their individual
+                                    content. By defining the width of each item as 1 fraction and defining auto-fit (by
+                                    using
+                                    (grid-template-columns: repeat(auto-fit, minmax(0, 1fr))) for the grid-container,
+                                    all items are stretched equaly.<br/>
                                     Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not
-                                    have to set
-                                    margins for
-                                    the space between the boxes, because you can define a specific gap (i.e.: 2rem),
-                                    which is
-                                    used
-                                    horizontally and vertically.
+                                    have to set margins for the space between the boxes, because you can define a
+                                    specific gap (i.e.: 2rem),
+                                    which is used horizontally and vertically.
                                 </p>
                                 <p>
-                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it
-                                    causes
-                                    problems
-                                    to handle the
-                                    grid!
+                                    <strong>Attention:</strong> Do not use fixed widths or heights, because it causes
+                                    problems to handle the grid!
                                 </p>
                             </div>
                             <div class="box">
                                 <div>
-                                    <h4>Box with headline</h4>
+                                    <h4>Box with simple headline</h4>
                                 </div>
                                 <div class="box-body">
                                     <p>
                                         The default width of all grid-items would be different relating to their
-                                        individual
-                                        content. By defining
-                                        the width of each item as 1 fraction and defining auto-fit (by using
-                                        (grid-template-columns:
-                                        repeat(auto-fit, minmax(0, 1fr))) for the grid-container, all items are
-                                        stretched
-                                        equaly.<br/>
-                                        Flex-Box can do the same, but the advantage of using CSS-Grid is that you do
-                                        not
-                                        have to
-                                        set margins for
-                                        the space between the boxes, because you can define a specific gap (i.e.:
-                                        2rem),
-                                        which
-                                        is used
-                                        horizontally and vertically.
+                                        individual content. By defining the width of each item as 1 fraction and
+                                        defining auto-fit (by using
+                                        (grid-template-columns: repeat(auto-fit, minmax(0, 1fr))) for the
+                                        grid-container, all items are stretched equaly.<br/>
+                                        Flex-Box can do the same, but the advantage of using CSS-Grid is that you do not
+                                        have to set margins for the space between the boxes, because you can define a
+                                        specific gap (i.e.:
+                                        2rem), which is used horizontally and vertically.
                                     </p>
                                     <p>
-                                        <strong>Attention:</strong> Do not use fixed widths or heights, because it
-                                        causes
-                                        problems to handle the
-                                        grid!
+                                        <strong>Attention:</strong>Do not use fixed widths or heights, because it causes
+                                        problems to handle the grid!
                                     </p>
                                 </div>
                             </div>
+                            <div class="box">
+                                <div class="box-header">
+                                    <h4>Box with header, body and footer</h4>
+                                </div>
+                                <div class="box-body" role="article">
+                                    <div class="default-padding">
+                                        <p>
+                                            This box has a separated box-body-part. All boxes/grid-items have the same
+                                            height (height of the highest sibling) by default. So no fixed height or
+                                            JavaScript is necessary.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <a href="#">Link in separate footer</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="box-header">
+                                    <h4><span class="icon-image"></span><span>Box with image</span></h4>
+                                </div>
+                                <div class="box-body"><img src="/src/assets/images/landscape-medium.jpg"
+                                                           alt="landscape medium" title="landscape medium"/></div>
+                            </div>
                         </div>
-
                         <h3 id="anchor-boxes-with-centered-content">Boxes with centered content</h3>
                         <div class="grid-container-auto-columns" id="demopage-boxes">
                             <div class="box center-content">
@@ -673,7 +682,9 @@
                         </div>
                     </section>
                 </div>
+                <!-- end boxes -->
 
+                <!-- begin rich-media -->
                 <div class="width-limitation-wrapper">
                     <section>
                         <h2 class="headline-demopage" id="anchor-richmedia">RichMedia</h2>
@@ -700,7 +711,9 @@
                         </div>
                     </section>
                 </div>
+                <!-- end rich-media -->
 
+                <!-- begin user-interface -->
                 <div class="width-limitation-wrapper">
                     <section>
                         <h2 class="headline-demopage" id="anchor-user-interface">User Interface</h2>
@@ -786,7 +799,7 @@
 
                         <h5>&lt;button&gt;-tags (for forms) aligned right</h5>
                         <div class="button-wrapper align-right">
-                            <button class="button" >
+                            <button class="button">
                                 <span class="icon-register"></span>
                                 <span class="hidden">Hidden label-text</span>
                             </button>
@@ -946,7 +959,9 @@
                         </div>
                     </section>
                 </div>
+                <!-- end user-interface -->
 
+                <!-- begin forms -->
                 <div class="width-limitation-wrapper">
                     <section>
                         <h2 class="headline-demopage" id="anchor-forms">Forms</h2>
@@ -1057,19 +1072,21 @@
                                     <label for="searchfield">
                                         <span class="label-text"><span>Label for searchfield:</span></span>
                                         <span class="input-wrapper">
-                                            <input name="searchfield" id="searchfield" placeholder="Keyword(s)" type="search"/>
+                                            <input name="searchfield" id="searchfield" placeholder="Keyword(s)"
+                                                   type="search"/>
                                             <a href="#" class="button no-flex"><span class="icon-search"></span></a>
                                         </span>
                                     </label>
                                 </div>
                                 <label class="inline" for="numberfield">
                                     <span class="label-text"><span>Label for numberfield (inline):</span></span>
-                                    <input name="numberfield" id="numberfield" placeholder="1" type="number" />
+                                    <input name="numberfield" id="numberfield" placeholder="1" type="number"/>
                                 </label>
                                 <label class="inline" for="numberfield2">
                                     <span
                                         class="label-text"><span>Label for numberfield with decimal (inline):</span></span>
-                                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number" step="0.1"/>
+                                    <input name="numberfield" id="numberfield2" placeholder="0.0" type="number"
+                                           step="0.1"/>
                                 </label>
                                 <label class="inline" for="colorfield">
                                     <span class="label-text"><span>Label for colorfield (inline):</span></span>
@@ -1204,10 +1221,14 @@
                                         <span class="label-text">
                                             <span>Inputfield with native validation:<sup>*</sup></span>
                                         </span>
-                                        <input name="inputfield-with-native-validation"
-                                               id="inputfield-with-native-validation"
-                                               placeholder="Placeholdertext for inputfield with native validation"
-                                               type="text" required="required" minlength="5"/>
+                                        <input
+                                            name="inputfield-with-native-validation"
+                                            id="inputfield-with-native-validation"
+                                            placeholder="Placeholdertext for inputfield with native validation"
+                                            type="text"
+                                            required="required"
+                                            minlength="5"
+                                        />
                                     </label>
                                     <label>
                                         <span class="label-text">
@@ -1220,6 +1241,17 @@
                                             <option value="2">Option 2</option>
                                             <option value="3">Option 3</option>
                                         </select>
+                                    </label>
+                                    <label>
+                                        <span class="label-text">
+                                            <span>Textarea with native validation:<sup>*</sup></span>
+                                        </span>
+                                        <textarea
+                                            name="textarea-with-native-validation"
+                                            id="textarea-with-native-validation"
+                                            required="required"
+                                            placeholder="Placeholdertext for textarea with native validation">
+                                        </textarea>
                                     </label>
                                 </div>
                             </fieldset>
@@ -1245,10 +1277,10 @@
                                             <a href="#" class="icon-questionmark-circle" title="Open help!"></a>
                                         </span>
                                         <input
-                                           name="inputfield-default"
-                                           id="inputfield-default"
-                                           placeholder="Placeholdertext for inputfield"
-                                           type="text"
+                                            name="inputfield-default"
+                                            id="inputfield-default"
+                                            placeholder="Placeholdertext for inputfield"
+                                            type="text"
                                         />
                                     </label>
                                     <label class="error" for="inputfield-with-error">
@@ -1258,10 +1290,10 @@
                                             </a>
                                         </span>
                                         <input
-                                           name="inputfield-with-error"
-                                           id="inputfield-with-error"
-                                           placeholder="Placeholdertext for inputfield with error"
-                                           type="text"
+                                            name="inputfield-with-error"
+                                            id="inputfield-with-error"
+                                            placeholder="Placeholdertext for inputfield with error"
+                                            type="text"
                                         />
                                     </label>
                                     <label class="warning" for="inputfield-with-warning">
@@ -1270,10 +1302,10 @@
                                             <a href="#" class="icon-exclamation-circle" title="A warning occurred!"></a>
                                         </span>
                                         <input
-                                           name="inputfield-with-warning"
-                                           id="inputfield-with-warning"
-                                           placeholder="Placeholdertext for inputfield with warning"
-                                           type="text"
+                                            name="inputfield-with-warning"
+                                            id="inputfield-with-warning"
+                                            placeholder="Placeholdertext for inputfield with warning"
+                                            type="text"
                                         />
                                     </label>
                                     <label class="success" for="inputfield-with-success">
@@ -1282,10 +1314,10 @@
                                             <a href="#" class="icon-check-circle" title="Field filled correctly!"></a>
                                         </span>
                                         <input
-                                           name="inputfield-with-success"
-                                           id="inputfield-with-success"
-                                           placeholder="Placeholdertext for inputfield with success"
-                                           type="text"
+                                            name="inputfield-with-success"
+                                            id="inputfield-with-success"
+                                            placeholder="Placeholdertext for inputfield with success"
+                                            type="text"
                                         />
                                     </label>
                                     <label class="info" for="inputfield-with-info">
@@ -1784,7 +1816,8 @@
                                         <span class="label-text"><span>Username (default):</span></span>
                                         <span class="flex-container">
                                             <span class="place-inside icon-user-profile"></span>
-                                            <input type="text" name="username" id="username" maxlength="50" placeholder="Username" title="Please type in username"/>
+                                            <input type="text" name="username" id="username" maxlength="50"
+                                                   placeholder="Username" title="Please type in username"/>
                                         </span>
                                     </label>
                                     <label for="password">
@@ -1794,7 +1827,8 @@
                                         <span class="flex-container">
                                             <span class="place-inside icon-security-settings"></span>
                                             <input type="password"
-                                                   name="password" id="password" minlength="6" maxlength="50" placeholder="Password" required="required"
+                                                   name="password" id="password" minlength="6" maxlength="50"
+                                                   placeholder="Password" required="required"
                                                    title="Please type in password"/>
                                         </span>
                                     </label>
@@ -1865,6 +1899,7 @@
                 </div>
                 <!-- end main-navigation -->
 
+                <!-- begin flex-containers -->
                 <div class="width-limitation-wrapper">
                     <section id="flex-section">
                         <h2 class="headline-demopage" id="anchor-flex-containers">Flex-Containers</h2>
@@ -1900,7 +1935,9 @@
                         </div>
                     </section>
                 </div>
+                <!-- end flex-containers -->
 
+                <!-- begin grid-containers -->
                 <div class="width-limitation-wrapper">
                     <section id="grid-section">
                         <h2 class="headline-demopage" id="anchor-grid-containers">Grid-Containers</h2>
@@ -1981,12 +2018,15 @@
                         </div>
                     </section>
                 </div>
+                <!-- end grid-containers -->
+
                 <!-- begin back-to-top-button -->
                 <a class="button" id="back-to-top-button" href="#top-of-page" title="Back to top">
                     <span class="icon-single-arrow-up"></span>
                 </a>
                 <!-- end back-to-top-button -->
             </main>
+
             <!-- begin copyright-information -->
             <div class="cmd-copyright-information" role="contentinfo">
                 <a href="http://www.comand-cms.com" target="_blank" lang="en" title="CoManD-Website">© CoManD</a>
@@ -1997,12 +2037,16 @@
 </template>
 
 <script>
+// imports
+import packageJson from "../package.json"
+
 export default {
     data() {
         return {
             selectedTemplate: "blank",
             openBoxes: ["template", "table"],
-            openSidebar: true
+            openSidebar: true,
+            packageJson
         }
     },
     computed: {
@@ -2050,46 +2094,4 @@ export default {
 </script>
 
 <style>
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2000;
-    max-width: 30rem;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-    border: 0;
-    border-right-width: 0px;
-    border-right-style: none;
-    border-right-color: currentcolor;
-    border-right-width: 0;
-    border-right-style: none;
-    border-right-color: currentcolor;
-    border-right: var(--default-border);
-    display: flex;
-}
-
-.sidebar .box {
-    padding: 0;
-}
-
-.sidebar .inner-sidebar-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar > h3 {
-    padding: var(--default-padding);
-    margin: 0;
-}
-
-.sidebar .closed-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--default-gap);
-    padding: var(--default-padding);
-}
 </style>
